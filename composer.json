@@ -1,5 +1,13 @@
 {
     "name": "erik/admin-manager-implementation",
     "license": "MIT",
-    "require": {}
+    "require": {
+        "erik/admin-manager": "dev-master"
+    },
+	"repositories": [
+		{
+			"type": "vcs",
+			"url":  "git@bitbucket.org:erik-epineer/admin-manager.git"
+		}
+	]
 }
