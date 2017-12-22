@@ -15,7 +15,7 @@
     },
     "autoload-dev" : {
         "psr-4": {
-            "Erik\\AdminManagerImplementation\\Tests": "tests/"
+            "Erik\\AdminManagerImplementation\\Tests\\": "tests/"
         }
     }
 }
