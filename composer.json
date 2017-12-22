@@ -1,26 +1,29 @@
 {
-    "name": "erik/admin-manager-implementation",
-    "license": "MIT",
-    "require": {
-        "erik/admin-manager": "dev-master"
-    },
-	"repositories": [
-		{
-			"type": "vcs",
-			"url":  "git@bitbucket.org:erik-epineer/admin-manager.git"
-		}
-	],
-    "require-dev": {
-        "orchestra/testbench": "^3.5"
-    },
-    "autoload" : {
-        "psr-4": {
-            "Erik\\AdminManagerImplementation\\": "src/"
-        }
-    },
-    "autoload-dev" : {
-        "psr-4": {
-            "Erik\\AdminManagerImplementation\\Tests\\": "tests/"
-        }
+  "name": "erik/admin-manager-implementation",
+  "license": "MIT",
+  "require": {
+    "erik/admin-manager": "dev-master"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:erik-epineer/admin-manager.git"
     }
+  ],
+  "require-dev": {
+    "orchestra/testbench": "^3.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Erik\\AdminManagerImplementation\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Erik\\AdminManagerImplementation\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  }
 }
