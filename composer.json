@@ -13,6 +13,11 @@
     "require-dev": {
         "orchestra/testbench": "^3.5"
     },
+    "autoload" : {
+        "psr-4": {
+            "Erik\\AdminManagerImplementation\\": "src/"
+        }
+    },
     "autoload-dev" : {
         "psr-4": {
             "Erik\\AdminManagerImplementation\\Tests\\": "tests/"
