@@ -9,5 +9,8 @@
 			"type": "vcs",
 			"url":  "git@bitbucket.org:erik-epineer/admin-manager.git"
 		}
-	]
+	],
+    "require-dev": {
+        "orchestra/testbench": "^3.5"
+    }
 }
