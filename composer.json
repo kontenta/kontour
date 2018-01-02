@@ -2,6 +2,7 @@
   "name": "erik/admin-manager-implementation",
   "license": "MIT",
   "require": {
+    "php": ">=7.0.0"
   },
   "repositories": [
     {
