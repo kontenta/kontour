@@ -10,6 +10,6 @@ class UserlandControllerTest extends UserlandAdminToolTest
     {
         $response = $this->get(route('userland.index'));
 
-        $response->assertSuccessful();
+        $response->assertSee('<main');
     }
 }

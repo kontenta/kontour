@@ -12,6 +12,11 @@ class AdminManagerServiceProvider extends ServiceProvider
     public function register()
     {
         $this->configure();
+
+        $this->app->bind(
+            \Erik\AdminManager\Contracts\ViewManager::class,
+            ViewManager::class
+        );
     }
 
     /**
