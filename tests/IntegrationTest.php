@@ -15,7 +15,7 @@ abstract class IntegrationTest extends TestCase
     protected function getPackageProviders($app)
     {
         return [
-            'Erik\AdminManagerImplementation\AdminManagerServiceProvider',
+            \Erik\AdminManagerImplementation\AdminManagerServiceProvider::class,
         ];
     }
 }
