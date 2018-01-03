@@ -2,7 +2,6 @@
 
 namespace Erik\AdminManager\Contracts;
 
-
 use Illuminate\Support\Collection;
 
 interface ViewManager
