@@ -20,7 +20,7 @@ interface ViewManager
 
     /**
      * Name of the main widget blade section
-     * @return Collection
+     * @return string
      */
     public function getWidgetSection(): string;
 
