@@ -14,25 +14,28 @@ class ViewManager implements ViewManagerContract
      */
     public function getLayout(): string
     {
+        //TODO: pull the layout name from config
         return 'admin::layouts.master';
     }
 
     /**
-     * List of Blade section names provided in the layout
-     * @return Collection
+     * Name of the main content blade section
+     * @return string
      */
-    public function getLayoutSectionNames(): Collection
+    public function getMainSection(): string
     {
-        // TODO: Implement getLayoutSectionNames() method.
+        //TODO: pull main section name from config
+        return 'main';
     }
 
     /**
-     * List of Blade sections suitable for widgets
-     * @return Collection
+     * Name of the main widget blade section
+     * @return string
      */
-    public function getWidgetSectionNames(): Collection
+    public function getWidgetSection(): string
     {
-        // TODO: Implement getWidgetSectionNames() method.
+        //TODO: pull widget section from config
+        return 'widgets';
     }
 
     /**
