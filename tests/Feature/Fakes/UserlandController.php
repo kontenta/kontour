@@ -8,7 +8,7 @@ class UserlandController extends BaseController
 {
     public function index()
     {
-        //
+        return view('userland::index');
     }
 
     public function create()

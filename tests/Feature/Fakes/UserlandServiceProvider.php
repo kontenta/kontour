@@ -21,6 +21,7 @@ class UserlandServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerRoutes();
+        $this->registerResources();
     }
 
     protected function registerRoutes(): void
@@ -31,5 +32,13 @@ class UserlandServiceProvider extends ServiceProvider
         ], function () {
             Route::get('/', 'UserlandController@index')->name('userland.index');
         });
+    }
+
+    /**
+     * Register the resources.
+     */
+    protected function registerResources()
+    {
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'userland');
     }
 }
