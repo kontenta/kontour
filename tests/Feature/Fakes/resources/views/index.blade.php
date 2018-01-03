@@ -2,7 +2,7 @@
 
 @extends($view_manager->getLayout())
 
-@section('main')
+@section($view_manager->getMainSection())
   <ul>
     <li>Item 1</li>
     <li>Item 2</li>
