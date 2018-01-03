@@ -34,7 +34,7 @@ class ViewManager implements ViewManagerContract
      */
     public function getWidgetSection(): string
     {
-        //TODO: pull widget section from config
+        //TODO: pull widget section name from config
         return 'widgets';
     }
 
