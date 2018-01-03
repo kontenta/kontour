@@ -21,22 +21,22 @@ class UserlandController extends BaseController
         //
     }
 
-    public function show()
+    public function show($id)
     {
         //
     }
 
-    public function edit()
+    public function edit($id)
     {
         //
     }
 
-    public function update()
+    public function update($id)
     {
         //
     }
 
-    public function destroy()
+    public function destroy($id)
     {
         //
     }
