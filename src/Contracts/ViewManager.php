@@ -13,16 +13,16 @@ interface ViewManager
     public function getLayout(): string;
 
     /**
-     * List of Blade section names provided in the layout
-     * @return Collection
+     * Name of the main content blade section
+     * @return string
      */
-    public function getLayoutSectionNames(): Collection;
+    public function getMainSection(): string;
 
     /**
-     * List of Blade sections suitable for widgets
+     * Name of the main widget blade section
      * @return Collection
      */
-    public function getWidgetSectionNames(): Collection;
+    public function getWidgetSection(): string;
 
     /**
      * Add a stylesheet that the layout should pull in
