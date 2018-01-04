@@ -14,6 +14,12 @@ class AdminManagerServiceProvider extends ServiceProvider
         $this->configure();
 
         $this->app->bindIf(
+            \Erik\AdminManager\Contracts\RouteManager::class,
+            RouteManager::class,
+            true
+        );
+
+        $this->app->bindIf(
             \Erik\AdminManager\Contracts\ViewManager::class,
             ViewManager::class,
             true

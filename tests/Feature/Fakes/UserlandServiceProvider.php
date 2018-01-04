@@ -2,6 +2,7 @@
 
 namespace Erik\AdminManagerImplementation\Tests\Feature\Fakes;
 
+use Erik\AdminManager\Contracts\RouteManager;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,11 +27,15 @@ class UserlandServiceProvider extends ServiceProvider
 
     protected function registerRoutes(): void
     {
-        Route::group([
-            'prefix' => 'userland-tool',
-            'namespace' => 'Erik\AdminManagerImplementation\Tests\Feature\Fakes'
-        ], function () {
-            Route::get('/', 'UserlandController@index')->name('userland.index');
+        /** @var RouteManager $adminRouteManager */
+        $adminRouteManager = $this->app->make(RouteManager::class);
+        $adminRouteManager->registerRoutes(function () {
+            Route::group([
+                'prefix' => 'userland-tool',
+                'namespace' => 'Erik\AdminManagerImplementation\Tests\Feature\Fakes'
+            ], function () {
+                Route::get('/', 'UserlandController@index')->name('userland.index');
+            });
         });
     }
 
