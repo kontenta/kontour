@@ -15,7 +15,7 @@ class AdminManagerServiceProvider extends ServiceProvider
         $this->configure();
 
         $this->app->bindIf(
-            \Erik\AdminManager\Contracts\Guard::class,
+            \Erik\AdminManager\Contracts\AdminGuard::class,
             function ($app) {
                 $auth = $app->make(AuthManager::class);
                 try {
