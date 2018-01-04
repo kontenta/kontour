@@ -13,9 +13,10 @@ class AdminManagerServiceProvider extends ServiceProvider
     {
         $this->configure();
 
-        $this->app->bind(
+        $this->app->bindIf(
             \Erik\AdminManager\Contracts\ViewManager::class,
-            ViewManager::class
+            ViewManager::class,
+            true
         );
     }
 
