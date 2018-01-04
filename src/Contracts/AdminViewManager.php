@@ -4,7 +4,7 @@ namespace Erik\AdminManager\Contracts;
 
 use Illuminate\Support\Collection;
 
-interface ViewManager
+interface AdminViewManager
 {
     /**
      * Blade layout that admin views should extend
