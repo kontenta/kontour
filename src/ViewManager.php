@@ -41,21 +41,23 @@ class ViewManager implements ViewManagerContract
     /**
      * Add a stylesheet that the layout should pull in
      * @param string[] ...$url
-     * @return ViewManagerContract
+     * @return $this
      */
-    public function addStylesheetUrl(string ...$url): ViewManagerContract
+    public function addStylesheetUrl(string ...$url)
     {
         // TODO: Implement addStylesheetUrl() method.
+        return $this;
     }
 
     /**
      * Add a javascript that the layout should pull in
      * @param string[] ...$url
-     * @return ViewManagerContract
+     * @return $this
      */
-    public function addJavascriptUrl(string ...$url): ViewManagerContract
+    public function addJavascriptUrl(string ...$url)
     {
         // TODO: Implement addJavascriptUrl() method.
+        return $this;
     }
 
     /**
