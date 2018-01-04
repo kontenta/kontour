@@ -2,6 +2,7 @@
 
 namespace Erik\AdminManager\Contracts;
 
+//TODO: rename RouteManager to AdminRouteManager
 interface RouteManager
 {
     /**
