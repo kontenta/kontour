@@ -1,4 +1,4 @@
-@inject('view_manager', 'Erik\AdminManager\Contracts\ViewManager')
+@inject('view_manager', 'Erik\AdminManager\Contracts\AdminViewManager')
 
 @extends('admin::layouts.html')
 

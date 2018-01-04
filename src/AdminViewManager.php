@@ -2,10 +2,10 @@
 
 namespace Erik\AdminManagerImplementation;
 
-use Erik\AdminManager\Contracts\ViewManager as ViewManagerContract;
+use Erik\AdminManager\Contracts\AdminViewManager as ViewManagerContract;
 use Illuminate\Support\Collection;
 
-class ViewManager implements ViewManagerContract
+class AdminViewManager implements ViewManagerContract
 {
 
     /**
