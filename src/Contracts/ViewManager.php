@@ -27,16 +27,14 @@ interface ViewManager
     /**
      * Add a stylesheet that the layout should pull in
      * @param string[] ...$url
-     * @return $this
      */
-    public function addStylesheetUrl(string ...$url): self;
+    public function addStylesheetUrl(string ...$url);
 
     /**
      * Add a javascript that the layout should pull in
      * @param string[] ...$url
-     * @return $this
      */
-    public function addJavascriptUrl(string ...$url): self;
+    public function addJavascriptUrl(string ...$url);
 
     /**
      * All registered stylesheets for the layout
