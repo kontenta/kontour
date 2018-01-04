@@ -11,4 +11,8 @@ class UserlandServiceProviderTest extends UserlandAdminToolTest
     {
         $this->assertTrue(Route::has('userland.index'), 'Expected route does not exist');
     }
+
+    //TODO: test_routes_have_userland_prefix
+
+    //TODO: test_routes_have_admin_prefix
 }
