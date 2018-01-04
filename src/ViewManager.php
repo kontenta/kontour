@@ -67,6 +67,7 @@ class ViewManager implements ViewManagerContract
     public function getStylesheetUrls(): Collection
     {
         // TODO: Implement getStylesheetUrls() method.
+        return collect();
     }
 
     /**
@@ -76,5 +77,6 @@ class ViewManager implements ViewManagerContract
     public function getJavascriptUrls(): Collection
     {
         // TODO: Implement getJavascriptUrls() method.
+        return collect();
     }
 }
