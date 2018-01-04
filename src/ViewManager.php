@@ -12,7 +12,7 @@ class ViewManager implements ViewManagerContract
      * Blade layout that admin views should extend
      * @return string
      */
-    public function getLayout(): string
+    public function layout(): string
     {
         //TODO: pull the layout name from config
         return 'admin::layouts.master';
@@ -22,7 +22,7 @@ class ViewManager implements ViewManagerContract
      * Name of the main content blade section
      * @return string
      */
-    public function getMainSection(): string
+    public function mainSection(): string
     {
         //TODO: pull main section name from config
         return 'main';
@@ -32,7 +32,7 @@ class ViewManager implements ViewManagerContract
      * Name of the main widget blade section
      * @return string
      */
-    public function getWidgetSection(): string
+    public function widgetSection(): string
     {
         //TODO: pull widget section name from config
         return 'widgets';

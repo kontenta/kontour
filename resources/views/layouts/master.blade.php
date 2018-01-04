@@ -4,9 +4,9 @@
 
 @section('body')
   <main>
-    <!-- Section {{ $view_manager->getMainSection() }} -->
-    @yield($view_manager->getMainSection())
-    <!-- End section {{ $view_manager->getMainSection() }} -->
+    <!-- Section {{ $view_manager->mainSection() }} -->
+    @yield($view_manager->mainSection())
+    <!-- End section {{ $view_manager->mainSection() }} -->
   </main>
 @endsection
 
