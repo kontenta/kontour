@@ -10,19 +10,19 @@ interface ViewManager
      * Blade layout that admin views should extend
      * @return string
      */
-    public function getLayout(): string;
+    public function layout(): string;
 
     /**
      * Name of the main content blade section
      * @return string
      */
-    public function getMainSection(): string;
+    public function mainSection(): string;
 
     /**
      * Name of the main widget blade section
      * @return string
      */
-    public function getWidgetSection(): string;
+    public function widgetSection(): string;
 
     /**
      * Add a stylesheet that the layout should pull in
