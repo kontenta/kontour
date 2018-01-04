@@ -2,6 +2,7 @@
 
 namespace Erik\AdminManagerImplementation;
 
+use Illuminate\Auth\AuthManager;
 use Illuminate\Support\ServiceProvider;
 
 class AdminManagerServiceProvider extends ServiceProvider
@@ -12,6 +13,19 @@ class AdminManagerServiceProvider extends ServiceProvider
     public function register()
     {
         $this->configure();
+
+        $this->app->bindIf(
+            \Erik\AdminManager\Contracts\Guard::class,
+            function ($app) {
+                $auth = $app->make(AuthManager::class);
+                try {
+                    return $auth->guard(config('admin.guard', 'admin'));
+                } catch (\InvalidArgumentException $e) {
+                    return $auth->guard();
+                }
+            },
+            true
+        );
 
         $this->app->bindIf(
             \Erik\AdminManager\Contracts\RouteManager::class,
