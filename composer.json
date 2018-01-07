@@ -37,5 +37,8 @@
       "aliases": {
       }
     }
+  },
+  "config": {
+    "sort-packages": true
   }
 }
