@@ -2,8 +2,7 @@
 
 namespace Erik\AdminManager\Contracts;
 
-//TODO: rename RouteManager to AdminRouteManager
-interface RouteManager
+interface AdminRouteManager
 {
     /**
      * Register given routes to admin tools with the Laravel router.
