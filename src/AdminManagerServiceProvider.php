@@ -28,8 +28,8 @@ class AdminManagerServiceProvider extends ServiceProvider
         );
 
         $this->app->bindIf(
-            \Erik\AdminManager\Contracts\RouteManager::class,
-            RouteManager::class,
+            \Erik\AdminManager\Contracts\AdminRouteManager::class,
+            AdminRouteManager::class,
             true
         );
 

@@ -2,10 +2,10 @@
 
 namespace Erik\AdminManagerImplementation;
 
-use Erik\AdminManager\Contracts\RouteManager as RouteManagerContract;
+use Erik\AdminManager\Contracts\AdminRouteManager as AdminRouteManagerContract;
 use Illuminate\Routing\Router;
 
-class RouteManager implements RouteManagerContract
+class AdminRouteManager implements AdminRouteManagerContract
 {
     /**
      * @var Router
