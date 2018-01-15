@@ -17,12 +17,11 @@ class AdminManagerServiceProvider extends ServiceProvider
         $this->app->bindIf(
             \Erik\AdminManager\Contracts\AdminGuard::class,
             function ($app) {
+                /**
+                 * @var $auth AuthManager
+                 */
                 $auth = $app->make(AuthManager::class);
-                try {
-                    return $auth->guard(config('admin.guard', 'admin'));
-                } catch (\InvalidArgumentException $e) {
-                    return $auth->guard();
-                }
+                return $auth->guard(config('admin.guard'));
             },
             true
         );
