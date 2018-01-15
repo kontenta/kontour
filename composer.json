@@ -1,14 +1,17 @@
 {
-    "name": "erik/admin-manager",
-    "license": "MIT",
-    "require": {
-      "php": ">=7.0.0",
+  "name": "erik/admin-manager",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.0.0",
       "illuminate/support": "~5.5",
       "illuminate/routing": "~5.5"
-    },
-    "autoload" : {
-        "psr-4": {
-            "Erik\\AdminManager\\": "src/"
-        }
+  },
+  "autoload": {
+    "psr-4": {
+      "Erik\\AdminManager\\": "src/"
     }
+  },
+  "config": {
+    "sort-packages": true
+  }
 }
