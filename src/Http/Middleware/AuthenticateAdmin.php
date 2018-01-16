@@ -23,7 +23,7 @@ class AuthenticateAdmin extends \Illuminate\Auth\Middleware\Authenticate impleme
     {
         $guards[] = config('admin.guard');
         try {
-            return parent::handle($request, $next, $guards);
+            return parent::handle($request, $next, ...$guards);
         } catch (AuthenticationException $e) {
             if (!$request->expectsJson()) {
                 return redirect()->guest(app(AdminRouteManager::class)->loginUrl());
