@@ -78,8 +78,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function indexUrl(): string
     {
-        // TODO: Implement indexUrl() method.
-        return '';
+        return route('admin.index');
     }
 
     /**
