@@ -38,7 +38,7 @@ abstract class IntegrationTest extends TestCase
     }
 
     /**
-     * Run the migrations registered in the app
+     * Set up database for testing.
      */
     protected function prepareDatabase()
     {
@@ -46,6 +46,18 @@ abstract class IntegrationTest extends TestCase
         $this->loadLaravelMigrations('testbench');
 
         // Run any migrations registered in service providers
+        $this->loadRegisteredMigrations();
+
+        $this->withFactories(__DIR__.'/../database/factories');
+    }
+
+    /**
+     * Run migrations registered in service providers.
+     *
+     * @return void
+     */
+    protected function loadRegisteredMigrations(): void
+    {
         $this->artisan('migrate');
 
         $this->app[ConsoleKernel::class]->setArtisan(null);
@@ -53,7 +65,5 @@ abstract class IntegrationTest extends TestCase
         $this->beforeApplicationDestroyed(function () {
             $this->artisan('migrate:rollback');
         });
-
-        $this->withFactories(__DIR__.'/../database/factories');
     }
 }
