@@ -2,6 +2,8 @@
 
 namespace Erik\AdminManagerImplementation;
 
+use App\Http\Middleware\AuthenticateAdmin;
+use Erik\AdminManager\Contracts\AdminAuthenticateMiddleware;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,6 +38,11 @@ class AdminManagerServiceProvider extends ServiceProvider
             \Erik\AdminManager\Contracts\AdminViewManager::class,
             AdminViewManager::class,
             true
+        );
+
+        $this->app->bindIf(
+            AdminAuthenticateMiddleware::class,
+            AuthenticateAdmin::class
         );
     }
 
