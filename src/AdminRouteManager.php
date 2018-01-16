@@ -59,7 +59,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function getMiddleware(): array
     {
-        return [AuthenticateAdmin::class];
+        return ['web', AuthenticateAdmin::class];
     }
 
     /**
