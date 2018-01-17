@@ -2,9 +2,11 @@
 
 namespace Erik\AdminManagerImplementation;
 
+use App\Http\Middleware\AuthenticateAdmin;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Support\ServiceProvider;
 
+//TODO: Move this file containing AdminManagerServiceProvider to src/Providers directory
 class AdminManagerServiceProvider extends ServiceProvider
 {
     /**
@@ -17,12 +19,11 @@ class AdminManagerServiceProvider extends ServiceProvider
         $this->app->bindIf(
             \Erik\AdminManager\Contracts\AdminGuard::class,
             function ($app) {
+                /**
+                 * @var $auth AuthManager
+                 */
                 $auth = $app->make(AuthManager::class);
-                try {
-                    return $auth->guard(config('admin.guard', 'admin'));
-                } catch (\InvalidArgumentException $e) {
-                    return $auth->guard();
-                }
+                return $auth->guard(config('admin.guard'));
             },
             true
         );
@@ -38,6 +39,11 @@ class AdminManagerServiceProvider extends ServiceProvider
             AdminViewManager::class,
             true
         );
+
+        $this->app->bindIf(
+            \Erik\AdminManager\Contracts\AdminAuthenticateMiddleware::class,
+            AuthenticateAdmin::class
+        );
     }
 
     /**
@@ -46,6 +52,8 @@ class AdminManagerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerResources();
+
+        $this->registerRoutes();
 
         if ($this->app->runningInConsole()) {
             $this->offerPublishing();
@@ -61,11 +69,23 @@ class AdminManagerServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the resources.
+     * Register views and other resources.
      */
     protected function registerResources()
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin');
+    }
+
+    /**
+     * Register the admin routes to index and auth
+     */
+    protected function registerRoutes() {
+        /**
+         * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
+         */
+        $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
+
+        $routeManager->registerRoutes(__DIR__.'/../routes/admin.php');
     }
 
     /**

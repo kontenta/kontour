@@ -2,6 +2,7 @@
 
 namespace Erik\AdminManagerImplementation;
 
+use Erik\AdminManagerImplementation\Http\Middleware\AuthenticateAdmin;
 use Erik\AdminManager\Contracts\AdminRouteManager as AdminRouteManagerContract;
 use Illuminate\Routing\Router;
 
@@ -37,8 +38,9 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function getRouteAttributes(): array
     {
-        // TODO: Implement getRouteAttributes() method.
-        return [];
+        $attributes = [];
+        $attributes['middleware'] = $this->getMiddleware();
+        return array_filter($attributes);
     }
 
     /**
@@ -57,8 +59,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function getMiddleware(): array
     {
-        // TODO: Implement getMiddleware() method.
-        return [];
+        return ['web', AuthenticateAdmin::class];
     }
 
     /**
@@ -77,7 +78,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function indexUrl(): string
     {
-        // TODO: Implement indexUrl() method.
+        return route('admin.index');
     }
 
     /**
@@ -87,6 +88,7 @@ class AdminRouteManager implements AdminRouteManagerContract
     public function loginUrl(): string
     {
         // TODO: Implement loginUrl() method.
+        return '';
     }
 
     /**
@@ -96,5 +98,6 @@ class AdminRouteManager implements AdminRouteManagerContract
     public function logoutUrl(): string
     {
         // TODO: Implement logoutUrl() method.
+        return '';
     }
 }
