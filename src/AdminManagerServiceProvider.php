@@ -3,7 +3,6 @@
 namespace Erik\AdminManagerImplementation;
 
 use App\Http\Middleware\AuthenticateAdmin;
-use Erik\AdminManager\Contracts\AdminAuthenticateMiddleware;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Support\ServiceProvider;
 
@@ -42,7 +41,7 @@ class AdminManagerServiceProvider extends ServiceProvider
         );
 
         $this->app->bindIf(
-            AdminAuthenticateMiddleware::class,
+            \Erik\AdminManager\Contracts\AdminAuthenticateMiddleware::class,
             AuthenticateAdmin::class
         );
     }
