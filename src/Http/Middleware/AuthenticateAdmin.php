@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Erik\AdminManagerImplementation\Http\Middleware;
 
 use Closure;
 use Erik\AdminManager\Contracts\AdminAuthenticateMiddleware;
