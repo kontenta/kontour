@@ -30,4 +30,8 @@ class AuthenticationTest extends IntegrationTest
 
         $response->assertRedirect($routeManager->loginUrl());
     }
+
+    // TODO: test_ajax_guest_is_not_redirected
+
+    // TODO: test login procedure - with Dusk? https://laravel.com/docs/5.5/dusk
 }
