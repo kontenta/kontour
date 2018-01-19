@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@inject('view_manager', 'Erik\AdminManager\Contracts\AdminViewManager')
 
-@section('content')
+@extends($view_manager->layout())
+
+@section($view_manager->mainSection())
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
