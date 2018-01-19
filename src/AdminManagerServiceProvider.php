@@ -2,7 +2,7 @@
 
 namespace Erik\AdminManagerImplementation;
 
-use App\Http\Middleware\AuthenticateAdmin;
+use Erik\AdminManagerImplementation\Http\Middleware\AuthenticateAdmin;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Support\ServiceProvider;
 
