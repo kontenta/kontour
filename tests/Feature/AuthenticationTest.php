@@ -2,7 +2,6 @@
 
 namespace Erik\AdminManagerImplementation\Tests\Feature;
 
-use Erik\AdminManager\Contracts\AdminRouteManager;
 use Erik\AdminManagerImplementation\Tests\IntegrationTest;
 use Illuminate\Foundation\Auth\User;
 
@@ -23,9 +22,9 @@ class AuthenticationTest extends IntegrationTest
     public function test_guest_is_redirected_to_login()
     {
         /**
-         * @var $routeManager AdminRouteManager
+         * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
          */
-        $routeManager = $this->app->make(AdminRouteManager::class);
+        $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
         $response = $this->get($routeManager->indexUrl());
 
         $response->assertRedirect($routeManager->loginUrl());
@@ -34,16 +33,23 @@ class AuthenticationTest extends IntegrationTest
     public function test_json_guest_is_not_redirected()
     {
         /**
-         * @var $routeManager AdminRouteManager
+         * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
          */
-        $routeManager = $this->app->make(AdminRouteManager::class);
+        $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
         $response = $this->json('GET', $routeManager->indexUrl());
 
         $this->assertFalse($response->isRedirection(), 'Json request should not be redirected');
         $this->assertTrue($response->isClientError(), 'Json guest response should be a client error');
     }
 
-    // TODO: test login procedure - with Dusk?
-    // https://github.com/orchestral/testbench-dusk
-    // https://laravel.com/docs/5.5/dusk
+    public function test_login_url()
+    {
+        /**
+         * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
+         */
+        $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
+        $response = $this->get($routeManager->loginUrl());
+
+        $response->assertSuccessful();
+    }
 }
