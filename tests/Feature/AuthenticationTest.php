@@ -31,7 +31,16 @@ class AuthenticationTest extends IntegrationTest
         $response->assertRedirect($routeManager->loginUrl());
     }
 
-    // TODO: test_ajax_guest_is_not_redirected
+    public function test_json_guest_is_not_redirected()
+    {
+        /**
+         * @var $routeManager AdminRouteManager
+         */
+        $routeManager = $this->app->make(AdminRouteManager::class);
+        $response = $this->json('GET', $routeManager->indexUrl());
+
+        $this->assertFalse($response->isRedirection(), 'Ajax request should not be redirected');
+    }
 
     // TODO: test login procedure - with Dusk?
     // https://github.com/orchestral/testbench-dusk
