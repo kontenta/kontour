@@ -6,3 +6,5 @@ tags
 .idea
 phpunit.xml
 build
+/tests/Browser/console/
+/tests/Browser/screenshots/

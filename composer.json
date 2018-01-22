@@ -15,7 +15,8 @@
   ],
   "require-dev": {
     "erik/admin-manager": "dev-master",
-    "orchestra/testbench": "^3.5"
+    "orchestra/testbench": "^3.5",
+    "orchestra/testbench-dusk": "^3.5"
   },
   "autoload": {
     "psr-4": {
