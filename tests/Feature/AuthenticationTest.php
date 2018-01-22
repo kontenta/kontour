@@ -39,7 +39,8 @@ class AuthenticationTest extends IntegrationTest
         $routeManager = $this->app->make(AdminRouteManager::class);
         $response = $this->json('GET', $routeManager->indexUrl());
 
-        $this->assertFalse($response->isRedirection(), 'Ajax request should not be redirected');
+        $this->assertFalse($response->isRedirection(), 'Json request should not be redirected');
+        $this->assertTrue($response->isClientError(), 'Json guest response should be a client error');
     }
 
     // TODO: test login procedure - with Dusk?
