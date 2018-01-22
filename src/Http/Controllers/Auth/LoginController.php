@@ -25,7 +25,7 @@ class LoginController extends Controller
     public function __construct(AdminRouteManager $routeManager)
     {
         //TODO: replace the standard guest middleware with a specific admin one
-        $this->middleware('guest', config('admin.guard'))->except('logout');
+        $this->middleware('guest', [config('admin.guard')])->except('logout');
 
         $this->routeManager = $routeManager;
     }
