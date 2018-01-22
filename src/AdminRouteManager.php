@@ -87,8 +87,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function loginUrl(): string
     {
-        // TODO: Implement loginUrl() method.
-        return '';
+        return route('admin.login');
     }
 
     /**
