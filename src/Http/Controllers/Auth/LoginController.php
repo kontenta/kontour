@@ -4,6 +4,7 @@ namespace Erik\AdminManagerImplementation\Http\Controllers\Auth;
 
 use Erik\AdminManager\Contracts\AdminRouteManager;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
+    use ValidatesRequests;
 
     /**
      * @var AdminRouteManager
