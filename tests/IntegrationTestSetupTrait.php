@@ -3,6 +3,7 @@
 namespace Erik\AdminManagerImplementation\Tests;
 
 use Illuminate\Contracts\Console\Kernel as ConsoleKernel;
+use Illuminate\Foundation\Auth\User;
 
 trait IntegrationTestSetupTrait
 {
@@ -30,6 +31,7 @@ trait IntegrationTestSetupTrait
     {
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testing');
+        $app['config']->set('auth.providers.users.model', User::class);
     }
 
     /**
