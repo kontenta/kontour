@@ -53,7 +53,7 @@ class AuthenticationTest extends IntegrationTest
         $response->assertSuccessful();
     }
 
-    public function test_logout_url() {
+    public function test_logout() {
         /**
          * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
          */
