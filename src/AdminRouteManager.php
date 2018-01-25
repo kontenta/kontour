@@ -40,6 +40,7 @@ class AdminRouteManager implements AdminRouteManagerContract
     {
         $attributes = [];
         $attributes['middleware'] = $this->getMiddleware();
+        $attributes['prefix'] = $this->getPrefix();
         return array_filter($attributes);
     }
 
@@ -49,8 +50,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function getPrefix(): string
     {
-        // TODO: Implement getPrefix() method.
-        return '';
+        return config('admin.url_prefix');
     }
 
     /**
