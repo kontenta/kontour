@@ -41,6 +41,7 @@ class AdminRouteManager implements AdminRouteManagerContract
         $attributes = [];
         $attributes['middleware'] = $this->getMiddleware();
         $attributes['prefix'] = $this->getPrefix();
+        $attributes['domain'] = $this->getDomain();
         return array_filter($attributes);
     }
 
@@ -68,8 +69,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function getDomain()
     {
-        // TODO: Implement getDomain() method.
-        return null;
+        return config('admin.domain');
     }
 
     /**
