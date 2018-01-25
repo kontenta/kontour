@@ -4,6 +4,7 @@
 
 @section('body')
   <header>
+    {{-- TODO: make this logout form part of a user-widget --}}
     <form action="{{ route('admin.logout') }}" method="post">
       {{ csrf_field() }}
       <button type="submit">Logout</button>
