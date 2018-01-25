@@ -96,7 +96,6 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function logoutUrl(): string
     {
-        // TODO: Implement logoutUrl() method.
-        return '';
+        return route('admin.logout');
     }
 }

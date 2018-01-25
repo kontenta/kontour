@@ -52,4 +52,15 @@ class AuthenticationTest extends IntegrationTest
 
         $response->assertSuccessful();
     }
+
+    public function test_logout_url() {
+        /**
+         * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
+         */
+        $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
+        $response = $this->actingAs($this->user)->post($routeManager->logoutUrl());
+
+        $response->assertRedirect($routeManager->loginUrl());
+        $this->assertGuest();
+    }
 }
