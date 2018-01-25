@@ -3,10 +3,16 @@
 @extends('admin::layouts.html')
 
 @section('body')
+  <header>
+    <form action="{{ route('admin.logout') }}" method="post">
+      {{ csrf_field() }}
+      <button type="submit">Logout</button>
+    </form>
+  </header>
   <main>
-    <!-- Section {{ $view_manager->mainSection() }} -->
-    @yield($view_manager->mainSection())
-    <!-- End section {{ $view_manager->mainSection() }} -->
+  <!-- Section {{ $view_manager->mainSection() }} -->
+  @yield($view_manager->mainSection())
+  <!-- End section {{ $view_manager->mainSection() }} -->
   </main>
 @endsection
 

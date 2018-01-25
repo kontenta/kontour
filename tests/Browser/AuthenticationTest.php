@@ -25,4 +25,21 @@ class AuthenticationTest extends DuskTest
                 ->assertUrlIs($routeManager->indexUrl());
         });
     }
+
+    /**
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function test_logout()
+    {
+        $this->browse(function (Browser $browser) {
+            /**
+             * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
+             */
+            $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
+            $browser->loginAs($this->user)->visit($routeManager->indexUrl())
+                ->press('Logout')
+                ->assertUrlIs($routeManager->loginUrl());
+        });
+    }
 }
