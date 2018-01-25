@@ -4,7 +4,7 @@ namespace Erik\AdminManagerImplementation\Tests;
 
 use Illuminate\Contracts\Console\Kernel as ConsoleKernel;
 
-trait IntegrationTestSetup
+trait IntegrationTestSetupTrait
 {
 
     /**
@@ -29,12 +29,7 @@ trait IntegrationTestSetup
     protected function getEnvironmentSetUp($app)
     {
         // Setup default database to use sqlite :memory:
-        $app['config']->set('database.default', 'testbench');
-        $app['config']->set('database.connections.testbench', [
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-            'prefix' => '',
-        ]);
+        $app['config']->set('database.default', 'testing');
     }
 
     /**
@@ -42,8 +37,13 @@ trait IntegrationTestSetup
      */
     protected function prepareDatabase()
     {
+        // Make sure sqlite database file exists
+        if ($this->app->config->get('database.default') === 'sqlite') {
+            touch($this->app->config->get('database.connections.sqlite.database'));
+        }
+
         // Run Laravel's default migrations for user table etc
-        $this->loadLaravelMigrations('testbench');
+        $this->loadLaravelMigrations($this->app->config->get('database.default'));
 
         // Run any migrations registered in service providers
         $this->loadRegisteredMigrations();

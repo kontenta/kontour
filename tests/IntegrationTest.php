@@ -6,5 +6,5 @@ use Orchestra\Testbench\TestCase;
 
 abstract class IntegrationTest extends TestCase
 {
-    use IntegrationTestSetup;
+    use IntegrationTestSetupTrait;
 }
