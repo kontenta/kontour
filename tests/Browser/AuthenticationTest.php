@@ -19,8 +19,10 @@ class AuthenticationTest extends DuskTest
              */
             $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
             $browser->visit($routeManager->loginUrl())
-                ->assertSee('E-Mail Address');
-            //TODO: test full login experience
+                ->type('email', $this->user->email)
+                ->type('password', 'secret')
+                ->press('Login')
+                ->assertUrlIs($routeManager->indexUrl());
         });
     }
 }
