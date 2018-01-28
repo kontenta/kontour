@@ -21,3 +21,4 @@
 @stack('scripts')
 
 </body>
+</html>
