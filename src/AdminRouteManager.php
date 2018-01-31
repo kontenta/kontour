@@ -40,6 +40,8 @@ class AdminRouteManager implements AdminRouteManagerContract
     {
         $attributes = [];
         $attributes['middleware'] = $this->getMiddleware();
+        $attributes['prefix'] = $this->getPrefix();
+        $attributes['domain'] = $this->getDomain();
         return array_filter($attributes);
     }
 
@@ -49,8 +51,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function getPrefix(): string
     {
-        // TODO: Implement getPrefix() method.
-        return '';
+        return config('admin.url_prefix');
     }
 
     /**
@@ -68,8 +69,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function getDomain()
     {
-        // TODO: Implement getDomain() method.
-        return null;
+        return config('admin.domain');
     }
 
     /**
@@ -87,8 +87,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function loginUrl(): string
     {
-        // TODO: Implement loginUrl() method.
-        return '';
+        return route('admin.login');
     }
 
     /**
@@ -97,7 +96,6 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function logoutUrl(): string
     {
-        // TODO: Implement logoutUrl() method.
-        return '';
+        return route('admin.logout');
     }
 }

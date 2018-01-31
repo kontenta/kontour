@@ -86,6 +86,7 @@ class AdminManagerServiceProvider extends ServiceProvider
         $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
 
         $routeManager->registerRoutes(__DIR__.'/../routes/admin.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/auth.php');
     }
 
     /**
