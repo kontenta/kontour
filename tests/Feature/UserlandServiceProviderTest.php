@@ -12,13 +12,13 @@ class UserlandServiceProviderTest extends UserlandAdminToolTest
         $this->assertTrue(Route::has('userland.index'), 'Expected route does not exist');
     }
 
-    public function test_routes_have_userland_prefix()
+    public function test_routes_contain_userland_prefix()
     {
-        $this->assertStringEndsWith('/userland-tool', route('userland.index'));
+        $this->assertContains('/userland-tool', route('userland.index'));
     }
 
-    public function test_routes_have_admin_prefix()
+    public function test_routes_contain_admin_prefix()
     {
-        $this->assertContains('/' . config('admin.url_prefix') . '/', route('userland.index'));
+        $this->assertContains('/' . config('admin.url_prefix'), route('userland.index'));
     }
 }
