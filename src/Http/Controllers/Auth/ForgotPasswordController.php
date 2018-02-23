@@ -3,11 +3,13 @@
 namespace Erik\AdminManagerImplementation\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 
 class ForgotPasswordController extends Controller
 {
     use SendsPasswordResetEmails;
+    use ValidatesRequests;
 
     /**
      * Create a new controller instance.
