@@ -2,8 +2,10 @@
 
 namespace Erik\AdminManagerImplementation\Tests\Feature;
 
+use Erik\AdminManagerImplementation\Notifications\ResetPassword;
 use Erik\AdminManagerImplementation\Tests\IntegrationTest;
 use Erik\AdminManagerImplementation\Tests\Feature\Fakes\User;
+use Illuminate\Support\Facades\Notification;
 
 class PasswordResetTest extends IntegrationTest
 {
@@ -27,9 +29,14 @@ class PasswordResetTest extends IntegrationTest
     }
 
     public function test_request_password_email_is_sent() {
+        Notification::fake();
         $response = $this->post(route('admin.password.email'),['email' => $this->user->getEmailForPasswordReset()]);
 
         $response->assertSuccessful();
-        //TODO: assert email was sent and contains correct link
+        //TODO: assert email contained correct link
+        Notification::assertSentTo(
+            $this->user,
+            ResetPassword::class
+        );
     }
 }
