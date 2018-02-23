@@ -2,7 +2,7 @@
 
 namespace Erik\AdminManagerImplementation\Tests;
 
-use Illuminate\Foundation\Auth\User;
+use Erik\AdminManagerImplementation\Tests\Feature\Fakes\User;
 use Orchestra\Testbench\Dusk\TestCase;
 
 abstract class DuskTest extends TestCase

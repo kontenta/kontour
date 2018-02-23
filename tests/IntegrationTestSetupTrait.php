@@ -3,7 +3,7 @@
 namespace Erik\AdminManagerImplementation\Tests;
 
 use Illuminate\Contracts\Console\Kernel as ConsoleKernel;
-use Illuminate\Foundation\Auth\User;
+use Erik\AdminManagerImplementation\Tests\Feature\Fakes\User;
 
 trait IntegrationTestSetupTrait
 {
