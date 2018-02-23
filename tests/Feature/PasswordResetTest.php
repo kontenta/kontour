@@ -32,7 +32,7 @@ class PasswordResetTest extends IntegrationTest
         Notification::fake();
         $response = $this->post(route('admin.password.email'),['email' => $this->user->getEmailForPasswordReset()]);
 
-        $response->assertSuccessful();
+        $response->assertRedirect();
         //TODO: assert email contained correct link
         Notification::assertSentTo(
             $this->user,
