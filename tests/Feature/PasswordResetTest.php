@@ -30,10 +30,16 @@ class PasswordResetTest extends IntegrationTest
         $response->assertSuccessful();
     }
 
-    public function test_password_reset() {
+    public function test_password_reset()
+    {
+        /**
+         * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
+         */
+        $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
+
         Notification::fake();
 
-        $response = $this->post(route('admin.password.email'),['email' => $this->user->getEmailForPasswordReset()]);
+        $response = $this->post(route('admin.password.email'), ['email' => $this->user->getEmailForPasswordReset()]);
 
         $response->assertRedirect();
         $response->assertSessionHas('status');
@@ -41,7 +47,7 @@ class PasswordResetTest extends IntegrationTest
         Notification::assertSentTo(
             $this->user,
             ResetPassword::class,
-            function($notification) use (&$token) {
+            function ($notification) use (&$token) {
                 $token = $notification->token;
                 return true;
             }
@@ -51,9 +57,19 @@ class PasswordResetTest extends IntegrationTest
 
         $response->assertSuccessful();
 
-        $response = $this->post(route('admin.password.reset'));
+        $new_password = 'NewPassword';
+        $response = $this->post(route('admin.password.request'), [
+            'token' => $token,
+            'email' => $this->user->getEmailForPasswordReset(),
+            'password' => $new_password,
+            'password_confirmation' => $new_password,
+        ]);
 
-        $response->assertSuccessful();
+        $response->assertRedirect($routeManager->indexUrl());
+        $response->assertSessionHas('status');
+        $response->assertSessionMissing('errors');
+        $this->assertCredentials(['email' => $this->user->getEmailForPasswordReset(), 'password' => $new_password]);
+        $this->assertAuthenticatedAs($this->user);
     }
 
 }
