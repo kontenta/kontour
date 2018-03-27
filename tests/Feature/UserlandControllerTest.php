@@ -3,7 +3,7 @@
 namespace Erik\AdminManagerImplementation\Tests\Feature;
 
 use Erik\AdminManagerImplementation\Tests\UserlandAdminToolTest;
-use Illuminate\Foundation\Auth\User;
+use Erik\AdminManagerImplementation\Tests\Feature\Fakes\User;
 
 class UserlandControllerTest extends UserlandAdminToolTest
 {

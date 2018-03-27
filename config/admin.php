@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Admin Guard
+    | Admin Authentication Guard
     |--------------------------------------------------------------------------
     |
     | Name of the default Guard used for admin tools.
@@ -15,6 +15,21 @@ return [
     */
 
     'guard' => 'web',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Resetting Passwords
+    |--------------------------------------------------------------------------
+    |
+    | Name of the configuration for admin password resets.
+    |
+    | If you want to use another password configuration than the default, add
+    | the configuration to 'passwords' in your app's config/auth.php and set
+    | the configuration name here.
+    |
+    */
+
+    //'passwords' => 'users',
 
     /*
     |--------------------------------------------------------------------------
