@@ -2,7 +2,7 @@
 
 namespace Erik\AdminManagerImplementation;
 
-use Erik\AdminManagerImplementation\Http\Middleware\AuthenticateAdmin;
+use Erik\AdminManager\Contracts\AdminAuthenticateMiddleware;
 use Erik\AdminManager\Contracts\AdminRouteManager as AdminRouteManagerContract;
 use Illuminate\Routing\Router;
 
@@ -60,7 +60,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function getMiddleware(): array
     {
-        return ['web', AuthenticateAdmin::class];
+        return ['web', AdminAuthenticateMiddleware::class];
     }
 
     /**
