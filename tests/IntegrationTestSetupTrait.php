@@ -68,4 +68,18 @@ trait IntegrationTestSetupTrait
             $this->artisan('migrate:rollback');
         });
     }
+
+    /**
+     * Make sure all integration tests use the Laravel files of the testbench-dusk package.
+     *
+     * This avoids duplicate classes in migrations.
+     * Overrides \Orchestra\Testbench\Dusk\TestCase::getBasePath and
+     * \Orchestra\Testbench\Concerns\CreatesApplication::getBasePath
+     *
+     * @return string
+     */
+    protected function getBasePath()
+    {
+        return __DIR__.'/../vendor/orchestra/testbench-dusk/laravel';
+    }
 }

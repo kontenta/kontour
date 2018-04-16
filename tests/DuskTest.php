@@ -34,6 +34,5 @@ abstract class DuskTest extends TestCase
         $this->traitGetEnvironmentSetup($app);
         $app['config']->set('database.default', 'sqlite');
         $app['config']->set('session.driver', 'file');
-        $app['config']->set('session.expire_on_close', false);
     }
 }
