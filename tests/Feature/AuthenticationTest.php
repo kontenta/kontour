@@ -84,5 +84,7 @@ class AuthenticationTest extends IntegrationTest
         $response = $this->actingAs($this->user)->get($routeManager->loginUrl());
 
         $response->assertRedirect($routeManager->indexUrl());
+
+        $response->assertSessionMissing('url.intended');
     }
 }
