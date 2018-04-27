@@ -2,6 +2,7 @@
 
 namespace Erik\AdminManagerImplementation\Http\Controllers\Auth;
 
+use Erik\AdminManager\Contracts\AdminGuestMiddleware;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
@@ -19,8 +20,7 @@ class ForgotPasswordController extends Controller
      */
     public function __construct()
     {
-        //TODO: replace the standard guest middleware with a specific admin one
-        $this->middleware('guest', [config('admin.guard')]);
+        $this->middleware(AdminGuestMiddleware::class);
     }
 
     /**

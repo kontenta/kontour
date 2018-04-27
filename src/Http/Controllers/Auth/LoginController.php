@@ -2,6 +2,7 @@
 
 namespace Erik\AdminManagerImplementation\Http\Controllers\Auth;
 
+use Erik\AdminManager\Contracts\AdminGuestMiddleware;
 use Erik\AdminManager\Contracts\AdminRouteManager;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -26,8 +27,7 @@ class LoginController extends Controller
      */
     public function __construct(AdminRouteManager $routeManager)
     {
-        //TODO: replace the standard guest middleware with a specific admin one
-        $this->middleware('guest', [config('admin.guard')])->except('logout');
+        $this->middleware(AdminGuestMiddleware::class)->except('logout');
 
         $this->routeManager = $routeManager;
     }

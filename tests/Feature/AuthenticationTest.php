@@ -75,4 +75,14 @@ class AuthenticationTest extends IntegrationTest
         $response->assertRedirect($routeManager->loginUrl());
         $this->assertGuest();
     }
+
+    public function test_already_logged_in_user_is_redirected_from_login_url() {
+        /**
+         * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
+         */
+        $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
+        $response = $this->actingAs($this->user)->get($routeManager->loginUrl());
+
+        $response->assertRedirect($routeManager->indexUrl());
+    }
 }

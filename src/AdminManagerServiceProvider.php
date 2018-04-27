@@ -2,6 +2,7 @@
 
 namespace Erik\AdminManagerImplementation;
 
+use Erik\AdminManagerImplementation\Http\Middleware\RedirectIfAuthenticated;
 use Erik\AdminManagerImplementation\Http\Middleware\AuthenticateAdmin;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Support\ServiceProvider;
@@ -43,6 +44,11 @@ class AdminManagerServiceProvider extends ServiceProvider
         $this->app->bindIf(
             \Erik\AdminManager\Contracts\AdminAuthenticateMiddleware::class,
             AuthenticateAdmin::class
+        );
+
+        $this->app->bindIf(
+            \Erik\AdminManager\Contracts\AdminGuestMiddleware::class,
+            RedirectIfAuthenticated::class
         );
     }
 
