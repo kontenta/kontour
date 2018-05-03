@@ -57,10 +57,11 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-
-                                <a class="btn btn-link" href="{{ $route_manager->passwordResetUrl() }}">
-                                    Forgot Your Password?
-                                </a>
+                                @if($route_manager->passwordResetUrl())
+                                    <a class="btn btn-link" href="{{ $route_manager->passwordResetUrl() }}">
+                                        Forgot Your Password?
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </form>

@@ -4,9 +4,20 @@ namespace Erik\AdminManagerImplementation;
 
 use Erik\AdminManager\Contracts\AdminAuthenticateMiddleware;
 use Erik\AdminManager\Contracts\AdminRouteManager as AdminRouteManagerContract;
+use Illuminate\Routing\Router;
 
 class AdminRouteManager implements AdminRouteManagerContract
 {
+    /**
+     * @var Router
+     */
+    protected $router;
+
+    public function __construct(Router $router)
+    {
+        $this->router = $router;
+    }
+
     /**
      * Common admin route attributes for usage with \Illuminate\Routing\Router::group $attribute parameter
      * See https://laravel.com/docs/routing#route-groups
@@ -91,10 +102,16 @@ class AdminRouteManager implements AdminRouteManagerContract
 
     /**
      * Url for forgotten password
-     * @return string
+     * @return string|null
      */
-    public function passwordResetUrl(): string
+    public function passwordResetUrl()
     {
-        return route('admin.password.request');
+        $route_name = collect('admin.password.request', 'password.request')->first(function ($route_name) {
+            return $this->router->has($route_name);
+        });
+
+        if ($route_name) {
+            return route($route_name);
+        }
     }
 }
