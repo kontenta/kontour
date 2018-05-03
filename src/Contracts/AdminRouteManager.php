@@ -5,19 +5,17 @@ namespace Erik\AdminManager\Contracts;
 interface AdminRouteManager
 {
     /**
-     * Register given routes to admin tools with the Laravel router.
-     * Will set any common admin route attributes such as prefix, middleware, and domain.
-     *
-     * @param \Closure|string $routes See \Illuminate\Routing\Router::loadRoutes
-     */
-    public function registerRoutes($routes);
-
-    /**
      * Common admin route attributes for usage with \Illuminate\Routing\Router::group $attribute parameter
      * See https://laravel.com/docs/routing#route-groups
      * @return array
      */
     public function getRouteAttributes(): array;
+
+    /**
+     * Common admin guest route attributes
+     * @return array
+     */
+    public function getGuestRouteAttributes(): array;
 
     /**
      * Common url prefix for admin routes
