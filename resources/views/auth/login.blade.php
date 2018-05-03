@@ -1,4 +1,5 @@
 @inject('view_manager', 'Erik\AdminManager\Contracts\AdminViewManager')
+@inject('route_manager', 'Erik\AdminManager\Contracts\AdminRouteManager')
 
 @extends($view_manager->layout())
 
@@ -57,7 +58,7 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('admin.password.request') }}">
+                                <a class="btn btn-link" href="{{ $route_manager->passwordResetUrl() }}">
                                     Forgot Your Password?
                                 </a>
                             </div>

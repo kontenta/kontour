@@ -88,4 +88,13 @@ class AdminRouteManager implements AdminRouteManagerContract
     {
         return route('admin.logout');
     }
+
+    /**
+     * Url for forgotten password
+     * @return string
+     */
+    public function passwordResetUrl(): string
+    {
+        return route('admin.password.request');
+    }
 }
