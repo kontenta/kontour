@@ -2,6 +2,7 @@
 
 namespace Erik\AdminManagerImplementation;
 
+use Erik\AdminManager\Concerns\RegistersAdminRoutes;
 use Erik\AdminManagerImplementation\Http\Middleware\RedirectIfAuthenticated;
 use Erik\AdminManagerImplementation\Http\Middleware\AuthenticateAdmin;
 use Illuminate\Auth\AuthManager;
@@ -10,6 +11,8 @@ use Illuminate\Support\ServiceProvider;
 //TODO: Move this file containing AdminManagerServiceProvider to src/Providers directory
 class AdminManagerServiceProvider extends ServiceProvider
 {
+    use RegistersAdminRoutes;
+
     /**
      * Register bindings in the container.
      */
@@ -85,14 +88,10 @@ class AdminManagerServiceProvider extends ServiceProvider
     /**
      * Register the admin routes to index and auth
      */
-    protected function registerRoutes() {
-        /**
-         * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
-         */
-        $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
-
-        $routeManager->registerRoutes(__DIR__.'/../routes/admin.php');
-        $this->loadRoutesFrom(__DIR__.'/../routes/auth.php');
+    protected function registerRoutes()
+    {
+        $this->registerAdminRoutes(__DIR__ . '/../routes/admin.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/auth.php');
     }
 
     /**

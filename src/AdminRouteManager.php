@@ -4,33 +4,9 @@ namespace Erik\AdminManagerImplementation;
 
 use Erik\AdminManager\Contracts\AdminAuthenticateMiddleware;
 use Erik\AdminManager\Contracts\AdminRouteManager as AdminRouteManagerContract;
-use Illuminate\Routing\Router;
 
 class AdminRouteManager implements AdminRouteManagerContract
 {
-    /**
-     * @var Router
-     */
-    protected $router;
-
-    public function __construct(Router $router)
-    {
-        $this->router = $router;
-    }
-
-    /**
-     * Register given routes to admin tools with the Laravel router.
-     * Will set any common admin route attributes such as prefix, middleware, and domain.
-     *
-     * @param \Closure|string $routes See \Illuminate\Routing\Router::loadRoutes
-     * @return $this
-     */
-    public function registerRoutes($routes)
-    {
-        $this->router->group($this->getRouteAttributes(), $routes);
-        return $this;
-    }
-
     /**
      * Common admin route attributes for usage with \Illuminate\Routing\Router::group $attribute parameter
      * See https://laravel.com/docs/routing#route-groups
@@ -46,7 +22,7 @@ class AdminRouteManager implements AdminRouteManagerContract
     }
 
     /**
-     * Common admin route attributes for guest routes
+     * Common admin guest route attributes
      * @return array
      */
     public function getGuestRouteAttributes(): array
@@ -57,7 +33,7 @@ class AdminRouteManager implements AdminRouteManagerContract
             return $value !== AdminAuthenticateMiddleware::class;
         })->values();
 
-        return $attributes;
+        return array_filter($attributes);
     }
 
     /**
