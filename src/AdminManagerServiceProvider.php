@@ -92,7 +92,9 @@ class AdminManagerServiceProvider extends ServiceProvider
     {
         $this->registerAdminRoutes(__DIR__ . '/../routes/admin.php');
         $this->registerAdminGuestRoutes(__DIR__ . '/../routes/auth.php');
-        $this->registerAdminGuestRoutes(__DIR__ . '/../routes/passwords.php');
+        if (config('admin.passwords')) {
+            $this->registerAdminGuestRoutes(__DIR__ . '/../routes/passwords.php');
+        }
     }
 
     /**
