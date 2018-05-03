@@ -46,6 +46,21 @@ class AdminRouteManager implements AdminRouteManagerContract
     }
 
     /**
+     * Common admin route attributes for guest routes
+     * @return array
+     */
+    public function getGuestRouteAttributes(): array
+    {
+        $attributes = $this->getRouteAttributes();
+        $attributes['middleware'] = collect($attributes['middleware'] ?? [])->filter(function ($value) {
+            // Keep everything apart from the auth middleware
+            return $value !== AdminAuthenticateMiddleware::class;
+        })->values();
+
+        return $attributes;
+    }
+
+    /**
      * Common url prefix for admin routes
      * @return string
      */
