@@ -31,8 +31,7 @@ class AdminRouteManager implements AdminRouteManagerContract
         $attributes['middleware'] = collect($attributes['middleware'] ?? [])->filter(function ($value) {
             // Keep everything apart from the auth middleware
             return $value !== AdminAuthenticateMiddleware::class;
-        })->values();
-
+        })->toArray();
         return array_filter($attributes);
     }
 
