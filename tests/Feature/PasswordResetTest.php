@@ -5,9 +5,7 @@ namespace Erik\AdminManagerImplementation\Tests\Feature;
 use Erik\AdminManagerImplementation\Notifications\ResetPassword;
 use Erik\AdminManagerImplementation\Tests\IntegrationTest;
 use Erik\AdminManagerImplementation\Tests\Feature\Fakes\User;
-use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Password;
 
 class PasswordResetTest extends IntegrationTest
 {
