@@ -91,7 +91,7 @@ class AdminManagerServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         $this->registerAdminRoutes(__DIR__ . '/../routes/admin.php');
-        $this->loadRoutesFrom(__DIR__ . '/../routes/auth.php');
+        $this->registerAdminGuestRoutes(__DIR__ . '/../routes/auth.php');
     }
 
     /**
