@@ -2,12 +2,14 @@
 
 namespace Erik\AdminManagerImplementation\Tests\Feature\Fakes;
 
-use Erik\AdminManager\Contracts\AdminRouteManager;
+use Erik\AdminManager\Concerns\RegistersAdminRoutes;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class UserlandServiceProvider extends ServiceProvider
 {
+    use RegistersAdminRoutes;
+
     /**
      * Register bindings in the container.
      */
@@ -25,11 +27,9 @@ class UserlandServiceProvider extends ServiceProvider
         $this->registerResources();
     }
 
-    protected function registerRoutes(): void
+    protected function registerRoutes()
     {
-        /** @var AdminRouteManager $adminRouteManager */
-        $adminRouteManager = $this->app->make(AdminRouteManager::class);
-        $adminRouteManager->registerRoutes(function () {
+        $this->registerAdminRoutes(function () {
             Route::group([
                 'prefix' => 'userland-tool',
                 'namespace' => 'Erik\AdminManagerImplementation\Tests\Feature\Fakes'

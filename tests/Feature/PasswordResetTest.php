@@ -5,9 +5,7 @@ namespace Erik\AdminManagerImplementation\Tests\Feature;
 use Erik\AdminManagerImplementation\Notifications\ResetPassword;
 use Erik\AdminManagerImplementation\Tests\IntegrationTest;
 use Erik\AdminManagerImplementation\Tests\Feature\Fakes\User;
-use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Password;
 
 class PasswordResetTest extends IntegrationTest
 {
@@ -21,6 +19,19 @@ class PasswordResetTest extends IntegrationTest
         parent::setUp();
         $this->prepareDatabase();
         $this->user = factory(User::class)->create();
+    }
+
+    /**
+     * Configure the environment.
+     *
+     * @param  \Illuminate\Foundation\Application $app
+     * @return void
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        // Test with Laravel's default password reset config
+        $app['config']->set('admin.passwords', 'users');
+        parent::getEnvironmentSetUp($app);
     }
 
     public function test_request_password_reset_url()

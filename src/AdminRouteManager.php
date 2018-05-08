@@ -19,19 +19,6 @@ class AdminRouteManager implements AdminRouteManagerContract
     }
 
     /**
-     * Register given routes to admin tools with the Laravel router.
-     * Will set any common admin route attributes such as prefix, middleware, and domain.
-     *
-     * @param \Closure|string $routes See \Illuminate\Routing\Router::loadRoutes
-     * @return $this
-     */
-    public function registerRoutes($routes)
-    {
-        $this->router->group($this->getRouteAttributes(), $routes);
-        return $this;
-    }
-
-    /**
      * Common admin route attributes for usage with \Illuminate\Routing\Router::group $attribute parameter
      * See https://laravel.com/docs/routing#route-groups
      * @return array
@@ -42,6 +29,20 @@ class AdminRouteManager implements AdminRouteManagerContract
         $attributes['middleware'] = $this->getMiddleware();
         $attributes['prefix'] = $this->getPrefix();
         $attributes['domain'] = $this->getDomain();
+        return array_filter($attributes);
+    }
+
+    /**
+     * Common admin guest route attributes
+     * @return array
+     */
+    public function getGuestRouteAttributes(): array
+    {
+        $attributes = $this->getRouteAttributes();
+        $attributes['middleware'] = collect($attributes['middleware'] ?? [])->filter(function ($value) {
+            // Keep everything apart from the auth middleware
+            return $value !== AdminAuthenticateMiddleware::class;
+        })->toArray();
         return array_filter($attributes);
     }
 
@@ -97,5 +98,20 @@ class AdminRouteManager implements AdminRouteManagerContract
     public function logoutUrl(): string
     {
         return route('admin.logout');
+    }
+
+    /**
+     * Url for forgotten password
+     * @return string|null
+     */
+    public function passwordResetUrl()
+    {
+        $route_name = collect('admin.password.request', 'password.request')->first(function ($route_name) {
+            return $this->router->has($route_name);
+        });
+
+        if ($route_name) {
+            return route($route_name);
+        }
     }
 }
