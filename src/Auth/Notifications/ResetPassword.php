@@ -1,6 +1,6 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Notifications;
+namespace Erik\AdminManagerImplementation\Auth\Notifications;
 
 use Illuminate\Notifications\Messages\MailMessage;
 

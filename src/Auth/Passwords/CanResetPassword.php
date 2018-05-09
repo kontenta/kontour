@@ -1,8 +1,8 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Concerns;
+namespace Erik\AdminManagerImplementation\Auth\Passwords;
 
-use Erik\AdminManagerImplementation\Notifications\ResetPassword as AdminResetPasswordNotification;
+use Erik\AdminManagerImplementation\Auth\Notifications\ResetPassword as AdminResetPasswordNotification;
 use \Illuminate\Auth\Passwords\CanResetPassword as BaseCanResetPassword;
 
 trait CanResetPassword
