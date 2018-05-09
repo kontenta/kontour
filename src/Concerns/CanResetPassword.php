@@ -4,10 +4,11 @@ namespace Erik\AdminManagerImplementation\Concerns;
 
 use Erik\AdminManagerImplementation\Notifications\ResetPassword as AdminResetPasswordNotification;
 use Illuminate\Notifications\Notifiable;
+use \Illuminate\Auth\Passwords\CanResetPassword as BaseCanResetPassword;
 
 trait CanResetPassword
 {
-    use Notifiable;
+    use BaseCanResetPassword, Notifiable;
 
     /**
      * Send the password reset notification.
