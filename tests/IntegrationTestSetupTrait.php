@@ -17,7 +17,7 @@ trait IntegrationTestSetupTrait
     protected function getPackageProviders($app)
     {
         return [
-            \Erik\AdminManagerImplementation\AdminManagerServiceProvider::class,
+            \Erik\AdminManagerImplementation\Providers\AdminManagerServiceProvider::class,
         ];
     }
 
