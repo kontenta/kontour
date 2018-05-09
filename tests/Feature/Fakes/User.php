@@ -2,10 +2,9 @@
 
 namespace Erik\AdminManagerImplementation\Tests\Feature\Fakes;
 
-use Erik\AdminManagerImplementation\Auth\Passwords\CanResetPassword;
-use Illuminate\Notifications\Notifiable;
+use Erik\AdminManagerImplementation\Auth\AdminUser;
 
-class User extends \Illuminate\Foundation\Auth\User
+class User extends AdminUser
 {
-    use Notifiable, CanResetPassword;
+
 }
