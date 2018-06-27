@@ -4,6 +4,7 @@ tags
 *.swp
 *.swo
 .idea
+.DS_Store
 phpunit.xml
 build
 /tests/Browser/console/
