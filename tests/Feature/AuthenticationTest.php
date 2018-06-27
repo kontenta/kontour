@@ -64,6 +64,16 @@ class AuthenticationTest extends IntegrationTest
         $response->assertRedirect($routeManager->indexUrl());
     }
 
+    public function test_index_route() {
+        /**
+         * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
+         */
+        $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
+        $response = $this->actingAs($this->user)->get($routeManager->indexUrl());
+
+        $response->assertSuccessful();
+    }
+
     public function test_logout()
     {
         /**
