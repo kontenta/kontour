@@ -2,7 +2,7 @@
 
 namespace Erik\AdminManagerImplementation\Tests\Feature;
 
-use Erik\AdminManagerImplementation\Notifications\ResetPassword;
+use Erik\AdminManagerImplementation\Auth\Notifications\ResetPassword;
 use Erik\AdminManagerImplementation\Tests\IntegrationTest;
 use Erik\AdminManagerImplementation\Tests\Feature\Fakes\User;
 use Illuminate\Support\Facades\Notification;

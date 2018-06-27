@@ -2,21 +2,9 @@
 
 namespace Erik\AdminManagerImplementation\Tests\Feature\Fakes;
 
-use Erik\AdminManagerImplementation\Notifications\ResetPassword as AdminResetPasswordNotification;
-use Illuminate\Notifications\Notifiable;
+use Erik\AdminManagerImplementation\Auth\AdminUser;
 
-class User extends \Illuminate\Foundation\Auth\User
+class User extends AdminUser
 {
-    use Notifiable;
 
-    /**
-     * Send the password reset notification.
-     *
-     * @param  string  $token
-     * @return void
-     */
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new AdminResetPasswordNotification($token));
-    }
 }
