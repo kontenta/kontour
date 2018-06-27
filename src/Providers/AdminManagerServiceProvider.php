@@ -1,14 +1,15 @@
 <?php
 
-namespace Erik\AdminManagerImplementation;
+namespace Erik\AdminManagerImplementation\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use Erik\AdminManager\Concerns\RegistersAdminRoutes;
+use Illuminate\Auth\AuthManager;
+use Erik\AdminManagerImplementation\AdminRouteManager;
+use Erik\AdminManagerImplementation\AdminViewManager;
 use Erik\AdminManagerImplementation\Http\Middleware\RedirectIfAuthenticated;
 use Erik\AdminManagerImplementation\Http\Middleware\AuthenticateAdmin;
-use Illuminate\Auth\AuthManager;
-use Illuminate\Support\ServiceProvider;
 
-//TODO: Move this file containing AdminManagerServiceProvider to src/Providers directory
 class AdminManagerServiceProvider extends ServiceProvider
 {
     use RegistersAdminRoutes;
@@ -74,7 +75,7 @@ class AdminManagerServiceProvider extends ServiceProvider
      */
     protected function configure()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/admin.php', 'admin');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/admin.php', 'admin');
     }
 
     /**
@@ -82,7 +83,7 @@ class AdminManagerServiceProvider extends ServiceProvider
      */
     protected function registerResources()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'admin');
     }
 
     /**
@@ -90,10 +91,10 @@ class AdminManagerServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-        $this->registerAdminRoutes(__DIR__ . '/../routes/admin.php');
-        $this->registerAdminGuestRoutes(__DIR__ . '/../routes/auth.php');
+        $this->registerAdminRoutes(__DIR__ . '/../../routes/admin.php');
+        $this->registerAdminGuestRoutes(__DIR__ . '/../../routes/auth.php');
         if (config('admin.passwords')) {
-            $this->registerAdminGuestRoutes(__DIR__ . '/../routes/passwords.php');
+            $this->registerAdminGuestRoutes(__DIR__ . '/../../routes/passwords.php');
         }
     }
 
@@ -103,11 +104,11 @@ class AdminManagerServiceProvider extends ServiceProvider
     protected function offerPublishing()
     {
         $this->publishes([
-            __DIR__ . '/../config/admin.php' => config_path('admin.php'),
+            __DIR__ . '/../../config/admin.php' => config_path('admin.php'),
         ], 'admin-config');
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/admin'),
+            __DIR__ . '/../../resources/views' => resource_path('views/vendor/admin'),
         ], 'admin-views');
     }
 }
