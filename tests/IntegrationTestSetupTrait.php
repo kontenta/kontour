@@ -1,9 +1,9 @@
 <?php
 
-namespace Kontenta\AdminManagerImplementation\Tests;
+namespace Kontenta\KontourImplementation\Tests;
 
 use Illuminate\Contracts\Console\Kernel as ConsoleKernel;
-use Kontenta\AdminManagerImplementation\Tests\Feature\Fakes\User;
+use Kontenta\KontourImplementation\Tests\Feature\Fakes\User;
 
 trait IntegrationTestSetupTrait
 {
@@ -17,7 +17,7 @@ trait IntegrationTestSetupTrait
     protected function getPackageProviders($app)
     {
         return [
-            \Kontenta\AdminManagerImplementation\Providers\AdminManagerServiceProvider::class,
+            \Kontenta\KontourImplementation\Providers\KontourServiceProvider::class,
         ];
     }
 

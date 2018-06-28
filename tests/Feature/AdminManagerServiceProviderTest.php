@@ -1,11 +1,11 @@
 <?php
 
-namespace Kontenta\AdminManagerImplementation\Tests\Feature;
+namespace Kontenta\KontourImplementation\Tests\Feature;
 
-use Kontenta\AdminManagerImplementation\Tests\IntegrationTest;
+use Kontenta\KontourImplementation\Tests\IntegrationTest;
 use Illuminate\Support\Facades\Route;
 
-class AdminManagerServiceProviderTest extends IntegrationTest
+class KontourServiceProviderTest extends IntegrationTest
 {
     public function test_routes_are_registered()
     {
@@ -14,7 +14,7 @@ class AdminManagerServiceProviderTest extends IntegrationTest
 
     public function test_admin_guard_can_be_resolved()
     {
-        $guard = $this->app->make(\Kontenta\AdminManager\Contracts\AdminGuard::class);
+        $guard = $this->app->make(\Kontenta\Kontour\Contracts\AdminGuard::class);
 
         $this->assertInstanceOf(\Illuminate\Contracts\Auth\Guard::class, $guard);
     }

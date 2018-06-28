@@ -20,12 +20,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Kontenta\\AdminManagerImplementation\\": "src/"
+      "Kontenta\\KontourImplementation\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Kontenta\\AdminManagerImplementation\\Tests\\": "tests/"
+      "Kontenta\\KontourImplementation\\Tests\\": "tests/"
     }
   },
   "scripts": {
@@ -34,7 +34,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Kontenta\\AdminManagerImplementation\\AdminManagerServiceProvider"
+        "Kontenta\\KontourImplementation\\KontourServiceProvider"
       ],
       "aliases": {
       }

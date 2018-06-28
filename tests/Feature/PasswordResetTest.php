@@ -1,10 +1,10 @@
 <?php
 
-namespace Kontenta\AdminManagerImplementation\Tests\Feature;
+namespace Kontenta\KontourImplementation\Tests\Feature;
 
-use Kontenta\AdminManagerImplementation\Auth\Notifications\ResetPassword;
-use Kontenta\AdminManagerImplementation\Tests\IntegrationTest;
-use Kontenta\AdminManagerImplementation\Tests\Feature\Fakes\User;
+use Kontenta\KontourImplementation\Auth\Notifications\ResetPassword;
+use Kontenta\KontourImplementation\Tests\IntegrationTest;
+use Kontenta\KontourImplementation\Tests\Feature\Fakes\User;
 use Illuminate\Support\Facades\Notification;
 
 class PasswordResetTest extends IntegrationTest
@@ -44,9 +44,9 @@ class PasswordResetTest extends IntegrationTest
     public function test_password_reset()
     {
         /**
-         * @var $routeManager \Kontenta\AdminManager\Contracts\AdminRouteManager
+         * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
          */
-        $routeManager = $this->app->make(\Kontenta\AdminManager\Contracts\AdminRouteManager::class);
+        $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
 
         Notification::fake();
 

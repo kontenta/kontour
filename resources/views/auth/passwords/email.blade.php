@@ -1,4 +1,4 @@
-@inject('view_manager', 'Kontenta\AdminManager\Contracts\AdminViewManager')
+@inject('view_manager', 'Kontenta\Kontour\Contracts\AdminViewManager')
 
 @extends($view_manager->layout())
 

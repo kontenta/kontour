@@ -1,10 +1,10 @@
 <?php
 
-namespace Kontenta\AdminManagerImplementation\Http\Middleware;
+namespace Kontenta\KontourImplementation\Http\Middleware;
 
 use Closure;
-use Kontenta\AdminManager\Contracts\AdminAuthenticateMiddleware;
-use Kontenta\AdminManager\Contracts\AdminRouteManager;
+use Kontenta\Kontour\Contracts\AdminAuthenticateMiddleware;
+use Kontenta\Kontour\Contracts\AdminRouteManager;
 use Illuminate\Auth\AuthenticationException;
 
 class AuthenticateAdmin extends \Illuminate\Auth\Middleware\Authenticate implements AdminAuthenticateMiddleware

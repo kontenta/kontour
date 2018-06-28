@@ -1,8 +1,8 @@
 <?php
 
-namespace Kontenta\AdminManagerImplementation\Auth;
+namespace Kontenta\KontourImplementation\Auth;
 
-use Kontenta\AdminManagerImplementation\Auth\Passwords\CanResetPassword;
+use Kontenta\KontourImplementation\Auth\Passwords\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
 
 class AdminUser extends \Illuminate\Foundation\Auth\User

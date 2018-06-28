@@ -1,11 +1,11 @@
 <?php
 
-namespace Kontenta\AdminManagerImplementation\Http\Middleware;
+namespace Kontenta\KontourImplementation\Http\Middleware;
 
 use Closure;
-use Kontenta\AdminManager\Contracts\AdminGuestMiddleware;
+use Kontenta\Kontour\Contracts\AdminGuestMiddleware;
 use Illuminate\Support\Facades\Auth;
-use Kontenta\AdminManager\Contracts\AdminRouteManager;
+use Kontenta\Kontour\Contracts\AdminRouteManager;
 
 class RedirectIfAuthenticated implements AdminGuestMiddleware
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Kontenta\AdminManagerImplementation\Tests\Feature;
+namespace Kontenta\KontourImplementation\Tests\Feature;
 
-use Kontenta\AdminManagerImplementation\Tests\UserlandAdminToolTest;
-use Kontenta\AdminManagerImplementation\Tests\Feature\Fakes\User;
+use Kontenta\KontourImplementation\Tests\UserlandAdminToolTest;
+use Kontenta\KontourImplementation\Tests\Feature\Fakes\User;
 
 class UserlandControllerTest extends UserlandAdminToolTest
 {

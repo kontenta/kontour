@@ -1,8 +1,8 @@
 <?php
 
-namespace Kontenta\AdminManagerImplementation\Auth\Passwords;
+namespace Kontenta\KontourImplementation\Auth\Passwords;
 
-use Kontenta\AdminManagerImplementation\Auth\Notifications\ResetPassword as AdminResetPasswordNotification;
+use Kontenta\KontourImplementation\Auth\Notifications\ResetPassword as AdminResetPasswordNotification;
 use \Illuminate\Auth\Passwords\CanResetPassword as BaseCanResetPassword;
 
 trait CanResetPassword

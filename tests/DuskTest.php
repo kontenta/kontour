@@ -1,8 +1,8 @@
 <?php
 
-namespace Kontenta\AdminManagerImplementation\Tests;
+namespace Kontenta\KontourImplementation\Tests;
 
-use Kontenta\AdminManagerImplementation\Tests\Feature\Fakes\User;
+use Kontenta\KontourImplementation\Tests\Feature\Fakes\User;
 use Orchestra\Testbench\Dusk\TestCase;
 
 abstract class DuskTest extends TestCase

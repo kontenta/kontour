@@ -1,8 +1,8 @@
 <?php
 
-namespace Kontenta\AdminManagerImplementation\Tests\Feature\Fakes;
+namespace Kontenta\KontourImplementation\Tests\Feature\Fakes;
 
-use Kontenta\AdminManager\Concerns\RegistersAdminRoutes;
+use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,7 +32,7 @@ class UserlandServiceProvider extends ServiceProvider
         $this->registerAdminRoutes(function () {
             Route::group([
                 'prefix' => 'userland-tool',
-                'namespace' => 'Kontenta\AdminManagerImplementation\Tests\Feature\Fakes'
+                'namespace' => 'Kontenta\KontourImplementation\Tests\Feature\Fakes'
             ], function () {
                 Route::get('/', 'UserlandController@index')->name('userland.index');
             });

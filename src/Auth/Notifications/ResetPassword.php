@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\AdminManagerImplementation\Auth\Notifications;
+namespace Kontenta\KontourImplementation\Auth\Notifications;
 
 use Illuminate\Notifications\Messages\MailMessage;
 

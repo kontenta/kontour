@@ -1,9 +1,9 @@
 <?php
 
-namespace Kontenta\AdminManagerImplementation\Http\Controllers\Auth;
+namespace Kontenta\KontourImplementation\Http\Controllers\Auth;
 
-use Kontenta\AdminManager\Contracts\AdminGuestMiddleware;
-use Kontenta\AdminManager\Contracts\AdminRouteManager;
+use Kontenta\Kontour\Contracts\AdminGuestMiddleware;
+use Kontenta\Kontour\Contracts\AdminRouteManager;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
