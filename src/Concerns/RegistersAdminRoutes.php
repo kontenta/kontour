@@ -1,6 +1,6 @@
 <?php
 
-namespace Erik\AdminManager\Concerns;
+namespace Kontenta\AdminManager\Concerns;
 
 /**
  * Trait RegistersAdminRoutes
@@ -32,8 +32,8 @@ trait RegistersAdminRoutes
         }
     }
 
-    protected function resolveAdminRouteManager(): \Erik\AdminManager\Contracts\AdminRouteManager
+    protected function resolveAdminRouteManager(): \Kontenta\AdminManager\Contracts\AdminRouteManager
     {
-        return $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
+        return $this->app->make(\Kontenta\AdminManager\Contracts\AdminRouteManager::class);
     }
 }
