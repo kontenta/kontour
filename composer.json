@@ -1,5 +1,5 @@
 {
-  "name": "erik/admin-manager",
+  "name": "kontenta/kontour",
   "license": "MIT",
   "require": {
     "php": ">=7.0.0",
