@@ -14,7 +14,7 @@
     }
   ],
   "require-dev": {
-    "erik/admin-manager": "dev-renametokontour",
+    "kontenta/kontour": "dev-master",
     "orchestra/testbench": "^3.5",
     "orchestra/testbench-dusk": "^3.5"
   },
