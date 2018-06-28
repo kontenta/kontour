@@ -1,6 +1,6 @@
 <?php
 
-namespace Erik\AdminManager\Contracts;
+namespace Kontenta\Kontour\Contracts;
 
 use Illuminate\Support\Collection;
 

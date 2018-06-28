@@ -1,5 +1,5 @@
 {
-  "name": "erik/admin-manager",
+  "name": "kontenta/kontour",
   "license": "MIT",
   "require": {
     "php": ">=7.0.0",
@@ -7,7 +7,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Erik\\AdminManager\\": "src/"
+      "Kontenta\\Kontour\\": "src/"
     }
   },
   "config": {
