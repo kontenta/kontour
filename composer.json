@@ -1,5 +1,5 @@
 {
-  "name": "erik/admin-manager-implementation",
+  "name": "kontenta/kontour-implementation",
   "license": "MIT",
   "require": {
     "php": ">=7.0.0",
@@ -14,7 +14,7 @@
     }
   ],
   "require-dev": {
-    "erik/admin-manager": "dev-master",
+    "kontenta/kontour": "dev-master",
     "orchestra/testbench": "^3.5",
     "orchestra/testbench-dusk": "^3.5"
   },
