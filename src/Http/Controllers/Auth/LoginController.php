@@ -1,9 +1,9 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Http\Controllers\Auth;
+namespace Kontenta\AdminManagerImplementation\Http\Controllers\Auth;
 
-use Erik\AdminManager\Contracts\AdminGuestMiddleware;
-use Erik\AdminManager\Contracts\AdminRouteManager;
+use Kontenta\AdminManager\Contracts\AdminGuestMiddleware;
+use Kontenta\AdminManager\Contracts\AdminRouteManager;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;

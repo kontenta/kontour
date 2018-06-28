@@ -1,14 +1,14 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Providers;
+namespace Kontenta\AdminManagerImplementation\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Erik\AdminManager\Concerns\RegistersAdminRoutes;
+use Kontenta\AdminManager\Concerns\RegistersAdminRoutes;
 use Illuminate\Auth\AuthManager;
-use Erik\AdminManagerImplementation\AdminRouteManager;
-use Erik\AdminManagerImplementation\AdminViewManager;
-use Erik\AdminManagerImplementation\Http\Middleware\RedirectIfAuthenticated;
-use Erik\AdminManagerImplementation\Http\Middleware\AuthenticateAdmin;
+use Kontenta\AdminManagerImplementation\AdminRouteManager;
+use Kontenta\AdminManagerImplementation\AdminViewManager;
+use Kontenta\AdminManagerImplementation\Http\Middleware\RedirectIfAuthenticated;
+use Kontenta\AdminManagerImplementation\Http\Middleware\AuthenticateAdmin;
 
 class AdminManagerServiceProvider extends ServiceProvider
 {
@@ -22,7 +22,7 @@ class AdminManagerServiceProvider extends ServiceProvider
         $this->configure();
 
         $this->app->bindIf(
-            \Erik\AdminManager\Contracts\AdminGuard::class,
+            \Kontenta\AdminManager\Contracts\AdminGuard::class,
             function ($app) {
                 /**
                  * @var $auth AuthManager
@@ -34,24 +34,24 @@ class AdminManagerServiceProvider extends ServiceProvider
         );
 
         $this->app->bindIf(
-            \Erik\AdminManager\Contracts\AdminRouteManager::class,
+            \Kontenta\AdminManager\Contracts\AdminRouteManager::class,
             AdminRouteManager::class,
             true
         );
 
         $this->app->bindIf(
-            \Erik\AdminManager\Contracts\AdminViewManager::class,
+            \Kontenta\AdminManager\Contracts\AdminViewManager::class,
             AdminViewManager::class,
             true
         );
 
         $this->app->bindIf(
-            \Erik\AdminManager\Contracts\AdminAuthenticateMiddleware::class,
+            \Kontenta\AdminManager\Contracts\AdminAuthenticateMiddleware::class,
             AuthenticateAdmin::class
         );
 
         $this->app->bindIf(
-            \Erik\AdminManager\Contracts\AdminGuestMiddleware::class,
+            \Kontenta\AdminManager\Contracts\AdminGuestMiddleware::class,
             RedirectIfAuthenticated::class
         );
     }

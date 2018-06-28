@@ -1,6 +1,6 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Http\Controllers;
+namespace Kontenta\AdminManagerImplementation\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 

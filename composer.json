@@ -20,12 +20,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Erik\\AdminManagerImplementation\\": "src/"
+      "Kontenta\\AdminManagerImplementation\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Erik\\AdminManagerImplementation\\Tests\\": "tests/"
+      "Kontenta\\AdminManagerImplementation\\Tests\\": "tests/"
     }
   },
   "scripts": {
@@ -34,7 +34,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Erik\\AdminManagerImplementation\\AdminManagerServiceProvider"
+        "Kontenta\\AdminManagerImplementation\\AdminManagerServiceProvider"
       ],
       "aliases": {
       }

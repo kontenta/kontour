@@ -1,6 +1,6 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Tests;
+namespace Kontenta\AdminManagerImplementation\Tests;
 
 use PHPUnit\Framework\TestCase;
 

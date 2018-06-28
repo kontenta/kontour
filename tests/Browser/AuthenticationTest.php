@@ -1,8 +1,8 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Tests\Browser;
+namespace Kontenta\AdminManagerImplementation\Tests\Browser;
 
-use Erik\AdminManagerImplementation\Tests\DuskTest;
+use Kontenta\AdminManagerImplementation\Tests\DuskTest;
 use Laravel\Dusk\Browser;
 
 class AuthenticationTest extends DuskTest
@@ -15,9 +15,9 @@ class AuthenticationTest extends DuskTest
     {
         $this->browse(function (Browser $browser) {
             /**
-             * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
+             * @var $routeManager \Kontenta\AdminManager\Contracts\AdminRouteManager
              */
-            $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
+            $routeManager = $this->app->make(\Kontenta\AdminManager\Contracts\AdminRouteManager::class);
             $browser->visit($routeManager->loginUrl())
                 ->type('email', $this->user->email)
                 ->type('password', 'secret')
@@ -34,9 +34,9 @@ class AuthenticationTest extends DuskTest
     {
         $this->browse(function (Browser $browser) {
             /**
-             * @var $routeManager \Erik\AdminManager\Contracts\AdminRouteManager
+             * @var $routeManager \Kontenta\AdminManager\Contracts\AdminRouteManager
              */
-            $routeManager = $this->app->make(\Erik\AdminManager\Contracts\AdminRouteManager::class);
+            $routeManager = $this->app->make(\Kontenta\AdminManager\Contracts\AdminRouteManager::class);
             $browser->loginAs($this->user)->visit($routeManager->indexUrl())
                 ->press('Logout')
                 ->assertUrlIs($routeManager->loginUrl());

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::namespace('Erik\AdminManagerImplementation\Http\Controllers\Auth')->group(function () {
+Route::namespace('Kontenta\AdminManagerImplementation\Http\Controllers\Auth')->group(function () {
     if (!Route::has('admin.password.request')) {
         Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
         Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');

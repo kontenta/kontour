@@ -1,8 +1,8 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Tests\Feature;
+namespace Kontenta\AdminManagerImplementation\Tests\Feature;
 
-use Erik\AdminManagerImplementation\Tests\IntegrationTest;
+use Kontenta\AdminManagerImplementation\Tests\IntegrationTest;
 use Illuminate\Support\Facades\Route;
 
 class AdminManagerServiceProviderTest extends IntegrationTest
@@ -14,7 +14,7 @@ class AdminManagerServiceProviderTest extends IntegrationTest
 
     public function test_admin_guard_can_be_resolved()
     {
-        $guard = $this->app->make(\Erik\AdminManager\Contracts\AdminGuard::class);
+        $guard = $this->app->make(\Kontenta\AdminManager\Contracts\AdminGuard::class);
 
         $this->assertInstanceOf(\Illuminate\Contracts\Auth\Guard::class, $guard);
     }

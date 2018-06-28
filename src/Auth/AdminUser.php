@@ -1,8 +1,8 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Auth;
+namespace Kontenta\AdminManagerImplementation\Auth;
 
-use Erik\AdminManagerImplementation\Auth\Passwords\CanResetPassword;
+use Kontenta\AdminManagerImplementation\Auth\Passwords\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
 
 class AdminUser extends \Illuminate\Foundation\Auth\User

@@ -1,9 +1,9 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Tests\Feature;
+namespace Kontenta\AdminManagerImplementation\Tests\Feature;
 
-use Erik\AdminManagerImplementation\Tests\UserlandAdminToolTest;
-use Erik\AdminManagerImplementation\Tests\Feature\Fakes\User;
+use Kontenta\AdminManagerImplementation\Tests\UserlandAdminToolTest;
+use Kontenta\AdminManagerImplementation\Tests\Feature\Fakes\User;
 
 class UserlandControllerTest extends UserlandAdminToolTest
 {
