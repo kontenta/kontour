@@ -1,5 +1,5 @@
 {
-  "name": "erik/admin-manager-implementation",
+  "name": "kontenta/kontour-implementation",
   "license": "MIT",
   "require": {
     "php": ">=7.0.0",
@@ -14,18 +14,18 @@
     }
   ],
   "require-dev": {
-    "erik/admin-manager": "dev-master",
+    "kontenta/kontour": "dev-master",
     "orchestra/testbench": "^3.5",
     "orchestra/testbench-dusk": "^3.5"
   },
   "autoload": {
     "psr-4": {
-      "Erik\\AdminManagerImplementation\\": "src/"
+      "Kontenta\\KontourImplementation\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Erik\\AdminManagerImplementation\\Tests\\": "tests/"
+      "Kontenta\\KontourImplementation\\Tests\\": "tests/"
     }
   },
   "scripts": {
@@ -34,7 +34,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Erik\\AdminManagerImplementation\\AdminManagerServiceProvider"
+        "Kontenta\\KontourImplementation\\KontourServiceProvider"
       ],
       "aliases": {
       }

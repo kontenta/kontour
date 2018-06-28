@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\Erik\AdminManagerImplementation\Tests\Feature\Fakes\User::class, function (Faker $faker) {
+$factory->define(\Kontenta\KontourImplementation\Tests\Feature\Fakes\User::class, function (Faker $faker) {
     static $password;
 
     return [

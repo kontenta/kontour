@@ -1,6 +1,6 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Tests;
+namespace Kontenta\KontourImplementation\Tests;
 
 use Orchestra\Testbench\TestCase;
 

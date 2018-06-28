@@ -1,6 +1,6 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Tests\Feature\Fakes;
+namespace Kontenta\KontourImplementation\Tests\Feature\Fakes;
 
 use Illuminate\Routing\Controller as BaseController;
 

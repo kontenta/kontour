@@ -1,8 +1,8 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Tests\Feature\Fakes;
+namespace Kontenta\KontourImplementation\Tests\Feature\Fakes;
 
-use Erik\AdminManagerImplementation\Auth\AdminUser;
+use Kontenta\KontourImplementation\Auth\AdminUser;
 
 class User extends AdminUser
 {

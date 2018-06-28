@@ -1,9 +1,9 @@
 <?php
 
-namespace Erik\AdminManagerImplementation;
+namespace Kontenta\KontourImplementation;
 
-use Erik\AdminManager\Contracts\AdminAuthenticateMiddleware;
-use Erik\AdminManager\Contracts\AdminRouteManager as AdminRouteManagerContract;
+use Kontenta\Kontour\Contracts\AdminAuthenticateMiddleware;
+use Kontenta\Kontour\Contracts\AdminRouteManager as AdminRouteManagerContract;
 use Illuminate\Routing\Router;
 
 class AdminRouteManager implements AdminRouteManagerContract

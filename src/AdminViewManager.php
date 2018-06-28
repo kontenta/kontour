@@ -1,8 +1,8 @@
 <?php
 
-namespace Erik\AdminManagerImplementation;
+namespace Kontenta\KontourImplementation;
 
-use Erik\AdminManager\Contracts\AdminViewManager as ViewManagerContract;
+use Kontenta\Kontour\Contracts\AdminViewManager as ViewManagerContract;
 use Illuminate\Support\Collection;
 
 class AdminViewManager implements ViewManagerContract

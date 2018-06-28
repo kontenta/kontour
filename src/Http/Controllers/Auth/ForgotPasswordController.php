@@ -1,8 +1,8 @@
 <?php
 
-namespace Erik\AdminManagerImplementation\Http\Controllers\Auth;
+namespace Kontenta\KontourImplementation\Http\Controllers\Auth;
 
-use Erik\AdminManager\Contracts\AdminGuestMiddleware;
+use Kontenta\Kontour\Contracts\AdminGuestMiddleware;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;

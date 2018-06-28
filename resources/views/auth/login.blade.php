@@ -1,5 +1,5 @@
-@inject('view_manager', 'Erik\AdminManager\Contracts\AdminViewManager')
-@inject('route_manager', 'Erik\AdminManager\Contracts\AdminRouteManager')
+@inject('view_manager', 'Kontenta\Kontour\Contracts\AdminViewManager')
+@inject('route_manager', 'Kontenta\Kontour\Contracts\AdminRouteManager')
 
 @extends($view_manager->layout())
 
