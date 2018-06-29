@@ -10,7 +10,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "git@bitbucket.org:erik-epineer/admin-manager.git"
+      "url": "git@github.com:kontenta/kontour.git"
     }
   ],
   "require-dev": {
