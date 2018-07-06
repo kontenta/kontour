@@ -1,5 +1,5 @@
 {
-  "name": "kontenta/kontour-implementation",
+  "name": "kontenta/kontour-support",
   "license": "MIT",
   "require": {
     "php": ">=7.0.0",
