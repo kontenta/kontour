@@ -3,7 +3,8 @@
   "license": "MIT",
   "require": {
     "php": ">=7.0.0",
-    "laravel/framework": "~5.5"
+    "laravel/framework": "~5.5",
+    "kontenta/kontour-support": "dev-master"
   },
   "autoload": {
     "psr-4": {
