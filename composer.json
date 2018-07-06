@@ -20,12 +20,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Kontenta\\KontourImplementation\\": "src/"
+      "Kontenta\\KontourSupport\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Kontenta\\KontourImplementation\\Tests\\": "tests/"
+      "Kontenta\\KontourSupport\\Tests\\": "tests/"
     }
   },
   "scripts": {
@@ -34,7 +34,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Kontenta\\KontourImplementation\\KontourServiceProvider"
+        "Kontenta\\KontourSupport\\KontourServiceProvider"
       ],
       "aliases": {
       }

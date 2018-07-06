@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\KontourImplementation\Http\Controllers\Auth;
+namespace Kontenta\KontourSupport\Http\Controllers\Auth;
 
 use Kontenta\Kontour\Contracts\AdminGuestMiddleware;
 use Kontenta\Kontour\Contracts\AdminRouteManager;

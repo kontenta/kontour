@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\KontourImplementation\Tests;
+namespace Kontenta\KontourSupport\Tests;
 
 use PHPUnit\Framework\TestCase;
 

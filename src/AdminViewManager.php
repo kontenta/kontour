@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\KontourImplementation;
+namespace Kontenta\KontourSupport;
 
 use Kontenta\Kontour\Contracts\AdminViewManager as ViewManagerContract;
 use Illuminate\Support\Collection;

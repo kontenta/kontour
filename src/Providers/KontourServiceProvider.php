@@ -1,14 +1,14 @@
 <?php
 
-namespace Kontenta\KontourImplementation\Providers;
+namespace Kontenta\KontourSupport\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 use Illuminate\Auth\AuthManager;
-use Kontenta\KontourImplementation\AdminRouteManager;
-use Kontenta\KontourImplementation\AdminViewManager;
-use Kontenta\KontourImplementation\Http\Middleware\RedirectIfAuthenticated;
-use Kontenta\KontourImplementation\Http\Middleware\AuthenticateAdmin;
+use Kontenta\KontourSupport\AdminRouteManager;
+use Kontenta\KontourSupport\AdminViewManager;
+use Kontenta\KontourSupport\Http\Middleware\RedirectIfAuthenticated;
+use Kontenta\KontourSupport\Http\Middleware\AuthenticateAdmin;
 
 class KontourServiceProvider extends ServiceProvider
 {

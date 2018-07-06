@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\Kontenta\KontourImplementation\Tests\Feature\Fakes\User::class, function (Faker $faker) {
+$factory->define(\Kontenta\KontourSupport\Tests\Feature\Fakes\User::class, function (Faker $faker) {
     static $password;
 
     return [

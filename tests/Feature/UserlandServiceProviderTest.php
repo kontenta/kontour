@@ -1,8 +1,8 @@
 <?php
 
-namespace Kontenta\KontourImplementation\Tests\Feature;
+namespace Kontenta\KontourSupport\Tests\Feature;
 
-use Kontenta\KontourImplementation\Tests\UserlandAdminToolTest;
+use Kontenta\KontourSupport\Tests\UserlandAdminToolTest;
 use Illuminate\Support\Facades\Route;
 
 class UserlandServiceProviderTest extends UserlandAdminToolTest

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\KontourImplementation\Tests\Feature\Fakes;
+namespace Kontenta\KontourSupport\Tests\Feature\Fakes;
 
 use Illuminate\Routing\Controller as BaseController;
 

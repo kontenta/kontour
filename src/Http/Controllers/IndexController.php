@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\KontourImplementation\Http\Controllers;
+namespace Kontenta\KontourSupport\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 

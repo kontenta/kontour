@@ -1,8 +1,8 @@
 <?php
 
-namespace Kontenta\KontourImplementation\Tests\Feature;
+namespace Kontenta\KontourSupport\Tests\Feature;
 
-use Kontenta\KontourImplementation\Tests\IntegrationTest;
+use Kontenta\KontourSupport\Tests\IntegrationTest;
 use Illuminate\Support\Facades\Route;
 
 class KontourServiceProviderTest extends IntegrationTest
