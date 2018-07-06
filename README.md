@@ -1,7 +1,7 @@
 # Kontour
 
 Kontour is an admin page manager for Laravel.
-It provides a "frame" around the admin routes you create in your Laravel apps,or in packages you write.
+It provides a shared "frame" for the admin routes you create in your Laravel apps, or in packages you write.
 
 ## Benefits in service providers
 
