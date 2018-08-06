@@ -18,7 +18,7 @@ class RedirectIfAuthenticated implements AdminGuestMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::guard(config('admin.guard'))->check()) {
+        if (Auth::guard(config('kontour.guard'))->check()) {
             return redirect(app(AdminRouteManager::class)->indexUrl());
         }
 

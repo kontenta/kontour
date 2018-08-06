@@ -52,7 +52,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function getPrefix(): string
     {
-        return config('admin.url_prefix');
+        return config('kontour.url_prefix');
     }
 
     /**
@@ -70,7 +70,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function getDomain()
     {
-        return config('admin.domain');
+        return config('kontour.domain');
     }
 
     /**
@@ -79,7 +79,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function indexUrl(): string
     {
-        return route('admin.index');
+        return route('kontour.index');
     }
 
     /**
@@ -88,7 +88,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function loginUrl(): string
     {
-        return route('admin.login');
+        return route('kontour.login');
     }
 
     /**
@@ -97,7 +97,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function logoutUrl(): string
     {
-        return route('admin.logout');
+        return route('kontour.logout');
     }
 
     /**
@@ -106,7 +106,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function passwordResetUrl()
     {
-        $route_name = collect('admin.password.request', 'password.request')->first(function ($route_name) {
+        $route_name = collect('kontour.password.request', 'password.request')->first(function ($route_name) {
             return $this->router->has($route_name);
         });
 

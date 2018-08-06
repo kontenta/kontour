@@ -28,7 +28,7 @@ class KontourServiceProvider extends ServiceProvider
                  * @var $auth AuthManager
                  */
                 $auth = $app->make(AuthManager::class);
-                return $auth->guard(config('admin.guard'));
+                return $auth->guard(config('kontour.guard'));
             },
             true
         );
@@ -75,7 +75,7 @@ class KontourServiceProvider extends ServiceProvider
      */
     protected function configure()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/admin.php', 'admin');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/kontour.php', 'kontour');
     }
 
     /**
@@ -83,7 +83,7 @@ class KontourServiceProvider extends ServiceProvider
      */
     protected function registerResources()
     {
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'admin');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'kontour');
     }
 
     /**
@@ -93,7 +93,7 @@ class KontourServiceProvider extends ServiceProvider
     {
         $this->registerAdminRoutes(__DIR__ . '/../../routes/admin.php');
         $this->registerAdminGuestRoutes(__DIR__ . '/../../routes/auth.php');
-        if (config('admin.passwords')) {
+        if (config('kontour.passwords')) {
             $this->registerAdminGuestRoutes(__DIR__ . '/../../routes/passwords.php');
         }
     }
@@ -104,11 +104,11 @@ class KontourServiceProvider extends ServiceProvider
     protected function offerPublishing()
     {
         $this->publishes([
-            __DIR__ . '/../../config/admin.php' => config_path('admin.php'),
-        ], 'admin-config');
+            __DIR__ . '/../../config/kontour.php' => config_path('kontour.php'),
+        ], 'kontour-config');
 
         $this->publishes([
-            __DIR__ . '/../../resources/views' => resource_path('views/vendor/admin'),
-        ], 'admin-views');
+            __DIR__ . '/../../resources/views' => resource_path('views/vendor/kontour'),
+        ], 'kontour-views');
     }
 }

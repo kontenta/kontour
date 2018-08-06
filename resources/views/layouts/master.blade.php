@@ -1,11 +1,11 @@
 @inject('view_manager', 'Kontenta\Kontour\Contracts\AdminViewManager')
 
-@extends('admin::layouts.html')
+@extends('kontour::layouts.html')
 
 @section('body')
   <header>
     {{-- TODO: make this logout form part of a user-widget --}}
-    <form action="{{ route('admin.logout') }}" method="post">
+    <form action="{{ route('kontour.logout') }}" method="post">
       {{ csrf_field() }}
       <button type="submit">Logout</button>
     </form>

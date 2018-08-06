@@ -30,7 +30,7 @@ class ForgotPasswordController extends Controller
      */
     public function showLinkRequestForm()
     {
-        return view('admin::auth.passwords.email');
+        return view('kontour::auth.passwords.email');
     }
 
     /**
@@ -40,7 +40,7 @@ class ForgotPasswordController extends Controller
      */
     public function broker()
     {
-        return Password::broker(config('admin.passwords', null));
+        return Password::broker(config('kontour.passwords', null));
     }
 
 
