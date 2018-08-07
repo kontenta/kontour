@@ -7,8 +7,8 @@
   },
   "require-dev": {
     "kontenta/kontour": "dev-master",
-    "orchestra/testbench": "~3.5",
-    "orchestra/testbench-dusk": "~3.5.5",
+    "orchestra/testbench": "^3.5",
+    "orchestra/testbench-dusk": "^3.5.5",
     "phpunit/phpunit": ">6.5",
     "laravel/dusk": ">2.0.13"
   },
