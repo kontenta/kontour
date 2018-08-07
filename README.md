@@ -19,6 +19,16 @@ Overriding implementations may be registered by service providers of other packa
 2. Run `composer install`
 3. You'll find a VCS version of the contracts package in `vendor/kontenta/kontour`
 
+## Updating composer dependencies
+
+If you're in a local branch of this package and getting problems with `kontenta/kontour`
+requiring some specific version of this package you can add that version temporarily in `composer.json`
+like this:
+
+```json
+"version": "dev-master",
+```
+
 ## Testing
 
 `composer test` from the project directory will run the default test suite.
