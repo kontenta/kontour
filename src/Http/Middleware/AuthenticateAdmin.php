@@ -21,7 +21,7 @@ class AuthenticateAdmin extends \Illuminate\Auth\Middleware\Authenticate impleme
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        $guards[] = config('admin.guard');
+        $guards[] = config('kontour.guard');
         try {
             return parent::handle($request, $next, ...$guards);
         } catch (AuthenticationException $e) {

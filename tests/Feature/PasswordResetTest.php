@@ -30,13 +30,13 @@ class PasswordResetTest extends IntegrationTest
     protected function getEnvironmentSetUp($app)
     {
         // Test with Laravel's default password reset config
-        $app['config']->set('admin.passwords', 'users');
+        $app['config']->set('kontour.passwords', 'users');
         parent::getEnvironmentSetUp($app);
     }
 
     public function test_request_password_reset_url()
     {
-        $response = $this->get(route('admin.password.request'));
+        $response = $this->get(route('kontour.password.request'));
 
         $response->assertSuccessful();
     }
@@ -50,7 +50,7 @@ class PasswordResetTest extends IntegrationTest
 
         Notification::fake();
 
-        $response = $this->post(route('admin.password.email'), ['email' => $this->user->getEmailForPasswordReset()]);
+        $response = $this->post(route('kontour.password.email'), ['email' => $this->user->getEmailForPasswordReset()]);
 
         $response->assertRedirect();
         $response->assertSessionHas('status');
@@ -64,12 +64,12 @@ class PasswordResetTest extends IntegrationTest
             }
         );
 
-        $response = $this->get(route('admin.password.reset', $token));
+        $response = $this->get(route('kontour.password.reset', $token));
 
         $response->assertSuccessful();
 
         $new_password = 'NewPassword';
-        $response = $this->post(route('admin.password.request'), [
+        $response = $this->post(route('kontour.password.request'), [
             'token' => $token,
             'email' => $this->user->getEmailForPasswordReset(),
             'password' => $new_password,

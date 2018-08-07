@@ -13,6 +13,6 @@ class IndexController extends Controller
      */
     public function __invoke()
     {
-        return view('admin::index');
+        return view('kontour::index');
     }
 }

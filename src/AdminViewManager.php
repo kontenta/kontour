@@ -15,7 +15,7 @@ class AdminViewManager implements ViewManagerContract
     public function layout(): string
     {
         //TODO: pull the layout name from config
-        return 'admin::layouts.master';
+        return 'kontour::layouts.master';
     }
 
     /**

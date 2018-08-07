@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::namespace('Kontenta\KontourSupport\Http\Controllers')->group(function () {
-    if(!Route::has('admin.index')) {
-        Route::get('/', 'IndexController')->name('admin.index');
+    if(!Route::has('kontour.index')) {
+        Route::get('/', 'IndexController')->name('kontour.index');
     }
 });

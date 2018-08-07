@@ -40,7 +40,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('admin::auth.login');
+        return view('kontour::auth.login');
     }
 
     /**
@@ -70,7 +70,7 @@ class LoginController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard(config('admin.guard'));
+        return Auth::guard(config('kontour.guard'));
     }
 
     /**

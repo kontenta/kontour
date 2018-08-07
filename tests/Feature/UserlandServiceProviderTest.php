@@ -19,6 +19,6 @@ class UserlandServiceProviderTest extends UserlandAdminToolTest
 
     public function test_routes_contain_admin_prefix()
     {
-        $this->assertContains('/' . config('admin.url_prefix'), route('userland.index'));
+        $this->assertContains('/' . config('kontour.url_prefix'), route('userland.index'));
     }
 }
