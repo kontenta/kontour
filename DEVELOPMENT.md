@@ -1,3 +1,5 @@
+# Development
+
 ## Development install
 
 1. Clone this repo in your development environment
@@ -6,9 +8,13 @@
 
 ## Updating composer dependencies
 
-If you're in a local branch of this package and getting problems with `kontenta/kontour`
+- `composer update --prefer-lowest` can be used before running tests for testing backwards compatibility.
+- `composer show -D -o` can be used to check how far behind latest version the currently installed dependencies are.
+- `composer update` will install the latest versions of dependencies.
+
+If you're in a branch of this package and getting problems with `kontenta/kontour`
 requiring some specific version of this package you can add that version temporarily in `composer.json`
-like this:
+like this (make sure to remove this line before commiting):
 
 ```json
 "version": "dev-master",
