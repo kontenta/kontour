@@ -2,13 +2,14 @@
 
 namespace Kontenta\KontourSupport\Tests\Feature\Fakes;
 
-use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
+use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
 
 class UserlandServiceProvider extends ServiceProvider
 {
-    use RegistersAdminRoutes;
+    use RegistersAdminRoutes, RegistersAdminWidgets;
 
     /**
      * Register bindings in the container.
@@ -25,6 +26,7 @@ class UserlandServiceProvider extends ServiceProvider
     {
         $this->registerRoutes();
         $this->registerResources();
+        $this->registerWidgets();
     }
 
     protected function registerRoutes()
@@ -32,7 +34,7 @@ class UserlandServiceProvider extends ServiceProvider
         $this->registerAdminRoutes(function () {
             Route::group([
                 'prefix' => 'userland-tool',
-                'namespace' => 'Kontenta\KontourSupport\Tests\Feature\Fakes'
+                'namespace' => 'Kontenta\KontourSupport\Tests\Feature\Fakes',
             ], function () {
                 Route::get('/', 'UserlandController@index')->name('userland.index');
             });
@@ -45,5 +47,10 @@ class UserlandServiceProvider extends ServiceProvider
     protected function registerResources()
     {
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'userland');
+    }
+
+    protected function registerWidgets()
+    {
+        $this->registerAdminWidget(new UserlandAdminWidget());
     }
 }
