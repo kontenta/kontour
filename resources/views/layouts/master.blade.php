@@ -1,4 +1,5 @@
 @inject('view_manager', 'Kontenta\Kontour\Contracts\AdminViewManager')
+@inject('widget_manager', 'Kontenta\Kontour\Contracts\AdminWidgetManager')
 
 @extends('kontour::layouts.html')
 
@@ -15,6 +16,13 @@
   @yield($view_manager->mainSection())
   <!-- End section {{ $view_manager->mainSection() }} -->
   </main>
+  <aside>
+  @section($view_manager->widgetSection())
+    @foreach($widget_manager->getWidgetsForSection($view_manager->widgetSection()) as $widget)
+      {{ $widget }}
+    @endforeach
+  @show
+  </aside>
 @endsection
 
 @push('styles')

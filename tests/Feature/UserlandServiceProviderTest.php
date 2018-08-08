@@ -2,8 +2,10 @@
 
 namespace Kontenta\KontourSupport\Tests\Feature;
 
-use Kontenta\KontourSupport\Tests\UserlandAdminToolTest;
 use Illuminate\Support\Facades\Route;
+use Kontenta\KontourSupport\Tests\UserlandAdminToolTest;
+use Kontenta\Kontour\Contracts\AdminViewManager;
+use Kontenta\Kontour\Contracts\AdminWidgetManager;
 
 class UserlandServiceProviderTest extends UserlandAdminToolTest
 {
@@ -20,5 +22,11 @@ class UserlandServiceProviderTest extends UserlandAdminToolTest
     public function test_routes_contain_admin_prefix()
     {
         $this->assertContains('/' . config('kontour.url_prefix'), route('userland.index'));
+    }
+
+    public function test_widget_manager_contains_widget()
+    {
+        $this->assertInstanceOf(Fakes\UserlandAdminWidget::class, app(AdminWidgetManager::class)->getAllWidgets()->first());
+        $this->assertInstanceOf(Fakes\UserlandAdminWidget::class, app(AdminWidgetManager::class)->getWidgetsForSection(app(AdminViewManager::class)->widgetSection())->first());
     }
 }

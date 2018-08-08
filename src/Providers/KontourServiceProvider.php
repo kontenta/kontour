@@ -7,6 +7,7 @@ use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 use Illuminate\Auth\AuthManager;
 use Kontenta\KontourSupport\AdminRouteManager;
 use Kontenta\KontourSupport\AdminViewManager;
+use Kontenta\KontourSupport\AdminWidgetManager;
 use Kontenta\KontourSupport\Http\Middleware\RedirectIfAuthenticated;
 use Kontenta\KontourSupport\Http\Middleware\AuthenticateAdmin;
 
@@ -42,6 +43,12 @@ class KontourServiceProvider extends ServiceProvider
         $this->app->bindIf(
             \Kontenta\Kontour\Contracts\AdminViewManager::class,
             AdminViewManager::class,
+            true
+        );
+
+        $this->app->bindIf(
+            \Kontenta\Kontour\Contracts\AdminWidgetManager::class,
+            AdminWidgetManager::class,
             true
         );
 

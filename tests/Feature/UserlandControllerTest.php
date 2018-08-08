@@ -24,5 +24,6 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response = $this->actingAs($this->user)->get(route('userland.index'));
 
         $response->assertSee('<main');
+        $response->assertSee('UserlandAdminWidget');
     }
 }
