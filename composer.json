@@ -11,7 +11,18 @@
       "Kontenta\\Kontour\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Kontenta\\Kontour\\Tests\\": "tests/"
+    }
+  },
   "config": {
     "sort-packages": true
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.3"
+  },
+  "scripts": {
+      "test": "vendor/bin/phpunit"
   }
 }
