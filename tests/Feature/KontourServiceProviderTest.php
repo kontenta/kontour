@@ -2,8 +2,8 @@
 
 namespace Kontenta\KontourSupport\Tests\Feature;
 
-use Kontenta\KontourSupport\Tests\IntegrationTest;
 use Illuminate\Support\Facades\Route;
+use Kontenta\KontourSupport\Tests\IntegrationTest;
 
 class KontourServiceProviderTest extends IntegrationTest
 {
@@ -14,7 +14,7 @@ class KontourServiceProviderTest extends IntegrationTest
 
     public function test_admin_guard_can_be_resolved()
     {
-        $guard = $this->app->make(\Kontenta\Kontour\Contracts\AdminGuard::class);
+        $guard = $this->app->make('kontour.guard');
 
         $this->assertInstanceOf(\Illuminate\Contracts\Auth\Guard::class, $guard);
     }
