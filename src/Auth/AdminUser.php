@@ -2,8 +2,8 @@
 
 namespace Kontenta\KontourSupport\Auth;
 
-use Kontenta\KontourSupport\Auth\Passwords\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
+use Kontenta\KontourSupport\Auth\Passwords\CanResetPassword;
 
 class AdminUser extends \Illuminate\Foundation\Auth\User
 {
