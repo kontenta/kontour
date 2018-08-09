@@ -2,6 +2,7 @@
 
 namespace Kontenta\KontourSupport;
 
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Collection;
 use Kontenta\Kontour\Contracts\AdminWidget;
 use Kontenta\Kontour\Contracts\AdminWidgetManager as WidgetManagerContract;
@@ -13,9 +14,15 @@ class AdminWidgetManager implements WidgetManagerContract
      */
     private $widgets;
 
-    public function __construct()
+    /**
+     * @var Guard
+     */
+    private $guard;
+
+    public function __construct(Guard $guard)
     {
         $this->widgets = new Collection();
+        $this->guard = $guard;
     }
 
     public function addWidget(AdminWidget $widget, string $desiredSectionName = null)
