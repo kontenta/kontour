@@ -2,14 +2,14 @@
 
 namespace Kontenta\KontourSupport\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 use Illuminate\Auth\AuthManager;
+use Illuminate\Support\ServiceProvider;
 use Kontenta\KontourSupport\AdminRouteManager;
 use Kontenta\KontourSupport\AdminViewManager;
 use Kontenta\KontourSupport\AdminWidgetManager;
-use Kontenta\KontourSupport\Http\Middleware\RedirectIfAuthenticated;
 use Kontenta\KontourSupport\Http\Middleware\AuthenticateAdmin;
+use Kontenta\KontourSupport\Http\Middleware\RedirectIfAuthenticated;
+use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 
 class KontourServiceProvider extends ServiceProvider
 {
@@ -23,7 +23,7 @@ class KontourServiceProvider extends ServiceProvider
         $this->configure();
 
         $this->app->bindIf(
-            \Kontenta\Kontour\Contracts\AdminGuard::class,
+            'kontour.guard',
             function ($app) {
                 /**
                  * @var $auth AuthManager
@@ -33,6 +33,8 @@ class KontourServiceProvider extends ServiceProvider
             },
             true
         );
+
+        $this->app->when(WidgetManager::class)->needs(\Illuminate\Contracts\Auth\Guard::class)->give('kontour.guard');
 
         $this->app->bindIf(
             \Kontenta\Kontour\Contracts\AdminRouteManager::class,

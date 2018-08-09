@@ -5,15 +5,15 @@ namespace Kontenta\KontourSupport\Tests\Feature\Fakes;
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Kontenta\Kontour\Contracts\AdminWidget;
 
-class UserlandAdminWidget implements AdminWidget
+class UnauthorizedWidget implements AdminWidget
 {
     public function toHtml()
     {
-        return "<div>UserlandAdminWidget</div>";
+        return "<div>UnauthorizedWidget</div>";
     }
 
     public function isAuthorized(Authorizable $user = null): bool
     {
-        return true;
+        return false;
     }
 }
