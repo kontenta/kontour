@@ -2,8 +2,8 @@
 
 namespace Kontenta\Kontour\Tests\Fakes;
 
+use Illuminate\Contracts\Auth\Access\Authorizable;
 use Kontenta\Kontour\Contracts\AdminWidget as AdminWidgetContract;
-use Illuminate\Foundation\Auth\Access\Authorizable;
 
 class AdminWidget implements AdminWidgetContract
 {

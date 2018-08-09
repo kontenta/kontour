@@ -2,7 +2,7 @@
 
 namespace Kontenta\Kontour\Contracts;
 
-use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Contracts\Auth\Access\Authorizable;
 
 interface Authorizes
 {
