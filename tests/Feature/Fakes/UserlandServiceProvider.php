@@ -52,5 +52,6 @@ class UserlandServiceProvider extends ServiceProvider
     protected function registerWidgets()
     {
         $this->registerAdminWidget(new UserlandAdminWidget());
+        $this->registerAdminWidget(new UnauthorizedWidget());
     }
 }

@@ -39,6 +39,8 @@ class AdminWidgetManager implements WidgetManagerContract
 
     public function getWidgetsForSection(string $sectionName): Collection
     {
-        return $this->widgets;
+        return $this->widgets->filter(function(AdminWidget $widget) {
+            return $widget->isAuthorized($this->guard->user());
+        });
     }
 }

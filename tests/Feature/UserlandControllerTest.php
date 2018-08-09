@@ -25,5 +25,6 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
         $response->assertSee('<main');
         $response->assertSee('UserlandAdminWidget');
+        $response->assertDontSee('UnauthorizedWidget');
     }
 }
