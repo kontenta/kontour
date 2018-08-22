@@ -27,14 +27,16 @@ interface AdminViewManager
     /**
      * Add a stylesheet that the layout should pull in
      * @param string[] ...$url
+     * @return $this
      */
-    public function addStylesheetUrl(string ...$url);
+    public function addStylesheetUrl(string ...$url): AdminViewManager;
 
     /**
      * Add a javascript that the layout should pull in
      * @param string[] ...$url
+     * @return $this
      */
-    public function addJavascriptUrl(string ...$url);
+    public function addJavascriptUrl(string ...$url): AdminViewManager;
 
     /**
      * All registered stylesheets for the layout
