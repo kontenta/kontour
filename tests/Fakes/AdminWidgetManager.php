@@ -8,11 +8,11 @@ use Kontenta\Kontour\Contracts\AdminWidget;
 
 class AdminWidgetManager implements AdminWidgetManagerContract
 {
-    public function addWidget(AdminWidget $widget, string $desiredSectionName = null)
+    public function addWidget(AdminWidget $widget, string $desiredSectionName = null): AdminWidgetManagerContract
     {
         return $this;
     }
-    
+
     public function getAllWidgets(): Collection
     {
         return new Collection();
