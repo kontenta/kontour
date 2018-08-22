@@ -25,7 +25,7 @@ class AdminWidgetManager implements WidgetManagerContract
         $this->guard = $guard;
     }
 
-    public function addWidget(AdminWidget $widget, string $desiredSectionName = null)
+    public function addWidget(AdminWidget $widget, string $desiredSectionName = null): WidgetManagerContract
     {
         $this->widgets->push($widget);
 

@@ -43,7 +43,7 @@ class AdminViewManager implements ViewManagerContract
      * @param string[] ...$url
      * @return $this
      */
-    public function addStylesheetUrl(string ...$url)
+    public function addStylesheetUrl(string ...$url): ViewManagerContract
     {
         // TODO: Implement addStylesheetUrl() method.
         return $this;
@@ -54,7 +54,7 @@ class AdminViewManager implements ViewManagerContract
      * @param string[] ...$url
      * @return $this
      */
-    public function addJavascriptUrl(string ...$url)
+    public function addJavascriptUrl(string ...$url): ViewManagerContract
     {
         // TODO: Implement addJavascriptUrl() method.
         return $this;
