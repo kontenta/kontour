@@ -68,7 +68,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      * Common domain for admin routes
      * @return string|null
      */
-    public function getDomain()
+    public function getDomain(): ?string
     {
         return config('kontour.domain');
     }
