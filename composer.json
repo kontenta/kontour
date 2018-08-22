@@ -2,7 +2,7 @@
   "name": "kontenta/kontour",
   "license": "MIT",
   "require": {
-    "php": ">=7.0.0",
+    "php": ">=7.1.0",
     "laravel/framework": "~5.5",
     "kontenta/kontour-support": "dev-master"
   },
