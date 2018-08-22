@@ -10,17 +10,22 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
 {
     use AuthorizesWithAbilityTrait;
 
-    public function getUrl(): string 
+    public function getUrl(): string
     {
         return '';
     }
-    
+
     public function getName(): string
     {
         return '';
     }
-    
+
     public function getDescription(): string
+    {
+        return '';
+    }
+
+    public function toHtml(): string
     {
         return '';
     }
