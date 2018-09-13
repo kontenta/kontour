@@ -38,10 +38,11 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
 
     public function toHtml(): string
     {
-        return sprintf('<a href="%s" title="%s">%s</a>',
-            htmlspecialchars($this->getUrl()),
-            htmlspecialchars($this->getDescription()),
-            $this->getName()
-        );
+        $attributes[] = 'href="' . htmlspecialchars($this->getUrl()) . '"';
+        if ($this->getDescription()) {
+            $attributes[] = 'title="' . htmlspecialchars($this->getDescription()) . '"';
+        }
+
+        return '<a '.implode(' ', $attributes).'>'.$this->getName().'</a>';
     }
 }
