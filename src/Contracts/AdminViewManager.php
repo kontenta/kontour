@@ -19,6 +19,12 @@ interface AdminViewManager
     public function mainSection(): string;
 
     /**
+     * Name of the navigation blade section
+     * @return string
+     */
+    public function navSection(): string;
+
+    /**
      * Name of the main widget blade section
      * @return string
      */
