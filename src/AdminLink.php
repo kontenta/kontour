@@ -14,7 +14,7 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
     protected $name;
     protected $description;
 
-    public function __construct(string $url, string $name, string $description = '')
+    public function __construct(string $url, string $name, string $description = null)
     {
         $this->url = $url;
         $this->name = $name;
@@ -31,7 +31,7 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
         return $this->name;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
