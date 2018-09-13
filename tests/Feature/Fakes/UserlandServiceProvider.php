@@ -2,7 +2,7 @@
 
 namespace Kontenta\KontourSupport\Tests\Feature\Fakes;
 
-use Kontenta\KontourSupport\AdminLink;
+use Kontenta\KontourSupport\RouteAdminLink;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
@@ -59,10 +59,9 @@ class UserlandServiceProvider extends ServiceProvider
 
     protected function addMenuLink()
     {
-        $this->app['router']->getRoutes()->refreshNameLookups();
-        $url = route('userland.index');
+        $routeName = 'userland.index';
         $name = 'Userland Tool';
-        $link = new AdminLink($url, $name);
+        $link = new RouteAdminLink($routeName, $name);
         $this->app->make(\Kontenta\Kontour\Contracts\MenuWidget::class)->addLink($link);
     }
 }
