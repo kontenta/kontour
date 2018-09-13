@@ -14,17 +14,17 @@ class MenuWidget implements MenuWidgetContract
      */
     protected $links;
 
-    public function __construct() 
+    public function __construct()
     {
         $this->links = new Collection();
     }
 
     public function toHtml()
     {
-        return '<ul>'.$this->links->map(function ($item, $key) {  
-            return '<li>'. $item->map(function ($item, $key) {
-                return $item->toHtml();
-            })->implode("\n").'</li>';
+        return '<ul>'.$this->links->map(function ($links, $heading) {
+            return '<li><span>'.$heading.'</span><ul>'.$links->map(function ($link) {
+                return '<li>'.$link->toHtml().'</li>';
+            })->implode("\n").'</ul></li>';
         })->implode("\n").'</ul>';
     }
 
@@ -38,7 +38,7 @@ class MenuWidget implements MenuWidgetContract
         if(!$this->links->has($desiredHeading)) {
             $this->links->put($desiredHeading, new Collection());
         }
-        
+
         $this->links->get($desiredHeading)->push($link);
 
         return $this;
