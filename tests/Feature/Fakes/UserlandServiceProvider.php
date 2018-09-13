@@ -2,6 +2,7 @@
 
 namespace Kontenta\KontourSupport\Tests\Feature\Fakes;
 
+use Kontenta\KontourSupport\AdminLink;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
@@ -27,16 +28,17 @@ class UserlandServiceProvider extends ServiceProvider
         $this->registerRoutes();
         $this->registerResources();
         $this->registerWidgets();
+        $this->addMenuLink();
     }
 
     protected function registerRoutes()
     {
-        $this->registerAdminRoutes(function () {
-            Route::group([
+        $this->registerAdminRoutes(function ($router) {
+            $router->group([
                 'prefix' => 'userland-tool',
                 'namespace' => 'Kontenta\KontourSupport\Tests\Feature\Fakes',
-            ], function () {
-                Route::get('/', 'UserlandController@index')->name('userland.index');
+            ], function ($router) {
+                $router->get('/', 'UserlandController@index')->name('userland.index');
             });
         });
     }
@@ -53,5 +55,14 @@ class UserlandServiceProvider extends ServiceProvider
     {
         $this->registerAdminWidget(new UserlandAdminWidget());
         $this->registerAdminWidget(new UnauthorizedWidget());
+    }
+
+    protected function addMenuLink()
+    {
+        $this->app['router']->getRoutes()->refreshNameLookups();
+        $url = route('userland.index');
+        $name = 'Userland Tool';
+        $link = new AdminLink($url, $name);
+        $this->app->make(\Kontenta\Kontour\Contracts\MenuWidget::class)->addLink($link);
     }
 }

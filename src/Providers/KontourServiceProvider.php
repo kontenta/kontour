@@ -7,13 +7,15 @@ use Illuminate\Support\ServiceProvider;
 use Kontenta\KontourSupport\AdminRouteManager;
 use Kontenta\KontourSupport\AdminViewManager;
 use Kontenta\KontourSupport\AdminWidgetManager;
+use Kontenta\KontourSupport\MenuWidget;
 use Kontenta\KontourSupport\Http\Middleware\AuthenticateAdmin;
 use Kontenta\KontourSupport\Http\Middleware\RedirectIfAuthenticated;
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
+use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
 
 class KontourServiceProvider extends ServiceProvider
 {
-    use RegistersAdminRoutes;
+    use RegistersAdminRoutes, RegistersAdminWidgets;
 
     /**
      * Register bindings in the container.
@@ -63,6 +65,12 @@ class KontourServiceProvider extends ServiceProvider
             \Kontenta\Kontour\Contracts\AdminGuestMiddleware::class,
             RedirectIfAuthenticated::class
         );
+
+        $this->app->bindIf(
+            \Kontenta\Kontour\Contracts\MenuWidget::class,
+            MenuWidget::class,
+            true
+        );
     }
 
     /**
@@ -73,6 +81,8 @@ class KontourServiceProvider extends ServiceProvider
         $this->registerResources();
 
         $this->registerRoutes();
+
+        $this->registerWidgets();
 
         if ($this->app->runningInConsole()) {
             $this->offerPublishing();
@@ -105,6 +115,11 @@ class KontourServiceProvider extends ServiceProvider
         if (config('kontour.passwords')) {
             $this->registerAdminGuestRoutes(__DIR__ . '/../../routes/passwords.php');
         }
+    }
+
+    protected function registerWidgets()
+    {
+        $this->registerAdminWidget($this->app->make(\Kontenta\Kontour\Contracts\MenuWidget::class));
     }
 
     /**

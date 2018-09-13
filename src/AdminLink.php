@@ -14,7 +14,7 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
     private $name;
     private $description;
 
-    public function __construct(string $url, string $name, string $description = null)
+    public function __construct(string $url, string $name, string $description = '')
     {
         $this->url = $url;
         $this->name = $name;
