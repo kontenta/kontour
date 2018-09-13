@@ -10,11 +10,11 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
 {
     use AuthorizesWithAbilityTrait;
 
-    private $url;
-    private $name;
-    private $description;
+    protected $url;
+    protected $name;
+    protected $description;
 
-    public function __construct(string $url, string $name, string $description = null)
+    public function __construct(string $url, string $name, string $description = '')
     {
         $this->url = $url;
         $this->name = $name;
