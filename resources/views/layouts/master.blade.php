@@ -11,6 +11,11 @@
       <button type="submit">Logout</button>
     </form>
   </header>
+  <nav>
+    @foreach($widget_manager->getWidgetsForSection($view_manager->navSection()) as $widget)
+      {{ $widget }}
+    @endforeach
+  </nav>
   <main>
   <!-- Section {{ $view_manager->mainSection() }} -->
   @yield($view_manager->mainSection())

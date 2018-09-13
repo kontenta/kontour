@@ -29,6 +29,16 @@ class AdminViewManager implements ViewManagerContract
     }
 
     /**
+     * Name of the navigation blade section
+     * @return string
+     */
+    public function navSection(): string
+    {
+        //TODO: pull nav section name from config
+        return 'nav';
+    }
+
+    /**
      * Name of the main widget blade section
      * @return string
      */
