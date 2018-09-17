@@ -2,6 +2,8 @@
 
 namespace Kontenta\KontourSupport\Tests\Feature;
 
+use Illuminate\Support\Facades\Event;
+use Kontenta\Kontour\Events\AdminToolShowVisited;
 use Kontenta\KontourSupport\Tests\UserlandAdminToolTest;
 use Kontenta\KontourSupport\Tests\Feature\Fakes\User;
 
@@ -21,12 +23,20 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
     public function test_index_route()
     {
-        $response = $this->actingAs($this->user)->get(route('userland.index'));
+        Event::fake();
 
+        $response = $this->actingAs($this->user)->get(route('userland.index'));
+        
         $response->assertSee('<main');
         $response->assertSee('UserlandAdminWidget');
         $response->assertDontSee('UnauthorizedWidget');
         $response->assertSee(route('userland.index'));
         $response->assertSee('>main<');
+        Event::assertDispatched(AdminToolShowVisited::class, function($e) {
+            $now = new \DateTimeImmutable();
+            return $e->visit->getLink()->getUrl() == route('userland.index') and
+                $this->user->is($e->visit->getUser()) and
+                $now->getTimestamp() - $e->visit->getDateTime()->getTimestamp() >= 0;
+        });
     }
 }
