@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
+use Kontenta\Kontour\Contracts\PersonalRecentVisitsWidget;
+use Kontenta\Kontour\Contracts\TeamRecentVisitsWidget;
 
 class UserlandServiceProvider extends ServiceProvider
 {
@@ -55,6 +57,8 @@ class UserlandServiceProvider extends ServiceProvider
     {
         $this->registerAdminWidget(new UserlandAdminWidget());
         $this->registerAdminWidget(new UnauthorizedWidget());
+        $this->registerAdminWidget($this->app->make(PersonalRecentVisitsWidget::class));
+        $this->registerAdminWidget($this->app->make(TeamRecentVisitsWidget::class));
     }
 
     protected function addMenuLink()

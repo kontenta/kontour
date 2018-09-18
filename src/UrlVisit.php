@@ -5,9 +5,12 @@ namespace Kontenta\KontourSupport;
 use Kontenta\Kontour\Contracts\UrlVisit as UrlVisitContract;
 use Kontenta\Kontour\Contracts\AdminLink as AdminLinkContract;
 use Illuminate\Contracts\Auth\Access\Authorizable;
+use Illuminate\Queue\SerializesModels;
 
 class UrlVisit implements UrlVisitContract
 {
+    use SerializesModels;
+
     private $link;
     private $user;
     private $datetime;

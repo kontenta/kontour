@@ -12,7 +12,7 @@ class UserlandController extends BaseController
 {
     public function index()
     {
-        $link = new AdminLink(url()->full(), 'Userland index');
+        $link = new AdminLink(url()->full(), 'Recent Userland Tool');
         $user = Auth::guard(config('kontour.guard'))->user();
         $visit = new UrlVisit($link, $user);
         event(new AdminToolShowVisited($visit));

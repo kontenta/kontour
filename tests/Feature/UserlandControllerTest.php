@@ -30,7 +30,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSee('<main');
         $response->assertSee('UserlandAdminWidget');
         $response->assertDontSee('UnauthorizedWidget');
-        $response->assertSee(route('userland.index'));
+        $response->assertSee('<a href="'.route('userland.index').'">Userland Tool</a>');
         $response->assertSee('>main<');
         Event::assertDispatched(AdminToolShowVisited::class, function($e) {
             $now = new \DateTimeImmutable();
@@ -38,5 +38,11 @@ class UserlandControllerTest extends UserlandAdminToolTest
                 $this->user->is($e->visit->getUser()) and
                 $now->getTimestamp() - $e->visit->getDateTime()->getTimestamp() >= 0;
         });
+    }
+
+    public function test_recent_links_widget()
+    {
+        $response = $this->actingAs($this->user)->get(route('userland.index'));
+        $response->assertSee('<a href="'.route('userland.index').'">Recent Userland Tool</a>');
     }
 }
