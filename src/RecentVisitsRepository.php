@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Kontenta\Kontour\Events\AdminToolShowVisited;
+use Kontenta\Kontour\Events\AdminToolEditVisited;
 use Kontenta\Kontour\Contracts\RecentVisitsRepository as RecentVisitsRepositoryContract;
 
 class RecentVisitsRepository implements RecentVisitsRepositoryContract
@@ -23,7 +24,7 @@ class RecentVisitsRepository implements RecentVisitsRepositoryContract
      */
     public function getEditVisits(): Collection
     {
-        return new Collection();
+        return Cache::get('recentEditVisits', new Collection());
     }
     
     public function subscribe($events)
@@ -41,6 +42,9 @@ class RecentVisitsRepository implements RecentVisitsRepositoryContract
 
     public function handleEdit(AdminToolEditVisited $event)
     {
+        $visits = Cache::get('recentEditVisits', new Collection());
+        $visits->push($event->visit);
+        Cache::forever('recentEditVisits', $visits);
     }
 
     

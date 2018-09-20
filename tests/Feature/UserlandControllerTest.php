@@ -3,9 +3,12 @@
 namespace Kontenta\KontourSupport\Tests\Feature;
 
 use Illuminate\Support\Facades\Event;
-use Kontenta\Kontour\Events\AdminToolShowVisited;
 use Kontenta\KontourSupport\Tests\UserlandAdminToolTest;
 use Kontenta\KontourSupport\Tests\Feature\Fakes\User;
+use Kontenta\Kontour\Events\AdminToolEditVisited;
+use Kontenta\Kontour\Events\AdminToolShowVisited;
+use Kontenta\KontourSupport\AdminLink;
+use Kontenta\KontourSupport\UrlVisit;
 
 class UserlandControllerTest extends UserlandAdminToolTest
 {
@@ -42,8 +45,17 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
     public function test_recent_visits_widgets()
     {
+        $link = new AdminLink(route('userland.edit'), 'Recent Userland Tool');
+        $visit = new UrlVisit($link, $this->user);
+        event(new AdminToolEditVisited($visit));
+        event(new AdminToolEditVisited($visit));
+
         $response = $this->actingAs($this->user)->get(route('userland.index'));
+
         $numberOfMatches = substr_count($response->content(), '<a href="'.route('userland.index').'">Recent Userland Tool</a>');
+        $this->assertEquals(1, $numberOfMatches);
+
+        $numberOfMatches = substr_count($response->content(), '<a href="'.route('userland.edit').'">Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);
     }
 }
