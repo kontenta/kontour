@@ -33,6 +33,10 @@ class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract
     {
         return $this->repository->getEditVisits()->filter(function($visit) {
             return !$visit->getUser()->is(Auth::guard(config('kontour.guard'))->user());
+        })->unique(function ($visit) {
+            return $visit->getLink()->getUrl();
+        })->sortByDesc(function ($visit) {
+            return $visit->getDateTime();
         });
     }
 }

@@ -45,8 +45,16 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
     public function test_recent_visits_widgets()
     {
+        $otherUser = factory(User::class)->create();
         $link = new AdminLink(route('userland.edit'), 'Recent Userland Tool');
         $visit = new UrlVisit($link, $this->user);
+        event(new AdminToolEditVisited($visit));
+        event(new AdminToolEditVisited($visit));
+        $link = new AdminLink(route('userland.index'), 'Other Recent Userland Tool');
+        $visit = new UrlVisit($link, $otherUser);
+        event(new AdminToolShowVisited($visit));
+        $link = new AdminLink(route('userland.edit'), 'Other Recent Userland Tool');
+        $visit = new UrlVisit($link, $otherUser);
         event(new AdminToolEditVisited($visit));
         event(new AdminToolEditVisited($visit));
 
@@ -57,5 +65,10 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
         $numberOfMatches = substr_count($response->content(), '<a href="'.route('userland.edit').'">Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);
+
+        $numberOfMatches = substr_count($response->content(), '<a href="'.route('userland.edit').'">Other Recent Userland Tool</a>');
+        $this->assertEquals(1, $numberOfMatches);
+
+        $response->assertDontSee('<a href="'.route('userland.index').'">Other Recent Userland Tool</a>');
     }
 }
