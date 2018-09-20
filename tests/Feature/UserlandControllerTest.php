@@ -43,8 +43,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
     public function test_recent_visits_widgets()
     {
         $response = $this->actingAs($this->user)->get(route('userland.index'));
-        $delimiter = '/';
-        preg_match_all($delimiter.preg_quote('<a href="'.route('userland.index').'">Recent Userland Tool</a>', $delimiter).$delimiter, $response->content(), $matches);
-        $this->assertCount(1, $matches[0]);
+        $numberOfMatches = substr_count($response->content(), '<a href="'.route('userland.index').'">Recent Userland Tool</a>');
+        $this->assertEquals(1, $numberOfMatches);
     }
 }
