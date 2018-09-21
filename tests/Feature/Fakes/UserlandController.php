@@ -4,9 +4,9 @@ namespace Kontenta\KontourSupport\Tests\Feature\Fakes;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
-use Kontenta\Kontour\Events\AdminToolShowVisited;
+use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\KontourSupport\AdminLink;
-use Kontenta\KontourSupport\UrlVisit;
+use Kontenta\Kontour\ShowAdminVisit;
 
 class UserlandController extends BaseController
 {
@@ -14,8 +14,8 @@ class UserlandController extends BaseController
     {
         $link = new AdminLink(url()->full(), 'Recent Userland Tool');
         $user = Auth::guard(config('kontour.guard'))->user();
-        $visit = new UrlVisit($link, $user);
-        event(new AdminToolShowVisited($visit));
+        $visit = new ShowAdminVisit($link, $user);
+        event(new AdminToolVisited($visit));
         return view('userland::index');
     }
 

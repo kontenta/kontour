@@ -5,10 +5,10 @@ namespace Kontenta\KontourSupport\Tests\Feature;
 use Illuminate\Support\Facades\Event;
 use Kontenta\KontourSupport\Tests\UserlandAdminToolTest;
 use Kontenta\KontourSupport\Tests\Feature\Fakes\User;
-use Kontenta\Kontour\Events\AdminToolEditVisited;
-use Kontenta\Kontour\Events\AdminToolShowVisited;
+use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\KontourSupport\AdminLink;
-use Kontenta\KontourSupport\UrlVisit;
+use Kontenta\Kontour\EditAdminVisit;
+use Kontenta\Kontour\ShowAdminVisit;
 
 class UserlandControllerTest extends UserlandAdminToolTest
 {
@@ -29,13 +29,13 @@ class UserlandControllerTest extends UserlandAdminToolTest
         Event::fake();
 
         $response = $this->actingAs($this->user)->get(route('userland.index'));
-        
+
         $response->assertSee('<main');
         $response->assertSee('UserlandAdminWidget');
         $response->assertDontSee('UnauthorizedWidget');
         $response->assertSee('<a href="'.route('userland.index').'">Userland Tool</a>');
         $response->assertSee('>main<');
-        Event::assertDispatched(AdminToolShowVisited::class, function($e) {
+        Event::assertDispatched(AdminToolVisited::class, function($e) {
             $now = new \DateTimeImmutable();
             return $e->visit->getLink()->getUrl() == route('userland.index') and
                 $this->user->is($e->visit->getUser()) and
@@ -47,19 +47,21 @@ class UserlandControllerTest extends UserlandAdminToolTest
     {
         $otherUser = factory(User::class)->create();
         $link = new AdminLink(route('userland.edit'), 'Recent Userland Tool');
-        $visit = new UrlVisit($link, $this->user);
-        event(new AdminToolEditVisited($visit));
-        event(new AdminToolEditVisited($visit));
+        $visit = new EditAdminVisit($link, $this->user);
+        event(new AdminToolVisited($visit));
+        event(new AdminToolVisited($visit));
         $link = new AdminLink(route('userland.index'), 'Other Recent Userland Tool');
-        $visit = new UrlVisit($link, $otherUser);
-        event(new AdminToolShowVisited($visit));
+        $visit = new ShowAdminVisit($link, $otherUser);
+        event(new AdminToolVisited($visit));
         $link = new AdminLink(route('userland.edit'), 'Other Recent Userland Tool');
-        $visit = new UrlVisit($link, $otherUser);
-        event(new AdminToolEditVisited($visit));
-        event(new AdminToolEditVisited($visit));
+        $visit = new EditAdminVisit($link, $otherUser);
+        event(new AdminToolVisited($visit));
+        event(new AdminToolVisited($visit));
 
         $response = $this->actingAs($this->user)->get(route('userland.index'));
-        
+
+        $response->assertOk();
+
         // Check personal links
         $numberOfMatches = substr_count($response->content(), '<li><a href="'.route('userland.index').'">Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);

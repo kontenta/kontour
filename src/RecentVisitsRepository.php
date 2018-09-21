@@ -5,47 +5,37 @@ namespace Kontenta\KontourSupport;
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use Kontenta\Kontour\Events\AdminToolShowVisited;
-use Kontenta\Kontour\Events\AdminToolEditVisited;
+use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\Kontour\Contracts\RecentVisitsRepository as RecentVisitsRepositoryContract;
 
 class RecentVisitsRepository implements RecentVisitsRepositoryContract
 {
-    /**
-     * Return all "show" UrlVisits in storage
-     */
+    private $keyPrefix = 'kontour-recent';
+
     public function getShowVisits(): Collection
     {
-        return Cache::get('recentShowVisits', new Collection());
+        return Cache::get($this->generateCacheKey('show'), new Collection());
     }
 
-    /**
-     * Return all "edit" UrlVisits in storage
-     */
     public function getEditVisits(): Collection
     {
-        return Cache::get('recentEditVisits', new Collection());
+        return Cache::get($this->generateCacheKey('edit'), new Collection());
     }
-    
+
     public function subscribe($events)
     {
-        $events->listen(AdminToolShowVisited::class, [$this, 'handleShow']);
-        $events->listen(AdminToolEditVisited::class, [$this, 'handleEdit']);
+        $events->listen(AdminToolVisited::class, [$this, 'handle']);
     }
 
-    public function handleShow(AdminToolShowVisited $event)
+    public function handle(AdminToolVisited $event)
     {
-        $visits = Cache::get('recentShowVisits', new Collection());
+        $key = $this->generateCacheKey($event->visit->getType());
+        $visits = Cache::get($key, new Collection());
         $visits->push($event->visit);
-        Cache::forever('recentShowVisits', $visits);
+        Cache::forever($key, $visits);
     }
 
-    public function handleEdit(AdminToolEditVisited $event)
-    {
-        $visits = Cache::get('recentEditVisits', new Collection());
-        $visits->push($event->visit);
-        Cache::forever('recentEditVisits', $visits);
+    protected function generateCacheKey($type) {
+        return 'kontour-recent-visits-'.$type;
     }
-
-    
 }
