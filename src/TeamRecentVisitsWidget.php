@@ -4,9 +4,7 @@ namespace Kontenta\KontourSupport;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Collection;
 use Kontenta\Kontour\Contracts\TeamRecentVisitsWidget as TeamRecentVisitsWidgetContract;
-use Kontenta\Kontour\Contracts\AdminLink;
 
 class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract
 {
@@ -19,9 +17,9 @@ class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract
 
     public function toHtml()
     {
-        return '<ul>'.$this->getVisits()->map(function ($visit) {
-                return '<li data-kontour-username="'.$visit->getUser()->getDisplayName().'">'.$visit->getLink()->toHtml().'</li>';
-        })->implode("\n").'</ul>';
+        return '<ul>' . $this->getVisits()->map(function ($visit) {
+            return '<li data-kontour-visit-type="' . $visit->getType() . '" data-kontour-username="' . $visit->getUser()->getDisplayName() . '">' . $visit->getLink()->toHtml() . '</li>';
+        })->implode("\n") . '</ul>';
     }
 
     public function isAuthorized(Authorizable $user = null): bool
@@ -31,7 +29,7 @@ class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract
 
     private function getVisits()
     {
-        return $this->repository->getEditVisits()->filter(function($visit) {
+        return $this->repository->getEditVisits()->filter(function ($visit) {
             return !$visit->getUser()->is(Auth::guard(config('kontour.guard'))->user());
         })->unique(function ($visit) {
             return $visit->getLink()->getUrl();
