@@ -2,10 +2,10 @@
 
 namespace Kontenta\Kontour\Events;
 
-use Kontenta\Kontour\Contracts\UrlVisit;
+use Kontenta\Kontour\Contracts\AdminVisit;
 use Illuminate\Queue\SerializesModels;
 
-abstract class AdminToolVisited
+final class AdminToolVisited
 {
     use SerializesModels;
 
@@ -14,10 +14,10 @@ abstract class AdminToolVisited
     /**
      * Create a new event instance.
      *
-     * @param UrlVisit
+     * @param AdminVisit
      * @return void
      */
-    public function __construct(UrlVisit $visit)
+    public function __construct(AdminVisit $visit)
     {
         $this->visit = $visit;
     }
