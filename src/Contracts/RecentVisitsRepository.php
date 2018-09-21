@@ -7,12 +7,12 @@ use Illuminate\Support\Collection;
 interface RecentVisitsRepository
 {
     /**
-     * Return all "show" UrlVisits in storage
+     * Return all ShowAdminVisits in storage
      */
     public function getShowVisits(): Collection;
 
     /**
-     * Return all "edit" UrlVisits in storage
+     * Return all EditAdminVisits in storage
      */
     public function getEditVisits(): Collection;
 }
