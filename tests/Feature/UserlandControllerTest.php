@@ -59,14 +59,16 @@ class UserlandControllerTest extends UserlandAdminToolTest
         event(new AdminToolEditVisited($visit));
 
         $response = $this->actingAs($this->user)->get(route('userland.index'));
-
-        $numberOfMatches = substr_count($response->content(), '<a href="'.route('userland.index').'">Recent Userland Tool</a>');
+        
+        // Check personal links
+        $numberOfMatches = substr_count($response->content(), '<li><a href="'.route('userland.index').'">Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);
 
-        $numberOfMatches = substr_count($response->content(), '<a href="'.route('userland.edit').'">Recent Userland Tool</a>');
+        $numberOfMatches = substr_count($response->content(), '<li><a href="'.route('userland.edit').'">Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);
 
-        $numberOfMatches = substr_count($response->content(), '<a href="'.route('userland.edit').'">Other Recent Userland Tool</a>');
+        // Check team links
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-username="'.$otherUser->getDisplayName().'"><a href="'.route('userland.edit').'">Other Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);
 
         $response->assertDontSee('<a href="'.route('userland.index').'">Other Recent Userland Tool</a>');

@@ -3,8 +3,8 @@
 namespace Kontenta\KontourSupport;
 
 use Kontenta\Kontour\Contracts\UrlVisit as UrlVisitContract;
-use Kontenta\Kontour\Contracts\AdminLink as AdminLinkContract;
-use Illuminate\Contracts\Auth\Access\Authorizable;
+use Kontenta\Kontour\Contracts\AdminLink;
+use Kontenta\Kontour\Contracts\AdminUser;
 use Illuminate\Queue\SerializesModels;
 
 class UrlVisit implements UrlVisitContract
@@ -15,19 +15,19 @@ class UrlVisit implements UrlVisitContract
     private $user;
     private $datetime;
 
-    public function __construct(AdminLink $link, Authorizable $user)
+    public function __construct(AdminLink $link, AdminUser $user)
     {
         $this->link = $link;
         $this->user = $user;
         $this->datetime = new \DateTimeImmutable();
     }
 
-    public function getLink(): AdminLinkContract
+    public function getLink(): AdminLink
     {
         return $this->link;
     }
 
-    public function getUser(): Authorizable
+    public function getUser(): AdminUser
     {
         return $this->user;
     }

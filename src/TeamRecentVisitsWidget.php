@@ -20,7 +20,7 @@ class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract
     public function toHtml()
     {
         return '<ul>'.$this->getVisits()->map(function ($visit) {
-                return '<li>'.$visit->getLink()->toHtml().'</li>';
+                return '<li data-kontour-username="'.$visit->getUser()->getDisplayName().'">'.$visit->getLink()->toHtml().'</li>';
         })->implode("\n").'</ul>';
     }
 
