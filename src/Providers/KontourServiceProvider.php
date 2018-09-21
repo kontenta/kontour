@@ -8,10 +8,14 @@ use Kontenta\KontourSupport\AdminRouteManager;
 use Kontenta\KontourSupport\AdminViewManager;
 use Kontenta\KontourSupport\AdminWidgetManager;
 use Kontenta\KontourSupport\MenuWidget;
+use Kontenta\KontourSupport\RecentVisitsRepository;
+use Kontenta\KontourSupport\PersonalRecentVisitsWidget;
+use Kontenta\KontourSupport\TeamRecentVisitsWidget;
 use Kontenta\KontourSupport\Http\Middleware\AuthenticateAdmin;
 use Kontenta\KontourSupport\Http\Middleware\RedirectIfAuthenticated;
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
+use Illuminate\Support\Facades\Event;
 
 class KontourServiceProvider extends ServiceProvider
 {
@@ -71,6 +75,24 @@ class KontourServiceProvider extends ServiceProvider
             MenuWidget::class,
             true
         );
+
+        $this->app->bindIf(
+            \Kontenta\Kontour\Contracts\RecentVisitsRepository::class,
+            RecentVisitsRepository::class,
+            true
+        );
+
+        $this->app->bindIf(
+            \Kontenta\Kontour\Contracts\PersonalRecentVisitsWidget::class,
+            PersonalRecentVisitsWidget::class,
+            true
+        );
+
+        $this->app->bindIf(
+            \Kontenta\Kontour\Contracts\TeamRecentVisitsWidget::class,
+            TeamRecentVisitsWidget::class,
+            true
+        );
     }
 
     /**
@@ -79,9 +101,8 @@ class KontourServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerResources();
-
         $this->registerRoutes();
-
+        $this->registerEventListeners(); 
         $this->registerWidgets();
 
         if ($this->app->runningInConsole()) {
@@ -115,6 +136,11 @@ class KontourServiceProvider extends ServiceProvider
         if (config('kontour.passwords')) {
             $this->registerAdminGuestRoutes(__DIR__ . '/../../routes/passwords.php');
         }
+    }
+
+    protected function registerEventListeners()
+    {
+        Event::subscribe(RecentVisitsRepository::class);
     }
 
     protected function registerWidgets()
