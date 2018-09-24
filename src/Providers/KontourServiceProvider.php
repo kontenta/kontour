@@ -7,10 +7,10 @@ use Illuminate\Support\ServiceProvider;
 use Kontenta\KontourSupport\AdminRouteManager;
 use Kontenta\KontourSupport\AdminViewManager;
 use Kontenta\KontourSupport\AdminWidgetManager;
-use Kontenta\KontourSupport\MenuWidget;
+use Kontenta\KontourSupport\Widgets\MenuWidget;
 use Kontenta\KontourSupport\RecentVisitsRepository;
-use Kontenta\KontourSupport\PersonalRecentVisitsWidget;
-use Kontenta\KontourSupport\TeamRecentVisitsWidget;
+use Kontenta\KontourSupport\Widgets\PersonalRecentVisitsWidget;
+use Kontenta\KontourSupport\Widgets\TeamRecentVisitsWidget;
 use Kontenta\KontourSupport\Http\Middleware\AuthenticateAdmin;
 use Kontenta\KontourSupport\Http\Middleware\RedirectIfAuthenticated;
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
@@ -102,7 +102,7 @@ class KontourServiceProvider extends ServiceProvider
     {
         $this->registerResources();
         $this->registerRoutes();
-        $this->registerEventListeners(); 
+        $this->registerEventListeners();
         $this->registerWidgets();
 
         if ($this->app->runningInConsole()) {
