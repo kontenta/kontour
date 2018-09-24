@@ -1,4 +1,4 @@
-<ul>
+<ul data-kontour-widget="menu">
 @foreach($links as $heading => $headingLinks)
   <li>
     <span>{{ $heading }}</span>
