@@ -17,9 +17,9 @@ class PersonalRecentVisitsWidget implements PersonalRecentVisitsWidgetContract
 
     public function toHtml()
     {
-        return '<ul>' . $this->getVisits()->map(function ($visit) {
+        return '<aside data-kontour-widget-name="PersonalRecentVisitsWidget"><header>Recent</header><ul>' . $this->getVisits()->map(function ($visit) {
             return '<li data-kontour-visit-type="' . $visit->getType() . '">' . $visit->getLink()->toHtml() . '</li>';
-        })->implode("\n") . '</ul>';
+        })->implode("\n") . '</ul></aside>';
     }
 
     public function isAuthorized(Authorizable $user = null): bool
