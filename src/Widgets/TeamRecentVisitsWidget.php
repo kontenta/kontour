@@ -1,9 +1,11 @@
 <?php
 
-namespace Kontenta\KontourSupport;
+namespace Kontenta\KontourSupport\Widgets;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
+use Kontenta\KontourSupport\RecentVisitsRepository;
 use Kontenta\Kontour\Contracts\TeamRecentVisitsWidget as TeamRecentVisitsWidgetContract;
 
 class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract
@@ -17,9 +19,7 @@ class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract
 
     public function toHtml()
     {
-        return '<aside data-kontour-widget="TeamRecentVisitsWidget"><header>Team Recent</header><ul>' . $this->getVisits()->map(function ($visit) {
-            return '<li data-kontour-visit-type="' . $visit->getType() . '" data-kontour-username="' . $visit->getUser()->getDisplayName() . '">' . $visit->getLink()->toHtml() . '</li>';
-        })->implode("\n") . '</ul></aside>';
+        return View::make('kontour::widgets.teamRecentVisits', ['visits' => $this->getVisits()])->render();
     }
 
     public function isAuthorized(Authorizable $user = null): bool

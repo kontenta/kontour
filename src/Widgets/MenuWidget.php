@@ -1,11 +1,12 @@
 <?php
 
-namespace Kontenta\KontourSupport;
+namespace Kontenta\KontourSupport\Widgets;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Support\Collection;
 use Kontenta\Kontour\Contracts\MenuWidget as MenuWidgetContract;
 use Kontenta\Kontour\Contracts\AdminLink;
+use Illuminate\Support\Facades\View;
 
 class MenuWidget implements MenuWidgetContract
 {
@@ -21,11 +22,7 @@ class MenuWidget implements MenuWidgetContract
 
     public function toHtml()
     {
-        return '<ul>'.$this->links->map(function ($links, $heading) {
-            return '<li><span>'.$heading.'</span><ul>'.$links->map(function ($link) {
-                return '<li>'.$link->toHtml().'</li>';
-            })->implode("\n").'</ul></li>';
-        })->implode("\n").'</ul>';
+        return View::make('kontour::widgets.menu', ['links' => $this->links])->render();
     }
 
     public function addLink(AdminLink $link, string $desiredHeading = null): MenuWidgetContract
