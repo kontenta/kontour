@@ -17,7 +17,7 @@ class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract
 
     public function toHtml()
     {
-        return '<aside data-kontour-widget-name="TeamRecentVisitsWidget"><header>Team Recent</header><ul>' . $this->getVisits()->map(function ($visit) {
+        return '<aside data-kontour-widget="TeamRecentVisitsWidget"><header>Team Recent</header><ul>' . $this->getVisits()->map(function ($visit) {
             return '<li data-kontour-visit-type="' . $visit->getType() . '" data-kontour-username="' . $visit->getUser()->getDisplayName() . '">' . $visit->getLink()->toHtml() . '</li>';
         })->implode("\n") . '</ul></aside>';
     }
