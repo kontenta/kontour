@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\Htmlable;
 
 interface AdminLink extends Authorizes, Htmlable
 {
-    public function getUrl(): string;
+    public function getUrl(): ?string;
 
     public function getName(): string;
 
