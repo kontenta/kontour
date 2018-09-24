@@ -1,4 +1,4 @@
-<aside data-kontour-widget="PersonalRecentVisitsWidget">
+<aside data-kontour-widget="personalRecentVisits">
   <header>Recent</header>
   <ul>
   @foreach($visits as $visit)
