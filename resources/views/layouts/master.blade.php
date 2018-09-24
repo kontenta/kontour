@@ -11,23 +11,21 @@
       <button type="submit">Logout</button>
     </form>
   </header>
-  <nav>
+  <nav data-kontour-section="{{ $view_manager->navSection() }}">
     @foreach($widget_manager->getWidgetsForSection($view_manager->navSection()) as $widget)
       {{ $widget }}
     @endforeach
   </nav>
-  <main>
-  <!-- Section {{ $view_manager->mainSection() }} -->
+  <main data-kontour-section="{{ $view_manager->mainSection() }}">
   @yield($view_manager->mainSection())
-  <!-- End section {{ $view_manager->mainSection() }} -->
   </main>
-  <aside>
+  <section data-kontour-section="{{ $view_manager->widgetSection() }}">
   @section($view_manager->widgetSection())
     @foreach($widget_manager->getWidgetsForSection($view_manager->widgetSection()) as $widget)
       {{ $widget }}
     @endforeach
   @show
-  </aside>
+  </section>
 @endsection
 
 @push('styles')

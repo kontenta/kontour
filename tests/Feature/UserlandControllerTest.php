@@ -63,6 +63,9 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertOk();
 
         // Check personal links
+        $response->assertSee('<aside data-kontour-widget="PersonalRecentVisitsWidget">');
+        $response->assertSee('<header>Recent</header>');
+
         $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="show"><a href="' . route('userland.index') . '">Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);
 
@@ -70,6 +73,9 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $this->assertEquals(1, $numberOfMatches);
 
         // Check team links
+        $response->assertSee('<aside data-kontour-widget="TeamRecentVisitsWidget">');
+        $response->assertSee('<header>Team Recent</header>');
+
         $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" data-kontour-username="' . $otherUser->getDisplayName() . '"><a href="' . route('userland.edit') . '">Other Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);
 
