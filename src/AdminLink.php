@@ -21,7 +21,7 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
         $this->description = $description;
     }
 
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
@@ -38,11 +38,16 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
 
     public function toHtml(): string
     {
-        $attributes[] = 'href="' . htmlspecialchars($this->getUrl()) . '"';
+        $attributes = [];
+
+        if ($this->getUrl()) {
+            $attributes[] = 'href="' . htmlspecialchars($this->getUrl()) . '"';
+        }
+
         if ($this->getDescription()) {
             $attributes[] = 'title="' . htmlspecialchars($this->getDescription()) . '"';
         }
 
-        return '<a '.implode(' ', $attributes).'>'.$this->getName().'</a>';
+        return '<a ' . implode(' ', $attributes) . '>' . $this->getName() . '</a>';
     }
 }
