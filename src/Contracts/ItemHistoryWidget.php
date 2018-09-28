@@ -10,5 +10,5 @@ interface ItemHistoryWidget extends AdminWidget
      * @param \DateTimeImmutable $datetime
      * @param string $action
      */
-    public function addEntry(AdminUser $user, \DateTimeImmutable $datetime, string $action = null ): ItemHistoryWidget;
+    public function addEntry(AdminUser $user, \DateTimeImmutable $datetime, string $action = null): ItemHistoryWidget;
 }
