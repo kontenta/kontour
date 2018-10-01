@@ -6,9 +6,19 @@ interface ItemHistoryWidget extends AdminWidget
 {
     /**
      * Add an entry to an item's history
-     * @param AdminUser $user
-     * @param \DateTimeImmutable $datetime
-     * @param string $action
+     * @return $this
      */
-    public function addEntry(AdminUser $user, \DateTimeImmutable $datetime, string $action = null): ItemHistoryWidget;
+    public function addEntry(string $action, \DateTime $datetime, AdminUser $user = null): ItemHistoryWidget;
+    
+    /**
+     * Add a create entry to an item's history
+     * @return $this
+     */
+    public function addCreateEntry(\DateTime $datetime, AdminUser $user = null): ItemHistoryWidget;
+    
+    /**
+     * Add an update entry to an item's history
+     * @return $this
+     */
+    public function addUpdateEntry(\DateTime $datetime, AdminUser $user = null): ItemHistoryWidget;
 }
