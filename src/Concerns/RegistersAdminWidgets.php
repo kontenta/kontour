@@ -22,6 +22,6 @@ trait RegistersAdminWidgets
 
     protected function resolveAdminWidgetManager(): \Kontenta\Kontour\Contracts\AdminWidgetManager
     {
-        return $this->app->make(\Kontenta\Kontour\Contracts\AdminWidgetManager::class);
+        return app(\Kontenta\Kontour\Contracts\AdminWidgetManager::class);
     }
 }
