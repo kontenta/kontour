@@ -7,9 +7,13 @@ use Illuminate\Support\Facades\Auth;
 use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\KontourSupport\AdminLink;
 use Kontenta\Kontour\ShowAdminVisit;
+use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
+use Kontenta\Kontour\Contracts\ItemHistoryWidget;
 
 class UserlandController extends BaseController
 {
+    use RegistersAdminWidgets;
+
     public function index()
     {
         $link = new AdminLink(url()->full(), 'Recent Userland Tool');
@@ -36,7 +40,11 @@ class UserlandController extends BaseController
 
     public function edit($id)
     {
-        //
+        $widget = app(ItemHistoryWidget::class);
+        $this->registerAdminWidget($widget);
+        $widget->addCreateEntry(new \DateTime(), Auth::guard(config('kontour.guard'))->user());
+
+        return view('userland::index');
     }
 
     public function update($id)
