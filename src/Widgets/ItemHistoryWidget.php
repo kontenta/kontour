@@ -33,14 +33,14 @@ class ItemHistoryWidget implements ItemHistoryWidgetContract
         return $this;
     }
     
-    public function addCreateEntry(\DateTime $datetime, AdminUser $user = null): ItemHistoryWidgetContract
+    public function addCreatedEntry(\DateTime $datetime, AdminUser $user = null): ItemHistoryWidgetContract
     {
-        return $this->addEntry('create', $datetime, $user);
+        return $this->addEntry('created', $datetime, $user);
     }
 
-    public function addUpdateEntry(\DateTime $datetime, AdminUser $user = null): ItemHistoryWidgetContract
+    public function addUpdatedEntry(\DateTime $datetime, AdminUser $user = null): ItemHistoryWidgetContract
     {
-        return $this->addEntry('update', $datetime, $user);
+        return $this->addEntry('updated', $datetime, $user);
     }
 
     public function isAuthorized(Authorizable $user = null): bool

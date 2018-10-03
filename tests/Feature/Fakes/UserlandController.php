@@ -42,7 +42,8 @@ class UserlandController extends BaseController
     {
         $widget = app(ItemHistoryWidget::class);
         $this->registerAdminWidget($widget);
-        $widget->addCreateEntry(new \DateTime(), Auth::guard(config('kontour.guard'))->user());
+        $widget->addCreatedEntry(new \DateTime(), Auth::guard(config('kontour.guard'))->user());
+        $widget->addUpdatedEntry(new \DateTime(), Auth::guard(config('kontour.guard'))->user());
 
         return view('userland::index');
     }
