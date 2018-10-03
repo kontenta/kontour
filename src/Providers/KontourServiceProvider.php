@@ -9,6 +9,7 @@ use Kontenta\KontourSupport\AdminViewManager;
 use Kontenta\KontourSupport\AdminWidgetManager;
 use Kontenta\KontourSupport\Widgets\MenuWidget;
 use Kontenta\KontourSupport\RecentVisitsRepository;
+use Kontenta\KontourSupport\Widgets\ItemHistoryWidget;
 use Kontenta\KontourSupport\Widgets\PersonalRecentVisitsWidget;
 use Kontenta\KontourSupport\Widgets\TeamRecentVisitsWidget;
 use Kontenta\KontourSupport\Http\Middleware\AuthenticateAdmin;
@@ -91,6 +92,12 @@ class KontourServiceProvider extends ServiceProvider
         $this->app->bindIf(
             \Kontenta\Kontour\Contracts\TeamRecentVisitsWidget::class,
             TeamRecentVisitsWidget::class,
+            true
+        );
+
+        $this->app->bindIf(
+            \Kontenta\Kontour\Contracts\ItemHistoryWidget::class,
+            ItemHistoryWidget::class,
             true
         );
     }

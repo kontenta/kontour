@@ -41,7 +41,7 @@ class UserlandServiceProvider extends ServiceProvider
                 'namespace' => 'Kontenta\KontourSupport\Tests\Feature\Fakes',
             ], function ($router) {
                 $router->get('/', 'UserlandController@index')->name('userland.index');
-                $router->get('edit', 'UserlandController@edit')->name('userland.edit');
+                $router->get('edit/{id}', 'UserlandController@edit')->name('userland.edit');
             });
         });
     }
