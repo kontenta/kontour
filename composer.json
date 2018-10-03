@@ -1,5 +1,6 @@
 {
   "name": "kontenta/kontour-support",
+  "description": "Supporting implementations for kontenta/kontour",
   "license": "MIT",
   "require": {
     "php": ">=7.1.0",
