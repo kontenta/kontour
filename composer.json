@@ -3,14 +3,15 @@
   "license": "MIT",
   "require": {
     "php": ">=7.1.0",
-    "laravel/framework": "5.5.*|5.6.*"
+    "laravel/framework": "5.5.*|5.6.*|5.7.*"
   },
   "require-dev": {
     "kontenta/kontour": "dev-master",
+    "laravel/dusk": ">2.0.13",
+    "mockery/mockery": "^1.2",
     "orchestra/testbench": "^3.5",
     "orchestra/testbench-dusk": "^3.5.5|3.6.x-dev",
-    "phpunit/phpunit": ">6.5",
-    "laravel/dusk": ">2.0.13"
+    "phpunit/phpunit": ">6.5"
   },
   "autoload": {
     "psr-4": {
