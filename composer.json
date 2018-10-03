@@ -4,7 +4,7 @@
   "require": {
     "php": ">=7.1.0",
     "laravel/framework": "~5.5",
-    "kontenta/kontour-support": "dev-master"
+    "kontenta/kontour-support": "~0.1"
   },
   "autoload": {
     "psr-4": {
