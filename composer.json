@@ -30,7 +30,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Kontenta\\KontourSupport\\KontourServiceProvider"
+        "Kontenta\\KontourSupport\\Providers\\KontourServiceProvider"
       ],
       "aliases": {}
     }
