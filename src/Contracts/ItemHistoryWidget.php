@@ -14,11 +14,11 @@ interface ItemHistoryWidget extends AdminWidget
      * Add a create entry to an item's history
      * @return $this
      */
-    public function addCreateEntry(\DateTime $datetime, AdminUser $user = null): ItemHistoryWidget;
+    public function addCreatedEntry(\DateTime $datetime, AdminUser $user = null): ItemHistoryWidget;
     
     /**
      * Add an update entry to an item's history
      * @return $this
      */
-    public function addUpdateEntry(\DateTime $datetime, AdminUser $user = null): ItemHistoryWidget;
+    public function addUpdatedEntry(\DateTime $datetime, AdminUser $user = null): ItemHistoryWidget;
 }
