@@ -60,7 +60,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
         $response = $this->actingAs($this->user)->get(route('userland.index'));
 
-        $response->assertOk();
+        $response->assertSuccessful();
 
         // Check personal links
         $response->assertSee('<aside data-kontour-widget="personalRecentVisits">');
