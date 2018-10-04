@@ -54,8 +54,9 @@ class UserlandControllerTest extends UserlandAdminToolTest
     public function test_user_account_widget()
     {
         $response = $this->actingAs($this->user)->get(route('userland.index'));
-
         $response->assertSee('<section data-kontour-widget="userAccount">');
+        $response->assertSee($this->user->getDisplayName());
+        $response->assertSee('<button type="submit">Logout</button>');
     }
 
     public function test_recent_visits_widgets()

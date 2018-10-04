@@ -17,6 +17,6 @@ class UserAccountWidget implements UserAccountWidgetContract
 
     public function isAuthorized(Authorizable $user = null): bool
     {
-        return true;
+        return (bool) $user;
     }
 }
