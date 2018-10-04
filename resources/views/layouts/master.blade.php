@@ -29,6 +29,11 @@
     @endforeach
   @show
   </section>
+  <footer data-kontour-section="{{ $view_manager->footerSection() }}">
+    @foreach($widget_manager->getWidgetsForSection($view_manager->footerSection()) as $widget)
+      {{ $widget }}
+    @endforeach
+  </footer>
 @endsection
 
 @push('styles')
