@@ -3,20 +3,21 @@
 namespace Kontenta\KontourSupport\Providers;
 
 use Illuminate\Auth\AuthManager;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Kontenta\KontourSupport\AdminRouteManager;
 use Kontenta\KontourSupport\AdminViewManager;
 use Kontenta\KontourSupport\AdminWidgetManager;
-use Kontenta\KontourSupport\Widgets\MenuWidget;
-use Kontenta\KontourSupport\RecentVisitsRepository;
-use Kontenta\KontourSupport\Widgets\ItemHistoryWidget;
-use Kontenta\KontourSupport\Widgets\PersonalRecentVisitsWidget;
-use Kontenta\KontourSupport\Widgets\TeamRecentVisitsWidget;
 use Kontenta\KontourSupport\Http\Middleware\AuthenticateAdmin;
 use Kontenta\KontourSupport\Http\Middleware\RedirectIfAuthenticated;
+use Kontenta\KontourSupport\RecentVisitsRepository;
+use Kontenta\KontourSupport\Widgets\ItemHistoryWidget;
+use Kontenta\KontourSupport\Widgets\MenuWidget;
+use Kontenta\KontourSupport\Widgets\PersonalRecentVisitsWidget;
+use Kontenta\KontourSupport\Widgets\TeamRecentVisitsWidget;
+use Kontenta\KontourSupport\Widgets\UserAccountWidget;
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
-use Illuminate\Support\Facades\Event;
 
 class KontourServiceProvider extends ServiceProvider
 {
@@ -74,6 +75,12 @@ class KontourServiceProvider extends ServiceProvider
         $this->app->bindIf(
             \Kontenta\Kontour\Contracts\MenuWidget::class,
             MenuWidget::class,
+            true
+        );
+
+        $this->app->bindIf(
+            \Kontenta\Kontour\Contracts\UserAccountWidget::class,
+            UserAccountWidget::class,
             true
         );
 
