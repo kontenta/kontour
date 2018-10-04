@@ -5,11 +5,6 @@
 
 @section('body')
   <header data-kontour-section="{{ $view_manager->headerSection() }}">
-    {{-- TODO: make this logout form part of a user-widget --}}
-    <form action="{{ route('kontour.logout') }}" method="post">
-      {{ csrf_field() }}
-      <button type="submit">Logout</button>
-    </form>
     @foreach($widget_manager->getWidgetsForSection($view_manager->headerSection()) as $widget)
       {{ $widget }}
     @endforeach

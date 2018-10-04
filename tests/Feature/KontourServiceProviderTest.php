@@ -5,6 +5,7 @@ namespace Kontenta\KontourSupport\Tests\Feature;
 use Illuminate\Support\Facades\Route;
 use Kontenta\KontourSupport\Tests\IntegrationTest;
 use Kontenta\Kontour\Contracts\MenuWidget;
+use Kontenta\Kontour\Contracts\UserAccountWidget;
 
 class KontourServiceProviderTest extends IntegrationTest
 {
@@ -20,8 +21,13 @@ class KontourServiceProviderTest extends IntegrationTest
         $this->assertInstanceOf(\Illuminate\Contracts\Auth\Guard::class, $guard);
     }
 
-    public function test_menu_widget_can_resolved()
+    public function test_menu_widget_can_be_resolved()
     {
         $this->assertInstanceOf(MenuWidget::class, app(MenuWidget::class));
+    }
+
+    public function test_user_account_widget_can_be_resolved()
+    {
+        $this->assertInstanceOf(UserAccountWidget::class, app(UserAccountWidget::class));
     }
 }
