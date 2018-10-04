@@ -3,6 +3,7 @@
 namespace Kontenta\KontourSupport\Widgets;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Kontenta\Kontour\Contracts\UserAccountWidget as UserAccountWidgetContract;
 
