@@ -20,7 +20,7 @@ class KontourServiceProviderTest extends IntegrationTest
         $this->assertInstanceOf(\Illuminate\Contracts\Auth\Guard::class, $guard);
     }
 
-    public function test_menu_widget_can_resolved()
+    public function test_menu_widget_can_be_resolved()
     {
         $this->assertInstanceOf(MenuWidget::class, app(MenuWidget::class));
     }
