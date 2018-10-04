@@ -2,8 +2,8 @@
 
 namespace Kontenta\KontourSupport;
 
-use Kontenta\Kontour\Contracts\AdminViewManager as ViewManagerContract;
 use Illuminate\Support\Collection;
+use Kontenta\Kontour\Contracts\AdminViewManager as ViewManagerContract;
 
 class AdminViewManager implements ViewManagerContract
 {
@@ -24,8 +24,7 @@ class AdminViewManager implements ViewManagerContract
      */
     public function mainSection(): string
     {
-        //TODO: pull main section name from config
-        return 'main';
+        return config('kontour.sections.main', 'main');
     }
 
     /**
@@ -34,8 +33,7 @@ class AdminViewManager implements ViewManagerContract
      */
     public function navSection(): string
     {
-        //TODO: pull nav section name from config
-        return 'nav';
+        return config('kontour.sections.nav', 'nav');
     }
 
     /**
@@ -44,8 +42,7 @@ class AdminViewManager implements ViewManagerContract
      */
     public function widgetSection(): string
     {
-        //TODO: pull widget section name from config
-        return 'widgets';
+        return config('kontour.sections.widgets', 'widgets');
     }
 
     /**
@@ -54,8 +51,7 @@ class AdminViewManager implements ViewManagerContract
      */
     public function headerSection(): string
     {
-        //TODO: pull header section name from config
-        return 'header';
+        return config('kontour.sections.header', 'header');
     }
 
     /**
@@ -64,8 +60,7 @@ class AdminViewManager implements ViewManagerContract
      */
     public function footerSection(): string
     {
-        //TODO: pull footer section name from config
-        return 'footer';
+        return config('kontour.sections.footer', 'footer');
     }
 
     /**
@@ -73,7 +68,7 @@ class AdminViewManager implements ViewManagerContract
      * @param string[] ...$url
      * @return $this
      */
-    public function addStylesheetUrl(string ...$url): ViewManagerContract
+    public function addStylesheetUrl(string...$url): ViewManagerContract
     {
         // TODO: Implement addStylesheetUrl() method.
         return $this;
@@ -84,7 +79,7 @@ class AdminViewManager implements ViewManagerContract
      * @param string[] ...$url
      * @return $this
      */
-    public function addJavascriptUrl(string ...$url): ViewManagerContract
+    public function addJavascriptUrl(string...$url): ViewManagerContract
     {
         // TODO: Implement addJavascriptUrl() method.
         return $this;
