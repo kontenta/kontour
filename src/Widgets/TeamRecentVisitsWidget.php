@@ -24,7 +24,7 @@ class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract
 
     public function isAuthorized(Authorizable $user = null): bool
     {
-        return true;
+        return (bool) $user;
     }
 
     private function getVisits()

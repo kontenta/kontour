@@ -48,6 +48,6 @@ class MenuWidget implements MenuWidgetContract
 
     public function isAuthorized(Authorizable $user = null): bool
     {
-        return true;
+        return (bool) $user;
     }
 }

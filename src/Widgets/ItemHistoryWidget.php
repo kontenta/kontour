@@ -32,7 +32,7 @@ class ItemHistoryWidget implements ItemHistoryWidgetContract
         $this->entries->push(compact('action', 'datetime', 'user'));
         return $this;
     }
-    
+
     public function addCreatedEntry(\DateTime $datetime, AdminUser $user = null): ItemHistoryWidgetContract
     {
         return $this->addEntry('created', $datetime, $user);
@@ -45,6 +45,6 @@ class ItemHistoryWidget implements ItemHistoryWidgetContract
 
     public function isAuthorized(Authorizable $user = null): bool
     {
-        return true;
+        return (bool) $user;
     }
 }
