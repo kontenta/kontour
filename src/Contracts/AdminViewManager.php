@@ -37,7 +37,7 @@ interface AdminViewManager
     public function headerSection(): string;
 
     /**
-     * Name of the main header blade section
+     * Name of the main footer blade section
      * @return string
      */
     public function footerSection(): string;
