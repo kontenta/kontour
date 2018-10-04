@@ -4,12 +4,15 @@
 @extends('kontour::layouts.html')
 
 @section('body')
-  <header>
+  <header data-kontour-section="{{ $view_manager->headerSection() }}">
     {{-- TODO: make this logout form part of a user-widget --}}
     <form action="{{ route('kontour.logout') }}" method="post">
       {{ csrf_field() }}
       <button type="submit">Logout</button>
     </form>
+    @foreach($widget_manager->getWidgetsForSection($view_manager->headerSection()) as $widget)
+      {{ $widget }}
+    @endforeach
   </header>
   <nav data-kontour-section="{{ $view_manager->navSection() }}">
     @foreach($widget_manager->getWidgetsForSection($view_manager->navSection()) as $widget)
@@ -26,6 +29,11 @@
     @endforeach
   @show
   </section>
+  <footer data-kontour-section="{{ $view_manager->footerSection() }}">
+    @foreach($widget_manager->getWidgetsForSection($view_manager->footerSection()) as $widget)
+      {{ $widget }}
+    @endforeach
+  </footer>
 @endsection
 
 @push('styles')
