@@ -31,6 +31,18 @@ interface AdminViewManager
     public function widgetSection(): string;
 
     /**
+     * Name of the main header blade section
+     * @return string
+     */
+    public function headerSection(): string;
+
+    /**
+     * Name of the main header blade section
+     * @return string
+     */
+    public function footerSection(): string;
+
+    /**
      * Add a stylesheet that the layout should pull in
      * @param string[] ...$url
      * @return $this
