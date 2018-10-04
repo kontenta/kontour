@@ -49,6 +49,26 @@ class AdminViewManager implements ViewManagerContract
     }
 
     /**
+     * Name of the main header blade section
+     * @return string
+     */
+    public function headerSection(): string
+    {
+        //TODO: pull header section name from config
+        return 'header';
+    }
+
+    /**
+     * Name of the main footer blade section
+     * @return string
+     */
+    public function footerSection(): string
+    {
+        //TODO: pull footer section name from config
+        return 'footer';
+    }
+
+    /**
      * Add a stylesheet that the layout should pull in
      * @param string[] ...$url
      * @return $this
