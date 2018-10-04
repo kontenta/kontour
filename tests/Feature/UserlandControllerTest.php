@@ -33,14 +33,22 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSee('<main');
         $response->assertSee('UserlandAdminWidget');
         $response->assertDontSee('UnauthorizedWidget');
-        $response->assertSee('<a href="' . route('userland.index') . '">Userland Tool</a>');
-        $response->assertSee('>main<');
+
         Event::assertDispatched(AdminToolVisited::class, function ($e) {
             $now = new \DateTimeImmutable();
             return $e->visit->getLink()->getUrl() == route('userland.index') and
             $this->user->is($e->visit->getUser()) and
             $now->getTimestamp() - $e->visit->getDateTime()->getTimestamp() >= 0;
         });
+    }
+
+    public function test_menu_widget()
+    {
+        $response = $this->actingAs($this->user)->get(route('userland.index'));
+
+        $response->assertSee('<ul data-kontour-widget="menu">');
+        $response->assertSee('>main<');
+        $response->assertSee('<a href="' . route('userland.index') . '">Userland Tool</a>');
     }
 
     public function test_recent_visits_widgets()
@@ -86,7 +94,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
     {
         $response = $this->actingAs($this->user)->get(route('userland.edit', 1));
         $response->assertSee('<section data-kontour-widget="itemHistory">');
-        $response->assertSee('<li lang="en" data-kontour-entry-action="created" data-kontour-username="'.$this->user->getDisplayName() .'">');
-        $response->assertSee('<li lang="en" data-kontour-entry-action="updated" data-kontour-username="'.$this->user->getDisplayName() .'">');
+        $response->assertSee('<li lang="en" data-kontour-entry-action="created" data-kontour-username="' . $this->user->getDisplayName() . '">');
+        $response->assertSee('<li lang="en" data-kontour-entry-action="updated" data-kontour-username="' . $this->user->getDisplayName() . '">');
     }
 }
