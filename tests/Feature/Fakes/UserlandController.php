@@ -6,13 +6,23 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\KontourSupport\AdminLink;
+use Kontenta\KontourSupport\RouteAdminLink;
 use Kontenta\Kontour\ShowAdminVisit;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
 use Kontenta\Kontour\Contracts\ItemHistoryWidget;
+use Kontenta\Kontour\Contracts\CrumbtrailWidget;
 
 class UserlandController extends BaseController
 {
     use RegistersAdminWidgets;
+
+    public function __construct(CrumbtrailWidget $crumbtrail)
+    {
+        $this->crumbtrail = $crumbtrail;
+        $link1 = new RouteAdminLink('userland.index', '1');
+        $this->crumbtrail->addLink($link1);
+    }
+    
 
     public function index()
     {
@@ -20,7 +30,7 @@ class UserlandController extends BaseController
         $user = Auth::guard(config('kontour.guard'))->user();
         $visit = new ShowAdminVisit($link, $user);
         event(new AdminToolVisited($visit));
-        return view('userland::index');
+        return view('userland::index', ['crumbtrail' => $this->crumbtrail]);
     }
 
     public function create()
@@ -45,7 +55,10 @@ class UserlandController extends BaseController
         $widget->addCreatedEntry(new \DateTime(), Auth::guard(config('kontour.guard'))->user());
         $widget->addUpdatedEntry(new \DateTime(), Auth::guard(config('kontour.guard'))->user());
 
-        return view('userland::index');
+        $link2 = new AdminLink(url()->full(), '2');
+        $this->crumbtrail->addLink($link2);
+
+        return view('userland::index', ['crumbtrail' => $this->crumbtrail]);
     }
 
     public function update($id)

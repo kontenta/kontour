@@ -97,4 +97,12 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSee('<li lang="en" data-kontour-entry-action="created" data-kontour-username="' . $this->user->getDisplayName() . '">');
         $response->assertSee('<li lang="en" data-kontour-entry-action="updated" data-kontour-username="' . $this->user->getDisplayName() . '">');
     }
+
+    public function test_crumbtrail_widget()
+    {
+        $response = $this->actingAs($this->user)->get(route('userland.edit', 1));
+        $response->assertSee('<nav aria-label="Crumb trail" data-kontour-widget="crumbtrail">');
+        $response->assertSee('<a href="'.route('userland.index').'">1</a>');
+        $response->assertSee('<li aria-current="page"><a href="'.route('userland.edit', 1).'">2</a>');
+    }
 }
