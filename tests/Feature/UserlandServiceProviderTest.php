@@ -1,9 +1,9 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests\Feature;
+namespace Kontenta\Kontour\Tests\Feature;
 
 use Illuminate\Support\Facades\Route;
-use Kontenta\KontourSupport\Tests\UserlandAdminToolTest;
+use Kontenta\Kontour\Tests\UserlandAdminToolTest;
 use Kontenta\Kontour\Contracts\AdminViewManager;
 use Kontenta\Kontour\Contracts\AdminWidgetManager;
 

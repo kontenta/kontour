@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\KontourSupport;
+namespace Kontenta\Kontour;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;

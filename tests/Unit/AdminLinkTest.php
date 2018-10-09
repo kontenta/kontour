@@ -1,9 +1,9 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests\Unit;
+namespace Kontenta\Kontour\Tests\Unit;
 
-use Kontenta\KontourSupport\Tests\UnitTest;
-use Kontenta\KontourSupport\AdminLink;
+use Kontenta\Kontour\Tests\UnitTest;
+use Kontenta\Kontour\AdminLink;
 
 class AdminLinkTest extends UnitTest
 {

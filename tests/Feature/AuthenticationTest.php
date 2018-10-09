@@ -1,9 +1,9 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests\Feature;
+namespace Kontenta\Kontour\Tests\Feature;
 
-use Kontenta\KontourSupport\Tests\IntegrationTest;
-use Kontenta\KontourSupport\Tests\Feature\Fakes\User;
+use Kontenta\Kontour\Tests\IntegrationTest;
+use Kontenta\Kontour\Tests\Feature\Fakes\User;
 
 class AuthenticationTest extends IntegrationTest
 {

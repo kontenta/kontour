@@ -1,8 +1,8 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests\Feature\Fakes;
+namespace Kontenta\Kontour\Tests\Feature\Fakes;
 
-use Kontenta\KontourSupport\Auth\AdminUser;
+use Kontenta\Kontour\Auth\AdminUser;
 
 class User extends AdminUser
 {

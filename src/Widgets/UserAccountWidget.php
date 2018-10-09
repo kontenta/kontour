@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\KontourSupport\Widgets;
+namespace Kontenta\Kontour\Widgets;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Support\Facades\Auth;

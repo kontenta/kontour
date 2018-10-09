@@ -1,8 +1,8 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests;
+namespace Kontenta\Kontour\Tests;
 
-use Kontenta\KontourSupport\Tests\Feature\Fakes\UserlandServiceProvider;
+use Kontenta\Kontour\Tests\Feature\Fakes\UserlandServiceProvider;
 
 abstract class UserlandAdminToolTest extends IntegrationTest
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests;
+namespace Kontenta\Kontour\Tests;
 
 use Orchestra\Testbench\TestCase;
 

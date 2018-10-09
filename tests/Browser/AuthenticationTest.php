@@ -1,8 +1,8 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests\Browser;
+namespace Kontenta\Kontour\Tests\Browser;
 
-use Kontenta\KontourSupport\Tests\DuskTest;
+use Kontenta\Kontour\Tests\DuskTest;
 use Laravel\Dusk\Browser;
 
 class AuthenticationTest extends DuskTest

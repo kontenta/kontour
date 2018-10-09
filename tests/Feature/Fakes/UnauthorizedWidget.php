@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests\Feature\Fakes;
+namespace Kontenta\Kontour\Tests\Feature\Fakes;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Kontenta\Kontour\Contracts\AdminWidget;

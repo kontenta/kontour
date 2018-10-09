@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::namespace('Kontenta\KontourSupport\Http\Controllers\Auth')->group(function () {
+Route::namespace('Kontenta\Kontour\Http\Controllers\Auth')->group(function () {
     if (!Route::has('kontour.login')) {
         Route::get('login', 'LoginController@showLoginForm')->name('kontour.login');
         Route::post('login', 'LoginController@login');

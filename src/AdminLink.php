@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\KontourSupport;
+namespace Kontenta\Kontour;
 
 use Kontenta\Kontour\Concerns\AuthorizesWithAbility as AuthorizesWithAbilityTrait;
 use Kontenta\Kontour\Contracts\AdminLink as AdminLinkContract;

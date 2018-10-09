@@ -1,12 +1,12 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests\Feature\Fakes;
+namespace Kontenta\Kontour\Tests\Feature\Fakes;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Kontenta\Kontour\Events\AdminToolVisited;
-use Kontenta\KontourSupport\AdminLink;
-use Kontenta\KontourSupport\RouteAdminLink;
+use Kontenta\Kontour\AdminLink;
+use Kontenta\Kontour\RouteAdminLink;
 use Kontenta\Kontour\ShowAdminVisit;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
 use Kontenta\Kontour\Contracts\ItemHistoryWidget;
@@ -22,7 +22,7 @@ class UserlandController extends BaseController
         $link1 = new RouteAdminLink('userland.index', '1');
         $this->crumbtrail->addLink($link1);
     }
-    
+
 
     public function index()
     {

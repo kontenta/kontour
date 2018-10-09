@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\KontourSupport\Http\Middleware;
+namespace Kontenta\Kontour\Http\Middleware;
 
 use Closure;
 use Kontenta\Kontour\Contracts\AdminGuestMiddleware;

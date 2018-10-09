@@ -1,11 +1,11 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests\Feature;
+namespace Kontenta\Kontour\Tests\Feature;
 
 use Illuminate\Support\Facades\Event;
-use Kontenta\KontourSupport\AdminLink;
-use Kontenta\KontourSupport\Tests\Feature\Fakes\User;
-use Kontenta\KontourSupport\Tests\UserlandAdminToolTest;
+use Kontenta\Kontour\AdminLink;
+use Kontenta\Kontour\Tests\Feature\Fakes\User;
+use Kontenta\Kontour\Tests\UserlandAdminToolTest;
 use Kontenta\Kontour\EditAdminVisit;
 use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\Kontour\ShowAdminVisit;

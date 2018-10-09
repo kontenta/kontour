@@ -1,10 +1,10 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests\Feature;
+namespace Kontenta\Kontour\Tests\Feature;
 
-use Kontenta\KontourSupport\Auth\Notifications\ResetPassword;
-use Kontenta\KontourSupport\Tests\IntegrationTest;
-use Kontenta\KontourSupport\Tests\Feature\Fakes\User;
+use Kontenta\Kontour\Auth\Notifications\ResetPassword;
+use Kontenta\Kontour\Tests\IntegrationTest;
+use Kontenta\Kontour\Tests\Feature\Fakes\User;
 use Illuminate\Support\Facades\Notification;
 
 class PasswordResetTest extends IntegrationTest

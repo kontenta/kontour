@@ -1,11 +1,11 @@
 <?php
 
-namespace Kontenta\KontourSupport\Widgets;
+namespace Kontenta\Kontour\Widgets;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
-use Kontenta\KontourSupport\RecentVisitsRepository;
+use Kontenta\Kontour\RecentVisitsRepository;
 use Kontenta\Kontour\Contracts\TeamRecentVisitsWidget as TeamRecentVisitsWidgetContract;
 
 class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract

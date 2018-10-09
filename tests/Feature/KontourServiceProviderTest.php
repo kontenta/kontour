@@ -1,9 +1,9 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests\Feature;
+namespace Kontenta\Kontour\Tests\Feature;
 
 use Illuminate\Support\Facades\Route;
-use Kontenta\KontourSupport\Tests\IntegrationTest;
+use Kontenta\Kontour\Tests\IntegrationTest;
 use Kontenta\Kontour\Contracts\MenuWidget;
 use Kontenta\Kontour\Contracts\UserAccountWidget;
 

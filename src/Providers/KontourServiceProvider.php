@@ -1,22 +1,22 @@
 <?php
 
-namespace Kontenta\KontourSupport\Providers;
+namespace Kontenta\Kontour\Providers;
 
 use Illuminate\Auth\AuthManager;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use Kontenta\KontourSupport\AdminRouteManager;
-use Kontenta\KontourSupport\AdminViewManager;
-use Kontenta\KontourSupport\AdminWidgetManager;
-use Kontenta\KontourSupport\Http\Middleware\AuthenticateAdmin;
-use Kontenta\KontourSupport\Http\Middleware\RedirectIfAuthenticated;
-use Kontenta\KontourSupport\RecentVisitsRepository;
-use Kontenta\KontourSupport\Widgets\ItemHistoryWidget;
-use Kontenta\KontourSupport\Widgets\CrumbtrailWidget;
-use Kontenta\KontourSupport\Widgets\MenuWidget;
-use Kontenta\KontourSupport\Widgets\PersonalRecentVisitsWidget;
-use Kontenta\KontourSupport\Widgets\TeamRecentVisitsWidget;
-use Kontenta\KontourSupport\Widgets\UserAccountWidget;
+use Kontenta\Kontour\AdminRouteManager;
+use Kontenta\Kontour\AdminViewManager;
+use Kontenta\Kontour\AdminWidgetManager;
+use Kontenta\Kontour\Http\Middleware\AuthenticateAdmin;
+use Kontenta\Kontour\Http\Middleware\RedirectIfAuthenticated;
+use Kontenta\Kontour\RecentVisitsRepository;
+use Kontenta\Kontour\Widgets\ItemHistoryWidget;
+use Kontenta\Kontour\Widgets\CrumbtrailWidget;
+use Kontenta\Kontour\Widgets\MenuWidget;
+use Kontenta\Kontour\Widgets\PersonalRecentVisitsWidget;
+use Kontenta\Kontour\Widgets\TeamRecentVisitsWidget;
+use Kontenta\Kontour\Widgets\UserAccountWidget;
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
 

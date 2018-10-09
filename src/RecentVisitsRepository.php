@@ -1,6 +1,6 @@
 <?php
 
-namespace Kontenta\KontourSupport;
+namespace Kontenta\Kontour;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Support\Collection;

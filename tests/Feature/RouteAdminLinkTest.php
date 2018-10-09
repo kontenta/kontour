@@ -1,9 +1,9 @@
 <?php
 
-namespace Kontenta\KontourSupport\Tests\Feature;
+namespace Kontenta\Kontour\Tests\Feature;
 
-use Kontenta\KontourSupport\RouteAdminLink;
-use Kontenta\KontourSupport\Tests\IntegrationTest;
+use Kontenta\Kontour\RouteAdminLink;
+use Kontenta\Kontour\Tests\IntegrationTest;
 
 class RouteAdminLinkTest extends IntegrationTest
 {
