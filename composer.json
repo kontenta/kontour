@@ -7,7 +7,6 @@
     "laravel/framework": "~5.5"
   },
   "require-dev": {
-    "kontenta/kontour": "dev-master",
     "laravel/dusk": ">2.0.13",
     "mockery/mockery": "^1.2",
     "orchestra/testbench": "^3.5",
