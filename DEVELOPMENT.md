@@ -5,10 +5,11 @@
 1. Clone this repo in your development environment
 2. Run `composer install`
 
-### Install for development in a laravel app
+### Install for development within a laravel app
 
 1. Remove any existing directory `vendor/kontenta/kontour`
 2. Install the package from git using `composer install --prefer-source`
+3. Run `cd vendor/kontenta/kontour` and `composer install` to install dependencies within the package.
 
 ## Updating composer dependencies
 
