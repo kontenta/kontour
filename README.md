@@ -1,5 +1,7 @@
 # Kontour
 
+[![Build Status](https://travis-ci.org/kontenta/kontour.svg?branch=master)](https://travis-ci.org/kontenta/kontour)
+
 Kontour is an admin page manager for Laravel.
 It provides a shared "frame" for the admin routes you create in your Laravel apps, or in packages you write.
 
