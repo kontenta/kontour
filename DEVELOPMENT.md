@@ -4,7 +4,11 @@
 
 1. Clone this repo in your development environment
 2. Run `composer install`
-3. You'll find a VCS version of the contracts package in `vendor/kontenta/kontour`
+
+### Install for development in a laravel app
+
+1. Remove any existing directory `vendor/kontenta/kontour`
+2. Install the package from git using `composer install --prefer-source`
 
 ## Updating composer dependencies
 
