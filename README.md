@@ -35,3 +35,10 @@ that wants to be part of the family:
 </form>
 @append
 ```
+
+## Fallback implementations
+
+This package contains implementations of the Kontour contracts that are used as a fallback whenever no other
+implementation has been registered in the Laravel service container.
+
+Overriding implementations may be registered by service providers of other packages or your main application.
