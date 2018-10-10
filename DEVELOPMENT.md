@@ -12,14 +12,6 @@
 - `composer show -D -o` can be used to check how far behind latest version the currently installed dependencies are.
 - `composer update` will install the latest versions of dependencies.
 
-If you're in a branch of this package and getting problems with `kontenta/kontour`
-requiring some specific version of this package you can add that version temporarily in `composer.json`
-like this (make sure to remove this line before commiting):
-
-```json
-"version": "dev-master",
-```
-
 ## Testing
 
 `composer test` from the project directory will run the default test suite.
