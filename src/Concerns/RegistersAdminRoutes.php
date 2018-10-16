@@ -15,8 +15,8 @@ trait RegistersAdminRoutes
      */
     public function registerAdminRoutes($routes)
     {
-        if (!$this->app->routesAreCached()) {
-            $this->app['router']->group($this->resolveAdminRouteManager()->getRouteAttributes(), $routes);
+        if (!app()->routesAreCached()) {
+            app('router')->group($this->resolveAdminRouteManager()->getRouteAttributes(), $routes);
         }
     }
 
@@ -27,13 +27,13 @@ trait RegistersAdminRoutes
      */
     public function registerAdminGuestRoutes($routes)
     {
-        if (!$this->app->routesAreCached()) {
-            $this->app['router']->group($this->resolveAdminRouteManager()->getGuestRouteAttributes(), $routes);
+        if (!app()->routesAreCached()) {
+            app('router')->group($this->resolveAdminRouteManager()->getGuestRouteAttributes(), $routes);
         }
     }
 
     protected function resolveAdminRouteManager(): \Kontenta\Kontour\Contracts\AdminRouteManager
     {
-        return $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
+        return app(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
     }
 }
