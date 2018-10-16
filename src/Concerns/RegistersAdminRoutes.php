@@ -5,7 +5,7 @@ namespace Kontenta\Kontour\Concerns;
 trait RegistersAdminRoutes
 {
     /**
-     * Register admin routes
+     * Register admin routes that require login
      * @param \Closure|string $routes
      * @see \Illuminate\Routing\Router::loadRoutes
      */
@@ -17,7 +17,7 @@ trait RegistersAdminRoutes
     }
 
     /**
-     * Register admin guest routes
+     * Register admin guest routes that don't require login
      * @param \Closure|string $routes
      * @see \Illuminate\Routing\Router::loadRoutes
      */
