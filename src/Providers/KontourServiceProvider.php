@@ -13,6 +13,7 @@ use Kontenta\Kontour\Http\Middleware\RedirectIfAuthenticated;
 use Kontenta\Kontour\RecentVisitsRepository;
 use Kontenta\Kontour\Widgets\ItemHistoryWidget;
 use Kontenta\Kontour\Widgets\CrumbtrailWidget;
+use Kontenta\Kontour\Widgets\MessageWidget;
 use Kontenta\Kontour\Widgets\MenuWidget;
 use Kontenta\Kontour\Widgets\PersonalRecentVisitsWidget;
 use Kontenta\Kontour\Widgets\TeamRecentVisitsWidget;
@@ -82,6 +83,12 @@ class KontourServiceProvider extends ServiceProvider
         $this->app->bindIf(
             \Kontenta\Kontour\Contracts\CrumbtrailWidget::class,
             CrumbtrailWidget::class,
+            true
+        );
+
+        $this->app->bindIf(
+            \Kontenta\Kontour\Contracts\MessageWidget::class,
+            MessageWidget::class,
             true
         );
 

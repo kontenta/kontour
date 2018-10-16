@@ -13,6 +13,12 @@ interface AdminViewManager
     public function layout(): string;
 
     /**
+     * Blade layout that admin tool views could extend
+     * @return string
+     */
+    public function toolLayout(): string;
+
+    /**
      * Name of the main content blade section
      * @return string
      */
@@ -41,6 +47,30 @@ interface AdminViewManager
      * @return string
      */
     public function footerSection(): string;
+    
+    /**
+     * Name of the tool header blade section
+     * @return string
+     */
+    public function toolHeaderSection(): string;
+
+    /**
+     * Name of the tool main blade section
+     * @return string
+     */
+    public function toolMainSection(): string;
+
+    /**
+     * Name of the tool widget blade section
+     * @return string
+     */
+    public function toolWidgetSection(): string;
+
+    /**
+     * Name of the tool footer blade section
+     * @return string
+     */
+    public function toolFooterSection(): string;
 
     /**
      * Add a stylesheet that the layout should pull in
