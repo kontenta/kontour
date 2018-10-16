@@ -13,6 +13,12 @@ interface AdminViewManager
     public function layout(): string;
 
     /**
+     * Blade layout that admin tool views could extend
+     * @return string
+     */
+    public function toolLayout(): string;
+
+    /**
      * Name of the main content blade section
      * @return string
      */

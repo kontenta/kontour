@@ -18,6 +18,15 @@ class AdminViewManager implements ViewManagerContract
     }
 
     /**
+     * Blade layout that admin tool views could extend
+     * @return string
+     */
+    public function toolLayout(): string
+    {
+        return config('kontour.toolLayout', 'kontour::layouts.tool');
+    }
+
+    /**
      * Name of the main content blade section
      * @return string
      */
@@ -60,6 +69,42 @@ class AdminViewManager implements ViewManagerContract
     public function footerSection(): string
     {
         return config('kontour.sections.footer', 'footer');
+    }
+
+    /**
+     * Name of the tool header blade section
+     * @return string
+     */
+    public function toolHeaderSection(): string
+    {
+        return config('kontour.sections.toolHeader', 'toolHeader');
+    }
+
+    /**
+     * Name of the tool main blade section
+     * @return string
+     */
+    public function toolMainSection(): string
+    {
+        return config('kontour.sections.toolMain', 'toolMain');
+    }
+
+    /**
+     * Name of the tool widget blade section
+     * @return string
+     */
+    public function toolWidgetSection(): string
+    {
+        return config('kontour.sections.toolWidget', 'toolWidget');
+    }
+
+    /**
+     * Name of the tool footer blade section
+     * @return string
+     */
+    public function toolFooterSection(): string
+    {
+        return config('kontour.sections.toolFooter', 'toolFooter');
     }
 
     /**
