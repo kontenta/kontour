@@ -2,10 +2,6 @@
 
 @extends($view_manager->toolLayout())
 
-@section($view_manager->toolHeaderSection())
-  {{ $crumbtrail }}
-@append
-
 @section($view_manager->toolMainSection())
   <ul>
     <li>Item 1</li>

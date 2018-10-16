@@ -11,6 +11,7 @@ use Kontenta\Kontour\ShowAdminVisit;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
 use Kontenta\Kontour\Contracts\ItemHistoryWidget;
 use Kontenta\Kontour\Contracts\CrumbtrailWidget;
+use Kontenta\Kontour\Contracts\MessageWidget;
 
 class UserlandController extends BaseController
 {
@@ -57,8 +58,13 @@ class UserlandController extends BaseController
 
         $link2 = new AdminLink(url()->full(), '2');
         $this->crumbtrail->addLink($link2);
+        $this->registerAdminWidget($this->crumbtrail, app(\Kontenta\Kontour\Contracts\AdminViewManager::class)->toolHeaderSection());
 
-        return view('userland::index', ['crumbtrail' => $this->crumbtrail]);
+        $messageWidget = app(MessageWidget::class);
+        $messageWidget->addMessage('Hello World!');
+        $this->registerAdminWidget($messageWidget, app(\Kontenta\Kontour\Contracts\AdminViewManager::class)->toolHeaderSection());
+
+        return view('userland::index');
     }
 
     public function update($id)
