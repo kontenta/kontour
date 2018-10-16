@@ -110,5 +110,6 @@ class UserlandControllerTest extends UserlandAdminToolTest
     {
         $response = $this->actingAs($this->user)->get(route('userland.edit', 1));
         $response->assertSee('<section data-kontour-widget="message">');
+        $response->assertSee('<li data-kontour-message-level="info">Hello World!</li>');
     }
 }
