@@ -105,4 +105,10 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSee('<a href="'.route('userland.index').'">1</a>');
         $response->assertSee('<li aria-current="page"><a href="'.route('userland.edit', 1).'">2</a>');
     }
+
+    public function test_message_widget()
+    {
+        $response = $this->actingAs($this->user)->get(route('userland.edit', 1));
+        $response->assertSee('<section data-kontour-widget="message">');
+    }
 }
