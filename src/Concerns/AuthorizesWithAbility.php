@@ -2,13 +2,10 @@
 
 namespace Kontenta\Kontour\Concerns;
 
-use Kontenta\Kontour\Contracts\AuthorizesWithAbility as AuthorizesWithAbilityContract;
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Access\Authorizable;
+use Illuminate\Contracts\Auth\Guard;
+use Kontenta\Kontour\Contracts\AuthorizesWithAbility as AuthorizesWithAbilityContract;
 
-/**
- * Trait AuthorizesWithAbility
- */
 trait AuthorizesWithAbility
 {
     private $authorizesWithAbilityPolicyOrGate;
@@ -45,13 +42,13 @@ trait AuthorizesWithAbility
      * @param Authorizable $user
      * @return bool
      */
-    public function isAuthorized(Authorizable $user = null): bool 
+    public function isAuthorized(Authorizable $user = null): bool
     {
-        if($this->authorizesWithAbilityGuard) {
+        if ($this->authorizesWithAbilityGuard) {
             $user = $this->authorizesWithAbilityGuard->user();
         }
 
-        if(!$user) {
+        if (!$user) {
             return false;
         }
 

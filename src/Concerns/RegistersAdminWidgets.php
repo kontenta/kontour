@@ -4,10 +4,6 @@ namespace Kontenta\Kontour\Concerns;
 
 use Kontenta\Kontour\Contracts\AdminWidget;
 
-/**
- * Trait RegistersAdminWidgets
- * @property \Illuminate\Foundation\Application $app
- */
 trait RegistersAdminWidgets
 {
     /**

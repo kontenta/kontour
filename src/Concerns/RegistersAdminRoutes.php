@@ -2,10 +2,6 @@
 
 namespace Kontenta\Kontour\Concerns;
 
-/**
- * Trait RegistersAdminRoutes
- * @property \Illuminate\Foundation\Application $app
- */
 trait RegistersAdminRoutes
 {
     /**
