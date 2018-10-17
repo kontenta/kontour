@@ -11,4 +11,11 @@ interface AdminLink extends Authorizes, Htmlable
     public function getName(): string;
 
     public function getDescription(): ?string;
+
+    /**
+     * Set description fluently
+     * @param string $description
+     * @return $this
+     */
+    public function withDescription(string $description = null): AdminLink;
 }

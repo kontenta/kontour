@@ -13,7 +13,7 @@ class RouteAdminLink extends AdminLink
     {
         $this->name = $name;
         $this->routeName = $routeName;
-        $this->description = $description;
+        $this->withDescription($description);
     }
 
     public function getUrl(): ?string

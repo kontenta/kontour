@@ -18,7 +18,7 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
     {
         $this->name = $name;
         $this->url = $url;
-        $this->description = $description;
+        $this->withDescription($description);
     }
 
     public function getUrl(): ?string
@@ -34,6 +34,18 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
     public function getDescription(): ?string
     {
         return $this->description;
+    }
+
+    /**
+     * Set description fluently
+     * @param string $description
+     * @return $this
+     */
+    public function withDescription(string $description = null): AdminLinkContract
+    {
+        $this->description = $description;
+
+        return $this;
     }
 
     public function toHtml(): string

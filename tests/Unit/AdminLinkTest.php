@@ -13,4 +13,12 @@ class AdminLinkTest extends UnitTest
 
         $this->assertEquals('<a href="http://hej.com" title="&quot;Hejsanhejsan&quot;">Hej</a>', $link->toHtml());
     }
+
+    public function test_description_can_be_added_fluently()
+    {
+        $link = new AdminLink('Hej', 'http://hej.com');
+        $link = $link->withDescription('Hejsanhejsan');
+
+        $this->assertEquals('<a href="http://hej.com" title="Hejsanhejsan">Hej</a>', $link->toHtml());
+    }
 }
