@@ -63,8 +63,7 @@ class UserlandServiceProvider extends ServiceProvider
 
     protected function registerMenuLinks()
     {
-        $routeName = 'userland.index';
-        $name = 'Userland Tool';
-        $this->addMenuWidgetRoute($routeName, $name);
+        $this->addMenuWidgetRoute('Userland Tool', 'userland.index');
+        $this->addMenuWidgetUrl('External Link', 'http://external.com', 'External');
     }
 }

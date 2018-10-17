@@ -49,6 +49,8 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSee('<ul data-kontour-widget="menu">');
         $response->assertSee('>main<');
         $response->assertSee('<a href="' . route('userland.index') . '">Userland Tool</a>');
+        $response->assertSee('>External<');
+        $response->assertSee('<a href="http://external.com">External Link</a>');
     }
 
     public function test_recent_visits_widgets()
