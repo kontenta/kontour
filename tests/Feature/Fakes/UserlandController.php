@@ -4,14 +4,14 @@ namespace Kontenta\Kontour\Tests\Feature\Fakes;
 
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
-use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\Kontour\AdminLink;
+use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
+use Kontenta\Kontour\Contracts\CrumbtrailWidget;
+use Kontenta\Kontour\Contracts\ItemHistoryWidget;
+use Kontenta\Kontour\Contracts\MessageWidget;
+use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\Kontour\RouteAdminLink;
 use Kontenta\Kontour\ShowAdminVisit;
-use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
-use Kontenta\Kontour\Contracts\ItemHistoryWidget;
-use Kontenta\Kontour\Contracts\CrumbtrailWidget;
-use Kontenta\Kontour\Contracts\MessageWidget;
 
 class UserlandController extends BaseController
 {
@@ -20,14 +20,13 @@ class UserlandController extends BaseController
     public function __construct(CrumbtrailWidget $crumbtrail)
     {
         $this->crumbtrail = $crumbtrail;
-        $link1 = new RouteAdminLink('userland.index', '1');
+        $link1 = new RouteAdminLink('1', 'userland.index');
         $this->crumbtrail->addLink($link1);
     }
 
-
     public function index()
     {
-        $link = new AdminLink(url()->full(), 'Recent Userland Tool');
+        $link = new AdminLink('Recent Userland Tool', url()->full());
         $user = Auth::guard(config('kontour.guard'))->user();
         $visit = new ShowAdminVisit($link, $user);
         event(new AdminToolVisited($visit));
@@ -56,7 +55,7 @@ class UserlandController extends BaseController
         $widget->addCreatedEntry(new \DateTime(), Auth::guard(config('kontour.guard'))->user());
         $widget->addUpdatedEntry(new \DateTime(), Auth::guard(config('kontour.guard'))->user());
 
-        $link2 = new AdminLink(url()->full(), '2');
+        $link2 = new AdminLink('2', url()->full());
         $this->crumbtrail->addLink($link2);
         $this->registerAdminWidget($this->crumbtrail, app(\Kontenta\Kontour\Contracts\AdminViewManager::class)->toolHeaderSection());
 

@@ -4,11 +4,11 @@ namespace Kontenta\Kontour\Tests\Feature;
 
 use Illuminate\Support\Facades\Event;
 use Kontenta\Kontour\AdminLink;
-use Kontenta\Kontour\Tests\Feature\Fakes\User;
-use Kontenta\Kontour\Tests\UserlandAdminToolTest;
 use Kontenta\Kontour\EditAdminVisit;
 use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\Kontour\ShowAdminVisit;
+use Kontenta\Kontour\Tests\Feature\Fakes\User;
+use Kontenta\Kontour\Tests\UserlandAdminToolTest;
 
 class UserlandControllerTest extends UserlandAdminToolTest
 {
@@ -54,14 +54,14 @@ class UserlandControllerTest extends UserlandAdminToolTest
     public function test_recent_visits_widgets()
     {
         $otherUser = factory(User::class)->create();
-        $link = new AdminLink(route('userland.edit', 1), 'Recent Userland Tool');
+        $link = new AdminLink('Recent Userland Tool', route('userland.edit', 1));
         $visit = new EditAdminVisit($link, $this->user);
         event(new AdminToolVisited($visit));
         event(new AdminToolVisited($visit));
-        $link = new AdminLink(route('userland.index'), 'Other Recent Userland Tool');
+        $link = new AdminLink('Other Recent Userland Tool', route('userland.index'));
         $visit = new ShowAdminVisit($link, $otherUser);
         event(new AdminToolVisited($visit));
-        $link = new AdminLink(route('userland.edit', 1), 'Other Recent Userland Tool');
+        $link = new AdminLink('Other Recent Userland Tool', route('userland.edit', 1));
         $visit = new EditAdminVisit($link, $otherUser);
         event(new AdminToolVisited($visit));
         event(new AdminToolVisited($visit));
@@ -102,8 +102,8 @@ class UserlandControllerTest extends UserlandAdminToolTest
     {
         $response = $this->actingAs($this->user)->get(route('userland.edit', 1));
         $response->assertSee('<nav aria-label="Crumb trail" data-kontour-widget="crumbtrail">');
-        $response->assertSee('<a href="'.route('userland.index').'">1</a>');
-        $response->assertSee('<li aria-current="page"><a href="'.route('userland.edit', 1).'">2</a>');
+        $response->assertSee('<a href="' . route('userland.index') . '">1</a>');
+        $response->assertSee('<li aria-current="page"><a href="' . route('userland.edit', 1) . '">2</a>');
     }
 
     public function test_message_widget()

@@ -9,10 +9,10 @@ class RouteAdminLink extends AdminLink
 {
     protected $routeName;
 
-    public function __construct(string $routeName, string $name, string $description = null)
+    public function __construct(string $name, string $routeName, string $description = null)
     {
-        $this->routeName = $routeName;
         $this->name = $name;
+        $this->routeName = $routeName;
         $this->description = $description;
     }
 
