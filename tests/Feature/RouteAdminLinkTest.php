@@ -50,4 +50,12 @@ class RouteAdminLinkTest extends IntegrationTest
 
         $this->assertEquals(route('kontour.password.reset', ["token" => 'abc']), $link->getUrl());
     }
+
+    public function test_can_be_created_statically()
+    {
+        $link = RouteAdminLink::create('Reset password', 'kontour.password.reset', ["token" => 'abc']);
+
+        $this->assertTrue($link instanceof RouteAdminLink);
+        $this->assertEquals(route('kontour.password.reset', ["token" => 'abc']), $link->getUrl());
+    }
 }

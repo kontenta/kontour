@@ -21,6 +21,11 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
         $this->withDescription($description);
     }
 
+    public static function create(...$args): AdminLink
+    {
+        return new static(...$args);
+    }
+
     public function getUrl(): ?string
     {
         return $this->url;

@@ -21,4 +21,14 @@ class AdminLinkTest extends UnitTest
 
         $this->assertEquals('<a href="http://hej.com" title="Hejsanhejsan">Hej</a>', $link->toHtml());
     }
+
+    public function test_can_be_created_statically()
+    {
+        $link = AdminLink::create('Hej', 'http://hej.com', 'Hejsanhejsan');
+
+        $this->assertTrue($link instanceof AdminLink);
+        $this->assertEquals('Hej', $link->getName());
+        $this->assertEquals('http://hej.com', $link->getUrl());
+        $this->assertEquals('Hejsanhejsan', $link->getDescription());
+    }
 }
