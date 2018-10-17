@@ -13,8 +13,20 @@ class RouteAdminLink extends AdminLink
     {
         $this->name = $name;
         $this->routeName = $routeName;
-        $this->routeParameters = $routeParameters;
+        $this->withRouteParameters($routeParameters);
         $this->withDescription($description);
+    }
+
+    /**
+     * Set route parameters fluently
+     * @param mixed $routeParameters
+     * @return $this
+     */
+    public function withRouteParameters($routeParameters = []): RouteAdminLink
+    {
+        $this->routeParameters = $routeParameters;
+
+        return $this;
     }
 
     public function getUrl(): ?string
