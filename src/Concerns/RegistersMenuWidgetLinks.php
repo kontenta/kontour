@@ -2,28 +2,28 @@
 
 namespace Kontenta\Kontour\Concerns;
 
-use Kontenta\Kontour\AdminLink as UrlAdminLink;
-use Kontenta\Kontour\Contracts\AdminLink;
+use Kontenta\Kontour\AdminLink;
+use Kontenta\Kontour\Contracts\AdminLink as AdminLinkContract;
 use Kontenta\Kontour\Contracts\MenuWidget;
 use Kontenta\Kontour\RouteAdminLink;
 
 trait RegistersMenuWidgetLinks
 {
-    public function addMenuWidgetUrl(string $url, string $name, string $description = null, string $desiredHeading = null)
+    public function addMenuWidgetUrl(string $name, string $url, string $desiredHeading = null): AdminLink
     {
-        $link = new UrlAdminLink($url, $name, $description);
-        $this->addMenuWidgetAdminLink($link, $desiredHeading);
+        return $this->addMenuWidgetAdminLink(AdminLink::create($name, $url), $desiredHeading);
     }
 
-    public function addMenuWidgetRoute(string $routeName, string $name, string $description = null, string $desiredHeading = null)
+    public function addMenuWidgetRoute(string $name, string $routeName, $routeParameters = [], string $desiredHeading = null): RouteAdminLink
     {
-        $link = new RouteAdminLink($routeName, $name, $description);
-        $this->addMenuWidgetAdminLink($link, $desiredHeading);
+        return $this->addMenuWidgetAdminLink(RouteAdminLink::create($name, $routeName, $routeParameters), $desiredHeading);
     }
 
-    public function addMenuWidgetAdminLink(AdminLink $link, string $desiredHeading = null)
+    public function addMenuWidgetAdminLink(AdminLinkContract $link, string $desiredHeading = null): AdminLinkContract
     {
         $this->resolveMenuWidget()->addLink($link, $desiredHeading);
+
+        return $link;
     }
 
     protected function resolveMenuWidget(): MenuWidget

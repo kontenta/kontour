@@ -2,22 +2,39 @@
 
 namespace Kontenta\Kontour;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 
 class RouteAdminLink extends AdminLink
 {
     protected $routeName;
+    protected $routeParameters;
 
-    public function __construct(string $routeName, string $name, string $description = null)
+    public function __construct(string $name, string $routeName, $routeParameters = [], string $description = null)
     {
-        $this->routeName = $routeName;
         $this->name = $name;
-        $this->description = $description;
+        $this->routeName = $routeName;
+        $this->withRouteParameters($routeParameters);
+        $this->withDescription($description);
+    }
+
+    /**
+     * Set route parameters fluently
+     * @param mixed $routeParameters
+     * @return $this
+     */
+    public function withRouteParameters($routeParameters = []): RouteAdminLink
+    {
+        $this->routeParameters = $routeParameters;
+
+        return $this;
     }
 
     public function getUrl(): ?string
     {
-        return Route::has($this->routeName) ? URL::route($this->routeName) : null;
+        try {
+            return URL::route($this->routeName, $this->routeParameters);
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 }
