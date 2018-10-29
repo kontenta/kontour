@@ -4,10 +4,13 @@ namespace Kontenta\Kontour\Concerns;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Queue\SerializesModels;
 use Kontenta\Kontour\Contracts\AuthorizesWithAbility as AuthorizesWithAbilityContract;
 
 trait AuthorizesWithAbility
 {
+    use SerializesModels; //If $authorizesWithAbilityArguments is just a single Eloquent model, this will serialize it. (But not if it's an array unfortunately)
+
     private $authorizesWithAbilityPolicyOrGate;
     private $authorizesWithAbilityArguments;
     private $authorizesWithAbilityGuard;
