@@ -62,6 +62,6 @@ trait AuthorizesWithAbility
             return false;
         }
 
-        return $user->can($this->authorizesWithAbilityPolicyOrGate, ...$this->authorizesWithAbilityArguments);
+        return $user->can($this->authorizesWithAbilityPolicyOrGate, $this->authorizesWithAbilityArguments);
     }
 }
