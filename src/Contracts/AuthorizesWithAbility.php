@@ -16,8 +16,8 @@ interface AuthorizesWithAbility extends Authorizes
 
     /**
      * Register a guard to be used for the authorization
-     * @param Guard $guard
+     * @param string $guard
      * @return $this
      */
-    public function registerGuardForAuthorization(Guard $guard): AuthorizesWithAbility;
+    public function registerGuardForAuthorization(string $guard): AuthorizesWithAbility;
 }
