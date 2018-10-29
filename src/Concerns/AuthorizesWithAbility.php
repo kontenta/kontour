@@ -12,19 +12,19 @@ trait AuthorizesWithAbility
 {
     use SerializesModels; //If $authorizesWithAbilityArguments is just a single Eloquent model, this will serialize it. (But not if it's an array unfortunately)
 
-    private $authorizesWithAbilityPolicyOrGate;
+    private $authorizesWithAbilityName;
     private $authorizesWithAbilityArguments;
     private $authorizesWithAbilityGuard;
 
-    /**
+     /**
      * Register a policy or gate to be used for the authorization
-     * @param string $policyOrGate
-     * @param $arguments
+     * @param string $ability name from a Gate/Policy
+     * @param array|mixed $arguments for the ability check, typically a model instance
      * @return $this
      */
-    public function registerAbilityForAuthorization(string $policyOrGate, $arguments = []): AuthorizesWithAbilityContract
+    public function registerAbilityForAuthorization(string $ability, $arguments = []): AuthorizesWithAbilityContract
     {
-        $this->authorizesWithAbilityPolicyOrGate = $policyOrGate;
+        $this->authorizesWithAbilityName = $ability;
         $this->authorizesWithAbilityArguments = $arguments;
 
         return $this;
@@ -62,6 +62,6 @@ trait AuthorizesWithAbility
             return false;
         }
 
-        return $user->can($this->authorizesWithAbilityPolicyOrGate, $this->authorizesWithAbilityArguments);
+        return $user->can($this->authorizesWithAbilityName, $this->authorizesWithAbilityArguments);
     }
 }
