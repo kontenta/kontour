@@ -34,6 +34,7 @@ trait AuthorizesWithAbility
     public function registerGuardForAuthorization(Guard $guard): AuthorizesWithAbilityContract
     {
         $this->authorizesWithAbilityGuard = $guard;
+
         return $this;
     }
 
