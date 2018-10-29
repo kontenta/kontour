@@ -58,7 +58,7 @@ trait AuthorizesWithAbility
             return false;
         }
 
-        if (!$user) {
+        if (!$user instanceof Authorizable) {
             return false;
         }
 
