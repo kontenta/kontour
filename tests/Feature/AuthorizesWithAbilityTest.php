@@ -19,13 +19,14 @@ class AuthorizesWithAbilityTest extends IntegrationTest
         parent::setUp();
         $this->prepareDatabase();
         $this->user = factory(User::class)->create();
+
+        Gate::define('testGate', function ($user) {
+            return true;
+        });
     }
 
     public function test_authorizing_with_gate()
     {
-        Gate::define('testGate', function ($user) {
-            return true;
-        });
         $link = AdminLink::create('Reset password', 'http://test.com')->registerAbilityForAuthorization('testGate');
 
         $this->assertTrue($link->isAuthorized($this->user));
