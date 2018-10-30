@@ -8,16 +8,16 @@ interface AuthorizesWithAbility extends Authorizes
 {
     /**
      * Register a policy or gate to be used for the authorization
-     * @param string $policyOrGate
-     * @param $arguments
+     * @param string $ability name from a Gate/Policy
+     * @param array|mixed $arguments for the ability check, typically a model instance
      * @return $this
      */
-    public function registerAbilityForAuthorization(string $policyOrGate, $arguments = []): AuthorizesWithAbility;
+    public function registerAbilityForAuthorization(string $ability, $arguments = []): AuthorizesWithAbility;
 
     /**
      * Register a guard to be used for the authorization
-     * @param Guard $guard
+     * @param string $guard
      * @return $this
      */
-    public function registerGuardForAuthorization(Guard $guard): AuthorizesWithAbility;
+    public function registerGuardForAuthorization(string $guard): AuthorizesWithAbility;
 }
