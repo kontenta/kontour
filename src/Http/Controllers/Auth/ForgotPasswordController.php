@@ -42,6 +42,4 @@ class ForgotPasswordController extends Controller
     {
         return Password::broker(config('kontour.passwords', null));
     }
-
-
 }

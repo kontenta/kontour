@@ -34,12 +34,11 @@ class AdminWidgetManager implements WidgetManagerContract
 
     public function addWidget(AdminWidget $widget, string $desiredSectionName = null): WidgetManagerContract
     {
-        if(empty($desiredSectionName))
-        {
+        if (empty($desiredSectionName)) {
             $desiredSectionName = $this->viewManager->widgetSection();
         }
 
-        if(!$this->widgets->has($desiredSectionName)) {
+        if (!$this->widgets->has($desiredSectionName)) {
             $this->widgets->put($desiredSectionName, new Collection());
         }
 
@@ -55,7 +54,7 @@ class AdminWidgetManager implements WidgetManagerContract
 
     public function getWidgetsForSection(string $sectionName): Collection
     {
-        return $this->widgets->get($sectionName, new Collection())->filter(function(AdminWidget $widget) {
+        return $this->widgets->get($sectionName, new Collection())->filter(function (AdminWidget $widget) {
             return $widget->isAuthorized($this->guard->user());
         });
     }
