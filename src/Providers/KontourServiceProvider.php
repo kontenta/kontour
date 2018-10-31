@@ -8,18 +8,18 @@ use Illuminate\Support\ServiceProvider;
 use Kontenta\Kontour\AdminRouteManager;
 use Kontenta\Kontour\AdminViewManager;
 use Kontenta\Kontour\AdminWidgetManager;
+use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
+use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
 use Kontenta\Kontour\Http\Middleware\AuthenticateAdmin;
 use Kontenta\Kontour\Http\Middleware\RedirectIfAuthenticated;
 use Kontenta\Kontour\RecentVisitsRepository;
-use Kontenta\Kontour\Widgets\ItemHistoryWidget;
 use Kontenta\Kontour\Widgets\CrumbtrailWidget;
-use Kontenta\Kontour\Widgets\MessageWidget;
+use Kontenta\Kontour\Widgets\ItemHistoryWidget;
 use Kontenta\Kontour\Widgets\MenuWidget;
+use Kontenta\Kontour\Widgets\MessageWidget;
 use Kontenta\Kontour\Widgets\PersonalRecentVisitsWidget;
 use Kontenta\Kontour\Widgets\TeamRecentVisitsWidget;
 use Kontenta\Kontour\Widgets\UserAccountWidget;
-use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
-use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
 
 class KontourServiceProvider extends ServiceProvider
 {
@@ -173,8 +173,14 @@ class KontourServiceProvider extends ServiceProvider
 
     protected function registerWidgets()
     {
-        $this->registerAdminWidget($this->app->make(\Kontenta\Kontour\Contracts\MenuWidget::class), $this->app->make(\Kontenta\Kontour\Contracts\AdminViewManager::class)->navSection());
-        $this->registerAdminWidget($this->app->make(\Kontenta\Kontour\Contracts\UserAccountWidget::class), $this->app->make(\Kontenta\Kontour\Contracts\AdminViewManager::class)->headerSection());
+        $this->registerAdminWidget(
+            $this->app->make(\Kontenta\Kontour\Contracts\MenuWidget::class),
+            $this->app->make(\Kontenta\Kontour\Contracts\AdminViewManager::class)->navSection()
+        );
+        $this->registerAdminWidget(
+            $this->app->make(\Kontenta\Kontour\Contracts\UserAccountWidget::class),
+            $this->app->make(\Kontenta\Kontour\Contracts\AdminViewManager::class)->headerSection()
+        );
     }
 
     /**

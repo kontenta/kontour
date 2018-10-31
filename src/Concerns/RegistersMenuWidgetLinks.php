@@ -14,9 +14,16 @@ trait RegistersMenuWidgetLinks
         return $this->addMenuWidgetAdminLink(AdminLink::create($name, $url), $desiredHeading);
     }
 
-    public function addMenuWidgetRoute(string $name, string $routeName, $routeParameters = [], string $desiredHeading = null): RouteAdminLink
-    {
-        return $this->addMenuWidgetAdminLink(RouteAdminLink::create($name, $routeName, $routeParameters), $desiredHeading);
+    public function addMenuWidgetRoute(
+        string $name,
+        string $routeName,
+        $routeParameters = [],
+        string $desiredHeading = null
+    ): RouteAdminLink {
+        return $this->addMenuWidgetAdminLink(
+            RouteAdminLink::create($name, $routeName, $routeParameters),
+            $desiredHeading
+        );
     }
 
     public function addMenuWidgetAdminLink(AdminLinkContract $link, string $desiredHeading = null): AdminLinkContract

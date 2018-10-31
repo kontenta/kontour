@@ -10,7 +10,10 @@ use Kontenta\Kontour\Contracts\AuthorizesWithAbility as AuthorizesWithAbilityCon
 
 trait AuthorizesWithAbility
 {
-    use SerializesModels; //If $authorizesWithAbilityArguments is just a single Eloquent model, this will serialize it. (But not if it's an array unfortunately)
+    // If $authorizesWithAbilityArguments is just a single Eloquent model,
+    // the SerializesModels trait will serialize it,
+    // but not if more than one argument is passsed in an array unfortunately.
+    use SerializesModels;
 
     private $authorizesWithAbilityName;
     private $authorizesWithAbilityArguments;
