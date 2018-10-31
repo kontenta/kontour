@@ -26,4 +26,7 @@ copy the file `phpunit.xml.dist` to `phpunit.xml` and modify the latter to your 
 
 ## Following PSR2
 
-This project can be checked against configured coding standars using `composer phpcs` from the project directory.
+This project can be checked against configured coding standards using `composer phpcs` from the project directory.
+
+Automatic attempt to fix some reported coding standard violations can be run with
+`./vendor/bin/phpcbf` from the project directory.
