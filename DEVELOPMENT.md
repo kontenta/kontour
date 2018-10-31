@@ -23,3 +23,7 @@
 
 If you want your own local configuration for phpunit,
 copy the file `phpunit.xml.dist` to `phpunit.xml` and modify the latter to your needs.
+
+## Following PSR2
+
+This project can be checked against configured coding standars using `composer phpcs` from the project directory.
