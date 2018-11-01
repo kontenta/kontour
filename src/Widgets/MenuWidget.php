@@ -27,12 +27,11 @@ class MenuWidget implements MenuWidgetContract
 
     public function addLink(AdminLink $link, string $desiredHeading = null): MenuWidgetContract
     {
-        if(empty($desiredHeading))
-        {
+        if (empty($desiredHeading)) {
             $desiredHeading = 'main';
         }
 
-        if(!$this->links->has($desiredHeading)) {
+        if (!$this->links->has($desiredHeading)) {
             $this->links->put($desiredHeading, new Collection());
         }
 

@@ -35,7 +35,8 @@ class RecentVisitsRepository implements RecentVisitsRepositoryContract
         Cache::forever($key, $visits);
     }
 
-    protected function generateCacheKey($type) {
+    protected function generateCacheKey($type)
+    {
         return 'kontour-recent-visits-'.$type;
     }
 }

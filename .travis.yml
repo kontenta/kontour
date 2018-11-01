@@ -30,4 +30,5 @@ before_script:
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
 
 script:
+  - vendor/bin/phpcs
   - vendor/bin/phpunit

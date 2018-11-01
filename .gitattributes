@@ -8,4 +8,5 @@
 .editorconfig export-ignore
 .travis.yml
 phpunit.xml.dist export-ignore
+phpcs.xml.dist export-ignore
 DEVELOPMENT.md export-ignore
