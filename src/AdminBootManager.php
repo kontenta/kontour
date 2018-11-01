@@ -4,28 +4,31 @@ namespace Kontenta\Kontour;
 
 use Illuminate\Support\Collection;
 use Kontenta\Kontour\Contracts\AdminBootManager as BootManagerContract;
+use Illuminate\Support\Facades\App;
 
 class AdminBootManager implements BootManagerContract
 {
     /**
      * @var Collection
      */
-    private $beforeRouteCallables;
+    private $beforeRouteCallbacks;
 
     public function __construct()
     {
-        $this->beforeRouteCallables = new Collection();
+        $this->beforeRouteCallbacks = new Collection();
     }
 
     public function beforeRoute(callable $callback): BootManagerContract
     {
-        $this->beforeRouteCallables->push($callback);
+        $this->beforeRouteCallbacks->push($callback);
 
         return $this;
     }
 
     public function processBeforeRouteCallbacks(): void
     {
-        // TODO: pop and call each callback
+        while ($this->beforeRouteCallbacks->count()) {
+            App::call($this->beforeRouteCallbacks->shift());
+        }
     }
 }
