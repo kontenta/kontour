@@ -2,9 +2,10 @@
 
 namespace Kontenta\Kontour;
 
-use Kontenta\Kontour\Contracts\AdminAuthenticateMiddleware;
-use Kontenta\Kontour\Contracts\AdminRouteManager as AdminRouteManagerContract;
 use Illuminate\Routing\Router;
+use Kontenta\Kontour\Contracts\AdminAuthenticateMiddleware;
+use Kontenta\Kontour\Contracts\AdminBootRouteMiddleware;
+use Kontenta\Kontour\Contracts\AdminRouteManager as AdminRouteManagerContract;
 
 class AdminRouteManager implements AdminRouteManagerContract
 {
@@ -61,7 +62,7 @@ class AdminRouteManager implements AdminRouteManagerContract
      */
     public function getMiddleware(): array
     {
-        return ['web', AdminAuthenticateMiddleware::class];
+        return ['web', AdminBootRouteMiddleware::class, AdminAuthenticateMiddleware::class];
     }
 
     /**
