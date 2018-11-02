@@ -9,6 +9,16 @@ use Kontenta\Kontour\Contracts\AdminBootRouteMiddleware;
 class BootRoute implements AdminBootRouteMiddleware
 {
     /**
+     * @var AdminBootManager
+     */
+    private $bootManager;
+
+    public function __construct(AdminBootManager $bootManager)
+    {
+        $this->bootManager = $bootManager;
+    }
+
+    /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request $request
@@ -17,8 +27,7 @@ class BootRoute implements AdminBootRouteMiddleware
      */
     public function handle($request, Closure $next)
     {
-        //TODO: should the AdminBootManager be injected into constructor instead of resolved here?
-        app(AdminBootManager::class)->processBeforeRouteCallbacks();
+        $this->bootManager->processBeforeRouteCallbacks();
 
         return $next($request);
     }
