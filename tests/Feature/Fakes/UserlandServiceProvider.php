@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 use Kontenta\Kontour\AdminLink;
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
-use Kontenta\Kontour\Concerns\RegistersMenuWidgetLinks;
 use Kontenta\Kontour\Contracts\AdminBootManager;
 use Kontenta\Kontour\Contracts\MenuWidget;
 use Kontenta\Kontour\Contracts\PersonalRecentVisitsWidget;
@@ -14,7 +13,7 @@ use Kontenta\Kontour\Contracts\TeamRecentVisitsWidget;
 
 class UserlandServiceProvider extends ServiceProvider
 {
-    use RegistersAdminRoutes, RegistersAdminWidgets, RegistersMenuWidgetLinks;
+    use RegistersAdminRoutes, RegistersAdminWidgets;
 
     /**
      * Register bindings in the container.
