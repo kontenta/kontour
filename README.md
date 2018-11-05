@@ -12,7 +12,10 @@ You need at least **Laravel 5.5** and **PHP 7.0** to use this package.
 In a service provider you can register your admin routes using convenient methods from the trait
 `Kontenta\Kontour\Concerns\RegistersAdminRoutes`.
 
-Adding links to the menu widget can be done using trait `Kontenta\Kontour\Concerns\RegistersMenuWidgetLinks`.
+For anything that needs to be "booted" before an admin page/route is loaded,
+inject `Kontenta\Kontour\Contracts\AdminBootManager` and add callables to it
+using `beforeRoute()`.
+Those callables will be called (with any dependencies injected) by a middleware.
 
 ## Benefits in blade views (or controllers)
 
