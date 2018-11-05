@@ -10,7 +10,6 @@ use Kontenta\Kontour\Contracts\CrumbtrailWidget;
 use Kontenta\Kontour\Contracts\ItemHistoryWidget;
 use Kontenta\Kontour\Contracts\MessageWidget;
 use Kontenta\Kontour\Events\AdminToolVisited;
-use Kontenta\Kontour\RouteAdminLink;
 use Kontenta\Kontour\ShowAdminVisit;
 
 class UserlandController extends BaseController
@@ -20,7 +19,7 @@ class UserlandController extends BaseController
     public function __construct(CrumbtrailWidget $crumbtrail)
     {
         $this->crumbtrail = $crumbtrail;
-        $link1 = new RouteAdminLink('1', 'userland.index');
+        $link1 = new AdminLink('1', route('userland.index'));
         $this->crumbtrail->addLink($link1);
     }
 
