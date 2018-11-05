@@ -152,6 +152,7 @@ class KontourServiceProvider extends ServiceProvider
     protected function registerResources()
     {
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'kontour');
+        $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'kontour');
     }
 
     /**
