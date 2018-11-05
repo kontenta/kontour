@@ -3,15 +3,17 @@
 namespace Kontenta\Kontour\Tests\Feature\Fakes;
 
 use Illuminate\Support\ServiceProvider;
+use Kontenta\Kontour\AdminLink;
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
-use Kontenta\Kontour\Concerns\RegistersMenuWidgetLinks;
+use Kontenta\Kontour\Contracts\AdminBootManager;
+use Kontenta\Kontour\Contracts\MenuWidget;
 use Kontenta\Kontour\Contracts\PersonalRecentVisitsWidget;
 use Kontenta\Kontour\Contracts\TeamRecentVisitsWidget;
 
 class UserlandServiceProvider extends ServiceProvider
 {
-    use RegistersAdminRoutes, RegistersAdminWidgets, RegistersMenuWidgetLinks;
+    use RegistersAdminRoutes, RegistersAdminWidgets;
 
     /**
      * Register bindings in the container.
@@ -63,7 +65,9 @@ class UserlandServiceProvider extends ServiceProvider
 
     protected function registerMenuLinks()
     {
-        $this->addMenuWidgetRoute('Userland Tool', 'userland.index');
-        $this->addMenuWidgetUrl('External Link', 'http://external.com', 'External');
+        $this->app->make(AdminBootManager::class)->beforeRoute(function (MenuWidget $menuWidget) {
+            $menuWidget->addLink(AdminLink::create('Userland Tool', route('userland.index')));
+            $menuWidget->addLink(AdminLink::create('External Link', 'http://external.com'), 'External');
+        });
     }
 }
