@@ -2,11 +2,12 @@
 
 namespace Kontenta\Kontour\Tests;
 
+use Kontenta\Kontour\Tests\Feature\Fakes\UserlandAppServiceProvider;
 use Kontenta\Kontour\Tests\Feature\Fakes\UserlandServiceProvider;
 
 abstract class UserlandAdminToolTest extends IntegrationTest
 {
-    protected $package_providers = [UserlandServiceProvider::class];
+    protected $package_providers = [UserlandAppServiceProvider::class, UserlandServiceProvider::class];
 
     protected function getPackageProviders($app)
     {

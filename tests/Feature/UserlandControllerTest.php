@@ -114,4 +114,12 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSee('<section data-kontour-widget="message">');
         $response->assertSee('<li data-kontour-message-level="info">Hello World!</li>');
     }
+
+    public function test_css_and_js_additions()
+    {
+        $response = $this->actingAs($this->user)->get(route('userland.index'));
+        $response->assertSee(url('admin.css'));
+        $response->assertSee(url('userland.css'));
+        $response->assertSee(url('userland-index.css'));
+    }
 }

@@ -7,6 +7,15 @@ use Kontenta\Kontour\Contracts\AdminViewManager as ViewManagerContract;
 
 class AdminViewManager implements ViewManagerContract
 {
+    /**
+     * @var Collection
+     */
+    protected $stylesheets;
+
+    public function __construct()
+    {
+        $this->stylesheets = new Collection();
+    }
 
     /**
      * Blade layout that admin views should extend
@@ -114,7 +123,15 @@ class AdminViewManager implements ViewManagerContract
      */
     public function addStylesheetUrl(string...$url): ViewManagerContract
     {
-        // TODO: Implement addStylesheetUrl() method.
+        foreach($url as $newUrl)
+        {
+            if(!$this->stylesheets->contains(function ($value, $key) use ($newUrl) {
+                return url($value) == url($newUrl);
+            })) {
+                $this->stylesheets->push($newUrl);
+            }
+        }
+
         return $this;
     }
 
@@ -135,8 +152,7 @@ class AdminViewManager implements ViewManagerContract
      */
     public function getStylesheetUrls(): Collection
     {
-        // TODO: Implement getStylesheetUrls() method.
-        return collect();
+        return $this->stylesheets;
     }
 
     /**
