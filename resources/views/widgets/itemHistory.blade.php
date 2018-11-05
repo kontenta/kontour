@@ -1,5 +1,5 @@
 <section data-kontour-widget="itemHistory">
-  <header>Item History</header>
+  <header>{{ trans('kontour::widgets.itemHistory.title') }}</header>
   <ul>
   @foreach($entries as $entry)
     <li lang="en" data-kontour-entry-action="{{ $entry['action'] }}"@if($entry['user']) data-kontour-username="{{ $entry['user']->getDisplayName() }}"@endif>
