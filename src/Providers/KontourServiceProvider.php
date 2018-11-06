@@ -5,12 +5,14 @@ namespace Kontenta\Kontour\Providers;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Kontenta\Kontour\AdminBootManager;
 use Kontenta\Kontour\AdminRouteManager;
 use Kontenta\Kontour\AdminViewManager;
 use Kontenta\Kontour\AdminWidgetManager;
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
 use Kontenta\Kontour\Http\Middleware\AuthenticateAdmin;
+use Kontenta\Kontour\Http\Middleware\BootRoute;
 use Kontenta\Kontour\Http\Middleware\RedirectIfAuthenticated;
 use Kontenta\Kontour\RecentVisitsRepository;
 use Kontenta\Kontour\Widgets\CrumbtrailWidget;
@@ -53,6 +55,12 @@ class KontourServiceProvider extends ServiceProvider
         );
 
         $this->app->bindIf(
+            \Kontenta\Kontour\Contracts\AdminBootManager::class,
+            AdminBootManager::class,
+            true
+        );
+
+        $this->app->bindIf(
             \Kontenta\Kontour\Contracts\AdminViewManager::class,
             AdminViewManager::class,
             true
@@ -72,6 +80,11 @@ class KontourServiceProvider extends ServiceProvider
         $this->app->bindIf(
             \Kontenta\Kontour\Contracts\AdminGuestMiddleware::class,
             RedirectIfAuthenticated::class
+        );
+
+        $this->app->bindIf(
+            \Kontenta\Kontour\Contracts\AdminBootRouteMiddleware::class,
+            BootRoute::class
         );
 
         $this->app->bindIf(
