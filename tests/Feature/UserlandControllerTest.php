@@ -96,6 +96,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
     {
         $response = $this->actingAs($this->user)->get(route('userland.edit', 1));
         $response->assertSee('<section data-kontour-widget="itemHistory">');
+        $response->assertSee('<header>Item History</header>');
         $response->assertSee('<li lang="en" data-kontour-entry-action="created" data-kontour-username="' . $this->user->getDisplayName() . '">');
         $response->assertSee('<li lang="en" data-kontour-entry-action="updated" data-kontour-username="' . $this->user->getDisplayName() . '">');
     }
@@ -113,5 +114,18 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response = $this->actingAs($this->user)->get(route('userland.edit', 1));
         $response->assertSee('<section data-kontour-widget="message">');
         $response->assertSee('<li data-kontour-message-level="info">Hello World!</li>');
+    }
+
+    public function test_css_and_js_additions()
+    {
+        $response = $this->actingAs($this->user)->get(route('userland.index'));
+        $response->assertSee('<link href="'.url('admin.css').'" rel="stylesheet" type="text/css">');
+        $response->assertSee('<link href="'.url('userland.css').'" rel="stylesheet" type="text/css">');
+        $response->assertSee('<link href="'.url('userland-index.css').'" rel="stylesheet" type="text/css">');
+
+        $response->assertSee('<script src="https://cdn.example.com/framework.js"></script>');
+        $response->assertSee('<script src="'.url('admin.js').'"></script>');
+        $response->assertSee('<script src="'.url('userland.js').'"></script>');
+        $response->assertSee('<script src="'.url('userland-index.js').'"></script>');
     }
 }
