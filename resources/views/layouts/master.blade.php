@@ -39,6 +39,6 @@
 
 @push('scripts')
   @foreach($view_manager->getJavascriptUrls() as $javascript)
-    <link href="{{ url($javascript) }}" rel="stylesheet" type="text/css">
+    <script src="{{ url($javascript) }}"></script>
   @endforeach
 @endpush
