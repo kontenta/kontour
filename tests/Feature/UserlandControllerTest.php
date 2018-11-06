@@ -96,6 +96,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
     {
         $response = $this->actingAs($this->user)->get(route('userland.edit', 1));
         $response->assertSee('<section data-kontour-widget="itemHistory">');
+        $response->assertSee('<header>Item History</header>');
         $response->assertSee('<li lang="en" data-kontour-entry-action="created" data-kontour-username="' . $this->user->getDisplayName() . '">');
         $response->assertSee('<li lang="en" data-kontour-entry-action="updated" data-kontour-username="' . $this->user->getDisplayName() . '">');
     }
