@@ -59,8 +59,6 @@ class UserlandServiceProvider extends ServiceProvider
     {
         $this->registerAdminWidget(new UserlandAdminWidget());
         $this->registerAdminWidget(new UnauthorizedWidget());
-        $this->findOrRegisterAdminWidget(PersonalRecentVisitsWidget::class);
-        $this->findOrRegisterAdminWidget(TeamRecentVisitsWidget::class);
     }
 
     protected function registerMenuLinks()
