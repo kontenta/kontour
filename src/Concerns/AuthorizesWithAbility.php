@@ -15,11 +15,16 @@ trait AuthorizesWithAbility
     // but not if more than one argument is passsed in an array unfortunately.
     use SerializesModels;
 
+    /**
+     * @var bool Set to false to fail authorization if no ability has been registered
+     */
+    protected $authorizesWithoutAbility = true;
+
     private $authorizesWithAbilityName;
     private $authorizesWithAbilityArguments;
     private $authorizesWithAbilityGuard;
 
-     /**
+    /**
      * Register a policy or gate to be used for the authorization
      * @param string $ability name from a Gate/Policy
      * @param array|mixed $arguments for the ability check, typically a model instance
@@ -52,6 +57,10 @@ trait AuthorizesWithAbility
      */
     public function isAuthorized(Authorizable $user = null): bool
     {
+        if (!$this->authorizesWithAbilityName) {
+            return $this->authorizesWithoutAbility;
+        }
+
         try {
             if ($this->authorizesWithAbilityGuard) {
                 $user = Auth::guard($this->authorizesWithAbilityGuard)->user();

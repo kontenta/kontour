@@ -33,6 +33,13 @@ class AuthorizesWithAbilityTest extends IntegrationTest
         $this->assertTrue($link->isAuthorized($this->user));
     }
 
+    public function test_authorized_without_ability()
+    {
+        $link = AdminLink::create('Reset password', 'http://test.com');
+
+        $this->assertTrue($link->isAuthorized());
+    }
+
     public function test_not_authorized_without_user()
     {
         $link = AdminLink::create('Reset password', 'http://test.com');
