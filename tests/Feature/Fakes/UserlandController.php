@@ -6,6 +6,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Kontenta\Kontour\AdminLink;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
+use Kontenta\Kontour\Contracts\AdminViewManager;
 use Kontenta\Kontour\Contracts\CrumbtrailWidget;
 use Kontenta\Kontour\Contracts\ItemHistoryWidget;
 use Kontenta\Kontour\Contracts\MessageWidget;
@@ -16,15 +17,22 @@ class UserlandController extends BaseController
 {
     use RegistersAdminWidgets;
 
-    public function __construct(CrumbtrailWidget $crumbtrail)
+    private $viewManager;
+
+    public function __construct(CrumbtrailWidget $crumbtrail, AdminViewManager $viewManager)
     {
         $this->crumbtrail = $crumbtrail;
+        $this->viewManager = $viewManager;
         $link1 = new AdminLink('1', route('userland.index'));
         $this->crumbtrail->addLink($link1);
+        $this->viewManager->addStylesheetUrl(url('userland.css'));
+        $this->viewManager->addJavascriptUrl('userland.js');
     }
 
     public function index()
     {
+        $this->viewManager->addStylesheetUrl('userland-index.css');
+        $this->viewManager->addJavascriptUrl('userland-index.js');
         $link = new AdminLink('Recent Userland Tool', url()->full());
         $user = Auth::guard(config('kontour.guard'))->user();
         $visit = new ShowAdminVisit($link, $user);
