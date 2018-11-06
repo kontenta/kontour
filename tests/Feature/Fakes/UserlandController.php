@@ -5,17 +5,16 @@ namespace Kontenta\Kontour\Tests\Feature\Fakes;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Kontenta\Kontour\AdminLink;
+use Kontenta\Kontour\Concerns\DispatchesAdminToolEvents;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
 use Kontenta\Kontour\Contracts\AdminViewManager;
 use Kontenta\Kontour\Contracts\CrumbtrailWidget;
 use Kontenta\Kontour\Contracts\ItemHistoryWidget;
 use Kontenta\Kontour\Contracts\MessageWidget;
-use Kontenta\Kontour\Events\AdminToolVisited;
-use Kontenta\Kontour\ShowAdminVisit;
 
 class UserlandController extends BaseController
 {
-    use RegistersAdminWidgets;
+    use RegistersAdminWidgets, DispatchesAdminToolEvents;
 
     private $viewManager;
 
@@ -31,12 +30,9 @@ class UserlandController extends BaseController
 
     public function index()
     {
+        $this->dispatchShowAdminToolVisitedEvent('Recent Userland Tool');
         $this->viewManager->addStylesheetUrl('userland-index.css');
         $this->viewManager->addJavascriptUrl('userland-index.js');
-        $link = new AdminLink('Recent Userland Tool', url()->full());
-        $user = Auth::guard(config('kontour.guard'))->user();
-        $visit = new ShowAdminVisit($link, $user);
-        event(new AdminToolVisited($visit));
         return view('userland::index', ['crumbtrail' => $this->crumbtrail]);
     }
 
