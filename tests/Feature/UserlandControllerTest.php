@@ -121,5 +121,10 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSee(url('admin.css'));
         $response->assertSee(url('userland.css'));
         $response->assertSee(url('userland-index.css'));
+
+        $response->assertSee('https://cdn.example.com/framework.js');
+        $response->assertSee(url('admin.js'));
+        $response->assertSee(url('userland.js'));
+        $response->assertSee(url('userland-index.js'));
     }
 }

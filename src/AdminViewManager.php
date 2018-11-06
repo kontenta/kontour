@@ -12,9 +12,15 @@ class AdminViewManager implements ViewManagerContract
      */
     protected $stylesheets;
 
+    /**
+     * @var Collection
+     */
+    protected $javascripts;
+
     public function __construct()
     {
         $this->stylesheets = new Collection();
+        $this->javascripts = new Collection();
     }
 
     /**
@@ -123,14 +129,7 @@ class AdminViewManager implements ViewManagerContract
      */
     public function addStylesheetUrl(string...$url): ViewManagerContract
     {
-        foreach($url as $newUrl)
-        {
-            if(!$this->stylesheets->contains(function ($oldUrl) use ($newUrl) {
-                return url($oldUrl) == url($newUrl);
-            })) {
-                $this->stylesheets->push($newUrl);
-            }
-        }
+        $this->addToCollection('stylesheets', $url);
 
         return $this;
     }
@@ -142,8 +141,24 @@ class AdminViewManager implements ViewManagerContract
      */
     public function addJavascriptUrl(string...$url): ViewManagerContract
     {
-        // TODO: Implement addJavascriptUrl() method.
+        $this->addToCollection('javascripts', $url);
+
         return $this;
+    }
+
+    /**
+     * Add a url to a collection if the url is not already in the named collection
+     */
+    private function addToCollection(string $collectionName, array $url)
+    {
+        foreach($url as $newUrl)
+        {
+            if(!$this->$collectionName->contains(function ($oldUrl) use ($newUrl) {
+                return url($oldUrl) == url($newUrl);
+            })) {
+                $this->$collectionName->push($newUrl);
+            }
+        }
     }
 
     /**
@@ -161,7 +176,6 @@ class AdminViewManager implements ViewManagerContract
      */
     public function getJavascriptUrls(): Collection
     {
-        // TODO: Implement getJavascriptUrls() method.
-        return collect();
+        return $this->javascripts;
     }
 }

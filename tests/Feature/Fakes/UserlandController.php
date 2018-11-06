@@ -27,11 +27,13 @@ class UserlandController extends BaseController
         $link1 = new RouteAdminLink('1', 'userland.index');
         $this->crumbtrail->addLink($link1);
         $this->viewManager->addStylesheetUrl(url('userland.css'));
+        $this->viewManager->addJavascriptUrl('userland.js');
     }
 
     public function index()
     {
         $this->viewManager->addStylesheetUrl('userland-index.css');
+        $this->viewManager->addJavascriptUrl('userland-index.js');
         $link = new AdminLink('Recent Userland Tool', url()->full());
         $user = Auth::guard(config('kontour.guard'))->user();
         $visit = new ShowAdminVisit($link, $user);

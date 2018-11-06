@@ -27,6 +27,7 @@ class UserlandAppServiceProvider extends ServiceProvider
     {
         $this->registerWidgets();
         $this->registerCss();
+        $this->registerJs();
     }
 
     protected function registerWidgets()
@@ -38,5 +39,11 @@ class UserlandAppServiceProvider extends ServiceProvider
     protected function registerCss()
     {
         $this->app->make(AdminViewManager::class)->addStylesheetUrl(url('admin.css'));
+    }
+
+    protected function registerJs()
+    {
+        $this->app->make(AdminViewManager::class)->addJavascriptUrl(url('admin.js'));
+        $this->app->make(AdminViewManager::class)->addJavascriptUrl('https://cdn.example.com/framework.js');
     }
 }
