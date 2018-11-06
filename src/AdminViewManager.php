@@ -151,9 +151,8 @@ class AdminViewManager implements ViewManagerContract
      */
     private function addToCollection(string $collectionName, array $url)
     {
-        foreach($url as $newUrl)
-        {
-            if(!$this->$collectionName->contains(function ($oldUrl) use ($newUrl) {
+        foreach ($url as $newUrl) {
+            if (!$this->$collectionName->contains(function ($oldUrl) use ($newUrl) {
                 return url($oldUrl) == url($newUrl);
             })) {
                 $this->$collectionName->push($newUrl);
