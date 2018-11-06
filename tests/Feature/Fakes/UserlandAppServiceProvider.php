@@ -32,8 +32,8 @@ class UserlandAppServiceProvider extends ServiceProvider
 
     protected function registerWidgets()
     {
-        $this->registerAdminWidget($this->app->make(PersonalRecentVisitsWidget::class));
-        $this->registerAdminWidget($this->app->make(TeamRecentVisitsWidget::class));
+        $this->findOrRegisterAdminWidget(PersonalRecentVisitsWidget::class);
+        $this->findOrRegisterAdminWidget(TeamRecentVisitsWidget::class);
     }
 
     protected function registerCss()

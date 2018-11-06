@@ -187,12 +187,12 @@ class KontourServiceProvider extends ServiceProvider
 
     protected function registerWidgets()
     {
-        $this->registerAdminWidget(
-            $this->app->make(\Kontenta\Kontour\Contracts\MenuWidget::class),
+        $this->findOrRegisterAdminWidget(
+            \Kontenta\Kontour\Contracts\MenuWidget::class,
             $this->app->make(\Kontenta\Kontour\Contracts\AdminViewManager::class)->navSection()
         );
-        $this->registerAdminWidget(
-            $this->app->make(\Kontenta\Kontour\Contracts\UserAccountWidget::class),
+        $this->findOrRegisterAdminWidget(
+            \Kontenta\Kontour\Contracts\UserAccountWidget::class,
             $this->app->make(\Kontenta\Kontour\Contracts\AdminViewManager::class)->headerSection()
         );
     }

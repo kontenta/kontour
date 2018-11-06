@@ -57,18 +57,16 @@ class UserlandController extends BaseController
 
     public function edit($id)
     {
-        $widget = app(ItemHistoryWidget::class);
-        $this->registerAdminWidget($widget);
+        $widget = $this->findOrRegisterAdminWidget(ItemHistoryWidget::class);
         $widget->addCreatedEntry(new \DateTime(), Auth::guard(config('kontour.guard'))->user());
         $widget->addUpdatedEntry(new \DateTime(), Auth::guard(config('kontour.guard'))->user());
 
-        $link2 = new AdminLink('2', url()->full());
+        $link2 = AdminLink::create('2', url()->full());
         $this->crumbtrail->addLink($link2);
         $this->registerAdminWidget($this->crumbtrail, app(\Kontenta\Kontour\Contracts\AdminViewManager::class)->toolHeaderSection());
 
-        $messageWidget = app(MessageWidget::class);
+        $messageWidget = $this->findOrRegisterAdminWidget(MessageWidget::class, app(\Kontenta\Kontour\Contracts\AdminViewManager::class)->toolHeaderSection());
         $messageWidget->addMessage('Hello World!');
-        $this->registerAdminWidget($messageWidget, app(\Kontenta\Kontour\Contracts\AdminViewManager::class)->toolHeaderSection());
 
         return view('userland::index');
     }
