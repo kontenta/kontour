@@ -125,8 +125,8 @@ class AdminViewManager implements ViewManagerContract
     {
         foreach($url as $newUrl)
         {
-            if(!$this->stylesheets->contains(function ($value, $key) use ($newUrl) {
-                return url($value) == url($newUrl);
+            if(!$this->stylesheets->contains(function ($oldUrl) use ($newUrl) {
+                return url($oldUrl) == url($newUrl);
             })) {
                 $this->stylesheets->push($newUrl);
             }
