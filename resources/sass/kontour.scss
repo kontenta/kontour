@@ -1,0 +1,53 @@
+* {
+  // Reset all margins
+  margin: 0;
+}
+
+* + * {
+  // Add default space between all adjacent elements
+  margin-top: 1rem;
+}
+
+dt, li, label, hgroup, header,
+h1, h2, h3, h4, h5, h6 {
+  + * {
+    // Remove spacing between closely related elements
+    margin-top: 0;
+  }
+}
+
+figure, picture, object, select, table, audio, video, map {
+  * {
+    // Remove spacining inside media elements
+    margin-top: 0;
+  }
+}
+
+a, del, ins,
+abbr,
+acronym,
+b,
+bdo,
+big,
+br,
+cite,
+code,
+dfn,
+em,
+i,
+kbd,
+label,
+map,
+q,
+samp,
+small,
+span,
+strong,
+sub,
+sup,
+time,
+tt,
+var {
+  // Remove spacing above inline elements (and 3 ambivalents)
+  margin-top: 0;
+}

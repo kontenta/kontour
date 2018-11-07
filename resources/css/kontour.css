@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+}
+
+* + * {
+  margin-top: 1rem;
+}
+
+dt + *,
+li + *,
+label + *,
+hgroup + *,
+header + *,
+h1 + *,
+h2 + *,
+h3 + *,
+h4 + *,
+h5 + *,
+h6 + * {
+  margin-top: 0;
+}
+
+figure *,
+picture *,
+object *,
+select *,
+table *,
+audio *,
+video *,
+map * {
+  margin-top: 0;
+}
+
+a,
+del,
+ins,
+abbr,
+acronym,
+b,
+bdo,
+big,
+br,
+cite,
+code,
+dfn,
+em,
+i,
+kbd,
+label,
+map,
+q,
+samp,
+small,
+span,
+strong,
+sub,
+sup,
+time,
+tt,
+var {
+  margin-top: 0;
+}
+
