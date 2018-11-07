@@ -1,11 +1,14 @@
 /vendor
+/node_modules
 composer.lock
+package-lock.json
 tags
 *.swp
 *.swo
 .idea
 .DS_Store
 /build
+/resources/css/mix-manifest.json
 phpunit.xml
 phpcs.xml
 /tests/Browser/console/
