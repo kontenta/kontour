@@ -51,3 +51,9 @@ var {
   // Remove spacing above inline elements (and 3 ambivalents)
   margin-top: 0;
 }
+
+// Make images responsive
+img {
+  max-width: 100%;
+  height: auto;
+}
