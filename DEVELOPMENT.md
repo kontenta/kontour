@@ -33,3 +33,12 @@ This project can be checked against configured coding standards using `composer 
 
 Automatic attempt to fix some reported coding standard violations can be run with
 `./vendor/bin/phpcbf` from the project directory.
+
+## Building assets
+
+We're using [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for building assets.
+You can find the build script in `webpack.mix.js`, run `npm install` to get started.
+
+- `npm run dev` will run a development build
+- `npm run watch` will watch files for changes and run development builds
+- `npm run production` will build assets for release
