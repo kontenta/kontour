@@ -1,13 +1,15 @@
+// Main vertical layout with sticky footer
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    
+
     > * {
         flex-shrink: 0;
         margin-top: 0;
     }
-    
+
+    // Target the main content area, which is the first element after the last header
     > header:last-of-type + * {
         flex-grow: 1;
     }
