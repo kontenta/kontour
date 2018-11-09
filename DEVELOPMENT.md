@@ -43,3 +43,12 @@ You can find the build script in `webpack.mix.js`, run `npm install` to get star
 - `npm run dev` will run a development build
 - `npm run watch` will watch files for changes and run development builds
 - `npm run production` will build assets for release
+
+### Testing assets within a Laravel app
+
+If you're editing and building assets within a repo in the vendor folder of a real Laravel app,
+running this command will publish the updated styles:
+
+```bash
+php artisan vendor:publish --tag="kontour-styling" --force
+```
