@@ -28,6 +28,8 @@ body > header:last-of-type + * {
   main {
     flex-grow: 1;
     max-width: none;
+    border-left: $kontour-border;
+    border-right: $kontour-border;
   }
 }
 
