@@ -2,14 +2,15 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    
+    > * {
+        flex-shrink: 0;
+        margin-top: 0;
+    }
+    
+    > header:last-of-type + * {
+        flex-grow: 1;
+    }
 }
 
-[data-kontour-section="header"],
-[data-kontour-section="footer"] {
-    flex-shrink: 0;
-}
-
-[data-kontour-section="main"] {
-    flex-grow: 1;
-}
 
