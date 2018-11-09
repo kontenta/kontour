@@ -15,6 +15,7 @@ body {
     }
 }
 
+// Content columns layout
 body > header:last-of-type + * {
   display: flex;
 
