@@ -15,4 +15,16 @@ body {
     }
 }
 
+body > header:last-of-type + * {
+  display: flex;
+
+  > * {
+    max-width: 15rem;
+  }
+
+  main {
+    flex-grow: 1;
+    max-width: none;
+  }
+}
 
