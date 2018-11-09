@@ -20,6 +20,8 @@ body > header:last-of-type + * {
 
   > * {
     max-width: 15rem;
+    margin-top: 0;
+    padding: 1rem;
   }
 
   main {
