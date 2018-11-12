@@ -5,6 +5,7 @@
 
 @section('body')
   <header data-kontour-section="{{ $view_manager->headerSection() }}">
+    <a href="{{ route('kontour.index') }}">{{ config('kontour.title') }}</a>
     @foreach($widget_manager->getWidgetsForSection($view_manager->headerSection()) as $widget)
       {{ $widget }}
     @endforeach
