@@ -10,6 +10,24 @@ class AdminUser extends \Illuminate\Foundation\Auth\User implements AdminUserCon
 {
     use Notifiable, CanResetPassword;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
     public function getDisplayName() : string
     {
         return $this->getEmailForPasswordReset();
