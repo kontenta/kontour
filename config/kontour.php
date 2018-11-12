@@ -4,17 +4,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Admin Authentication Guard
+    | Admin Title
     |--------------------------------------------------------------------------
     |
-    | Name of the default Guard used for admin tools.
+    | Display name for header and page title of admin pages
     |
-    | If you've added a configuration for a separate Guard for admin pages in
-    | your app's config/auth.php you should set that guard's name here.
-    |
-    */
+     */
 
-    'title' => 'Kontour',
+    'title' => 'Kontour ' . env('APP_NAME') . ' ' . env('APP_ENV'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +23,7 @@ return [
     | If you've added a configuration for a separate Guard for admin pages in
     | your app's config/auth.php you should set that guard's name here.
     |
-    */
+     */
 
     'guard' => 'web',
 
@@ -41,7 +38,7 @@ return [
     | the configuration to 'passwords' in your app's config/auth.php and set
     | the configuration name here.
     |
-    */
+     */
 
     //'passwords' => 'users',
 
@@ -52,7 +49,7 @@ return [
     |
     | Common prefix for the admin urls.
     |
-    */
+     */
 
     'url_prefix' => 'admin',
 
@@ -66,7 +63,7 @@ return [
     | Set a domain name here if your admin pages should reside on another
     | domain or sub-domain than the rest of your app.
     |
-    */
+     */
 
     'domain' => null,
 
@@ -77,7 +74,7 @@ return [
     |
     | Stylesheets to load on all admin pages.
     |
-    */
+     */
 
     'stylesheets' => [
         //'css/kontour.css',
