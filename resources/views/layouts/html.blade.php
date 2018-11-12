@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>@yield('title', 'Admin')</title>
+  <title>@yield('title', config('kontour.title'))</title>
 
   @stack('meta')
 
