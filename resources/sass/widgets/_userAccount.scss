@@ -1,5 +1,6 @@
 [data-kontour-widget="userAccount"] {
   display: flex;
+  align-items: center;
 
   > * + * {
     margin-left: .5rem;

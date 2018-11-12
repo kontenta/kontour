@@ -35,6 +35,7 @@ body > header:last-of-type + * {
 
 [data-kontour-section="header"] {
   display: flex;
+  align-items: center;
 
   * {
     margin-top: 0;
