@@ -5,6 +5,14 @@ body {
   font-family: system-ui, sans-serif;
 }
 
+[data-kontour-section="header"] {
+  border-bottom: $kontour-border;
+
+  > :first-child {
+    font-size: 2em;
+  }
+}
+
 @import 'layout';
 @import 'widgets/menu';
 @import 'widgets/userAccount';
