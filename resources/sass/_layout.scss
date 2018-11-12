@@ -33,3 +33,18 @@ body > header:last-of-type + * {
   }
 }
 
+[data-kontour-section="header"] {
+  display: flex;
+
+  * {
+    margin-top: 0;
+  }
+
+  > * {
+    padding: 1rem;
+  }
+
+  > :first-child {
+    margin-right: auto;
+  }
+}
