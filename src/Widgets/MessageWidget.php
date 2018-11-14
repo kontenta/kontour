@@ -22,7 +22,9 @@ class MessageWidget implements MessageWidgetContract
 
     public function toHtml()
     {
-        return View::make('kontour::widgets.message', ['messages' => $this->messages])->render();
+        if($this->messages->isNotEmpty()) {
+            return View::make('kontour::widgets.message', ['messages' => $this->messages])->render();
+        }
     }
 
     protected function addGeneralMessage($message, string $level = 'info'): MessageWidgetContract
@@ -39,7 +41,7 @@ class MessageWidget implements MessageWidgetContract
     {
         return $this->addGeneralMessage($message, $level);
     }
-    
+
     public function addHtmlMessage(Htmlable $message, string $level = 'info'): MessageWidgetContract
     {
         return $this->addGeneralMessage($message, $level);
