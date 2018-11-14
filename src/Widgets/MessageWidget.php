@@ -22,7 +22,7 @@ class MessageWidget implements MessageWidgetContract
 
     public function toHtml()
     {
-        if($this->messages->isNotEmpty()) {
+        if ($this->messages->isNotEmpty()) {
             return View::make('kontour::widgets.message', ['messages' => $this->messages])->render();
         }
     }
@@ -49,7 +49,7 @@ class MessageWidget implements MessageWidgetContract
 
     public function addFromSession($key = 'status', $level = 'info'): MessageWidgetContract
     {
-        if(session()->has($key)) {
+        if (session()->has($key)) {
             $this->addMessage(session($key), $level);
         }
 
