@@ -47,6 +47,15 @@ class MessageWidget implements MessageWidgetContract
         return $this->addGeneralMessage($message, $level);
     }
 
+    public function addFromSession($key = 'status', $level = 'info'): MessageWidgetContract
+    {
+        if(session()->has($key)) {
+            $this->addMessage(session($key), $level);
+        }
+
+        return $this;
+    }
+
     public function isAuthorized(Authorizable $user = null): bool
     {
         return true;
