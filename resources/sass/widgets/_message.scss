@@ -1,0 +1,9 @@
+[data-kontour-widget="message"] {
+  ol {
+    @extend .list-unstyled;
+  }
+
+  [data-kontour-message-level="info"] {
+    color: $kontour-success-color;
+  }
+}
