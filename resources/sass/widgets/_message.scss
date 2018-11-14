@@ -3,7 +3,16 @@
     @extend .list-unstyled;
   }
 
-  [data-kontour-message-level="info"] {
+  [data-kontour-message-level="info"],
+  [data-kontour-message-level="success"] {
     color: $kontour-success-color;
+  }
+
+  [data-kontour-message-level="warning"] {
+    color: $kontour-warning-color;
+  }
+
+  [data-kontour-message-level="error"] {
+    color: $kontour-error-color;
   }
 }
