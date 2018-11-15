@@ -24,6 +24,7 @@ install:
   - travis_retry composer install --prefer-dist --no-interaction --no-suggest
 
 before_script:
+  - if [[ $COVERAGE == "" ]]; then phpenv config-rm xdebug.ini; fi
   - composer config discard-changes true
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
