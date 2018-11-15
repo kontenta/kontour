@@ -1,0 +1,8 @@
+[type="text"], [type="email"], textarea {
+  width: 100%;
+  max-width: 65ch;
+}
+
+[type="email"] {
+  max-width: 35ch;
+}
