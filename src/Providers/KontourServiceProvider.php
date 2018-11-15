@@ -144,7 +144,9 @@ class KontourServiceProvider extends ServiceProvider
         $this->registerResources();
         $this->registerRoutes();
         $this->registerEventListeners();
+
         $this->registerWidgets();
+        $this->registerAssets();
 
         if ($this->app->runningInConsole()) {
             $this->offerPublishing();
@@ -209,5 +211,17 @@ class KontourServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../resources/views' => resource_path('views/vendor/kontour'),
         ], 'kontour-views');
+
+        $this->publishes([
+            __DIR__ . '/../../resources/css/kontour.css' => public_path('css/kontour.css'),
+        ], 'kontour-styling');
+    }
+
+    protected function registerAssets()
+    {
+        $this->app->make(\Kontenta\Kontour\Contracts\AdminBootManager::class)
+            ->beforeRoute(function (\Kontenta\Kontour\Contracts\AdminViewManager $viewManager) {
+                $viewManager->addStylesheetUrl(...config('kontour.stylesheets'));
+            });
     }
 }

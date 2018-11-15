@@ -1,0 +1,51 @@
+// Main vertical layout with sticky footer
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    > * {
+        flex-shrink: 0;
+        margin-top: 0;
+    }
+
+    // Target the main content area, which is the first element after the last header
+    > header:last-of-type + * {
+        flex-grow: 1;
+    }
+}
+
+// Content columns layout
+body > header:last-of-type + * {
+  display: flex;
+
+  > * {
+    max-width: 15rem;
+    margin-top: 0;
+    padding: 1rem;
+  }
+
+  main {
+    flex-grow: 1;
+    max-width: none;
+    border-left: $kontour-border;
+    border-right: $kontour-border;
+  }
+}
+
+[data-kontour-section="header"] {
+  display: flex;
+  align-items: center;
+
+  * {
+    margin-top: 0;
+  }
+
+  > * {
+    padding: 1rem;
+  }
+
+  > :first-child {
+    margin-right: auto;
+  }
+}

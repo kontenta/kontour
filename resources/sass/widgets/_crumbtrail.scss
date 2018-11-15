@@ -1,0 +1,13 @@
+[data-kontour-widget="crumbtrail"] {
+  > * {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+
+  * + li::before {
+    content: "→";
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
+}

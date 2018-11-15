@@ -5,10 +5,12 @@
 
 @section('body')
   <header data-kontour-section="{{ $view_manager->headerSection() }}">
+    <a href="{{ route('kontour.index') }}">{{ config('kontour.title') }}</a>
     @foreach($widget_manager->getWidgetsForSection($view_manager->headerSection()) as $widget)
       {{ $widget }}
     @endforeach
   </header>
+  <div>
   <nav data-kontour-section="{{ $view_manager->navSection() }}">
     @foreach($widget_manager->getWidgetsForSection($view_manager->navSection()) as $widget)
       {{ $widget }}
@@ -24,6 +26,7 @@
     @endforeach
   @show
   </section>
+  </div>
   <footer data-kontour-section="{{ $view_manager->footerSection() }}">
     @foreach($widget_manager->getWidgetsForSection($view_manager->footerSection()) as $widget)
       {{ $widget }}

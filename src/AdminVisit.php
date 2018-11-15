@@ -11,9 +11,9 @@ abstract class AdminVisit implements AdminVisitContract
 {
     use SerializesModels;
 
-    private $link;
-    private $user;
-    private $datetime;
+    protected $link;
+    protected $user;
+    protected $datetime;
 
     public function __construct(AdminLink $link, AdminUser $user)
     {

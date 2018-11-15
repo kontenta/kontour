@@ -3,12 +3,9 @@
 namespace Kontenta\Kontour\Events;
 
 use Kontenta\Kontour\Contracts\AdminVisit;
-use Illuminate\Queue\SerializesModels;
 
 final class AdminToolVisited
 {
-    use SerializesModels;
-
     public $visit;
 
     /**

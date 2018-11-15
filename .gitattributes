@@ -3,6 +3,8 @@
 /composer.lock -merge
 
 /tests export-ignore
+/package.json export-ignore
+/webpack.mix.js export-ignore
 .gitattributes export-ignore
 .gitignore export-ignore
 .editorconfig export-ignore
