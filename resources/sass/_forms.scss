@@ -6,3 +6,10 @@
 [type="email"] {
   max-width: 35ch;
 }
+
+input, select, textarea {
+    &:invalid {
+        border-color: $kontour-error-color;
+        border-style: solid;
+    }
+}
