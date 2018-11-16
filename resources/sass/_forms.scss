@@ -13,3 +13,7 @@ input, select, textarea {
         border-style: solid;
     }
 }
+
+.error, [id*="error" i]{
+    color: $kontour-error-color;
+}
