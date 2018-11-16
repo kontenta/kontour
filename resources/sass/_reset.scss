@@ -8,12 +8,17 @@
   margin-top: 1rem;
 }
 
-dt, li, label, hgroup, header, legend
+dt, li, label, legend, hgroup
 h1, h2, h3, h4, h5, h6 {
   + * {
     // Remove spacing between closely related elements
     margin-top: 0;
   }
+}
+
+header + :last-child {
+  // Remove spacing between header and a single following element
+  margin-top: 0;
 }
 
 figure, picture, object, select, table, audio, video, map {
