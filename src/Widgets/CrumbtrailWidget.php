@@ -22,7 +22,9 @@ class CrumbtrailWidget implements CrumbtrailWidgetContract
 
     public function toHtml()
     {
-        return View::make('kontour::widgets.crumbtrail', ['links' => $this->links])->render();
+        if($this->links->count() > 1) {
+            return View::make('kontour::widgets.crumbtrail', ['links' => $this->links])->render();
+        }
     }
 
     public function addLink(AdminLink $link): CrumbtrailWidgetContract
