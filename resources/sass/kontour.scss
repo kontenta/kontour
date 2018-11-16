@@ -13,6 +13,10 @@ body {
   }
 }
 
+header[data-kontour-section="toolHeader"] + * {
+    margin-top: 1rem;
+}
+
 @import 'layout';
 @import 'forms';
 @import 'widgets/crumbtrail';
