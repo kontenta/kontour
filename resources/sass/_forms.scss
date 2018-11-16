@@ -12,6 +12,11 @@ input, select, textarea {
         border-color: $kontour-error-color;
         border-style: solid;
     }
+    + {
+        .error, [id*="error" i] {
+            margin-top: 0;
+        }
+    }
 }
 
 .error, [id*="error" i]{
