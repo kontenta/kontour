@@ -1,8 +1,8 @@
 <div data-selected-options="{{ implode(' ', $selected = collect(old($name, $selected ?? $model[$name] ?? []))->map(function($item) { return strval($item instanceof Illuminate\Database\Eloquent\Model ? $item->getKey() : $item); })->all()) }}">
-  @include('blog-admin::forms.label', ['controlId' => $controlId = $controlId ?? (($idPrefix ?? '') . $name)])
+  @include('kontour::forms.label', ['controlId' => $controlId = $controlId ?? (($idPrefix ?? '') . $name)])
   <div>
     <select multiple
-      @include('blog-admin::forms.partials.inputAttributes', ['name' => $name . '[]', 'errorsId' => $errorsId = $controlId . ($errorsSuffix ?? 'Errors')])
+      @include('kontour::forms.partials.inputAttributes', ['name' => $name . '[]', 'errorsId' => $errorsId = $controlId . ($errorsSuffix ?? 'Errors')])
     >
       @foreach($options as $option_value => $option_display)
         @if($optgroup = is_iterable($option_display) ? $option_value : false)
@@ -21,6 +21,6 @@
         @endif
       @endforeach
     </select>
-    @include('blog-admin::forms.partials.errors', ['errorsId' => $errorsId])
+    @include('kontour::forms.partials.errors', ['errorsId' => $errorsId])
   </div>
 </div>

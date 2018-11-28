@@ -1,8 +1,8 @@
 <div data-selected-option="{{ $selected = strval(old($name, $selected ?? $model[$name] ?? '')) }}">
-  @include('blog-admin::forms.label', ['controlId' => $controlId = $controlId ?? (($idPrefix ?? '') . $name)])
+  @include('kontour::forms.label', ['controlId' => $controlId = $controlId ?? (($idPrefix ?? '') . $name)])
   <div>
     <select
-      @include('blog-admin::forms.partials.inputAttributes', ['errorsId' => $errorsId = $controlId . ($errorsSuffix ?? 'Errors')])
+      @include('kontour::forms.partials.inputAttributes', ['errorsId' => $errorsId = $controlId . ($errorsSuffix ?? 'Errors')])
     >
       @foreach($options as $option_value => $option_display)
         @if($optgroup = is_iterable($option_display) ? $option_value : false)
@@ -21,6 +21,6 @@
         @endif
       @endforeach
     </select>
-    @include('blog-admin::forms.partials.errors', ['errorsId' => $errorsId])
+    @include('kontour::forms.partials.errors', ['errorsId' => $errorsId])
   </div>
 </div>
