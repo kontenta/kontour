@@ -46,7 +46,9 @@ class KontourServiceProvider extends ServiceProvider
             true
         );
 
-        $this->app->when(WidgetManager::class)->needs(\Illuminate\Contracts\Auth\Guard::class)->give('kontour.guard');
+        $this->app->when(AdminWidgetManager::class)
+            ->needs(\Illuminate\Contracts\Auth\Guard::class)
+            ->give('kontour.guard');
 
         $this->app->bindIf(
             \Kontenta\Kontour\Contracts\AdminRouteManager::class,
