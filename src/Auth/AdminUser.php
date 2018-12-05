@@ -16,7 +16,7 @@ class AdminUser extends \Illuminate\Foundation\Auth\User implements AdminUserCon
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email'
     ];
 
     /**
@@ -28,7 +28,7 @@ class AdminUser extends \Illuminate\Foundation\Auth\User implements AdminUserCon
         'password', 'remember_token',
     ];
 
-    public function getDisplayName() : string
+    public function getDisplayName(): string
     {
         return $this->getEmailForPasswordReset();
     }
