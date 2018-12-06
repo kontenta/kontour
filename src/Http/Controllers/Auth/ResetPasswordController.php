@@ -2,12 +2,14 @@
 
 namespace Kontenta\Kontour\Http\Controllers\Auth;
 
-use Kontenta\Kontour\Contracts\AdminGuestMiddleware;
-use Kontenta\Kontour\Contracts\AdminRouteManager;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
+use Kontenta\Kontour\Contracts\AdminGuestMiddleware;
+use Kontenta\Kontour\Contracts\AdminRouteManager;
 
 class ResetPasswordController extends Controller
 {
@@ -43,6 +45,26 @@ class ResetPasswordController extends Controller
         return view('kontour::auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
+    }
+
+    /**
+     * Get the broker to be used during password reset.
+     *
+     * @return \Illuminate\Auth\Passwords\PasswordBroker
+     */
+    public function broker()
+    {
+        return Password::broker(config('kontour.passwords', null));
+    }
+
+    /**
+     * Get the guard to be used during password reset.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard(config('kontour.guard'));
     }
 
     /**
