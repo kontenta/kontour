@@ -1,11 +1,11 @@
 <?php
 
-namespace Kontenta\Kontour\Tests\Unit;
+namespace Kontenta\Kontour\Tests\Feature;
 
+use Kontenta\Kontour\Tests\IntegrationTest;
 use Kontenta\Kontour\AdminLink;
-use Kontenta\Kontour\Tests\UnitTest;
 
-class AdminLinkTest extends UnitTest
+class AdminLinkTest extends IntegrationTest
 {
     public function test_can_be_converted_to_html()
     {
