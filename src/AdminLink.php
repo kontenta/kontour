@@ -55,6 +55,18 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
         return $this;
     }
 
+    /**
+     * Set the view to use with the toHtml-function fluently
+     * @param string $view
+     * @return $this
+     */
+    public function withView(string $view): AdminLinkContract
+    {
+        $this->view = $view;
+
+        return $this;
+    }
+
     public function toHtml(): string
     {
         return trim(View::make($this->view, ['link' => $this])->render());

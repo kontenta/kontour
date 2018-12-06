@@ -2,10 +2,10 @@
 
 namespace Kontenta\Kontour\Tests\Feature;
 
-use Kontenta\Kontour\Tests\IntegrationTest;
+use Kontenta\Kontour\Tests\UserlandAdminToolTest;
 use Kontenta\Kontour\AdminLink;
 
-class AdminLinkTest extends IntegrationTest
+class AdminLinkTest extends UserlandAdminToolTest
 {
     public function test_can_be_converted_to_html()
     {
@@ -30,5 +30,14 @@ class AdminLinkTest extends IntegrationTest
         $this->assertEquals('Hej', $link->getName());
         $this->assertEquals('http://hej.com', $link->getUrl());
         $this->assertEquals('Hejsanhejsan', $link->getDescription());
+    }
+
+    public function test_with_different_view()
+    {
+        $link = new AdminLink('Hej', 'http://hej.com');
+        $link = $link->withDescription('Hejsanhejsan');
+        $link = $link->withView('userland::adminlink');
+
+        $this->assertEquals('<a href="http://hej.com" title="Hejsanhejsan" class="link">Hej</a>', $link->toHtml());
     }
 }
