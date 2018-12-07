@@ -11,7 +11,7 @@ trait ResolvesAdminUser
      * Get the currently logged in admin user
      * @return Kontenta\Kontour\Contracts\AdminUser
      */
-    public function user()
+    public function user(): ?AdminUser
     {
         return Auth::guard(config('kontour.guard'))->user();
     }
