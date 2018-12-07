@@ -1,0 +1,1 @@
+<a{!! $link->getUrl() ? ' href="'.htmlspecialchars($link->getUrl()).'"' : '' !!}{!! $link->getDescription() ? ' title="'.htmlspecialchars($link->getDescription()).'"' : '' !!}>{{ $link->getName() }}</a>
