@@ -2,6 +2,7 @@
 
 namespace Kontenta\Kontour;
 
+use Illuminate\Support\Facades\View;
 use Kontenta\Kontour\Concerns\AuthorizesWithAbility as AuthorizesWithAbilityTrait;
 use Kontenta\Kontour\Contracts\AdminLink as AdminLinkContract;
 use Kontenta\Kontour\Contracts\AuthorizesWithAbility as AuthorizesWithAbilityContract;
@@ -13,6 +14,7 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
     protected $name;
     protected $url;
     protected $description;
+    protected $view = 'kontour::adminlinks.adminlink';
 
     public function __construct(string $name, string $url, string $description = null)
     {
@@ -53,18 +55,20 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
         return $this;
     }
 
+    /**
+     * Set the view to use with the toHtml-function fluently
+     * @param string $view
+     * @return $this
+     */
+    public function withView(string $view): AdminLinkContract
+    {
+        $this->view = $view;
+
+        return $this;
+    }
+
     public function toHtml(): string
     {
-        $attributes = [];
-
-        if ($this->getUrl()) {
-            $attributes[] = 'href="' . htmlspecialchars($this->getUrl()) . '"';
-        }
-
-        if ($this->getDescription()) {
-            $attributes[] = 'title="' . htmlspecialchars($this->getDescription()) . '"';
-        }
-
-        return '<a ' . implode(' ', $attributes) . '>' . $this->getName() . '</a>';
+        return trim(View::make($this->view, ['link' => $this])->render());
     }
 }
