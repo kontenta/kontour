@@ -13,7 +13,7 @@ class UserAccountWidget implements UserAccountWidgetContract
 
     public function toHtml()
     {
-        return View::make('kontour::widgets.userAccount', ['user' => $this->user()])->render();
+        return View::make('kontour::widgets.userAccount', ['user' => $this->adminUser()])->render();
     }
 
     public function isAuthorized(Authorizable $user = null): bool

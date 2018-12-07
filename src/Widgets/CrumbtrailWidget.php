@@ -44,6 +44,6 @@ class CrumbtrailWidget implements CrumbtrailWidgetContract
 
     protected function authorizedLinks()
     {
-        return $this->links->filter->isAuthorized($this->user());
+        return $this->links->filter->isAuthorized($this->adminUser());
     }
 }

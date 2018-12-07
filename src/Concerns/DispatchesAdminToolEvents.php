@@ -16,7 +16,7 @@ trait DispatchesAdminToolEvents
     {
         $visit = new ShowAdminVisit(
             $this->createCurrentAdminLink($name, $description),
-            $this->user()
+            $this->adminUser()
         );
         event(new AdminToolVisited($visit));
     }
@@ -25,7 +25,7 @@ trait DispatchesAdminToolEvents
     {
         $visit = new EditAdminVisit(
             $this->createCurrentAdminLink($name, $description),
-            $this->user()
+            $this->adminUser()
         );
         event(new AdminToolVisited($visit));
     }

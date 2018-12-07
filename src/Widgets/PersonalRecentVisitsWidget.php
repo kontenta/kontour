@@ -32,7 +32,7 @@ class PersonalRecentVisitsWidget implements PersonalRecentVisitsWidgetContract
     private function getVisits()
     {
         return $this->repository->getShowVisits()->merge($this->repository->getEditVisits())->filter(function ($visit) {
-            return $visit->getUser()->is($this->user()) and $visit->getLink()->isAuthorized($this->user());
+            return $visit->getUser()->is($this->adminUser()) and $visit->getLink()->isAuthorized($this->adminUser());
         })->unique(function ($visit) {
             return $visit->getLink()->getUrl();
         })->sortByDesc(function ($visit) {
