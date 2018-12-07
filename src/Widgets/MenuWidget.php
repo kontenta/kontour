@@ -4,12 +4,15 @@ namespace Kontenta\Kontour\Widgets;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Support\Collection;
-use Kontenta\Kontour\Contracts\MenuWidget as MenuWidgetContract;
-use Kontenta\Kontour\Contracts\AdminLink;
 use Illuminate\Support\Facades\View;
+use Kontenta\Kontour\Concerns\ResolvesAdminUser;
+use Kontenta\Kontour\Contracts\AdminLink;
+use Kontenta\Kontour\Contracts\MenuWidget as MenuWidgetContract;
 
 class MenuWidget implements MenuWidgetContract
 {
+    use ResolvesAdminUser;
+
     /**
      * @var Collection
      */
@@ -22,7 +25,7 @@ class MenuWidget implements MenuWidgetContract
 
     public function toHtml()
     {
-        return View::make('kontour::widgets.menu', ['links' => $this->links])->render();
+        return View::make('kontour::widgets.menu', ['links' => $this->authorizedLinks()])->render();
     }
 
     public function addLink(AdminLink $link, string $desiredHeading = null): MenuWidgetContract
@@ -48,5 +51,12 @@ class MenuWidget implements MenuWidgetContract
     public function isAuthorized(Authorizable $user = null): bool
     {
         return (bool) $user;
+    }
+
+    protected function authorizedLinks()
+    {
+        return $this->links->map(function ($links) {
+            return $links->filter->isAuthorized($this->adminUser());
+        });
     }
 }
