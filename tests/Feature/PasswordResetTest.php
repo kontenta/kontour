@@ -21,19 +21,6 @@ class PasswordResetTest extends IntegrationTest
         $this->user = factory(User::class)->create();
     }
 
-    /**
-     * Configure the environment.
-     *
-     * @param  \Illuminate\Foundation\Application $app
-     * @return void
-     */
-    protected function getEnvironmentSetUp($app)
-    {
-        // Test with Laravel's default password reset config
-        $app['config']->set('kontour.passwords', 'users');
-        parent::getEnvironmentSetUp($app);
-    }
-
     public function test_request_password_reset_url()
     {
         $response = $this->get(route('kontour.password.request'));
