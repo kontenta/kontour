@@ -23,4 +23,12 @@ class InputTest extends IntegrationTest
         $this->assertRegExp('/<label\s*for="a"\s*>/', $output);
         $this->assertRegExp('/<input[\S\s]*id="a"\s*>/', $output);
     }
+
+    public function test_input_can_have_id_prefix()
+    {
+        $output = View::make('kontour::forms.input', ['name' => 'test', 'errors' => new MessageBag, 'idPrefix' => 'pre-'])->render();
+
+        $this->assertRegExp('/<label\s*for="pre-test"\s*>/', $output);
+        $this->assertRegExp('/<input[\S\s]*id="pre-test"\s*>/', $output);
+    }
 }
