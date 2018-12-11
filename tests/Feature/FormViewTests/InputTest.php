@@ -8,10 +8,19 @@ use Kontenta\Kontour\Tests\IntegrationTest;
 
 class InputTest extends IntegrationTest
 {
-    public function test_input_has_label()
+    public function test_input_is_referenced_by_label()
     {
         $output = View::make('kontour::forms.input', ['name' => 'test', 'errors' => new MessageBag])->render();
 
         $this->assertRegExp('/<label\s*for="test"\s*>/', $output);
+        $this->assertRegExp('/<input[\S\s]*id="test"\s*>/', $output);
+    }
+
+    public function test_input_can_have_custom_control_id()
+    {
+        $output = View::make('kontour::forms.input', ['name' => 'test', 'errors' => new MessageBag, 'controlId' => 'a'])->render();
+
+        $this->assertRegExp('/<label\s*for="a"\s*>/', $output);
+        $this->assertRegExp('/<input[\S\s]*id="a"\s*>/', $output);
     }
 }
