@@ -35,4 +35,11 @@ class LabelTest extends IntegrationTest
 
         $this->assertRegExp('/<label[\S\s]*>Test input<\/label>/', $output);
     }
+
+    public function test_label_can_have_prepended_html()
+    {
+        $output = View::make('kontour::forms.label', ['name' => 'test', 'labelStart' => '<i>pre</i>'])->render();
+
+        $this->assertRegExp('/<label[\S\s]*><i>pre<\/i>[\S\s]*<\/label>/', $output);
+    }
 }
