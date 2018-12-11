@@ -8,7 +8,7 @@ use Kontenta\Kontour\Tests\IntegrationTest;
 
 class LabelTest extends IntegrationTest
 {
-    public function test_input_label_is_humanized()
+    public function test_generated_label_is_humanized()
     {
         $output = View::make('kontour::forms.label', ['name' => 'test_input', 'errors' => new MessageBag])->render();
 
