@@ -45,4 +45,12 @@ class InputTest extends IntegrationTest
         $this->assertRegExp('/<label\s*for="pre-test"\s*>/', $output);
         $this->assertRegExp('/<input[\S\s]*id="pre-test"\s*>/', $output);
     }
+
+    public function test_value_attribute_is_not_present_on_password_inputs()
+    {
+        $output = View::make('kontour::forms.input', ['name' => 'test', 'errors' => new MessageBag, 'type' => 'password', 'value' => 'secret'])->render();
+
+        $this->assertRegExp('/<input[\S\s]*type="password"[\S\s]*>/', $output);
+        $this->assertNotRegExp('/<input[\S\s]*value="[^"]*"[\S\s]*>/', $output);
+    }
 }
