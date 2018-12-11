@@ -15,6 +15,13 @@ class InputTest extends IntegrationTest
         $this->assertRegExp('/<input[\S\s]*type="text"[\S\s]*>/', $output);
     }
 
+    public function test_input_type_can_be_specified()
+    {
+        $output = View::make('kontour::forms.input', ['name' => 'test', 'errors' => new MessageBag, 'type' => 'email'])->render();
+
+        $this->assertRegExp('/<input[\S\s]*type="email"[\S\s]*>/', $output);
+    }
+
     public function test_input_is_referenced_by_label()
     {
         $output = View::make('kontour::forms.input', ['name' => 'test', 'errors' => new MessageBag])->render();
