@@ -10,7 +10,7 @@ class LabelTest extends IntegrationTest
 {
     public function test_generated_label_is_humanized()
     {
-        $output = View::make('kontour::forms.label', ['name' => 'test_input', 'errors' => new MessageBag])->render();
+        $output = View::make('kontour::forms.label', ['name' => 'test_input'])->render();
 
         $this->assertRegExp('/<label[\S\s]*>Test input<\/label>/', $output);
     }
