@@ -14,4 +14,11 @@ class InputTest extends IntegrationTest
 
         $this->assertRegExp('/<label\s*for="test"\s*>/', $output);
     }
+
+    public function test_input_label_is_humanized()
+    {
+        $output = View::make('kontour::forms.input', ['name' => 'test_input', 'errors' => new MessageBag])->render();
+
+        $this->assertRegExp('/<label[\S\s]*>Test input<\/label>/', $output);
+    }
 }
