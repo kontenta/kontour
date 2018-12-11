@@ -42,4 +42,11 @@ class LabelTest extends IntegrationTest
 
         $this->assertRegExp('/<label[\S\s]*><i>pre<\/i>[\S\s]*<\/label>/', $output);
     }
+
+    public function test_label_can_have_appended_html()
+    {
+        $output = View::make('kontour::forms.label', ['name' => 'test', 'labelEnd' => '<i>post</i>'])->render();
+
+        $this->assertRegExp('/<label[\S\s]*>[\S\s]*<i>post<\/i><\/label>/', $output);
+    }
 }
