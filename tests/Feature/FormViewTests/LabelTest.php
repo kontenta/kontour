@@ -22,6 +22,13 @@ class LabelTest extends IntegrationTest
         $this->assertRegExp('/<legend[\S\s]*>[\S\s]*<\/legend>/', $output);
     }
 
+    public function test_label_references_control()
+    {
+        $output = View::make('kontour::forms.label', ['name' => 'test', 'controlId' => 'a'])->render();
+
+        $this->assertRegExp('/<label[\S\s]*for="a"[\S\s]*>[\S\s]*<\/label>/', $output);
+    }
+
     public function test_generated_label_is_humanized()
     {
         $output = View::make('kontour::forms.label', ['name' => 'test_input'])->render();
