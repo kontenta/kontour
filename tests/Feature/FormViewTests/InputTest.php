@@ -62,4 +62,18 @@ class InputTest extends IntegrationTest
 
         $this->assertRegExp('/<input[\S\s]*value="old"[\S\s]*>/', $output);
     }
+
+    public function test_fallback_values_are_used_in_order()
+    {
+        $fallbacks = ['value' => 'a', 'slot' => 'b', 'model' => ['test' => 'c']];
+        while (count($fallbacks)) {
+            $output = View::make('kontour::forms.input', array_merge(['name' => 'test', 'errors' => new MessageBag], $fallbacks))->render();
+
+            $value = array_shift($fallbacks);
+            if (is_array($value)) {
+                $value = $value['test'];
+            }
+            $this->assertRegExp('/<input[\S\s]*value="' . $value . '"[\S\s]*>/', $output);
+        }
+    }
 }
