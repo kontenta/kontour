@@ -8,6 +8,13 @@ use Kontenta\Kontour\Tests\IntegrationTest;
 
 class InputTest extends IntegrationTest
 {
+    public function test_input_type_defaults_to_text()
+    {
+        $output = View::make('kontour::forms.input', ['name' => 'test', 'errors' => new MessageBag])->render();
+
+        $this->assertRegExp('/<input[\S\s]*type="text"[\S\s]*>/', $output);
+    }
+
     public function test_input_is_referenced_by_label()
     {
         $output = View::make('kontour::forms.input', ['name' => 'test', 'errors' => new MessageBag])->render();
