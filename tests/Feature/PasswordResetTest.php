@@ -66,8 +66,8 @@ class PasswordResetTest extends IntegrationTest
         $response->assertRedirect($routeManager->indexUrl());
         $response->assertSessionHas('status');
         $response->assertSessionMissing('errors');
-        $this->assertCredentials(['email' => $this->user->getEmailForPasswordReset(), 'password' => $new_password]);
-        $this->assertAuthenticatedAs($this->user);
+        $this->assertCredentials(['email' => $this->user->getEmailForPasswordReset(), 'password' => $new_password], 'admin');
+        $this->assertAuthenticatedAs($this->user, 'admin');
     }
 
 }
