@@ -83,4 +83,10 @@ class InputTest extends IntegrationTest
             $this->assertRegExp('/<input[\S\s]*value="' . $value . '"[\S\s]*>/', $output);
         }
     }
+
+    //TODO: test error-free input not having aria-invalid
+    //TODO: test errors setting aria-invalid
+    //TODO: test error-free input not referencing error element
+    //TODO: test input referencing element with printed errors
+    //TODO: test custom errors id suffix
 }
