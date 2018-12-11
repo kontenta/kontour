@@ -54,7 +54,7 @@ class InputTest extends IntegrationTest
         $this->assertNotRegExp('/<input[\S\s]*value="[^"]*"[\S\s]*>/', $output);
     }
 
-    public function test_old_value_is_used()
+    public function test_old_value_is_used_if_in_session()
     {
         $this->withSession(['_old_input' => ['test' => 'old']]);
         request()->setLaravelSession(session());
