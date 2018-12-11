@@ -2,8 +2,8 @@
 
 namespace Kontenta\Kontour\Tests\Feature\FormViewTests;
 
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\MessageBag;
 use Kontenta\Kontour\Tests\IntegrationTest;
 
 class LabelTest extends IntegrationTest
@@ -34,6 +34,14 @@ class LabelTest extends IntegrationTest
         $output = View::make('kontour::forms.label', ['name' => 'test_input'])->render();
 
         $this->assertRegExp('/<label[\S\s]*>Test input<\/label>/', $output);
+    }
+
+    public function test_validation_attribute_is_used_for_label()
+    {
+        Lang::addLines(['validation.attributes.custom_input' => 'tEsT'], Lang::locale());
+        $output = View::make('kontour::forms.label', ['name' => 'custom_input'])->render();
+
+        $this->assertRegExp('/<label[\S\s]*>TEsT<\/label>/', $output);
     }
 
     public function test_label_can_have_prepended_html()
