@@ -7,7 +7,7 @@
     "laravel/framework": "5.7.*"
   },
   "require-dev": {
-    "laravel/dusk": "^3.0.2",
+    "laravel/dusk": ">3.0.1",
     "mockery/mockery": "^1.2",
     "orchestra/testbench": "^3.7",
     "orchestra/testbench-dusk": "^3.5.5|3.7.x-dev",
