@@ -31,6 +31,8 @@ class AuthenticateAdmin extends \Illuminate\Auth\Middleware\Authenticate impleme
                 'needs to implement',
                 AdminUser::class,
                 'to be used as a Kontour admin user',
+                'with guard',
+                "'" . config('auth.defaults.guard') . "'",
             ]));
         }
 
