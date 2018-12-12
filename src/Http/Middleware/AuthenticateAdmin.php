@@ -24,6 +24,10 @@ class AuthenticateAdmin extends \Illuminate\Auth\Middleware\Authenticate impleme
         $guards[] = config('kontour.guard');
         $this->authenticate($request, $guards);
 
+        if (!$this->auth->user() instanceof \Kontenta\Kontour\Contracts\AdminUser) {
+            throw new \UnexpectedValueException('Admin user class needs to implement \Kontenta\Kontour\Contracts\AdminUser');
+        }
+
         return $next($request);
     }
 

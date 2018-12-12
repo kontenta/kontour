@@ -64,6 +64,14 @@ class AuthenticationTest extends IntegrationTest
         $response->assertRedirect($routeManager->indexUrl());
     }
 
+    public function test_non_admin_user_cant_be_logged_in() {
+        $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
+        $user = new \Illuminate\Foundation\Auth\User();
+        $response = $this->actingAs($user, 'admin')->get($routeManager->indexUrl());
+
+        $response->assertStatus(500);
+    }
+
     public function test_index_route() {
         /**
          * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
