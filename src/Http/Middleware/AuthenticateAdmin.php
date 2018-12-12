@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Auth\AuthenticationException;
 use Kontenta\Kontour\Contracts\AdminAuthenticateMiddleware;
 use Kontenta\Kontour\Contracts\AdminRouteManager;
+use Kontenta\Kontour\Contracts\AdminUser;
 
 class AuthenticateAdmin extends \Illuminate\Auth\Middleware\Authenticate implements AdminAuthenticateMiddleware
 {
@@ -24,8 +25,13 @@ class AuthenticateAdmin extends \Illuminate\Auth\Middleware\Authenticate impleme
         $guards[] = config('kontour.guard');
         $this->authenticate($request, $guards);
 
-        if (!$this->auth->user() instanceof \Kontenta\Kontour\Contracts\AdminUser) {
-            throw new \UnexpectedValueException('Admin user class needs to implement \Kontenta\Kontour\Contracts\AdminUser');
+        if (!$this->auth->user() instanceof AdminUser) {
+            throw new \UnexpectedValueException(implode(' ', [
+                get_class($this->auth->user()),
+                'needs to implement',
+                AdminUser::class,
+                'to be used as a Kontour admin user',
+            ]));
         }
 
         return $next($request);
