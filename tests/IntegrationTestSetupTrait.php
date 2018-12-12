@@ -32,6 +32,23 @@ trait IntegrationTestSetupTrait
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testing');
         $app['config']->set('auth.providers.users.model', User::class);
+
+        // Configure admin user provider
+        $app['config']->set('auth.guards.admin', [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ]);
+        $app['config']->set('auth.providers.admins', [
+            'driver' => 'eloquent',
+            'model' => User::class,
+        ]);
+        $app['config']->set('auth.passwords.admins', [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ]);
+        $app['config']->set('kontour.guard', 'admin');
+        $app['config']->set('kontour.passwords', 'admins');
     }
 
     /**
@@ -80,6 +97,6 @@ trait IntegrationTestSetupTrait
      */
     protected function getBasePath()
     {
-        return __DIR__.'/../vendor/orchestra/testbench-dusk/laravel';
+        return __DIR__ . '/../vendor/orchestra/testbench-dusk/laravel';
     }
 }
