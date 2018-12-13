@@ -17,4 +17,15 @@ class ErrorsTest extends IntegrationTest
 
         $this->assertEquals($output, '');
     }
+
+    public function test_errors_are_printed()
+    {
+        $output = View::make('kontour::forms.partials.errors', [
+            'name' => 'test',
+            'errors' => new MessageBag(['test' => ['Error 1', 'Error 2'] ]),
+            'errorsId' => 'errors',
+        ])->render();
+
+        $this->assertRegExp('/<(\S*)[\S\s]*id="errors"[\S\s]*>[\S\s]*Error 1[\S\s]*Error 2[\S\s]*<\/\1>/', $output);
+    }
 }
