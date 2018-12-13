@@ -11,10 +11,10 @@
         @endif
         @foreach($optgroup ? $option_display : [$option_value => $option_display] as $option_value => $option_display)
         <option
+          value="{{ $option_value }}"
           @if(in_array(strval($option_value), $selected))
             selected
           @endif
-          value="{{ $option_value }}"
         >{{ $option_display }}</option>
         @endforeach
         @if($optgroup)
