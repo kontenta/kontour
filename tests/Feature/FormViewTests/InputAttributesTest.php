@@ -101,4 +101,22 @@ class InputAttributesTest extends IntegrationTest
         $this->assertRegExp('/aria-describedby="errorsId"/', $output);
         $this->assertNotRegExp('/aria-describedby="descriptionId"/', $output);
     }
+
+    public function test_control_attributes()
+    {
+        $output = View::make('kontour::forms.partials.InputAttributes', [
+            'name' => 'testName',
+            'controlId' => 'testId',
+            'errors' => new MessageBag,
+            'controlAttributes' => [
+                'a' => 'b',
+                'boolean',
+                'true' => true,
+                'false' => false
+            ],
+        ])->render();
+
+        $this->assertRegExp('/a="b"\s*boolean\s*true/', $output);
+        $this->assertNotRegExp('/false/', $output);
+    }
 }
