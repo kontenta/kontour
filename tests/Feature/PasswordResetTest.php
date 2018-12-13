@@ -2,10 +2,10 @@
 
 namespace Kontenta\Kontour\Tests\Feature;
 
-use Kontenta\Kontour\Auth\Notifications\ResetPassword;
-use Kontenta\Kontour\Tests\IntegrationTest;
-use Kontenta\Kontour\Tests\Feature\Fakes\User;
 use Illuminate\Support\Facades\Notification;
+use Kontenta\Kontour\Auth\Notifications\ResetPassword;
+use Kontenta\Kontour\Tests\Feature\Fakes\User;
+use Kontenta\Kontour\Tests\IntegrationTest;
 
 class PasswordResetTest extends IntegrationTest
 {
@@ -19,19 +19,6 @@ class PasswordResetTest extends IntegrationTest
         parent::setUp();
         $this->prepareDatabase();
         $this->user = factory(User::class)->create();
-    }
-
-    /**
-     * Configure the environment.
-     *
-     * @param  \Illuminate\Foundation\Application $app
-     * @return void
-     */
-    protected function getEnvironmentSetUp($app)
-    {
-        // Test with Laravel's default password reset config
-        $app['config']->set('kontour.passwords', 'users');
-        parent::getEnvironmentSetUp($app);
     }
 
     public function test_request_password_reset_url()
@@ -79,8 +66,8 @@ class PasswordResetTest extends IntegrationTest
         $response->assertRedirect($routeManager->indexUrl());
         $response->assertSessionHas('status');
         $response->assertSessionMissing('errors');
-        $this->assertCredentials(['email' => $this->user->getEmailForPasswordReset(), 'password' => $new_password]);
-        $this->assertAuthenticatedAs($this->user);
+        $this->assertCredentials(['email' => $this->user->getEmailForPasswordReset(), 'password' => $new_password], 'admin');
+        $this->assertAuthenticatedAs($this->user, 'admin');
     }
 
 }

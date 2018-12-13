@@ -6,14 +6,17 @@ use Kontenta\Kontour\AdminLink;
 use Kontenta\Kontour\EditAdminVisit;
 use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\Kontour\ShowAdminVisit;
+use Kontenta\Kontour\Concerns\ResolvesAdminUser;
 
 trait DispatchesAdminToolEvents
 {
+    use ResolvesAdminUser;
+
     public function dispatchShowAdminToolVisitedEvent(string $name, string $description = null)
     {
         $visit = new ShowAdminVisit(
             $this->createCurrentAdminLink($name, $description),
-            $this->getCurrentAdminUser()
+            $this->adminUser()
         );
         event(new AdminToolVisited($visit));
     }
@@ -22,7 +25,7 @@ trait DispatchesAdminToolEvents
     {
         $visit = new EditAdminVisit(
             $this->createCurrentAdminLink($name, $description),
-            $this->getCurrentAdminUser()
+            $this->adminUser()
         );
         event(new AdminToolVisited($visit));
     }
@@ -30,10 +33,5 @@ trait DispatchesAdminToolEvents
     public function createCurrentAdminLink(string $name, string $description = null)
     {
         return AdminLink::create($name, url()->full(), $description);
-    }
-
-    public function getCurrentAdminUser()
-    {
-        return auth()->guard(config('kontour.guard'))->user();
     }
 }

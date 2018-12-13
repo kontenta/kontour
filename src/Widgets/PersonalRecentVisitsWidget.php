@@ -3,13 +3,15 @@
 namespace Kontenta\Kontour\Widgets;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
-use Kontenta\Kontour\RecentVisitsRepository;
+use Kontenta\Kontour\Concerns\ResolvesAdminUser;
 use Kontenta\Kontour\Contracts\PersonalRecentVisitsWidget as PersonalRecentVisitsWidgetContract;
+use Kontenta\Kontour\RecentVisitsRepository;
 
 class PersonalRecentVisitsWidget implements PersonalRecentVisitsWidgetContract
 {
+    use ResolvesAdminUser;
+
     protected $repository;
 
     public function __construct(RecentVisitsRepository $repository)
@@ -30,7 +32,7 @@ class PersonalRecentVisitsWidget implements PersonalRecentVisitsWidgetContract
     private function getVisits()
     {
         return $this->repository->getShowVisits()->merge($this->repository->getEditVisits())->filter(function ($visit) {
-            return $visit->getUser()->is(Auth::guard(config('kontour.guard'))->user());
+            return $visit->getUser()->is($this->adminUser()) and $visit->getLink()->isAuthorized($this->adminUser());
         })->unique(function ($visit) {
             return $visit->getLink()->getUrl();
         })->sortByDesc(function ($visit) {

@@ -28,7 +28,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
     {
         Event::fake();
 
-        $response = $this->actingAs($this->user)->get(route('userland.index'));
+        $response = $this->actingAs($this->user, 'admin')->get(route('userland.index'));
 
         $response->assertSee('<main');
         $response->assertSee('UserlandAdminWidget');
@@ -44,7 +44,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
     public function test_menu_widget()
     {
-        $response = $this->actingAs($this->user)->get(route('userland.index'));
+        $response = $this->actingAs($this->user, 'admin')->get(route('userland.index'));
 
         $response->assertSee('<ul data-kontour-widget="menu">');
         $response->assertSee('>main<');
@@ -68,7 +68,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
         event(new AdminToolVisited($visit));
         event(new AdminToolVisited($visit));
 
-        $response = $this->actingAs($this->user)->get(route('userland.index'));
+        $response = $this->actingAs($this->user, 'admin')->get(route('userland.index'));
 
         $response->assertSuccessful();
 
@@ -94,7 +94,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
     public function test_item_history_widget()
     {
-        $response = $this->actingAs($this->user)->get(route('userland.edit', 1));
+        $response = $this->actingAs($this->user, 'admin')->get(route('userland.edit', 1));
         $response->assertSee('<section data-kontour-widget="itemHistory">');
         $response->assertSee('<header>Item History</header>');
         $response->assertSee('<li lang="en" data-kontour-entry-action="created" data-kontour-username="' . $this->user->getDisplayName() . '">');
@@ -103,7 +103,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
     public function test_crumbtrail_widget()
     {
-        $response = $this->actingAs($this->user)->get(route('userland.edit', 1));
+        $response = $this->actingAs($this->user, 'admin')->get(route('userland.edit', 1));
         $response->assertSee('<nav aria-label="Crumb trail" data-kontour-widget="crumbtrail">');
         $response->assertSee('<a href="' . route('userland.index') . '">1</a>');
         $response->assertSee('<li aria-current="page"><a href="' . route('userland.edit', 1) . '">2</a>');
@@ -111,14 +111,14 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
     public function test_message_widget()
     {
-        $response = $this->actingAs($this->user)->get(route('userland.edit', 1));
+        $response = $this->actingAs($this->user, 'admin')->get(route('userland.edit', 1));
         $response->assertSee('<section data-kontour-widget="message">');
         $response->assertSee('<li data-kontour-message-level="info">Hello World!</li>');
     }
 
     public function test_css_and_js_additions()
     {
-        $response = $this->actingAs($this->user)->get(route('userland.index'));
+        $response = $this->actingAs($this->user, 'admin')->get(route('userland.index'));
         $response->assertSee('<link href="'.url('admin.css').'" rel="stylesheet" type="text/css">');
         $response->assertSee('<link href="'.url('userland.css').'" rel="stylesheet" type="text/css">');
         $response->assertSee('<link href="'.url('userland-index.css').'" rel="stylesheet" type="text/css">');

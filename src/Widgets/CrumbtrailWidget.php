@@ -4,12 +4,15 @@ namespace Kontenta\Kontour\Widgets;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Support\Collection;
-use Kontenta\Kontour\Contracts\CrumbtrailWidget as CrumbtrailWidgetContract;
-use Kontenta\Kontour\Contracts\AdminLink;
 use Illuminate\Support\Facades\View;
+use Kontenta\Kontour\Concerns\ResolvesAdminUser;
+use Kontenta\Kontour\Contracts\AdminLink;
+use Kontenta\Kontour\Contracts\CrumbtrailWidget as CrumbtrailWidgetContract;
 
 class CrumbtrailWidget implements CrumbtrailWidgetContract
 {
+    use ResolvesAdminUser;
+
     /**
      * @var Collection
      */
@@ -23,7 +26,7 @@ class CrumbtrailWidget implements CrumbtrailWidgetContract
     public function toHtml()
     {
         if ($this->links->count() > 1) {
-            return View::make('kontour::widgets.crumbtrail', ['links' => $this->links])->render();
+            return View::make('kontour::widgets.crumbtrail', ['links' => $this->authorizedLinks()])->render();
         }
     }
 
@@ -37,5 +40,10 @@ class CrumbtrailWidget implements CrumbtrailWidgetContract
     public function isAuthorized(Authorizable $user = null): bool
     {
         return true;
+    }
+
+    protected function authorizedLinks()
+    {
+        return $this->links->filter->isAuthorized($this->adminUser());
     }
 }

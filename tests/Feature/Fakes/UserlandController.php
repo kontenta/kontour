@@ -3,7 +3,6 @@
 namespace Kontenta\Kontour\Tests\Feature\Fakes;
 
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Auth;
 use Kontenta\Kontour\AdminLink;
 use Kontenta\Kontour\Concerns\DispatchesAdminToolEvents;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
@@ -14,7 +13,8 @@ use Kontenta\Kontour\Contracts\MessageWidget;
 
 class UserlandController extends BaseController
 {
-    use RegistersAdminWidgets, DispatchesAdminToolEvents;
+    use RegistersAdminWidgets;
+    use DispatchesAdminToolEvents;
 
     private $viewManager;
 
@@ -54,8 +54,8 @@ class UserlandController extends BaseController
     public function edit($id)
     {
         $widget = $this->findOrRegisterAdminWidget(ItemHistoryWidget::class);
-        $widget->addCreatedEntry(new \DateTime(), Auth::guard(config('kontour.guard'))->user());
-        $widget->addUpdatedEntry(new \DateTime(), Auth::guard(config('kontour.guard'))->user());
+        $widget->addCreatedEntry(new \DateTime(), $this->adminUser());
+        $widget->addUpdatedEntry(new \DateTime(), $this->adminUser());
 
         $link2 = AdminLink::create('2', url()->full());
         $this->crumbtrail->addLink($link2);
