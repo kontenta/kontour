@@ -10,7 +10,7 @@ class InputAttributesTest extends IntegrationTest
 {
     public function test_has_name()
     {
-        $output = View::make('kontour::forms.partials.InputAttributes', [
+        $output = View::make('kontour::forms.partials.inputAttributes', [
             'name' => 'testName',
             'controlId' => 'testId',
             'errors' => new MessageBag,
@@ -21,7 +21,7 @@ class InputAttributesTest extends IntegrationTest
 
     public function test_has_control_id()
     {
-        $output = View::make('kontour::forms.partials.InputAttributes', [
+        $output = View::make('kontour::forms.partials.inputAttributes', [
             'name' => 'testName',
             'controlId' => 'testId',
             'errors' => new MessageBag,
@@ -32,7 +32,7 @@ class InputAttributesTest extends IntegrationTest
 
     public function test_aria_invalid_not_present_on_error_free_input()
     {
-        $output = View::make('kontour::forms.partials.InputAttributes', [
+        $output = View::make('kontour::forms.partials.inputAttributes', [
             'name' => 'testName',
             'controlId' => 'testId',
             'errors' => new MessageBag,
@@ -43,7 +43,7 @@ class InputAttributesTest extends IntegrationTest
 
     public function test_error_free_input_not_referencing_error_element()
     {
-        $output = View::make('kontour::forms.partials.InputAttributes', [
+        $output = View::make('kontour::forms.partials.inputAttributes', [
             'name' => 'testName',
             'controlId' => 'testId',
             'errors' => new MessageBag,
@@ -54,7 +54,7 @@ class InputAttributesTest extends IntegrationTest
 
     public function test_error_input_has_aria_invalid()
     {
-        $output = View::make('kontour::forms.partials.InputAttributes', [
+        $output = View::make('kontour::forms.partials.inputAttributes', [
             'name' => 'testName',
             'controlId' => 'testId',
             'errors' => new MessageBag(['testName' => ['A message']]),
@@ -66,7 +66,7 @@ class InputAttributesTest extends IntegrationTest
 
     public function test_error_input_referencing_error_element()
     {
-        $output = View::make('kontour::forms.partials.InputAttributes', [
+        $output = View::make('kontour::forms.partials.inputAttributes', [
             'name' => 'testName',
             'controlId' => 'testId',
             'errors' => new MessageBag(['testName' => ['A message']]),
@@ -78,7 +78,7 @@ class InputAttributesTest extends IntegrationTest
 
     public function test_aria_describedby_can_be_set()
     {
-        $output = View::make('kontour::forms.partials.InputAttributes', [
+        $output = View::make('kontour::forms.partials.inputAttributes', [
             'name' => 'testName',
             'controlId' => 'testId',
             'errors' => new MessageBag,
@@ -90,7 +90,7 @@ class InputAttributesTest extends IntegrationTest
 
     public function test_error_input_overwriting_aria_describedby()
     {
-        $output = View::make('kontour::forms.partials.InputAttributes', [
+        $output = View::make('kontour::forms.partials.inputAttributes', [
             'name' => 'testName',
             'controlId' => 'testId',
             'errors' => new MessageBag(['testName' => ['A message']]),
@@ -104,7 +104,7 @@ class InputAttributesTest extends IntegrationTest
 
     public function test_control_attributes()
     {
-        $output = View::make('kontour::forms.partials.InputAttributes', [
+        $output = View::make('kontour::forms.partials.inputAttributes', [
             'name' => 'testName',
             'controlId' => 'testId',
             'errors' => new MessageBag,
