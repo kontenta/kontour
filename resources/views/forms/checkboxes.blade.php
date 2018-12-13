@@ -11,10 +11,10 @@
     @component('kontour::forms.label', ['label' => $option_display, 'controlId' => $controlId = $groupId . '[' . $option_value . ']'])
       @slot('labelStart')
         <input type="checkbox"
+          value="{{ $option_value }}"
           @if(in_array(strval($option_value), $selected))
             checked
           @endif
-          value="{{ $option_value }}"
           @include('kontour::forms.partials.inputAttributes', ['name' => $name . '[]'])
         >
       @endslot
