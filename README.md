@@ -5,7 +5,7 @@
 Kontour is an admin page manager for Laravel.
 It provides a shared "frame" for the admin routes you create in your Laravel apps, or in packages you write.
 
-You need at least **Laravel 5.5** and **PHP 7.0** to use this package.
+You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
 
 ## Benefits in service providers
 

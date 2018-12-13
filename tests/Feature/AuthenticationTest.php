@@ -2,8 +2,10 @@
 
 namespace Kontenta\Kontour\Tests\Feature;
 
-use Kontenta\Kontour\Tests\IntegrationTest;
+use Illuminate\Support\Facades\Log;
 use Kontenta\Kontour\Tests\Feature\Fakes\User;
+use Kontenta\Kontour\Tests\IntegrationTest;
+use TiMacDonald\Log\LogFake;
 
 class AuthenticationTest extends IntegrationTest
 {
@@ -64,7 +66,25 @@ class AuthenticationTest extends IntegrationTest
         $response->assertRedirect($routeManager->indexUrl());
     }
 
-    public function test_index_route() {
+    public function test_non_admin_user_cant_be_logged_in()
+    {
+        Log::swap(new LogFake);
+        $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
+        $user = new \Illuminate\Foundation\Auth\User();
+        $response = $this->actingAs($user, 'admin')->get($routeManager->indexUrl());
+
+        $response->assertStatus(500);
+        Log::assertLogged('error', function ($message, $context) {
+            return (
+                str_contains($message, 'Kontenta\Kontour\Contracts\AdminUser') and
+                str_contains($message, 'Illuminate\Foundation\Auth\User') and
+                str_contains($message, "'admin'")
+            );
+        });
+    }
+
+    public function test_index_route()
+    {
         /**
          * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
          */
@@ -103,7 +123,8 @@ class AuthenticationTest extends IntegrationTest
         $this->assertGuest();
     }
 
-    public function test_already_logged_in_user_is_redirected_from_login_url() {
+    public function test_already_logged_in_user_is_redirected_from_login_url()
+    {
         /**
          * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
          */
