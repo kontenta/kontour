@@ -8,6 +8,17 @@ use Kontenta\Kontour\Tests\IntegrationTest;
 
 class InputAttributesTest extends IntegrationTest
 {
+    public function test_has_name()
+    {
+        $output = View::make('kontour::forms.partials.InputAttributes', [
+            'name' => 'testName',
+            'controlId' => 'testId',
+            'errors' => new MessageBag,
+        ])->render();
+
+        $this->assertRegExp('/name="testName"/', $output);
+    }
+
     public function test_has_control_id()
     {
         $output = View::make('kontour::forms.partials.InputAttributes', [
