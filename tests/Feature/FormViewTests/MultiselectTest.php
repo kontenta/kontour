@@ -19,6 +19,17 @@ class MultiselectTest extends IntegrationTest
         $this->assertRegExp('/<select[\S\s]*name="test\[]"[\S\s]*>/', $output);
     }
 
+    public function test_multiselect_has_hidden_presence_input()
+    {
+        $output = View::make('kontour::forms.multiselect', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+        ])->render();
+
+        $this->assertRegExp('/<input type="hidden" name="test" value="">[\S\s]*<select[\S\s]*multiple[\S\s]*>/', $output);
+    }
+
     public function test_select_is_referenced_by_label()
     {
         $output = View::make('kontour::forms.multiselect', [
