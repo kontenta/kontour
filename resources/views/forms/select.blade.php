@@ -14,7 +14,7 @@
           @if($selected == strval($option_value))
             selected
           @endif
-        >{!! $option_display !!}</option>
+        >{{ $option_display }}</option>
         @endforeach
         @if($optgroup)
         </optgroup>

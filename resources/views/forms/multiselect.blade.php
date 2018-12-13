@@ -15,7 +15,7 @@
             selected
           @endif
           value="{{ $option_value }}"
-        >{!! $option_display !!}</option>
+        >{{ $option_display }}</option>
         @endforeach
         @if($optgroup)
         </optgroup>
