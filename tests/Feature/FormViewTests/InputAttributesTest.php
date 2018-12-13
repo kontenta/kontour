@@ -75,4 +75,30 @@ class InputAttributesTest extends IntegrationTest
 
         $this->assertRegExp('/aria-describedby="errorsId"/', $output);
     }
+
+    public function test_aria_describedby_can_be_set()
+    {
+        $output = View::make('kontour::forms.partials.InputAttributes', [
+            'name' => 'testName',
+            'controlId' => 'testId',
+            'errors' => new MessageBag,
+            'ariaDescribedById' => 'descriptionId',
+        ])->render();
+
+        $this->assertRegExp('/aria-describedby="descriptionId"/', $output);
+    }
+
+    public function test_error_input_overwriting_aria_describedby()
+    {
+        $output = View::make('kontour::forms.partials.InputAttributes', [
+            'name' => 'testName',
+            'controlId' => 'testId',
+            'errors' => new MessageBag(['testName' => ['A message']]),
+            'errorsId' => 'errorsId',
+            'ariaDescribedById' => 'descriptionId',
+        ])->render();
+
+        $this->assertRegExp('/aria-describedby="errorsId"/', $output);
+        $this->assertNotRegExp('/aria-describedby="descriptionId"/', $output);
+    }
 }
