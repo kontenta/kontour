@@ -43,6 +43,16 @@ class CheckboxTest extends IntegrationTest
         $this->assertRegExp('/<input[\S\s]*id="pre-test"\s*>/', $output);
     }
 
+    public function test_default_is_not_checked()
+    {
+        $output = View::make('kontour::forms.checkbox', [
+            'name' => 'test',
+            'errors' => new MessageBag,
+        ])->render();
+
+        $this->assertNotRegExp('/<input[\S\s]*checked[\S\s]*>/', $output);
+    }
+
     public function test_default_value_is_1()
     {
         $output = View::make('kontour::forms.checkbox', [
