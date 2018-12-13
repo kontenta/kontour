@@ -96,10 +96,10 @@ class CheckboxesTest extends IntegrationTest
             'name' => 'test',
             'options' => ['a' => 'A', 'b' => 'B', 'A Group' => ['c' => 'C', 'd' => 'D']],
             'errors' => new MessageBag,
-            'selected' => 'c',
+            'selected' => ['c', 'b'],
         ])->render();
 
-        $this->assertRegExp('/<fieldset[^>]*>[\S\s]*<input[^>]*value="a"[^>]*>A[\S\s]*<input[^>]*value="b"[^>]*>B[\S\s]*<fieldset[^>]*>\s*<legend>A Group<\/legend>[\S\s]*<input[^>]*value="c"\s*checked[^>]*>C[\S\s]*<input[^>]*value="d"[^>]*>D[\S\s]*<\/fieldset>[\S\s]*<\/fieldset>/', $output);
+        $this->assertRegExp('/<fieldset[^>]*>[\S\s]*<input[^>]*value="a"[^>]*>A[\S\s]*<input[^>]*value="b"\s*checked[^>]*>B[\S\s]*<fieldset[^>]*>\s*<legend>A Group<\/legend>[\S\s]*<input[^>]*value="c"\s*checked[^>]*>C[\S\s]*<input[^>]*value="d"[^>]*>D[\S\s]*<\/fieldset>[\S\s]*<\/fieldset>/', $output);
     }
 
     public function test_old_value_is_used_if_in_session()
