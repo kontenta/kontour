@@ -112,11 +112,12 @@ class InputAttributesTest extends IntegrationTest
                 'a' => 'b',
                 'boolean',
                 'true' => true,
-                'false' => false
+                'false' => false,
+                'b' => 'false',
             ],
         ])->render();
 
-        $this->assertRegExp('/a="b"\s*boolean\s*true/', $output);
-        $this->assertNotRegExp('/false/', $output);
+        $this->assertRegExp('/a="b"\s*boolean\s*true\s*b="false"/', $output);
+        $this->assertNotRegExp('/\sfalse\s/', $output);
     }
 }
