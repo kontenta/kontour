@@ -77,6 +77,19 @@ class CheckboxesTest extends IntegrationTest
         $this->assertRegExp('/<input[\S\s]*value="a"[\S\s]*checked[\S\s]*>/', $output);
     }
 
+    public function test_multiple_checkboxes_can_be_selected()
+    {
+        $output = View::make('kontour::forms.checkboxes', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+            'selected' => ['a', 'b'],
+        ])->render();
+
+        $this->assertRegExp('/<input[\S\s]*value="a"[\S\s]*checked[\S\s]*>/', $output);
+        $this->assertRegExp('/<input[\S\s]*value="b"[\S\s]*checked[\S\s]*>/', $output);
+    }
+
     public function test_groups()
     {
         $output = View::make('kontour::forms.checkboxes', [
