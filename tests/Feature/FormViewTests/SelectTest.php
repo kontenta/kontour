@@ -69,6 +69,18 @@ class SelectTest extends IntegrationTest
         $this->assertRegExp('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
     }
 
+    public function test_optgroups()
+    {
+        $output = View::make('kontour::forms.select', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B', 'A Group' => ['c' => 'C', 'd' => 'D']],
+            'errors' => new MessageBag,
+            'selected' => 'c',
+        ])->render();
+
+        $this->assertRegExp('/<select[\S\s]*>\s*<option\s*value="a"\s*>A<\/option>\s*<option\s*value="b"\s*>B<\/option>\s*<optgroup\s*label="A Group">\s*<option\s*value="c"\s*selected\s*>C<\/option>\s*<option\s*value="d"\s*>D<\/option>\s*<\/optgroup>\s*<\/select>/', $output);
+    }
+
     public function test_old_value_is_used_if_in_session()
     {
         $this->withSession(['_old_input' => ['test' => 'a']]);
@@ -109,7 +121,7 @@ class SelectTest extends IntegrationTest
         }
     }
 
-    public function test_error_input_referencing_error_element_with_errors()
+    public function test_error_select_referencing_error_element_with_errors()
     {
         $output = View::make('kontour::forms.select', [
             'name' => 'test',
