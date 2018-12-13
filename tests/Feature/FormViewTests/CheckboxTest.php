@@ -64,6 +64,17 @@ class CheckboxTest extends IntegrationTest
         $this->assertRegExp('/<input[\S\s]*value="2"[\S\s]*>/', $output);
     }
 
+    public function test_value_can_be_set()
+    {
+        $output = View::make('kontour::forms.checkbox', [
+            'name' => 'test',
+            'errors' => new MessageBag,
+            'value' => 3,
+        ])->render();
+
+        $this->assertRegExp('/<input[\S\s]*value="3"[\S\s]*>/', $output);
+    }
+
     public function test_old_value_is_used_if_in_session()
     {
         $this->withSession(['_old_input' => ['test' => true]]);
