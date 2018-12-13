@@ -95,5 +95,15 @@ class InputTest extends IntegrationTest
         $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
-    //TODO: test custom errors id suffix
+    public function test_custom_errors_id_suffix()
+    {
+        $output = View::make('kontour::forms.input', [
+            'name' => 'test',
+            'errors' => new MessageBag(['test' => ['A message']]),
+            'errorsSuffix' => '-errors',
+        ])->render();
+
+        $this->assertRegExp('/<input[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
+        $this->assertRegExp('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+    }
 }
