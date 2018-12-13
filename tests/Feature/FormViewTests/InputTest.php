@@ -84,6 +84,16 @@ class InputTest extends IntegrationTest
         }
     }
 
-    //TODO: test input referencing element with printed errors
+    public function test_error_input_referencing_error_element_with_errors()
+    {
+        $output = View::make('kontour::forms.input', [
+            'name' => 'test',
+            'errors' => new MessageBag(['test' => ['A message']]),
+        ])->render();
+
+        $this->assertRegExp('/<input[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
+        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*<\/\1>/', $output);
+    }
+
     //TODO: test custom errors id suffix
 }
