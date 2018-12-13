@@ -84,9 +84,6 @@ class InputTest extends IntegrationTest
         }
     }
 
-    //TODO: test error-free input not having aria-invalid
-    //TODO: test errors setting aria-invalid
-    //TODO: test error-free input not referencing error element
     //TODO: test input referencing element with printed errors
     //TODO: test custom errors id suffix
 }
