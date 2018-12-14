@@ -193,11 +193,11 @@ class KontourServiceProvider extends ServiceProvider
     {
         $this->findOrRegisterAdminWidget(
             \Kontenta\Kontour\Contracts\MenuWidget::class,
-            $this->app->make(\Kontenta\Kontour\Contracts\AdminViewManager::class)->navSection()
+            'kontourNav'
         );
         $this->findOrRegisterAdminWidget(
             \Kontenta\Kontour\Contracts\UserAccountWidget::class,
-            $this->app->make(\Kontenta\Kontour\Contracts\AdminViewManager::class)->headerSection()
+            'kontourHeader'
         );
     }
 
