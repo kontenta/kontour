@@ -2,7 +2,7 @@
 
 @extends($view_manager->layout())
 
-@section($view_manager->mainSection())
+@section('kontourMain')
   <header>{{ __('Reset Password') }}</header>
   <form method="POST" action="{{ route('kontour.password.request') }}">
     @csrf

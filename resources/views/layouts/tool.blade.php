@@ -3,33 +3,33 @@
 
 @extends($view_manager->layout())
 
-@section($view_manager->mainSection())
-  @section($view_manager->toolHeaderSection())
-    @foreach($widget_manager->getWidgetsForSection($view_manager->toolHeaderSection()) as $widget)
+@section('kontourMain')
+  @section('kontourToolHeader')
+    @foreach($widget_manager->getWidgetsForSection('kontourToolHeader') as $widget)
       {{ $widget }}
     @endforeach
   @endsection
-  @hasSection($view_manager->toolHeaderSection())
-    <header data-kontour-section="{{ $view_manager->toolHeaderSection() }}">
-      @yield($view_manager->toolHeaderSection())
+  @hasSection('kontourToolHeader')
+    <header data-kontour-section="kontourToolHeader">
+      @yield('kontourToolHeader')
     </header>
   @endif
 
-  @hasSection($view_manager->toolMainSection())
-    <div data-kontour-section="{{ $view_manager->toolMainSection() }}">
-      @yield($view_manager->toolMainSection())
+  @hasSection('kontourToolMain')
+    <div data-kontour-section="kontourToolMain">
+      @yield('kontourToolMain')
     </div>
   @endif
 
-  @hasSection($view_manager->toolWidgetSection())
-    <div data-kontour-section="{{ $view_manager->toolWidgetSection() }}">
-      @yield($view_manager->toolWidgetSection())
+  @hasSection('kontourToolWidgets')
+    <div data-kontour-section="kontourToolWidgets">
+      @yield('kontourToolWidgets')
     </div>
   @endif
 
-  @hasSection($view_manager->toolFooterSection())
-    <footer data-kontour-section="{{ $view_manager->toolFooterSection() }}">
-      @yield($view_manager->toolFooterSection())
+  @hasSection('kontourToolFooter')
+    <footer data-kontour-section="kontourToolFooter">
+      @yield('kontourToolFooter')
     </footer>
   @endif
 @append

@@ -3,7 +3,7 @@
 
 @extends($view_manager->layout())
 
-@section($view_manager->mainSection())
+@section('kontourMain')
   <header>{{ __('Login') }}</header>
   <form method="POST" action="{{ route('kontour.login') }}">
     @csrf

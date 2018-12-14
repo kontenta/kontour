@@ -59,9 +59,9 @@ class UserlandController extends BaseController
 
         $link2 = AdminLink::create('2', url()->full());
         $this->crumbtrail->addLink($link2);
-        $this->registerAdminWidget($this->crumbtrail, app(\Kontenta\Kontour\Contracts\AdminViewManager::class)->toolHeaderSection());
+        $this->registerAdminWidget($this->crumbtrail, 'kontourToolHeader');
 
-        $messageWidget = $this->findOrRegisterAdminWidget(MessageWidget::class, app(\Kontenta\Kontour\Contracts\AdminViewManager::class)->toolHeaderSection());
+        $messageWidget = $this->findOrRegisterAdminWidget(MessageWidget::class, 'kontourToolHeader');
         $messageWidget->addMessage('Hello World!');
 
         return view('userland::index');

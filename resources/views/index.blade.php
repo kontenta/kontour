@@ -2,6 +2,6 @@
 
 @extends($view_manager->layout())
 
-@section($view_manager->mainSection())
+@section('kontourMain')
   The admin index page
 @append

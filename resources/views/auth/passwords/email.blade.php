@@ -2,7 +2,7 @@
 
 @extends($view_manager->layout())
 
-@section($view_manager->mainSection())
+@section('kontourMain')
   <header>{{ __('Reset Password') }}</header>
 
   {{-- TODO: Use the MessageWidget instead of hard coded alert from session --}}

@@ -5,7 +5,7 @@ body {
   font-family: system-ui, sans-serif;
 }
 
-[data-kontour-section="header"] {
+[data-kontour-section="kontourHeader"] {
   border-bottom: $kontour-border;
 
   > :first-child {
@@ -13,7 +13,7 @@ body {
   }
 }
 
-header[data-kontour-section="toolHeader"] + * {
+header[data-kontour-section="kontourToolHeader"] + * {
     margin-top: 1rem;
 }
 

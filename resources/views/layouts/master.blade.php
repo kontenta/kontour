@@ -4,31 +4,31 @@
 @extends('kontour::layouts.html')
 
 @section('body')
-  <header data-kontour-section="{{ $view_manager->headerSection() }}">
+  <header data-kontour-section="kontourHeader">
     <a href="{{ route('kontour.index') }}">{{ config('kontour.title') }}</a>
-    @foreach($widget_manager->getWidgetsForSection($view_manager->headerSection()) as $widget)
+    @foreach($widget_manager->getWidgetsForSection('kontourHeader') as $widget)
       {{ $widget }}
     @endforeach
   </header>
   <div>
-  <nav data-kontour-section="{{ $view_manager->navSection() }}">
-    @foreach($widget_manager->getWidgetsForSection($view_manager->navSection()) as $widget)
+  <nav data-kontour-section="kontourNav">
+    @foreach($widget_manager->getWidgetsForSection('kontourNav') as $widget)
       {{ $widget }}
     @endforeach
   </nav>
-  <main data-kontour-section="{{ $view_manager->mainSection() }}">
-  @yield($view_manager->mainSection())
+  <main data-kontour-section="kontourMain">
+  @yield('kontourMain')
   </main>
-  <section data-kontour-section="{{ $view_manager->widgetSection() }}">
-  @section($view_manager->widgetSection())
-    @foreach($widget_manager->getWidgetsForSection($view_manager->widgetSection()) as $widget)
+  <section data-kontour-section="kontourWidgets">
+  @section('kontourWidgets')
+    @foreach($widget_manager->getWidgetsForSection('kontourWidgets') as $widget)
       {{ $widget }}
     @endforeach
   @show
   </section>
   </div>
-  <footer data-kontour-section="{{ $view_manager->footerSection() }}">
-    @foreach($widget_manager->getWidgetsForSection($view_manager->footerSection()) as $widget)
+  <footer data-kontour-section="kontourFooter">
+    @foreach($widget_manager->getWidgetsForSection('kontourFooter') as $widget)
       {{ $widget }}
     @endforeach
   </footer>
