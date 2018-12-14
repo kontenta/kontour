@@ -32,17 +32,6 @@ that wants to be part of the family:
 @extends($view_manager->layout())
 ```
 
-...and also provides names of Blade sections you may extend to populate that layout:
-
-```php
-@section($view_manager->mainSection())
-<form>
-  <input name="title">
-  <button>Save</button>
-</form>
-@append
-```
-
 ## Fallback implementations
 
 This package contains implementations of the Kontour contracts that are used as a fallback whenever no other

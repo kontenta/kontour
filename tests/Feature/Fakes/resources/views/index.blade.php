@@ -2,7 +2,7 @@
 
 @extends($view_manager->toolLayout())
 
-@section($view_manager->toolMainSection())
+@section('kontourToolMain')
   <ul>
     <li>Item 1</li>
     <li>Item 2</li>

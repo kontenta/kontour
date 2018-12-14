@@ -28,7 +28,7 @@ class UserlandServiceProviderTest extends UserlandAdminToolTest
     {
         $this->assertInstanceOf(Fakes\UserlandAdminWidget::class, app(AdminWidgetManager::class)->getAllWidgets()->get(2));
         $this->assertInstanceOf(Fakes\UnauthorizedWidget::class, app(AdminWidgetManager::class)->getAllWidgets()->get(3));
-        $this->assertInstanceOf(Fakes\UserlandAdminWidget::class, app(AdminWidgetManager::class)->getWidgetsForSection(app(AdminViewManager::class)->widgetSection())->get(2));
+        $this->assertInstanceOf(Fakes\UserlandAdminWidget::class, app(AdminWidgetManager::class)->getWidgetsForSection('kontourWidgets')->get(2));
     }
 
     public function test_widget_manager_section_is_empty()

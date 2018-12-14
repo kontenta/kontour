@@ -19,60 +19,6 @@ interface AdminViewManager
     public function toolLayout(): string;
 
     /**
-     * Name of the main content blade section
-     * @return string
-     */
-    public function mainSection(): string;
-
-    /**
-     * Name of the navigation blade section
-     * @return string
-     */
-    public function navSection(): string;
-
-    /**
-     * Name of the main widget blade section
-     * @return string
-     */
-    public function widgetSection(): string;
-
-    /**
-     * Name of the main header blade section
-     * @return string
-     */
-    public function headerSection(): string;
-
-    /**
-     * Name of the main footer blade section
-     * @return string
-     */
-    public function footerSection(): string;
-    
-    /**
-     * Name of the tool header blade section
-     * @return string
-     */
-    public function toolHeaderSection(): string;
-
-    /**
-     * Name of the tool main blade section
-     * @return string
-     */
-    public function toolMainSection(): string;
-
-    /**
-     * Name of the tool widget blade section
-     * @return string
-     */
-    public function toolWidgetSection(): string;
-
-    /**
-     * Name of the tool footer blade section
-     * @return string
-     */
-    public function toolFooterSection(): string;
-
-    /**
      * Add a stylesheet that the layout should pull in
      * @param string[] ...$url
      * @return $this
