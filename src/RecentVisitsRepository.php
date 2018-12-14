@@ -2,11 +2,10 @@
 
 namespace Kontenta\Kontour;
 
-use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
-use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\Kontour\Contracts\RecentVisitsRepository as RecentVisitsRepositoryContract;
+use Kontenta\Kontour\Events\AdminToolVisited;
 
 class RecentVisitsRepository implements RecentVisitsRepositoryContract
 {
@@ -14,12 +13,17 @@ class RecentVisitsRepository implements RecentVisitsRepositoryContract
 
     public function getShowVisits(): Collection
     {
-        return Cache::get($this->generateCacheKey('show'), new Collection());
+        return $this->getVisits('show');
     }
 
     public function getEditVisits(): Collection
     {
-        return Cache::get($this->generateCacheKey('edit'), new Collection());
+        return $this->getVisits('edit');
+    }
+
+    protected function getVisits(string $type)
+    {
+        return Cache::get($this->generateCacheKey($type), new Collection());
     }
 
     public function subscribe($events)
@@ -37,6 +41,6 @@ class RecentVisitsRepository implements RecentVisitsRepositoryContract
 
     protected function generateCacheKey($type)
     {
-        return 'kontour-recent-visits-'.$type;
+        return 'kontour-recent-visits-' . $type;
     }
 }
