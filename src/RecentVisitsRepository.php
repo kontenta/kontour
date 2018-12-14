@@ -23,7 +23,11 @@ class RecentVisitsRepository implements RecentVisitsRepositoryContract
 
     protected function getVisits(string $type)
     {
-        return Cache::get($this->generateCacheKey($type), new Collection());
+        try {
+            return Cache::get($this->generateCacheKey($type), new Collection());
+        } catch (\Exception $e) {
+            return new Collection();
+        }
     }
 
     public function subscribe($events)
