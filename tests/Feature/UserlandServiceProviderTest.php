@@ -3,9 +3,8 @@
 namespace Kontenta\Kontour\Tests\Feature;
 
 use Illuminate\Support\Facades\Route;
-use Kontenta\Kontour\Tests\UserlandAdminToolTest;
-use Kontenta\Kontour\Contracts\AdminViewManager;
 use Kontenta\Kontour\Contracts\AdminWidgetManager;
+use Kontenta\Kontour\Tests\UserlandAdminToolTest;
 
 class UserlandServiceProviderTest extends UserlandAdminToolTest
 {
@@ -26,9 +25,9 @@ class UserlandServiceProviderTest extends UserlandAdminToolTest
 
     public function test_widget_manager_contains_widget()
     {
-        $this->assertInstanceOf(Fakes\UserlandAdminWidget::class, app(AdminWidgetManager::class)->getAllWidgets()->get(2));
-        $this->assertInstanceOf(Fakes\UnauthorizedWidget::class, app(AdminWidgetManager::class)->getAllWidgets()->get(3));
-        $this->assertInstanceOf(Fakes\UserlandAdminWidget::class, app(AdminWidgetManager::class)->getWidgetsForSection('kontourWidgets')->get(2));
+        $this->assertCount(1, app(AdminWidgetManager::class)->getAllWidgets()->whereInstanceOf(Fakes\UserlandAdminWidget::class));
+        $this->assertCount(1, app(AdminWidgetManager::class)->getAllWidgets()->whereInstanceOf(Fakes\UnauthorizedWidget::class));
+        $this->assertCount(1, app(AdminWidgetManager::class)->getWidgetsForSection('kontourWidgets')->whereInstanceOf(Fakes\UserlandAdminWidget::class));
     }
 
     public function test_widget_manager_section_is_empty()
