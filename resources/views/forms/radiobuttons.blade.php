@@ -10,10 +10,10 @@
     @component('kontour::forms.label', ['label' => $option_display, 'controlId' => $controlId = $groupId . '[' . $option_value . ']'])
       @slot('labelStart')
         <input type="radio"
+          value="{{ $option_value }}"
           @if($selected == strval($option_value))
             checked
           @endif
-          value="{{ $option_value }}"
           @include('kontour::forms.partials.inputAttributes')
         >
       @endslot
