@@ -79,4 +79,7 @@ return [
     'stylesheets' => [
         //'css/kontour.css',
     ],
+    'javascripts' => [
+        //'js/kontour.js',
+    ],
 ];
