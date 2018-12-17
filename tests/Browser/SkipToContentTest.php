@@ -7,6 +7,8 @@ use Laravel\Dusk\Browser;
 
 class SkipToContentTest extends DuskTest
 {
+    protected $element = '#skip-to-content';
+
     /**
      * @throws \Exception
      * @throws \Throwable
@@ -18,13 +20,17 @@ class SkipToContentTest extends DuskTest
              * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
              */
             $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
-            $browser->visit($routeManager->loginUrl())
-                //->assertDontSeeLink('Skip to content')
-                ->keys('', '{tab}')
-                ->assertFocused('#skip-to-content')
-                ->assertSeeLink('Skip to content')
-                ->keys('#skip-to-content', '{enter}')
-                ->assertNotFocused('#skip-to-content')
+            $browser->visit($routeManager->loginUrl());
+
+            $this->assertEquals('absolute', $browser->element($this->element)->getCSSValue('position'));
+
+            $browser->keys('', '{tab}')
+                ->assertFocused($this->element);
+
+            $this->assertEquals('static', $browser->element($this->element)->getCSSValue('position'));
+
+            $browser->keys($this->element, '{enter}')
+                ->assertNotFocused($this->element)
                 ->assertFragmentIs('kontourMain');
         });
     }
