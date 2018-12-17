@@ -224,6 +224,7 @@ class KontourServiceProvider extends ServiceProvider
         $this->app->make(\Kontenta\Kontour\Contracts\AdminBootManager::class)
             ->beforeRoute(function (\Kontenta\Kontour\Contracts\AdminViewManager $viewManager) {
                 $viewManager->addStylesheetUrl(...config('kontour.stylesheets'));
+                $viewManager->addJavascriptUrl(...config('kontour.javascripts'));
             });
     }
 }
