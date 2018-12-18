@@ -4,6 +4,7 @@
 @extends('kontour::layouts.html')
 
 @section('body')
+  <a id="skip-to-content" href="#kontourMain" class="sr-only-focusable">{{ __('Skip to content') }}</a>
   <header data-kontour-section="kontourHeader">
     <a href="{{ route('kontour.index') }}">{{ config('kontour.title') }}</a>
     @foreach($widget_manager->getWidgetsForSection('kontourHeader') as $widget)
@@ -16,7 +17,7 @@
       {{ $widget }}
     @endforeach
   </nav>
-  <main data-kontour-section="kontourMain">
+  <main data-kontour-section="kontourMain" id="kontourMain">
   @yield('kontourMain')
   </main>
   <section data-kontour-section="kontourWidgets">

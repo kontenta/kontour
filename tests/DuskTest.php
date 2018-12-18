@@ -34,5 +34,8 @@ abstract class DuskTest extends TestCase
         $this->traitGetEnvironmentSetup($app);
         $app['config']->set('database.default', 'sqlite');
         $app['config']->set('session.driver', 'file');
+
+        copy(__DIR__ . '/../resources/css/kontour.css', public_path('kontour.css'));
+        $app['config']->set('kontour.stylesheets', ['kontour.css']);
     }
 }
