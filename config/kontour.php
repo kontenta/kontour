@@ -84,4 +84,18 @@ return [
     'javascripts' => [
         //'js/kontour.js',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Widgets
+    |--------------------------------------------------------------------------
+    |
+    | Configure the widgets to load on all admin-pages.
+    |
+     */
+
+    'global_widgets' => [
+        \Kontenta\Kontour\Contracts\MenuWidget::class => 'kontourNav',
+        \Kontenta\Kontour\Contracts\UserAccountWidget::class => 'kontourHeader',
+    ],
 ];
