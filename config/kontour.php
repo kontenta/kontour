@@ -69,10 +69,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Stylesheets
+    | Stylesheets & javascripts
     |--------------------------------------------------------------------------
     |
-    | Stylesheets to load on all admin pages.
+    | Stylesheets & javascripts to load on all admin pages.
+    | Can be full or relative urls.
+    | You may even use the asset() helper.
     |
      */
 
@@ -81,5 +83,21 @@ return [
     ],
     'javascripts' => [
         //'js/kontour.js',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Widgets
+    |--------------------------------------------------------------------------
+    |
+    | Configure the widgets to load on all admin-pages.
+    |
+     */
+
+    'global_widgets' => [
+        \Kontenta\Kontour\Contracts\MenuWidget::class => 'kontourNav',
+        \Kontenta\Kontour\Contracts\UserAccountWidget::class => 'kontourHeader',
+        \Kontenta\Kontour\Contracts\PersonalRecentVisitsWidget::class => 'kontourWidgets',
+        \Kontenta\Kontour\Contracts\TeamRecentVisitsWidget::class => 'kontourWidgets',
     ],
 ];
