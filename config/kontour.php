@@ -69,10 +69,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Stylesheets
+    | Stylesheets & javascripts
     |--------------------------------------------------------------------------
     |
-    | Stylesheets to load on all admin pages.
+    | Stylesheets & javascripts to load on all admin pages.
+    | Can be full or relative urls.
+    | You may even use the asset() helper.
     |
      */
 
