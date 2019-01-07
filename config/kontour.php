@@ -97,5 +97,7 @@ return [
     'global_widgets' => [
         \Kontenta\Kontour\Contracts\MenuWidget::class => 'kontourNav',
         \Kontenta\Kontour\Contracts\UserAccountWidget::class => 'kontourHeader',
+        \Kontenta\Kontour\Contracts\PersonalRecentVisitsWidget::class => 'kontourWidgets',
+        \Kontenta\Kontour\Contracts\TeamRecentVisitsWidget::class => 'kontourWidgets',
     ],
 ];
