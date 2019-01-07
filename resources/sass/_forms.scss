@@ -1,10 +1,10 @@
-[type="text"], [type="email"], textarea {
+[type="text"], [type="email"], [type="password"], textarea {
   width: 100%;
   max-width: 65ch;
   padding: 5px;
 }
 
-[type="email"] {
+[type="email"], [type="password"] {
   max-width: 35ch;
 }
 
@@ -12,6 +12,7 @@ input, select, textarea {
     &:invalid {
         border-color: $kontour-error-color;
         border-style: solid;
+        border-width: 1px;
     }
     + {
         .error, [id*="error" i] {
