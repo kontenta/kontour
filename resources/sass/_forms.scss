@@ -12,6 +12,7 @@ input, select, textarea {
     &:invalid {
         border-color: $kontour-error-color;
         border-style: solid;
+        border-width: 1px;
     }
     + {
         .error, [id*="error" i] {
