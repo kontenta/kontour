@@ -21,10 +21,10 @@ trait AuthorizesAdminRequests
     public function authorizeShowAdminVisit(
         $ability,
         string $linkName,
-        $abilityArguments = [],
-        string $linkDescription = null
+        string $linkDescription = null,
+        $abilityArguments = []
     ): AdminVisit {
-        $link = $this->authorizeAdminVisit($ability, $linkName, $abilityArguments, $linkDescription);
+        $link = $this->authorizeAdminVisit($ability, $linkName, $linkDescription, $abilityArguments);
         $visit = new ShowAdminVisit($link, $this->adminUser());
         event(new AdminToolVisited($visit));
 
@@ -37,10 +37,10 @@ trait AuthorizesAdminRequests
     public function authorizeEditAdminVisit(
         $ability,
         string $linkName,
-        $abilityArguments = [],
-        string $linkDescription = null
+        string $linkDescription = null,
+        $abilityArguments = []
     ): AdminVisit {
-        $link = $this->authorizeAdminVisit($ability, $linkName, $abilityArguments, $linkDescription);
+        $link = $this->authorizeAdminVisit($ability, $linkName, $linkDescription, $abilityArguments);
         $visit = new EditAdminVisit($link, $this->adminUser());
         event(new AdminToolVisited($visit));
 
@@ -50,8 +50,8 @@ trait AuthorizesAdminRequests
     protected function authorizeAdminVisit(
         $ability,
         string $linkName,
-        $abilityArguments = [],
-        string $linkDescription = null
+        string $linkDescription = null,
+        $abilityArguments = []
     ): AdminLink {
         [$ability, $abilityArguments] = $this->parseAbilityAndArguments($ability, $abilityArguments);
 
