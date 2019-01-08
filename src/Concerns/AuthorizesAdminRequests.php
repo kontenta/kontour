@@ -12,8 +12,12 @@ use Kontenta\Kontour\ShowAdminVisit;
 
 trait AuthorizesAdminRequests
 {
-    use AuthorizesRequests, ResolvesAdminUser;
+    use AuthorizesRequests;
+    use ResolvesAdminUser;
 
+    /**
+     * Authorize the current request with the admin user, and dispatch a ShowAdminVisit event.
+     */
     public function authorizeShowAdminVisit($ability, string $linkName, $abilityArguments = [], string $linkDescription = null): AdminVisit
     {
         $link = $this->authorizeAdminVisit($ability, $linkName, $abilityArguments, $linkDescription);
@@ -22,6 +26,10 @@ trait AuthorizesAdminRequests
 
         return $visit;
     }
+
+    /**
+     * Authorize the current request with the admin user, and dispatch a EditAdminVisit event.
+     */
 
     public function authorizeEditAdminVisit($ability, string $linkName, $abilityArguments = [], string $linkDescription = null): AdminVisit
     {
