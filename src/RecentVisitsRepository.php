@@ -9,7 +9,8 @@ use Kontenta\Kontour\Events\AdminToolVisited;
 
 class RecentVisitsRepository implements RecentVisitsRepositoryContract
 {
-    private $keyPrefix = 'kontour-recent';
+    protected $keyPrefix = 'kontour-recent-visits';
+    protected $userListKey = 'kontour-recent-users';
 
     public function getShowVisits(): Collection
     {
@@ -23,11 +24,13 @@ class RecentVisitsRepository implements RecentVisitsRepositoryContract
 
     protected function getVisits(string $type)
     {
-        try {
-            return Cache::get($this->generateCacheKey($type), new Collection());
-        } catch (\Exception $e) {
-            return new Collection();
-        }
+        return collect($this->getRecentUsers())->flatMap(function ($userId) use ($type) {
+            try {
+                return Cache::get($this->generateCacheKey($type, $userId), new Collection());
+            } catch (\Exception $e) {
+                return new Collection();
+            }
+        })->sortByDesc->getDateTime();
     }
 
     public function subscribe($events)
@@ -37,14 +40,31 @@ class RecentVisitsRepository implements RecentVisitsRepositoryContract
 
     public function handle(AdminToolVisited $event)
     {
-        $key = $this->generateCacheKey($event->visit->getType());
+        $userId = $event->visit->getUser()->getAuthIdentifier();
+        $this->addRecentUser($userId);
+        $key = $this->generateCacheKey($event->visit->getType(), $userId);
         $visits = Cache::get($key, new Collection());
         $visits->prepend($event->visit);
+        $visits = $visits->take(10);
         Cache::forever($key, $visits);
     }
 
-    protected function generateCacheKey(string $type)
+    protected function getRecentUsers(): array
     {
-        return 'kontour-recent-visits-' . $type;
+        return Cache::get($this->userListKey, []);
+    }
+
+    protected function addRecentUser(string $userId): void
+    {
+        $users = $this->getRecentUsers();
+        if (!in_array($userId, $users)) {
+            $users[] = $userId;
+            Cache::forever($this->userListKey, $users);
+        }
+    }
+
+    protected function generateCacheKey(string $type, string $userId)
+    {
+        return implode('-', [$this->keyPrefix, $type, $userId]);
     }
 }
