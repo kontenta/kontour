@@ -39,7 +39,7 @@ class RecentVisitsRepository implements RecentVisitsRepositoryContract
     {
         $key = $this->generateCacheKey($event->visit->getType());
         $visits = Cache::get($key, new Collection());
-        $visits->push($event->visit);
+        $visits->prepend($event->visit);
         Cache::forever($key, $visits);
     }
 
