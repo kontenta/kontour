@@ -4,7 +4,7 @@
     <span>{{ $heading }}</span>
     <ul>
     @foreach($headingLinks as $link)
-      <li>{{ $link }}</li>
+      <li{!! url()->full() == $link->getUrl() ? ' aria-current="page"' : '' !!}>{{ $link }}</li>
     @endforeach
     </ul>
   </li>
