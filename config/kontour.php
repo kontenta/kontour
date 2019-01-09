@@ -124,7 +124,7 @@ return [
     |
      */
 
-    'menu_heading_redirects' => [
+    'menu_heading_names' => [
         //'Design' => 'Style',
     ],
 

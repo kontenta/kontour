@@ -37,9 +37,9 @@ class MenuWidget implements MenuWidgetContract
             $desiredHeading = 'main';
         }
 
-        $headingRedirects = config('kontour.menu_heading_redirects', []);
-        if (isset($headingRedirects[$desiredHeading])) {
-            $desiredHeading = $headingRedirects[$desiredHeading];
+        $headingNames = config('kontour.menu_heading_names', []);
+        if (isset($headingNames[$desiredHeading])) {
+            $desiredHeading = $headingNames[$desiredHeading];
         }
 
         $itemHeadings = config('kontour.menu_item_headings', []);
