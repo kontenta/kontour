@@ -14,7 +14,7 @@ interface MenuWidget extends AdminWidget
     public function addLink(AdminLink $link, string $desiredHeading = null): MenuWidget;
 
     /**
-     * All registered AdminWidgets for the layout
+     * All currently registered headings for the menu
      * @return Collection
      */
     public function getHeadings(): Collection;
