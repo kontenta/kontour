@@ -36,6 +36,6 @@ class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract
                 return !$visit->getUser()->is($this->adminUser()) and $visit->getLink()->isAuthorized($this->adminUser());
             })
             ->sortByDesc->getDateTime()
-            ->take(10);
+            ->take(config('kontour.max_recent_visits.team', 10));
     }
 }

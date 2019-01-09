@@ -36,6 +36,6 @@ class PersonalRecentVisitsWidget implements PersonalRecentVisitsWidgetContract
                 return $visit->getUser()->is($this->adminUser()) and $visit->getLink()->isAuthorized($this->adminUser());
             })
             ->sortByDesc->getDateTime()
-            ->take(10);
+            ->take(config('kontour.max_recent_visits.personal', 10));
     }
 }

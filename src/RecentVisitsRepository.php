@@ -49,7 +49,7 @@ class RecentVisitsRepository implements RecentVisitsRepositoryContract
                 ->unique(function ($visit) {
                     return $visit->getLink()->getUrl();
                 })
-                ->take(10)
+                ->take(max(config('kontour.max_recent_visits', [10])))
         );
     }
 

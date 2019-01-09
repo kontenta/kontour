@@ -100,4 +100,19 @@ return [
         \Kontenta\Kontour\Contracts\PersonalRecentVisitsWidget::class => 'kontourWidgets',
         \Kontenta\Kontour\Contracts\TeamRecentVisitsWidget::class => 'kontourWidgets',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Recent visits
+    |--------------------------------------------------------------------------
+    |
+    | Number of links to show in recent visits widgets.
+    |
+     */
+
+    'max_recent_visits' => [
+        'personal' => 7,
+        'team' => 9,
+    ],
+
 ];
