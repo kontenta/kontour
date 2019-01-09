@@ -120,11 +120,15 @@ return [
     | Menu overrides
     |--------------------------------------------------------------------------
     |
-    | Restructure the menu, overriding packages' menu item registrations.
+    | Restructure the menu, overriding menu item positions.
     |
      */
 
     'menu_heading_redirects' => [
         //'Design' => 'Style',
+    ],
+
+    'menu_item_headings' => [
+        //'Admin users' => 'Admin',
     ],
 ];
