@@ -51,7 +51,11 @@ class MenuWidget implements MenuWidgetContract
             $this->links->put($desiredHeading, new Collection());
         }
 
-        $this->links->get($desiredHeading)->push($link);
+        $this->links[$desiredHeading] = $this->links[$desiredHeading]->push($link)->sortBy(function ($link, $key) {
+            $menuItemOrder = config('kontour.menu_item_order', []);
+            $place = array_search($link->getName(), $menuItemOrder);
+            return is_int($place) ? $place - count($menuItemOrder) : $key;
+        })->values();
 
         return $this;
     }
