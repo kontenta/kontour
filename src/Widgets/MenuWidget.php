@@ -34,6 +34,11 @@ class MenuWidget implements MenuWidgetContract
             $desiredHeading = 'main';
         }
 
+        $headingRedirects = config('kontour.menu_heading_redirects', []);
+        if (isset($headingRedirects[$desiredHeading])) {
+            $desiredHeading = $headingRedirects[$desiredHeading];
+        }
+
         if (!$this->links->has($desiredHeading)) {
             $this->links->put($desiredHeading, new Collection());
         }

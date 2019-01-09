@@ -115,4 +115,16 @@ return [
         'team' => 9,
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Menu overrides
+    |--------------------------------------------------------------------------
+    |
+    | Restructure the menu, overriding packages' menu item registrations.
+    |
+     */
+
+    'menu_heading_redirects' => [
+        //'Design' => 'Style',
+    ],
 ];
