@@ -43,10 +43,14 @@ class RecentVisitsRepository implements RecentVisitsRepositoryContract
         $userId = $event->visit->getUser()->getAuthIdentifier();
         $this->addRecentUser($userId);
         $key = $this->generateCacheKey($event->visit->getType(), $userId);
-        $visits = Cache::get($key, new Collection());
-        $visits->prepend($event->visit);
-        $visits = $visits->take(10);
-        Cache::forever($key, $visits);
+        Cache::forever($key,
+            Cache::get($key, new Collection())
+                ->prepend($event->visit)
+                ->unique(function ($visit) {
+                    return $visit->getLink()->getUrl();
+                })
+                ->take(10)
+        );
     }
 
     protected function getRecentUsers(): array
