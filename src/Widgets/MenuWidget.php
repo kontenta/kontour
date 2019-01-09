@@ -21,6 +21,9 @@ class MenuWidget implements MenuWidgetContract
     public function __construct()
     {
         $this->links = new Collection();
+        foreach (config('kontour.menu_heading_order', []) as $heading) {
+            $this->links->put($heading, new Collection());
+        }
     }
 
     public function toHtml()
