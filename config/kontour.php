@@ -131,4 +131,14 @@ return [
     'menu_item_headings' => [
         //'Admin users' => 'Admin',
     ],
+
+    'menu_heading_order' => [
+        //'Design',
+        //'Management',
+    ],
+
+    'menu_item_order' => [
+        //'Roles',
+        //'Admin users',
+    ],
 ];
