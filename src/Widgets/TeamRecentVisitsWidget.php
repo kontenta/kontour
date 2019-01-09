@@ -3,11 +3,10 @@
 namespace Kontenta\Kontour\Widgets;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Kontenta\Kontour\Concerns\ResolvesAdminUser;
-use Kontenta\Kontour\RecentVisitsRepository;
 use Kontenta\Kontour\Contracts\TeamRecentVisitsWidget as TeamRecentVisitsWidgetContract;
+use Kontenta\Kontour\RecentVisitsRepository;
 
 class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract
 {
@@ -32,12 +31,12 @@ class TeamRecentVisitsWidget implements TeamRecentVisitsWidgetContract
 
     private function getVisits()
     {
-        return $this->repository->getEditVisits()->filter(function ($visit) {
-            return !$visit->getUser()->is($this->adminUser()) and $visit->getLink()->isAuthorized($this->adminUser());
-        })->unique(function ($visit) {
-            return $visit->getLink()->getUrl();
-        })->sortByDesc(function ($visit) {
-            return $visit->getDateTime();
-        });
+        return $this->repository->getEditVisits()
+            ->filter(function ($visit) {
+                return !$visit->getUser()->is($this->adminUser())
+                and $visit->getLink()->isAuthorized($this->adminUser());
+            })
+            ->sortByDesc->getDateTime()
+            ->take(config('kontour.max_recent_visits.team', 10));
     }
 }
