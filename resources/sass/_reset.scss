@@ -1,8 +1,3 @@
-*, body {
-  // Reset all margins
-  margin: 0;
-}
-
 // Reset the default box-sizing to border-box but make it easy to override when needed
 // https://css-tricks.com/box-sizing/
 html {
@@ -13,6 +8,11 @@ html {
 ::before,
 ::after {
   box-sizing: inherit;
+}
+
+*, body {
+  // Reset all margins
+  margin: 0;
 }
 
 * + * {
