@@ -1,3 +1,8 @@
+input, select, textarea, button {
+  font-size: inherit;
+  line-height: inherit;
+}
+
 [type="text"], [type="email"], [type="password"], textarea {
   width: 100%;
   max-width: 65ch;
