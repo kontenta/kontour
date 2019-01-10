@@ -21,6 +21,9 @@ class MenuWidget implements MenuWidgetContract
     public function __construct()
     {
         $this->links = new Collection();
+        foreach (config('kontour.menu_heading_order', []) as $heading) {
+            $this->links->put($heading, new Collection());
+        }
     }
 
     public function toHtml()
@@ -30,15 +33,14 @@ class MenuWidget implements MenuWidgetContract
 
     public function addLink(AdminLink $link, string $desiredHeading = null): MenuWidgetContract
     {
-        if (empty($desiredHeading)) {
-            $desiredHeading = 'main';
+        $heading = $this->headingForLink($link, $desiredHeading);
+
+        if (!$this->links->has($heading)) {
+            $this->links->put($heading, new Collection());
         }
 
-        if (!$this->links->has($desiredHeading)) {
-            $this->links->put($desiredHeading, new Collection());
-        }
-
-        $this->links->get($desiredHeading)->push($link);
+        $this->links[$heading]->push($link);
+        $this->sortLinksInHeading($heading);
 
         return $this;
     }
@@ -58,5 +60,35 @@ class MenuWidget implements MenuWidgetContract
         return $this->links->map(function ($links) {
             return $links->filter->isAuthorized($this->adminUser());
         });
+    }
+
+    protected function headingForLink(AdminLink $link, string $desiredHeading = null)
+    {
+        $heading = trim($desiredHeading);
+
+        if (empty($heading)) {
+            $heading = 'main';
+        }
+
+        $headingNames = config('kontour.menu_heading_names', []);
+        if (isset($headingNames[$heading])) {
+            $heading = $headingNames[$heading];
+        }
+
+        $itemHeadings = config('kontour.menu_item_headings', []);
+        if (isset($itemHeadings[$link->getName()])) {
+            $heading = $itemHeadings[$link->getName()];
+        }
+
+        return $heading;
+    }
+
+    protected function sortLinksInHeading($heading)
+    {
+        $this->links[$heading] = $this->links[$heading]->sortBy(function ($link, $key) {
+            $menuItemOrder = config('kontour.menu_item_order', []);
+            $place = array_search($link->getName(), $menuItemOrder);
+            return is_int($place) ? $place - count($menuItemOrder) : $key;
+        })->values();
     }
 }

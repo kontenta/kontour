@@ -115,4 +115,34 @@ return [
         'team' => 9,
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Menu overrides
+    |--------------------------------------------------------------------------
+    |
+    | Restructure the menu, overriding menu item positions.
+    |
+     */
+
+     // Move all links from one heading to another
+    'menu_heading_names' => [
+        //'Design' => 'Style', //Any links put in heading 'Design' will end up under heading 'Style'
+    ],
+
+    // Move specific links to another heading
+    'menu_item_headings' => [
+        //'Admin users' => 'Admin', //The 'Admin users' link will end up under heading 'Admin'
+    ],
+
+    // Reorder headings
+    'menu_heading_order' => [
+        //'Design',
+        //'Management',
+    ],
+
+    // Reorder links relative each other
+    'menu_item_order' => [
+        //'Roles',
+        //'Admin users',
+    ],
 ];
