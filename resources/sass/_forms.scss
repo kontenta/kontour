@@ -14,16 +14,17 @@ input, select, textarea, button {
 }
 
 input, select, textarea {
-    &:invalid {
-        border-color: $kontour-error-color;
-        border-style: solid;
-        border-width: 1px;
+  border-width: 1px;
+
+  &:invalid {
+    border-color: $kontour-error-color;
+    border-style: solid;
+  }
+  + {
+    .error, [id*="error" i] {
+      margin-top: 0;
     }
-    + {
-        .error, [id*="error" i] {
-            margin-top: 0;
-        }
-    }
+  }
 }
 
 .error, [id*="error" i]{
