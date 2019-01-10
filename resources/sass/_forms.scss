@@ -28,5 +28,11 @@ input, select, textarea {
 }
 
 .error, [id*="error" i]{
-    color: $kontour-error-color;
+  color: $kontour-error-color;
+}
+
+fieldset {
+  border-style: solid;
+  border-width: 1px;
+  border-color: silver;
 }
