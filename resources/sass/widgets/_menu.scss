@@ -1,12 +1,6 @@
 [data-kontour-widget="menu"] {
-  @extend .list-unstyled;
-
-  ul {
-    list-style: none;
-    padding-left: 1rem;
-  }
-
   li ul {
     margin-top: 0;
+    padding-left: 1rem;
   }
 }

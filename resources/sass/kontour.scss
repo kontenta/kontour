@@ -18,10 +18,15 @@ header[data-kontour-section="kontourToolHeader"] + * {
     margin-top: 1rem;
 }
 
+[data-kontour-widget] {
+  &ul, &ol, ul, ol {
+    @extend .list-unstyled;
+  }
+}
+
 @import 'layout';
 @import 'forms';
 @import 'widgets/crumbtrail';
-@import 'widgets/recentVisits';
 @import 'widgets/menu';
 @import 'widgets/userAccount';
 @import 'widgets/message';
