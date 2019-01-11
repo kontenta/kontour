@@ -7,4 +7,20 @@
     margin-top: 0;
     padding-left: 1ch;
   }
+
+  [aria-current] {
+    position: relative;
+
+    ::before {
+      content: "→";
+      position: absolute;
+      right: 100%;
+    }
+  }
+
+  [aria-current="page"] {
+    &, a {
+      text-decoration: none;
+    }
+  }
 }
