@@ -18,16 +18,16 @@ body {
 // Content columns layout
 body > header:last-of-type + * {
   display: flex;
+  flex-wrap: wrap;
 
   > * {
-    max-width: 15rem;
     margin-top: 0;
     padding: 1rem;
   }
 
   main {
     flex-grow: 1;
-    max-width: none;
+    flex-basis: 0;
     border-left: $kontour-border;
     border-right: $kontour-border;
   }
