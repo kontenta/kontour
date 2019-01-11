@@ -17,6 +17,8 @@ header {
 [data-kontour-section="kontourHeader"] {
   > :first-child {
     font-size: 2em;
+    color: $kontour-unimposing-color;
+    text-decoration: none;
   }
 }
 
