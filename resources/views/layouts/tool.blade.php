@@ -5,6 +5,7 @@
 
 @section('kontourMain')
   @section('kontourToolHeader')
+    @parent
     @foreach($widget_manager->getWidgetsForSection('kontourToolHeader') as $widget)
       {{ $widget }}
     @endforeach
@@ -21,12 +22,24 @@
     </div>
   @endif
 
+  @section('kontourToolWidgets')
+    @parent
+    @foreach($widget_manager->getWidgetsForSection('kontourToolWidgets') as $widget)
+      {{ $widget }}
+    @endforeach
+  @endsection
   @hasSection('kontourToolWidgets')
     <div data-kontour-section="kontourToolWidgets">
       @yield('kontourToolWidgets')
     </div>
   @endif
 
+  @section('kontourToolFooter')
+    @parent
+    @foreach($widget_manager->getWidgetsForSection('kontourToolFooter') as $widget)
+      {{ $widget }}
+    @endforeach
+  @endsection
   @hasSection('kontourToolFooter')
     <footer data-kontour-section="kontourToolFooter">
       @yield('kontourToolFooter')
