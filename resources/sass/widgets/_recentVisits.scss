@@ -3,5 +3,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: fade;
+
+    display: inline-block;
+    max-width: 30ch;
   }
 }
