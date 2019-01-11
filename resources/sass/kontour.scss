@@ -14,6 +14,12 @@ header {
   border-bottom: $kontour-border;
 }
 
+[aria-current="page"] {
+  &, a {
+    text-decoration: none;
+  }
+}
+
 [data-kontour-section="kontourHeader"] {
   > :first-child {
     font-size: 2em;
