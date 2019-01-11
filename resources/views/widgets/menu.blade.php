@@ -5,7 +5,7 @@
       <small>{{ $heading }}</small>
       <ul>
       @foreach($headingLinks as $link)
-        <li{!! url()->full() == $link->getUrl() ? ' aria-current="page"' : '' !!}>{{ $link }}</li>
+        <li{!! preg_match('#'.$link->getUrl().'#', url()->full()) ? ' aria-current="' . (url()->full() == $link->getUrl() ? 'page' : 'true') . '"' : '' !!}>{{ $link }}</li>
       @endforeach
       </ul>
     </li>
