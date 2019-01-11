@@ -1,12 +1,10 @@
 [data-kontour-widget="userAccount"] {
   color: $kontour-unimposing-color;
 
-  > * {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
-    > * + * {
-      margin-left: 0.5rem;
-    }
+  > * + * {
+    margin-left: 0.5rem;
   }
 }
