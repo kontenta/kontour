@@ -1,8 +1,13 @@
 [data-kontour-widget="crumbtrail"] {
   > * {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
+  }
+
+  li {
+    white-space: nowrap;
   }
 
   * + li::before {
