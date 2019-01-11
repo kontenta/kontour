@@ -10,9 +10,11 @@ body {
   text-align: center;
 }
 
-[data-kontour-section="kontourHeader"] {
+header {
   border-bottom: $kontour-border;
+}
 
+[data-kontour-section="kontourHeader"] {
   > :first-child {
     font-size: 2em;
   }
