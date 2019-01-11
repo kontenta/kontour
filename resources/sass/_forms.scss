@@ -33,3 +33,9 @@ input, select, textarea {
 fieldset {
   border: $kontour-border;
 }
+
+[data-checked-radio] {
+  label {
+    display: block;
+  }
+}
