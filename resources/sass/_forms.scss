@@ -3,7 +3,7 @@ input, select, textarea, button {
   line-height: inherit;
 }
 
-[type="text"], [type="email"], [type="password"], textarea {
+[type="text"], [type="email"], [type="password"], textarea, fieldset {
   width: 100%;
   max-width: 65ch;
 }
