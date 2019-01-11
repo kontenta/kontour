@@ -5,7 +5,6 @@
 
 @section('kontourMain')
   @section('kontourToolHeader')
-    @parent
     @foreach($widget_manager->getWidgetsForSection('kontourToolHeader') as $widget)
       {{ $widget }}
     @endforeach
@@ -23,7 +22,6 @@
   @endif
 
   @section('kontourToolWidgets')
-    @parent
     @foreach($widget_manager->getWidgetsForSection('kontourToolWidgets') as $widget)
       {{ $widget }}
     @endforeach
@@ -35,7 +33,6 @@
   @endif
 
   @section('kontourToolFooter')
-    @parent
     @foreach($widget_manager->getWidgetsForSection('kontourToolFooter') as $widget)
       {{ $widget }}
     @endforeach
