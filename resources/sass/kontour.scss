@@ -30,6 +30,10 @@ header[data-kontour-section="kontourToolHeader"] + * {
   &ul, &ol, ul, ol {
     @extend .list-unstyled;
   }
+
+  a {
+    color: inherit;
+  }
 }
 
 @import 'layout';
