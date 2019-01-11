@@ -27,12 +27,16 @@ header[data-kontour-section="kontourToolHeader"] + * {
 }
 
 [data-kontour-widget] {
-  &ul, &ol, ul, ol {
-    @extend .list-unstyled;
+  header {
+    color: $kontour-unimposing-color;
   }
 
   a {
     color: inherit;
+  }
+
+  &ul, &ol, ul, ol {
+    @extend .list-unstyled;
   }
 }
 
