@@ -3,5 +3,5 @@
 @extends($view_manager->layout())
 
 @section('kontourMain')
-  The admin index page
+  @include('kontour::dashboard.laravelConfig')
 @append
