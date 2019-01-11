@@ -12,7 +12,7 @@
     position: relative;
 
     ::before {
-      content: "\2219";
+      content: " \00A0\2023";
       position: absolute;
       left: 100%;
     }
