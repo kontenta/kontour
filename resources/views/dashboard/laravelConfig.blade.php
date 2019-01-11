@@ -3,7 +3,7 @@
     Laravel configuration
   </header>
   <dl>
-    @foreach(['app.name', 'app.url', 'app.env', 'app.debug', 'database.default', 'cache.default', 'filesystems.default', 'mail.from.address', 'mail.from.name', 'session.lifetime', 'session.cookie'] as $configKey)
+    @foreach(['app.name', 'app.url', 'app.env', 'app.debug', 'mail.from.address', 'mail.from.name', 'kontour.guard', 'session.cookie', 'session.lifetime', 'database.default', 'cache.default', 'filesystems.default'] as $configKey)
     <dt><code>{{ $configKey }}</code></dt>
     <dd>{{ config($configKey) }}</dd>
     @endforeach
