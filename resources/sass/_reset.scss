@@ -10,7 +10,8 @@ html {
   box-sizing: inherit;
 }
 
-*, body {
+*,
+body {
   // Reset all margins
   margin: 0;
 }
@@ -20,8 +21,16 @@ html {
   margin-top: 1rem;
 }
 
-dt, li, label, legend, hgroup
-h1, h2, h3, h4, h5, h6 {
+dt,
+li,
+label,
+legend,
+hgroup h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   + * {
     // Remove spacing between closely related elements
     margin-top: 0;
@@ -33,14 +42,23 @@ header + :last-child {
   margin-top: 0;
 }
 
-figure, picture, object, select, table, audio, video, map {
+figure,
+picture,
+object,
+select,
+table,
+audio,
+video,
+map {
   * {
     // Remove spacining inside media elements
     margin-top: 0;
   }
 }
 
-a, del, ins,
+a,
+del,
+ins,
 abbr,
 acronym,
 b,
@@ -74,4 +92,3 @@ img {
   max-width: 100%;
   height: auto;
 }
-

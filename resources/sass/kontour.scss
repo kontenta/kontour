@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'reset';
+@import "variables";
+@import "reset";
 
 body {
   font-family: system-ui, sans-serif;
@@ -23,7 +23,7 @@ header {
 }
 
 header[data-kontour-section="kontourToolHeader"] + * {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 [data-kontour-widget] {
@@ -35,16 +35,19 @@ header[data-kontour-section="kontourToolHeader"] + * {
     color: inherit;
   }
 
-  &ul, &ol, ul, ol {
+  &ul,
+  &ol,
+  ul,
+  ol {
     @extend .list-unstyled;
   }
 }
 
-@import 'layout';
-@import 'forms';
-@import 'widgets/crumbtrail';
-@import 'widgets/menu';
-@import 'widgets/userAccount';
-@import 'widgets/message';
-@import 'utilities';
-@import 'screenreaders';
+@import "layout";
+@import "forms";
+@import "widgets/crumbtrail";
+@import "widgets/menu";
+@import "widgets/userAccount";
+@import "widgets/message";
+@import "utilities";
+@import "screenreaders";

@@ -1,18 +1,28 @@
-input, select, textarea, button {
+input,
+select,
+textarea,
+button {
   font-size: inherit;
   line-height: inherit;
 }
 
-[type="text"], [type="email"], [type="password"], textarea, fieldset {
+[type="text"],
+[type="email"],
+[type="password"],
+textarea,
+fieldset {
   width: 100%;
   max-width: 65ch;
 }
 
-[type="email"], [type="password"] {
+[type="email"],
+[type="password"] {
   max-width: 35ch;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   border-width: 1px;
 
   &:invalid {
@@ -20,13 +30,15 @@ input, select, textarea {
     border-style: solid;
   }
   + {
-    .error, [id*="error" i] {
+    .error,
+    [id*="error" i] {
       margin-top: 0;
     }
   }
 }
 
-.error, [id*="error" i] {
+.error,
+[id*="error" i] {
   color: $kontour-error-color;
 }
 
