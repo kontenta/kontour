@@ -2,7 +2,7 @@
 @foreach($links as $heading => $headingLinks)
   @if(count($headingLinks))
     <li>
-      <span>{{ $heading }}</span>
+      <small>{{ $heading }}</small>
       <ul>
       @foreach($headingLinks as $link)
         <li{!! url()->full() == $link->getUrl() ? ' aria-current="page"' : '' !!}>{{ $link }}</li>
