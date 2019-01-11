@@ -42,4 +42,4 @@
       @yield('kontourToolFooter')
     </footer>
   @endif
-@append
+@endsection
