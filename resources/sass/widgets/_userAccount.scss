@@ -2,9 +2,9 @@
   color: $kontour-unimposing-color;
 
   display: flex;
-  align-items: center;
+  align-items: baseline;
 
   > * + * {
-    margin-left: 0.5rem;
+    margin-left: 1ch;
   }
 }
