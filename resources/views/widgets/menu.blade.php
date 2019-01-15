@@ -15,15 +15,19 @@
 </ul>
 
 <script>
-var navButton = document.querySelector('nav button');
+window.addEventListener('load', function () {
+  let navButton = document.querySelector('nav button');
 
-navButton.addEventListener('click', function() {
-  let wasExpanded = this.getAttribute('aria-expanded') === 'true' || false;
-  this.setAttribute('aria-expanded', !wasExpanded);
-  this.hidden = false;
-  let menu = this.nextElementSibling;
-  menu.hidden = wasExpanded;
-});
+  navButton.addEventListener('click', function() {
+    let wasExpanded = this.getAttribute('aria-expanded') === 'true' || false;
+    this.setAttribute('aria-expanded', !wasExpanded);
+    this.hidden = false;
+    let menu = this.nextElementSibling;
+    menu.hidden = wasExpanded;
+  });
 
-navButton.click();
+  if(navButton.parentElement.offsetWidth >= navButton.parentElement.parentElement.offsetWidth) {
+    navButton.click();
+  }
+}, false);
 </script>
