@@ -1,41 +1,39 @@
-// Main vertical layout with sticky footer
+// Main layout with all major blocks as direct children of the body
 body {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
   > * {
     flex-shrink: 0;
     margin-top: 0;
-  }
-
-  // Target the main content area, which is the first element after the last header
-  > header:last-of-type + * {
-    flex-grow: 1;
-  }
-}
-
-// Content columns layout
-body > header:last-of-type + * {
-  display: flex;
-  flex-wrap: wrap;
-
-  > * {
-    margin-top: 0;
     padding: 1rem;
   }
 
-  main {
+  > header {
+    flex-grow: 1;
+    flex-basis: calc(100% - 4rem);
+  }
+
+  > main {
     flex-grow: 1;
     flex-basis: 0;
+    min-height: calc(75vh - 5rem);
     border-left: $kontour-border;
     border-right: $kontour-border;
+  }
+
+  > footer {
+    flex-basis: 100%;
+    background: $kontour-tinted-background-color;
   }
 }
 
 [data-kontour-section="kontourHeader"] {
   display: flex;
   align-items: center;
+  padding: 0;
 
   * {
     margin-top: 0;
