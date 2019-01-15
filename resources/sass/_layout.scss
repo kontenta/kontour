@@ -26,6 +26,11 @@ body {
     flex-basis: 100%;
     background: $kontour-tinted-background-color;
   }
+
+  > [data-kontour-expanded="false"] {
+    flex-grow: 0;
+    padding: 0;
+  }
 }
 
 #skip-to-content {
@@ -54,6 +59,16 @@ body {
 
   > :first-child {
     margin-right: auto;
+  }
+}
+
+[data-kontour-section="kontourNav"] {
+  > button + * {
+    margin-top: 0;
+  }
+
+  [aria-expanded="true"] {
+    display: none;
   }
 }
 
