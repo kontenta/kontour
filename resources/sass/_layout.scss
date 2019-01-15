@@ -10,16 +10,6 @@ body {
     padding: 1rem;
   }
 
-  #skip-to-content {
-    flex-grow: 0;
-    margin-left: auto;
-    margin-right: auto;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
   > header {
     flex-basis: 100%;
   }
@@ -36,6 +26,16 @@ body {
     flex-basis: 100%;
     background: $kontour-tinted-background-color;
   }
+}
+
+#skip-to-content {
+  flex-grow: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 [data-kontour-section="kontourHeader"] {
