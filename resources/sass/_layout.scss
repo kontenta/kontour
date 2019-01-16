@@ -61,8 +61,15 @@ body {
 [data-kontour-section="kontourNav"] {
   &[data-kontour-expanded="false"] {
     width: $kontour-hamburger-width;
-    align-self: flex-end;
     margin-left: auto;
+
+    align-self: flex-end;
+    padding-bottom: 0;
+    line-height: 0;
+  }
+
+  &[data-kontour-expanded="true"] {
+    flex-basis: 100%;
   }
 
   > button {
