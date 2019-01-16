@@ -16,7 +16,7 @@
 
 <script>
 window.addEventListener('load', function () {
-  let button = document.querySelector('nav > button');
+  let button = document.querySelector('[data-kontour-section="kontourNav"] > button');
   let nav = button.parentElement;
   let menu = button.nextElementSibling;
 
