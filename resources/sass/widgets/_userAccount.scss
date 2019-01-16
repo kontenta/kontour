@@ -2,9 +2,17 @@
   color: $kontour-unimposing-color;
 
   display: flex;
-  align-items: baseline;
+  align-items: center;
 
-  > * + * {
-    margin-left: 1ch;
+  form {
+    line-height: 0;
+  }
+
+  button {
+    border: none;
+    background: none;
+
+    width: 2ch;
+    padding: 0;
   }
 }
