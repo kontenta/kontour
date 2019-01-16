@@ -31,12 +31,9 @@ body > footer {
 
 [data-kontour-section="kontourNav"] {
   > button {
-    all: inherit;
+    border: none;
+    background: none;
     line-height: 0;
-
-    &:focus {
-      outline: currentColor 2px solid;
-    }
 
     rect {
       fill: currentColor;
