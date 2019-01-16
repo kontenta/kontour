@@ -1,3 +1,5 @@
+$kontour-hamburger-width: 20% !default;
+
 // Main layout with all major blocks as direct children of the body
 body {
   min-height: 100vh;
@@ -11,7 +13,7 @@ body {
   }
 
   > header {
-    flex-basis: 100%;
+    flex-basis: calc(100% - #{$kontour-hamburger-width});
   }
 
   > main {
@@ -24,11 +26,6 @@ body {
 
   > footer {
     flex-basis: 100%;
-  }
-
-  > [data-kontour-expanded="false"] {
-    flex-grow: 0;
-    padding: 0;
   }
 }
 
@@ -62,6 +59,17 @@ body {
 }
 
 [data-kontour-section="kontourNav"] {
+  &[data-kontour-expanded="false"] {
+    width: $kontour-hamburger-width;
+    align-self: center;
+    margin-left: auto;
+  }
+
+  > button {
+    width: 100%;
+    padding: 0;
+  }
+
   > button + * {
     margin-top: 0;
   }

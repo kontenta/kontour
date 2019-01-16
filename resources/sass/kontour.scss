@@ -15,7 +15,8 @@ body > footer {
 }
 
 [aria-current="page"] {
-  &, a {
+  &,
+  a {
     text-decoration: none;
   }
 }
@@ -25,6 +26,21 @@ body > footer {
     font-size: 2em;
     color: $kontour-unimposing-color;
     text-decoration: none;
+  }
+}
+
+[data-kontour-section="kontourNav"] {
+  > button {
+    all: inherit;
+    line-height: 0;
+
+    &:focus {
+      outline: currentColor 2px solid;
+    }
+
+    rect {
+      fill: currentColor;
+    }
   }
 }
 

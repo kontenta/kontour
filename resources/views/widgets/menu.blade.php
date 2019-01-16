@@ -1,4 +1,8 @@
-<button aria-expanded="true" hidden>Menu</button>
+<button aria-expanded="true" hidden><svg viewBox="0 0 10 10" aria-label="{{ __('Menu') }}">
+  <rect height="2" width="8" y="1" x="1"/>
+  <rect height="2" width="8" y="4" x="1"/>
+  <rect height="2" width="8" y="7" x="1"/>
+</svg></button>
 <ul data-kontour-widget="menu">
 @foreach($links as $heading => $headingLinks)
   @if(count($headingLinks))
