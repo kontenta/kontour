@@ -104,3 +104,7 @@ body {
     text-align: center;
   }
 }
+
+header[data-kontour-section="kontourToolHeader"] + * {
+  margin-top: 1rem;
+}

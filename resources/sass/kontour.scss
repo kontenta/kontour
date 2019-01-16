@@ -28,10 +28,6 @@ body > footer {
   }
 }
 
-header[data-kontour-section="kontourToolHeader"] + * {
-  margin-top: 1rem;
-}
-
 [data-kontour-widget] {
   header {
     color: $kontour-unimposing-color;
