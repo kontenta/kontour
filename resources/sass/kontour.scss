@@ -39,6 +39,12 @@ body > footer {
       fill: currentColor;
     }
   }
+
+  [aria-expanded="true"] svg {
+    .top, .bottom {
+      display: none;
+    }
+  }
 }
 
 [data-kontour-widget] {

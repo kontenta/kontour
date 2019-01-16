@@ -75,7 +75,8 @@ body {
   }
 
   [aria-expanded="true"] {
-    display: none;
+    max-width: 2rem;
+    float: right;
   }
 }
 
