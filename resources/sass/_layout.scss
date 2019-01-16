@@ -1,4 +1,4 @@
-$kontour-hamburger-width: 20% !default;
+$kontour-hamburger-width: 5rem !default;
 
 // Main layout with all major blocks as direct children of the body
 body {
@@ -61,12 +61,13 @@ body {
 [data-kontour-section="kontourNav"] {
   &[data-kontour-expanded="false"] {
     width: $kontour-hamburger-width;
-    align-self: center;
+    align-self: flex-end;
     margin-left: auto;
   }
 
   > button {
     width: 100%;
+    max-width: 3rem;
     padding: 0;
   }
 
@@ -75,7 +76,6 @@ body {
   }
 
   [aria-expanded="true"] {
-    max-width: 2rem;
     float: right;
   }
 }
