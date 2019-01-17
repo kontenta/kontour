@@ -1,4 +1,4 @@
-$kontour-hamburger-width: 4.5rem !default;
+$kontour-hamburger-width: 4.5em !default;
 
 // Main layout with all major blocks as direct children of the body
 body {
@@ -64,10 +64,6 @@ body {
   &[data-kontour-expanded="false"] {
     width: $kontour-hamburger-width;
     margin-left: auto;
-
-    align-self: flex-end;
-    padding-bottom: 0;
-    line-height: 0;
   }
 
   &[data-kontour-expanded="true"] {
@@ -78,6 +74,7 @@ body {
     width: 100%;
     max-width: 3rem;
     padding: 0;
+    line-height: 0;
   }
 
   > button + * {
