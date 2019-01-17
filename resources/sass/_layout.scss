@@ -19,7 +19,7 @@ body {
   > main {
     flex-grow: 1000;
     flex-basis: 45ch;
-    min-height: calc(75vh - 5rem);
+    min-height: calc(100vh - 10rem);
     border-left: $kontour-border;
     border-right: $kontour-border;
   }
