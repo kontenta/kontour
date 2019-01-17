@@ -30,13 +30,9 @@ body {
 }
 
 #skip-to-content {
-  flex-grow: 0;
-  margin-left: auto;
-  margin-right: auto;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  order: -999;
+  flex-basis: 100%;
+  text-align: center;
 }
 
 [data-kontour-section="kontourHeader"] {
@@ -63,8 +59,9 @@ body {
 [data-kontour-section="kontourNav"] {
   &[data-kontour-expanded="false"] {
     width: $kontour-hamburger-width;
-    margin-left: auto;
     line-height: 0;
+    order: -1;
+    flex-grow: 0;
   }
 
   &[data-kontour-expanded="true"] {
