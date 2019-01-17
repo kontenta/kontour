@@ -41,6 +41,8 @@ body {
 
 [data-kontour-section="kontourHeader"] {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: baseline;
 
   padding: 0;
@@ -50,7 +52,7 @@ body {
   }
 
   > * {
-    padding: 1rem;
+    padding: 0.5rem;
   }
 
   > :first-child {
