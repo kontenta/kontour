@@ -64,6 +64,7 @@ body {
   &[data-kontour-expanded="false"] {
     width: $kontour-hamburger-width;
     margin-left: auto;
+    line-height: 0;
   }
 
   &[data-kontour-expanded="true"] {
@@ -74,7 +75,6 @@ body {
     width: 100%;
     max-width: 3rem;
     padding: 0;
-    line-height: 0;
   }
 
   > button + * {
