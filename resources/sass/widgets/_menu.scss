@@ -8,11 +8,11 @@
     padding-left: 1ch;
   }
 
-  [aria-current] {
+  [aria-current] > a {
     position: relative;
 
-    ::before {
-      content: " \00A0\2023";
+    &::before {
+      content: " \2023";
       position: absolute;
       left: 100%;
     }
