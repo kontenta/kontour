@@ -21,7 +21,7 @@
     @endforeach
   @endsection
   @hasSection('kontourNav')
-    <nav data-kontour-section="kontourNav" data-kontour-expanded="true">
+    <nav data-kontour-section="kontourNav">
       @yield('kontourNav')
     </nav>
   @endif
