@@ -9,10 +9,13 @@
   }
 
   button {
-    border: none;
-    background: none;
+    @extend .button-reset;
 
     width: 3ch;
     padding: 0;
+  }
+
+  polygon {
+    fill: currentColor;
   }
 }

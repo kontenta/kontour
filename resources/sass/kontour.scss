@@ -31,8 +31,7 @@ body > footer {
 
 [data-kontour-section="kontourNav"] {
   > button {
-    border: none;
-    background: none;
+    @extend .button-reset;
 
     rect {
       fill: currentColor;
