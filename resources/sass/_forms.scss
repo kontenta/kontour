@@ -40,7 +40,9 @@ textarea {
 .error,
 [id*="error" i] {
   color: $kontour-error-color;
-  @extend .list-unstyled;
+  //We do .list-unstyled manually because case insensitive attribute selectors break in IE & Edge
+  list-style: none;
+  padding: 0;
 }
 
 fieldset {
