@@ -13,7 +13,7 @@
     @endforeach
   </header>
 
-  <nav data-kontour-section="kontourNav">
+  <nav data-kontour-section="kontourNav" data-kontour-expanded="true">
     @foreach($widget_manager->getWidgetsForSection('kontourNav') as $widget)
       {{ $widget }}
     @endforeach
