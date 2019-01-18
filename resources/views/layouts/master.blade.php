@@ -8,7 +8,7 @@
 
   <header data-kontour-section="kontourHeader">
     @section('kontourHeader')
-      <a href="{{ route('kontour.index') }}">{{ config('kontour.title') }}</a>
+      {{ \Kontenta\Kontour\AdminLink::create(config('kontour.title'), route('kontour.index'), __('Dashboard')) }}
       @foreach($widget_manager->getWidgetsForSection('kontourHeader') as $widget)
         {{ $widget }}
       @endforeach
