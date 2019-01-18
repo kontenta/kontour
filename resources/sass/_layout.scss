@@ -15,6 +15,7 @@ body {
   > header {
     flex-basis: 100%;
     min-height: $kontour-hamburger-width;
+    max-height: max-content;
   }
 
   > main {
