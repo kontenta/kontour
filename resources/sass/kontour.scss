@@ -46,7 +46,7 @@ body > footer {
   [aria-expanded="true"] svg {
     .top,
     .bottom {
-      display: none;
+      visibility: hidden;
     }
   }
 }

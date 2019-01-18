@@ -1,4 +1,4 @@
-$kontour-hamburger-width: 4.5em !default;
+$kontour-hamburger-width: 4rem !default;
 
 // Main layout with all major blocks as direct children of the body
 body {
@@ -14,6 +14,7 @@ body {
 
   > header {
     flex-basis: 100%;
+    min-height: $kontour-hamburger-width;
   }
 
   > main {
@@ -34,14 +35,6 @@ body {
 }
 
 [data-kontour-section="kontourHeader"] {
-  [data-kontour-menu-expanded="false"] & {
-    flex-basis: calc(100% - #{$kontour-hamburger-width});
-  }
-
-  [data-kontour-menu-expanded="true"] & {
-    margin-left: $kontour-hamburger-width;
-  }
-
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -59,30 +52,28 @@ body {
 
   > :first-child {
     margin-right: auto;
+
+    [data-kontour-menu-expanded] & {
+      margin-left: $kontour-hamburger-width;
+    }
   }
 }
 
 [data-kontour-section="kontourNav"] {
-  [data-kontour-menu-expanded="false"] & {
-    width: $kontour-hamburger-width;
-    line-height: 0;
-    order: -1;
-    flex-grow: 0;
-  }
-
-  [data-kontour-menu-expanded="true"] & {
+  [data-kontour-menu-expanded] & {
     flex-basis: 100%;
   }
 
-  [aria-expanded="true"] {
-    float: right;
-    max-width: 1rem;
-  }
-
   > button {
-    width: 100%;
-    max-width: 3rem;
+    width: $kontour-hamburger-width;
     padding: 0;
+    line-height: 0;
+
+    [data-kontour-menu-expanded] & {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 
   > button + * {
