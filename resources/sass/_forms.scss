@@ -25,10 +25,11 @@ select,
 textarea {
   border-width: 1px;
 
-  &:invalid {
+  &[aria-invalid="true"] {
     border-color: $kontour-error-color;
     border-style: solid;
   }
+
   + {
     .error,
     [id*="error" i] {
@@ -40,7 +41,7 @@ textarea {
 .error,
 [id*="error" i] {
   color: $kontour-error-color;
-  //We do .list-unstyled manually because case insensitive attribute selectors break in IE & Edge
+  //We do not extend .list-unstyled because case insensitive attribute selectors break in IE & Edge
   list-style: none;
   padding: 0;
 }
