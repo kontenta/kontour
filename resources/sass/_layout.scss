@@ -13,15 +13,13 @@ body {
   }
 
   > header {
-    flex-basis: calc(100% - #{$kontour-hamburger-width});
+    flex-basis: 100%;
   }
 
   > main {
     flex-grow: 1000;
     flex-basis: 45ch;
     min-height: calc(100vh - 10rem);
-    border-left: $kontour-border;
-    border-right: $kontour-border;
   }
 
   > footer {
@@ -36,6 +34,14 @@ body {
 }
 
 [data-kontour-section="kontourHeader"] {
+  [data-kontour-menu-expanded="false"] & {
+    flex-basis: calc(100% - #{$kontour-hamburger-width});
+  }
+
+  [data-kontour-menu-expanded="true"] & {
+    margin-left: $kontour-hamburger-width;
+  }
+
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -57,15 +63,20 @@ body {
 }
 
 [data-kontour-section="kontourNav"] {
-  &[data-kontour-expanded="false"] {
+  [data-kontour-menu-expanded="false"] & {
     width: $kontour-hamburger-width;
     line-height: 0;
     order: -1;
     flex-grow: 0;
   }
 
-  &[data-kontour-expanded="true"] {
+  [data-kontour-menu-expanded="true"] & {
     flex-basis: 100%;
+  }
+
+  [aria-expanded="true"] {
+    float: right;
+    max-width: 1rem;
   }
 
   > button {
@@ -76,11 +87,6 @@ body {
 
   > button + * {
     margin-top: 0;
-  }
-
-  [aria-expanded="true"] {
-    float: right;
-    max-width: 1rem;
   }
 }
 

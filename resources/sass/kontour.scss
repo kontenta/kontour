@@ -10,6 +10,11 @@ header {
   border-bottom: $kontour-border;
 }
 
+body > main {
+  border-left: $kontour-border;
+  border-right: $kontour-border;
+}
+
 body > footer {
   background: $kontour-tinted-background-color;
 }
@@ -39,7 +44,8 @@ body > footer {
   }
 
   [aria-expanded="true"] svg {
-    .top, .bottom {
+    .top,
+    .bottom {
       display: none;
     }
   }

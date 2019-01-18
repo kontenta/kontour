@@ -17,18 +17,17 @@
 <script>
 window.addEventListener('load', function () {
   let button = document.querySelector('[data-kontour-section="kontourNav"] > button');
-  let nav = button.parentElement;
   let menu = button.nextElementSibling;
 
   button.addEventListener('click', function() {
     let wasExpanded = this.getAttribute('aria-expanded') === 'true' || false;
     this.setAttribute('aria-expanded', !wasExpanded);
     this.hidden = false;
-    nav.setAttribute('data-kontour-expanded', !wasExpanded);
+    document.body.setAttribute('data-kontour-menu-expanded', !wasExpanded);
     menu.hidden = wasExpanded;
   });
 
-  if(nav.offsetWidth >= nav.parentElement.offsetWidth) {
+  if(button.parentElement.offsetWidth >= button.parentElement.parentElement.offsetWidth) {
     button.click();
   }
 }, false);
