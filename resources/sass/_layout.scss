@@ -30,8 +30,20 @@ body {
 }
 
 #skip-to-content {
-  order: -999;
-  flex-basis: 100%;
+  position: absolute;
+  max-width: 33%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: white;
+  padding: 1ch;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
