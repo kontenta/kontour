@@ -79,7 +79,7 @@ body {
 
   > button {
     width: $kontour-hamburger-width;
-    padding: 0;
+    padding: 1ch;
     line-height: 0;
 
     [data-kontour-menu-expanded] & {
