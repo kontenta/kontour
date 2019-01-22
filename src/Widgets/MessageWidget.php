@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\HtmlString;
 use Kontenta\Kontour\Contracts\MessageWidget as MessageWidgetContract;
 
 class MessageWidget implements MessageWidgetContract
@@ -44,9 +45,12 @@ class MessageWidget implements MessageWidgetContract
         return $this->addGeneralMessage($message, $level);
     }
 
-    public function addHtmlMessage(Htmlable $message, string $level = 'info'): MessageWidgetContract
+    public function addHtmlMessage($message, string $level = 'info'): MessageWidgetContract
     {
-        return $this->addGeneralMessage($message, $level);
+        if ($message instanceof Htmlable) {
+            $message = $message->toHtml();
+        }
+        return $this->addGeneralMessage(new HtmlString($message), $level);
     }
 
     public function addFromSession($key = 'status', $level = 'info'): MessageWidgetContract
