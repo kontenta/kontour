@@ -3,10 +3,10 @@
 namespace Kontenta\Kontour\Widgets;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
-use Illuminate\Support\Collection;
 use Illuminate\Contracts\Support\Htmlable;
-use Kontenta\Kontour\Contracts\MessageWidget as MessageWidgetContract;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
+use Kontenta\Kontour\Contracts\MessageWidget as MessageWidgetContract;
 
 class MessageWidget implements MessageWidgetContract
 {
@@ -27,12 +27,14 @@ class MessageWidget implements MessageWidgetContract
         }
     }
 
-    protected function addGeneralMessage($message, string $level = 'info'): MessageWidgetContract
+    protected function addGeneralMessage($messages, string $level = 'info'): MessageWidgetContract
     {
-        $this->messages->push([
-            'message'   => $message,
-            'level'     => $level
-        ]);
+        collect($messages)->each(function ($message) use ($level) {
+            $this->messages->push([
+                'message' => $message,
+                'level' => $level,
+            ]);
+        });
 
         return $this;
     }
