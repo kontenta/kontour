@@ -55,7 +55,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSuccessful();
         $response->assertSee('<ul data-kontour-widget="menu">');
         $response->assertSee('>main<');
-        $response->assertSee('<a href="' . route('userland.index') . '">Userland Tool</a>');
+        $response->assertSee('<a href="' . route('userland.index') . '" aria-current="page">Userland Tool</a>');
         $response->assertSee('>External<');
         $response->assertSee('<a href="http://external.com">External Link</a>');
     }
@@ -83,17 +83,17 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSee('<aside data-kontour-widget="personalRecentVisits">');
         $response->assertSee('<header>Recent</header>');
 
-        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="show"><a href="' . route('userland.index') . '">Recent Userland Tool</a>');
-        $this->assertEquals(1, $numberOfMatches);
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="show" title="Recent Userland Tool"><a href="' . route('userland.index') . '" aria-current="page">Recent Userland Tool</a>');
+        $this->assertEquals(0, $numberOfMatches);
 
-        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit"><a href="' . route('userland.edit', 1) . '">Recent Userland Tool</a>');
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" title="Recent Userland Tool"><a href="' . route('userland.edit', 1) . '">Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);
 
         // Check team links
         $response->assertSee('<aside data-kontour-widget="teamRecentVisits">');
         $response->assertSee('<header>Team Recent</header>');
 
-        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" data-kontour-username="' . $otherUser->getDisplayName() . '"><a href="' . route('userland.edit', 1) . '">Other Recent Userland Tool</a>');
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" data-kontour-username="' . $otherUser->getDisplayName() . '" title="Other Recent Userland Tool"><a href="' . route('userland.edit', 1) . '">Other Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);
 
         $response->assertDontSee('<a href="' . route('userland.index') . '">Other Recent Userland Tool</a>');
@@ -117,7 +117,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSuccessful();
         $response->assertSee('<nav aria-label="Crumb trail" data-kontour-widget="crumbtrail">');
         $response->assertSee('<a href="' . route('userland.index') . '">1</a>');
-        $response->assertSee('<li aria-current="page"><a href="' . route('userland.edit', 1) . '">2</a>');
+        $response->assertSee('<li aria-current="true"><a href="' . route('userland.edit', 1) . '" aria-current="page">2</a>');
     }
 
     public function test_message_widget()

@@ -23,7 +23,9 @@ class ItemHistoryWidget implements ItemHistoryWidgetContract
 
     public function toHtml()
     {
-        return View::make('kontour::widgets.itemHistory', ['entries' => $this->entries])->render();
+        if ($this->entries->count() > 1) {
+            return View::make('kontour::widgets.itemHistory', ['entries' => $this->entries])->render();
+        }
     }
 
     public function addEntry(string $action, \DateTime $datetime, AdminUser $user = null): ItemHistoryWidgetContract

@@ -27,7 +27,7 @@ class SkipToContentTest extends DuskTest
             $browser->keys('', '{tab}')
                 ->assertFocused($this->element);
 
-            $this->assertEquals('static', $browser->element($this->element)->getCSSValue('position'));
+            $this->assertEquals('absolute', $browser->element($this->element)->getCSSValue('position'));
 
             $browser->keys($this->element, '{enter}')
                 ->assertNotFocused($this->element)

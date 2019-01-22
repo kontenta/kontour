@@ -1,4 +1,17 @@
-*, body {
+// Reset the default box-sizing to border-box but make it easy to override when needed
+// https://css-tricks.com/box-sizing/
+html {
+  box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+*,
+body {
   // Reset all margins
   margin: 0;
 }
@@ -8,8 +21,16 @@
   margin-top: 1rem;
 }
 
-dt, li, label, legend, hgroup
-h1, h2, h3, h4, h5, h6 {
+dt,
+li,
+label,
+legend,
+hgroup h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   + * {
     // Remove spacing between closely related elements
     margin-top: 0;
@@ -21,14 +42,23 @@ header + :last-child {
   margin-top: 0;
 }
 
-figure, picture, object, select, table, audio, video, map {
+figure,
+picture,
+object,
+select,
+table,
+audio,
+video,
+map {
   * {
     // Remove spacining inside media elements
     margin-top: 0;
   }
 }
 
-a, del, ins,
+a,
+del,
+ins,
 abbr,
 acronym,
 b,
@@ -63,3 +93,11 @@ img {
   height: auto;
 }
 
+dt {
+  break-after: avoid;
+}
+
+dd {
+  break-inside: avoid;
+  break-before: avoid;
+}

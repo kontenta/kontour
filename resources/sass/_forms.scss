@@ -1,26 +1,57 @@
-[type="text"], [type="email"], [type="password"], textarea {
-  width: 100%;
-  max-width: 65ch;
-  padding: 5px;
+input,
+select,
+textarea,
+button {
+  font-size: inherit;
+  line-height: inherit;
 }
 
-[type="email"], [type="password"] {
+[type="text"],
+[type="email"],
+[type="password"],
+textarea,
+fieldset {
+  width: 100%;
+  max-width: 65ch;
+}
+
+[type="email"],
+[type="password"] {
   max-width: 35ch;
 }
 
-input, select, textarea {
-    &:invalid {
-        border-color: $kontour-error-color;
-        border-style: solid;
-        border-width: 1px;
+input,
+select,
+textarea {
+  border-width: 1px;
+
+  &[aria-invalid="true"] {
+    border-color: $kontour-error-color;
+    border-style: solid;
+  }
+
+  + {
+    .error,
+    [id*="error" i] {
+      margin-top: 0;
     }
-    + {
-        .error, [id*="error" i] {
-            margin-top: 0;
-        }
-    }
+  }
 }
 
-.error, [id*="error" i]{
-    color: $kontour-error-color;
+.error,
+[id*="error" i] {
+  color: $kontour-error-color;
+  //We do not extend .list-unstyled because case insensitive attribute selectors break in IE & Edge
+  list-style: none;
+  padding: 0;
+}
+
+fieldset {
+  border: $kontour-border;
+}
+
+[data-checked-radio] {
+  label {
+    display: block;
+  }
 }

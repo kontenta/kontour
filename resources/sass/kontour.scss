@@ -1,28 +1,79 @@
-@import 'variables';
-@import 'reset';
+@import "variables";
+@import "reset";
 
 body {
   font-family: system-ui, sans-serif;
+  line-height: 1.6;
 }
 
-[data-kontour-section="kontourHeader"] {
+header {
   border-bottom: $kontour-border;
+}
 
-  > :first-child {
-    font-size: 2em;
+body > main {
+  border-left: $kontour-border;
+  border-right: $kontour-border;
+}
+
+body > footer {
+  background: $kontour-tinted-background-color;
+}
+
+[aria-current="page"] {
+  &,
+  a {
+    text-decoration: none;
   }
 }
 
-header[data-kontour-section="kontourToolHeader"] + * {
-    margin-top: 1rem;
+[data-kontour-section="kontourHeader"] {
+  > :first-child {
+    font-size: 1.5em;
+    color: $kontour-unimposing-color;
+    text-decoration: none;
+  }
 }
 
-@import 'layout';
-@import 'forms';
-@import 'widgets/crumbtrail';
-@import 'widgets/recentVisits';
-@import 'widgets/menu';
-@import 'widgets/userAccount';
-@import 'widgets/message';
-@import 'utilities';
-@import 'screenreaders';
+[data-kontour-section="kontourNav"] {
+  > button {
+    @extend .button-reset;
+
+    rect {
+      fill: currentColor;
+    }
+  }
+
+  [aria-expanded="true"] svg {
+    .top,
+    .bottom {
+      visibility: hidden;
+    }
+  }
+}
+
+[data-kontour-widget] {
+  header {
+    color: $kontour-unimposing-color;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  &ul,
+  &ol,
+  ul,
+  ol {
+    @extend .list-unstyled;
+  }
+}
+
+@import "layout";
+@import "forms";
+@import "widgets/crumbtrail";
+@import "widgets/menu";
+@import "widgets/userAccount";
+@import "widgets/message";
+@import "widgets/recentVisits";
+@import "utilities";
+@import "screenreaders";

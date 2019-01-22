@@ -1,13 +1,18 @@
 [data-kontour-widget="crumbtrail"] {
   > * {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
   }
 
+  li {
+    white-space: pre-line;
+  }
+
   * + li::before {
-    content: "→";
-    padding-left: .5rem;
-    padding-right: .5rem;
+    content: "\2192";
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
