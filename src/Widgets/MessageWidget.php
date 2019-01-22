@@ -3,10 +3,12 @@
 namespace Kontenta\Kontour\Widgets;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
-use Illuminate\Support\Collection;
 use Illuminate\Contracts\Support\Htmlable;
-use Kontenta\Kontour\Contracts\MessageWidget as MessageWidgetContract;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\ViewErrorBag;
+use Kontenta\Kontour\Contracts\MessageWidget as MessageWidgetContract;
 
 class MessageWidget implements MessageWidgetContract
 {
@@ -27,12 +29,14 @@ class MessageWidget implements MessageWidgetContract
         }
     }
 
-    protected function addGeneralMessage($message, string $level = 'info'): MessageWidgetContract
+    protected function addGeneralMessage($messages, string $level = 'info'): MessageWidgetContract
     {
-        $this->messages->push([
-            'message'   => $message,
-            'level'     => $level
-        ]);
+        collect($messages)->each(function ($message) use ($level) {
+            $this->messages->push([
+                'message' => $message,
+                'level' => $level,
+            ]);
+        });
 
         return $this;
     }
@@ -42,18 +46,30 @@ class MessageWidget implements MessageWidgetContract
         return $this->addGeneralMessage($message, $level);
     }
 
-    public function addHtmlMessage(Htmlable $message, string $level = 'info'): MessageWidgetContract
+    public function addHtmlMessage($message, string $level = 'info'): MessageWidgetContract
     {
-        return $this->addGeneralMessage($message, $level);
+        if ($message instanceof Htmlable) {
+            $message = $message->toHtml();
+        }
+        return $this->addGeneralMessage(new HtmlString($message), $level);
     }
 
     public function addFromSession($key = 'status', $level = 'info'): MessageWidgetContract
     {
         if (session()->has($key)) {
-            $this->addMessage(session($key), $level);
+            $this->addGeneralMessage(session($key), $level);
         }
 
         return $this;
+    }
+
+    public function addErrorsFromSession($level = 'error', $bag = 'default'): MessageWidgetContract
+    {
+        $errors = session('errors');
+        if (!$errors instanceof ViewErrorBag) {
+            $errors = new ViewErrorBag();
+        }
+        return $this->addGeneralMessage($errors->getBag($bag)->all(), $level);
     }
 
     public function isAuthorized(Authorizable $user = null): bool
