@@ -11,4 +11,6 @@ interface MessageWidget extends AdminWidget
     public function addHtmlMessage($message, string $level = 'info'): MessageWidget;
 
     public function addFromSession($key = 'status', $level = 'info'): MessageWidget;
+
+    public function addErrorsFromSession($level = 'error', $bag = 'default'): MessageWidget;
 }

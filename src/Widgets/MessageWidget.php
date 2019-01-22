@@ -7,6 +7,7 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\ViewErrorBag;
 use Kontenta\Kontour\Contracts\MessageWidget as MessageWidgetContract;
 
 class MessageWidget implements MessageWidgetContract
@@ -60,6 +61,15 @@ class MessageWidget implements MessageWidgetContract
         }
 
         return $this;
+    }
+
+    public function addErrorsFromSession($level = 'error', $bag = 'default'): MessageWidgetContract
+    {
+        $errors = session('errors');
+        if (!$errors instanceof ViewErrorBag) {
+            $errors = new ViewErrorBag();
+        }
+        return $this->addGeneralMessage($errors->getBag($bag)->all(), $level);
     }
 
     public function isAuthorized(Authorizable $user = null): bool
