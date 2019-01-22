@@ -1,4 +1,7 @@
-$kontour-border: 1px solid transparentize(black, .95) !default;
 $kontour-success-color: green !default;
 $kontour-warning-color: orange !default;
 $kontour-error-color: red !default;
+$kontour-unimposing-color: gray !default;
+$kontour-border-color: transparentize(black, 0.95) !default;
+$kontour-tinted-background-color: $kontour-border-color !default;
+$kontour-border: 1px solid $kontour-border-color !default;

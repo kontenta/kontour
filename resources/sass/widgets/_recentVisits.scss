@@ -1,5 +1,10 @@
 [data-kontour-widget$="RecentVisits"] {
-  ul {
-    @extend .list-unstyled;
+  a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: fade;
+
+    display: inline-block;
+    max-width: 30ch;
   }
 }

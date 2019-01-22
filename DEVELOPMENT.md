@@ -52,3 +52,5 @@ running this command will publish the updated styles:
 ```bash
 php artisan vendor:publish --tag="kontour-styling" --force
 ```
+
+Or you can softlink the generated css file of this package from your public css directory.

@@ -1,8 +1,23 @@
 [data-kontour-widget="userAccount"] {
+  color: $kontour-unimposing-color;
+
   display: flex;
   align-items: center;
 
-  > * + * {
-    margin-left: .5rem;
+  form {
+    line-height: 0;
+  }
+
+  button {
+    @extend .button-reset;
+
+    width: 3ch;
+    padding: 0;
+
+    margin-left: 0.5ch;
+  }
+
+  polygon {
+    fill: currentColor;
   }
 }

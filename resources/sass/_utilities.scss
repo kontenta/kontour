@@ -2,3 +2,17 @@
   list-style: none;
   padding: 0;
 }
+
+.button-reset {
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+.columns-narrow {
+  column-width: 20ch;
+}
+
+.columns-readable {
+  column-width: 45ch;
+}
