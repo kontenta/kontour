@@ -29,21 +29,14 @@ textarea {
     border-color: $kontour-error-color;
     border-style: solid;
   }
-
-  + {
-    .error,
-    [id*="error" i] {
-      margin-top: 0;
-    }
-  }
 }
 
 .error,
-[id*="error" i] {
+[id*="error"],
+[id*="Error"] {
+  margin-top: 0;
   color: $kontour-error-color;
-  //We do not extend .list-unstyled because case insensitive attribute selectors break in IE & Edge
-  list-style: none;
-  padding: 0;
+  @extend .list-unstyled;
 }
 
 fieldset {
