@@ -60,11 +60,16 @@ body > footer {
     color: inherit;
   }
 
-  &ul,
-  &ol,
   ul,
   ol {
     @extend .list-unstyled;
+  }
+
+  @at-root {
+    ul#{&},
+    ol#{&} {
+      @extend .list-unstyled;
+    }
   }
 }
 
