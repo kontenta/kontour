@@ -9,15 +9,7 @@ id="{{ $controlId }}"
 @if(isset($controlAttributes))
   @if(is_iterable($controlAttributes))
     @foreach($controlAttributes as $attributeName => $attributeValue)
-      @if(is_int($attributeName))
-        {{ $attributeValue }}
-      @elseif(is_bool($attributeValue))
-        @if($attributeValue)
-          {{ $attributeName }}
-        @endif
-      @else
-        {{ $attributeName }}="{{ $attributeValue }}"
-      @endif
+      @include('kontour::forms.partials.attribute')
     @endforeach
   @else
     {!! $controlAttributes !!}
