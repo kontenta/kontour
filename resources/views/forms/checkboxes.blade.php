@@ -8,17 +8,7 @@
     <fieldset><legend>{{ $legend }}</legend>
     @endif
     @foreach($legend ? $option_display : [$option_value => $option_display] as $option_value => $option_display)
-    @component('kontour::forms.label', ['label' => $option_display, 'controlId' => $controlId = $groupId . '[' . $option_value . ']'])
-      @slot('labelStart')
-        <input type="checkbox"
-          value="{{ $option_value }}"
-          @if(in_array(strval($option_value), $selected))
-            checked
-          @endif
-          @include('kontour::forms.partials.inputAttributes', ['name' => $name . '[]'])
-        >
-      @endslot
-    @endcomponent
+      @include('kontour::forms.partials.checkableOption', ['controlId' => $controlId = $groupId . '[' . $option_value . ']', 'type' => 'checkbox'])
     @endforeach
     @if($legend)
     </fieldset>
