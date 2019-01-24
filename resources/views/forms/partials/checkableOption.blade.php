@@ -1,4 +1,4 @@
-@component('kontour::forms.label', ['label' => $option_display, 'controlId' => $controlId = $groupId . '[' . $option_value . ']'])
+@component('kontour::forms.label', ['label' => $option_display, 'controlId' => $controlId = $groupId . '[' . $option_value . ']', 'labelAttributes' => $labelAttributes ?? []])
   @slot('labelStart')
     <input type="{{ $type = $type ?? 'radio' }}"
       value="{{ $option_value }}"
