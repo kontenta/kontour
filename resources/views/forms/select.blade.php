@@ -6,6 +6,6 @@
     >
       @include('kontour::forms.partials.options')
     </select>
-    @include('kontour::forms.partials.errors', ['errorsId' => $errorsId])
+    @include('kontour::forms.partials.errors')
   </div>
 </div>
