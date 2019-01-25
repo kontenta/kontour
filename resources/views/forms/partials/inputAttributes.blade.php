@@ -6,12 +6,8 @@ id="{{ $controlId }}"
 @elseif(isset($ariaDescribedById))
   aria-describedby="{{ $ariaDescribedById }}"
 @endif
-@if(isset($controlAttributes))
-  @if(is_iterable($controlAttributes))
-    @foreach($controlAttributes as $attributeName => $attributeValue)
-      @include('kontour::forms.partials.attribute')
-    @endforeach
-  @else
-    {!! $controlAttributes !!}
-  @endif
+@if(isset($controlAttributes) and is_iterable($controlAttributes))
+  @foreach($controlAttributes as $attributeName => $attributeValue)
+    @include('kontour::forms.partials.attribute')
+  @endforeach
 @endif
