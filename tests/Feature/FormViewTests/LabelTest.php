@@ -5,6 +5,7 @@ namespace Kontenta\Kontour\Tests\Feature\FormViewTests;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\View;
 use Kontenta\Kontour\Tests\IntegrationTest;
+use Illuminate\Support\HtmlString;
 
 class LabelTest extends IntegrationTest
 {
@@ -46,14 +47,14 @@ class LabelTest extends IntegrationTest
 
     public function test_label_can_have_prepended_html()
     {
-        $output = View::make('kontour::forms.label', ['name' => 'test', 'labelStart' => '<i>pre</i>'])->render();
+        $output = View::make('kontour::forms.label', ['name' => 'test', 'labelStart' => new HtmlString('<i>pre</i>')])->render();
 
         $this->assertRegExp('/<label[\S\s]*><i>pre<\/i>[\S\s]*<\/label>/', $output);
     }
 
     public function test_label_can_have_appended_html()
     {
-        $output = View::make('kontour::forms.label', ['name' => 'test', 'labelEnd' => '<i>post</i>'])->render();
+        $output = View::make('kontour::forms.label', ['name' => 'test', 'labelEnd' => new HtmlString('<i>post</i>')])->render();
 
         $this->assertRegExp('/<label[\S\s]*>[\S\s]*<i>post<\/i><\/label>/', $output);
     }
