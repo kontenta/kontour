@@ -7,4 +7,4 @@
     @include('kontour::forms.partials.attribute')
   @endforeach
 @endif
->{!! $labelStart ?? '' !!}{!! $label ?? ucfirst(Lang::has('validation.attributes.'.$name) ? Lang::trans('validation.attributes.'.$name) : str_replace('_', ' ', $name)) !!}{!! $labelEnd ?? '' !!}</{{ $labelTag }}>
+>{{ $labelStart ?? '' }}{{ $label ?? ucfirst(Lang::has('validation.attributes.'.$name) ? Lang::trans('validation.attributes.'.$name) : str_replace('_', ' ', $name)) }}{{ $labelEnd ?? '' }}</{{ $labelTag }}>
