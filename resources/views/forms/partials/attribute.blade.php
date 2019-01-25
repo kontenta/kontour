@@ -4,6 +4,8 @@
   @if($attributeValue)
     {{ $attributeName }}
   @endif
+@elseif(is_array($attributeValue))
+  {{ $attributeName }}="{{ implode(' ', $attributeValue) }}"
 @else
   {{ $attributeName }}="{{ $attributeValue }}"
 @endif
