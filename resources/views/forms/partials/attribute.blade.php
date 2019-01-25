@@ -5,7 +5,7 @@
     {{ $attributeName }}
   @endif
 @elseif(is_array($attributeValue))
-  {{ $attributeName }}="{{ implode(' ', $attributeValue) }}"
+  {{ $attributeName }}="{{ implode(' ', array_flatten($attributeValue)) }}"
 @else
   {{ $attributeName }}="{{ $attributeValue }}"
 @endif
