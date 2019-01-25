@@ -3,6 +3,6 @@
 >
   @include('kontour::forms.label', ['labelTag' => 'legend', 'errorsId' => $errorsId = $groupId . ($errorsSuffix ?? 'Errors')])
   <input type="hidden" name="{{ $name }}" value="">
-  @include('kontour::forms.partials.checkableOptions', ['type' => 'checkbox'])
+  @include('kontour::forms.partials.checkableOptions')
   @include('kontour::forms.partials.errors')
 </fieldset>
