@@ -5,23 +5,8 @@
     <select multiple
       @include('kontour::forms.partials.inputAttributes', ['name' => $name . '[]', 'errorsId' => $errorsId = $controlId . ($errorsSuffix ?? 'Errors')])
     >
-      @foreach($options as $option_value => $option_display)
-        @if($optgroup = is_iterable($option_display) ? $option_value : false)
-        <optgroup label="{{ $optgroup }}">
-        @endif
-        @foreach($optgroup ? $option_display : [$option_value => $option_display] as $option_value => $option_display)
-        <option
-          value="{{ $option_value }}"
-          @if(in_array(strval($option_value), $selected))
-            selected
-          @endif
-        >{{ $option_display }}</option>
-        @endforeach
-        @if($optgroup)
-        </optgroup>
-        @endif
-      @endforeach
+      @include('kontour::forms.partials.options')
     </select>
-    @include('kontour::forms.partials.errors', ['errorsId' => $errorsId])
+    @include('kontour::forms.partials.errors')
   </div>
 </div>
