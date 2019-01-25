@@ -1,1 +1,1 @@
-@include('kontour::forms.partials.label')
+@include('kontour::forms.elements.label')
