@@ -53,11 +53,13 @@ trait AuthorizesAdminRequests
         string $linkDescription = null,
         $abilityArguments = []
     ): AdminLink {
-        [$ability, $abilityArguments] = $this->parseAbilityAndArguments($ability, $abilityArguments);
+        $link = AdminLink::create($linkName, url()->full(), $linkDescription);
 
-        $result = $this->authorizeForUser($this->adminUser(), $ability, $abilityArguments);
+        if (!is_null($ability)) {
+            $result = $this->authorizeForUser($this->adminUser(), $ability, $abilityArguments);
+            $link->registerAbilityForAuthorization($ability, $abilityArguments);
+        }
 
-        return AdminLink::create($linkName, url()->full(), $linkDescription)
-            ->registerAbilityForAuthorization($ability, $abilityArguments);
+        return $link;
     }
 }
