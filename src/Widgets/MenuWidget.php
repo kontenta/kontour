@@ -33,6 +33,10 @@ class MenuWidget implements MenuWidgetContract
 
     public function addLink(AdminLink $link, string $desiredHeading = null): MenuWidgetContract
     {
+        if (in_array($link->getName(), config('kontour.menu_hidden_items', []))) {
+            return $this;
+        }
+
         $heading = $this->headingForLink($link, $desiredHeading);
 
         if (!$this->links->has($heading)) {

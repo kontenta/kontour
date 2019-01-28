@@ -145,4 +145,9 @@ return [
         //'Roles',
         //'Admin users',
     ],
+
+    // Remove links altogether
+    'menu_hidden_items' => [
+        //'Roles'
+    ],
 ];
