@@ -1,4 +1,6 @@
-<div>
+<{{ $groupTag = $groupTag ?? 'div' }}
+  @include('kontour::forms.partials.groupAttributes')
+>
   @include('kontour::forms.label', ['controlId' => $controlId = $controlId ?? (($idPrefix ?? '') . $name)])
   <div>
     {{ $beforeControl ?? '' }}
@@ -8,4 +10,4 @@
     {{ $afterControl ?? '' }}
     @include('kontour::forms.partials.errors')
   </div>
-</div>
+</{{ $groupTag }}>
