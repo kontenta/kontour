@@ -74,6 +74,11 @@ trait AuthorizesWithAbility
             return false;
         }
 
-        return $user->can($this->authorizesWithAbilityName, $this->authorizesWithAbilityArguments);
+        try {
+            return $user->can($this->authorizesWithAbilityName, $this->authorizesWithAbilityArguments);
+        } catch (\Exception $e) {
+            // Something is wrong when authorizing... perhaps the ability signature has changed?
+            return false;
+        }
     }
 }
