@@ -11,7 +11,7 @@ You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
 
 - Installed as a dependency, not a boilerplate.
 - Tools/controllers can be written to work without Kontour, but if Kontour is available they are enhanced.
-- Uses core Laravel concepts wherever possible.
+- Uses core Laravel functionality wherever possible.
 - Classes are built on contracts resolved from the Laravel service container so you may override with your own implementations.
 
 ## Benefits in service providers
