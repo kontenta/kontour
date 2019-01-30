@@ -26,11 +26,11 @@ trait AuthorizesWithAbility
 
     /**
      * Register a policy or gate to be used for the authorization
-     * @param string $ability name from a Gate/Policy
+     * @param string|null $ability name from a Gate/Policy, or null to unset
      * @param array|mixed $arguments for the ability check, typically a model instance
      * @return $this
      */
-    public function registerAbilityForAuthorization(string $ability, $arguments = []): AuthorizesWithAbilityContract
+    public function registerAbilityForAuthorization(?string $ability, $arguments = []): AuthorizesWithAbilityContract
     {
         $this->authorizesWithAbilityName = $ability;
         $this->authorizesWithAbilityArguments = $arguments;

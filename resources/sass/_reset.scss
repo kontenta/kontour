@@ -93,11 +93,19 @@ img {
   height: auto;
 }
 
+dl > * {
+  break-inside: avoid;
+}
+
+dl > div {
+  margin-top: 0;
+  padding-bottom: 1rem;
+}
+
 dt {
   break-after: avoid;
 }
 
 dd {
-  break-inside: avoid;
   break-before: avoid;
 }
