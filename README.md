@@ -7,6 +7,13 @@ It provides a shared "frame" for the admin routes you create in your Laravel app
 
 You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
 
+## What makes Kontour different from other admin panels
+
+- Installed as a dependency, not a boilerplate.
+- Tools/controllers can be written to work without Kontour, but if Kontour is available they are enhanced.
+- Uses core Laravel concepts wherever possible.
+- Classes are built on contracts resolved from the Laravel service container so you may override with your own implementations.
+
 ## Benefits in service providers
 
 In a service provider you can register your admin routes using convenient methods from the trait
