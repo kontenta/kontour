@@ -16,15 +16,22 @@ You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
 
 ## Benefits in service providers
 
+### Register admin routes
+
 In a service provider you can register your admin routes using convenient methods from the trait
 `Kontenta\Kontour\Concerns\RegistersAdminRoutes`.
+
+### Running code only before admin routes are accessed
 
 For anything that needs to be "booted" before an admin page/route is loaded,
 inject `Kontenta\Kontour\Contracts\AdminBootManager` and add callables to it
 using `beforeRoute()`.
 Those callables will be called (with any dependencies injected) by a middleware.
+This avoids running admin-related code on every page load on the public site.
 
 ## Benefits in blade views (or controllers)
+
+### Extending Kontour's Blade layouts
 
 In the Blade views you create for your admin pages you can inject a "view manager" instance:
 
