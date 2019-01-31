@@ -94,6 +94,10 @@ or controller using methods from the
 [`RegistersAdminWidgets`](`https://github.com/kontenta/kontour/blob/master/src/Concerns/RegistersAdminWidgets.php`)
 trait.
 
+In the `kontour.php` config file you may specify the widgets for all
+admin pages using the `global_widgets` array, mapping classname/contract to the
+desired section name.
+
 ## Fallback implementations
 
 This package contains implementations of the Kontour contracts that are used as
