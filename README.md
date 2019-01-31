@@ -46,6 +46,21 @@ php artisan vendor:publish --tag="kontour-config"
 Then you can edit `config/kontour.php` and uncomment any of the example settings
 you want to tweak.
 
+## Publish the default CSS in your Laravel project
+
+You probably want to add some style to your admin area,
+perhaps pure HTML is too brutalist for your taste...
+A good place to start is the default Kontour stylesheet.
+
+Publish the CSS file using artisan:
+
+```bash
+php artisan vendor:publish --tag="kontour-styling"
+```
+
+Then edit `config/kontour.php` and uncomment `'css/kontour.css'` in the
+`stylesheets` array to make every admin page pull in the stylesheet.
+
 ## Registering admin routes
 
 In a service provider you can register your admin routes
