@@ -26,8 +26,8 @@ You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
   - Tool widgets for feedback messages, crumbtrail, and item history.
 - Admin route groups with configurable url-prefix and domain.
 - Reusable form input Blade includes/components.
-- Authorization for `AdminLink`s ensures current user has privileges before
-  printing links.
+- Authorization for `AdminLink`s ensures that the current user has privileges
+  before echoing links.
 
 ## Architecture
 
@@ -35,14 +35,13 @@ You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
 - Kontour uses core Laravel functionality wherever possible,
   for example authentication and authorization.
 
-## Benefits in service providers
+## Registering admin routes
 
-### Register admin routes
+In a service provider you can register your admin routes
+using methods from the
+[`RegistersAdminRoutes` trait](https://github.com/kontenta/kontour/blob/master/src/Concerns/RegistersAdminWidgets.php).
 
-In a service provider you can register your admin routes using convenient
-methods from the trait `Kontenta\Kontour\Concerns\RegistersAdminRoutes`.
-
-### Running code only before admin routes are accessed
+## Running code only before admin routes are accessed
 
 For anything that needs to be "booted" before an admin page/route is loaded,
 inject `Kontenta\Kontour\Contracts\AdminBootManager` and add callables to it
@@ -50,9 +49,7 @@ using `beforeRoute()`.
 Those callables will be called (with any dependencies injected) by a middleware.
 This avoids running admin-related code on every page load on the public site.
 
-## Benefits in blade views (or controllers)
-
-### Extending Kontour's Blade layouts
+## Extending Kontour's Blade layouts
 
 In the Blade views you create for your admin pages you can inject
 a "view manager" instance:
