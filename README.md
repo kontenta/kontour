@@ -85,7 +85,21 @@ The `toolLayout` has sections `kontourToolHeader`, `kontourToolMain`,
 It's a good idea to include `@parent` in your sections for other content,
 for example registered widgets.
 
+## Form templates
+
+Kontour provides
+[some Blade views](https://github.com/kontenta/kontour/tree/master/resources/views/forms)
+that can be used with `@include` or `@component` to generate form inputs along
+with labels and validation feedback.
+
+```php
+<form ...>
+@include('kontour::forms.input', ['name' => 'username', 'type' => 'email'])
+</form>
+```
+
 ## Authorizing controller actions
+
 The
 [`AuthorizesAdminRequests` trait](https://github.com/kontenta/kontour/blob/master/src/Concerns/AuthorizesAdminRequests.php)
 has convenince methods for controllers that both authorizes the current user
