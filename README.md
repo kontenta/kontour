@@ -35,6 +35,17 @@ You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
 - Kontour uses core Laravel functionality wherever possible,
   for example authentication and authorization.
 
+## Configure Kontour in your Laravel project
+
+Publish the configuration with artisan:
+
+```bash
+php artisan vendor:publish --tag="kontour-config"
+```
+
+Then you can edit `config/kontour.php` and uncomment any of the example settings
+you want to tweak.
+
 ## Registering admin routes
 
 In a service provider you can register your admin routes
