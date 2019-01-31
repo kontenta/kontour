@@ -35,6 +35,35 @@ You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
 - Kontour uses core Laravel functionality wherever possible,
   for example authentication and authorization.
 
+## Install
+
+Maybe you're here because some package you installed requires Kontour for its
+admin pages? In that case it's already installed by composer, but you may still
+want to read further below about how to configure Kontour to your liking.
+
+Installing Kontour explicitly in your Laravel project:
+
+```bash
+composer require kontenta/kontour
+```
+
+## Checking the route list
+
+Kontour, and packages using it, will register routes automatically in your
+Laravel app. To keep track of what's happening you may print all the routes
+using artisan:
+
+```bash
+php artisan route:list
+```
+
+The list will display information about every URI, route name, and middleware
+in your app.
+Among others you'll find the `kontour.login`, `kontour.logout`,
+and `kontour.index` routes.
+If these routes are not to your liking there are configuration values you can
+set to change the url prefix or domain.
+
 ## Configure Kontour in your Laravel project
 
 Publish the configuration with artisan:
@@ -43,7 +72,8 @@ Publish the configuration with artisan:
 php artisan vendor:publish --tag="kontour-config"
 ```
 
-Then you can edit `config/kontour.php` and uncomment any of the example settings
+Then you can edit `config/kontour.php` and uncomment any of the
+[example settings](https://github.com/kontenta/kontour/blob/master/config/kontour.php)
 you want to tweak.
 
 ## Publish the default CSS in your Laravel project
