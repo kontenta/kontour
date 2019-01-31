@@ -1,6 +1,6 @@
 {
   "name": "kontenta/kontour",
-  "description": "Kontour is an admin page manager for Laravel",
+  "description": "Admin area tool utilities for Laravel",
   "license": "MIT",
   "require": {
     "php": ">=7.1.0",
