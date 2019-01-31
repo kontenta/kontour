@@ -61,12 +61,32 @@ a "view manager" instance:
 @inject('view_manager', 'Kontenta\Kontour\Contracts\AdminViewManager')
 ```
 
-...that can be used to pull out the common Blade layout to extend for any
-admin pages that wants to be part of the family:
+...that can be used to pull out one of the common Blade layouts to extend for
+any admin pages that wants to be part of the family:
 
 ```php
-@extends($view_manager->layout())
+@extends($view_manager->toolLayout())
 ```
+
+The `toolLayout` has sections `kontourToolHeader`, `kontourToolMain`,
+`kontourToolWidgets`, and `kontourToolFooter` for you to populate.
+
+```php
+@section('kontourToolHeader')
+  <h1>A splendid tool</h1>
+  @parent
+@endsection
+
+@section('kontourToolMain')
+  <form ...>
+    <input ...>
+    <button type="submit">Save</button>
+  </form>
+@endsection
+```
+
+It's a good idea to include `@parent` in your sections for other content,
+for example registered widgets.
 
 ## Fallback implementations
 
