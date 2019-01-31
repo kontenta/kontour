@@ -104,48 +104,48 @@ The most common situation is that you want a separate table and model for
 admin users, and a separate Laravel User Provider and Guard to go with that.
 
 1. Create an Eloquent model and table.
-  The simplest way is to make copies of Laravel's `app/User.php` model and
-  create users table migration in `database\migrations` and modify them
-  to your needs.
+   The simplest way is to make copies of Laravel's `app/User.php` model and
+   create users table migration in `database\migrations` and modify them
+   to your needs.
 2. Make sure the model implements `Kontenta\Kontour\Contracts\AdminUser`,
-  perhaps by extending `Kontenta\Kontour\Auth\AdminUser`.
+   perhaps by extending `Kontenta\Kontour\Auth\AdminUser`.
 3. Edit `config/auth.php` to add a Guard, User Provider and perhaps a password
-  reset configuration:
+   reset configuration:
 
-    ```php
-    'guards' => [
-      //...
-      'admin' => [
-        'driver' => 'session',
-        'provider' => 'admins',
-      ],
-    ],
+   ```php
+   'guards' => [
+     //...
+     'admin' => [
+       'driver' => 'session',
+       'provider' => 'admins',
+     ],
+   ],
 
-    'providers' => [
-      //...
-      'admins' => [
-        'driver' => 'eloquent',
-        'model' => App\AdminUser::class, // Your admin user model
-      ],
-    ],
+   'providers' => [
+     //...
+     'admins' => [
+       'driver' => 'eloquent',
+       'model' => App\AdminUser::class, // Your admin user model
+     ],
+   ],
 
-    'passwords' => [
-      //...
-      'admins' => [
-        'provider' => 'admins',
-        'table' => 'password_resets', //using same table as the main user model
-        'expire' => 60,
-      ],
-    ],
-    ```
+   'passwords' => [
+     //...
+     'admins' => [
+       'provider' => 'admins',
+       'table' => 'password_resets', //using same table as the main user model
+       'expire' => 60,
+     ],
+   ],
+   ```
 
 4. Edit `config/kontour.php` and tell it to use the name of your admin guard,
-  and the passwords configuration:
+   and the passwords configuration:
 
-    ```php
-    'guard' => 'admin',
-    'passwords' => 'admins',
-    ```
+   ```php
+   'guard' => 'admin',
+   'passwords' => 'admins',
+   ```
 
 ## Publish the default CSS in your Laravel project
 
@@ -223,6 +223,24 @@ with labels and validation feedback.
 <form ...>
 @include('kontour::forms.input', ['name' => 'username', 'type' => 'email'])
 </form>
+```
+
+## Adding menu items
+
+Usually adding menu items is done in a service provider's boot method:
+
+```php
+use Kontenta\Kontour\Contracts\AdminBootManager;
+use Kontenta\Kontour\Contracts\MenuWidget;
+use Kontenta\Kontour\AdminLink;
+
+$this->app->make(AdminBootManager::class)->beforeRoute(function (MenuWidget $menuWidget) {
+  $menuWidget->addLink(
+    AdminLink::create('A menu item', route('named.route'))
+      ->registerAbilityForAuthorization('gate or other ability'),
+    'A menu heading'
+  );
+});
 ```
 
 ## Authorizing controller actions
