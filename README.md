@@ -47,6 +47,77 @@ Installing Kontour explicitly in your Laravel project:
 composer require kontenta/kontour
 ```
 
+## Logging in
+
+By default the Kontour dashboard route `kontour.index` is reached by going to
+`/admin` in your browser.
+
+To enable login you need to make sure the user model you want to give access to
+the admin area implements the
+[`Kontenta\Kontour\Contracts\AdminUser` contract](https://github.com/kontenta/kontour/blob/master/src/Contracts/AdminUser.php)
+which has method `getDisplayName()` that should return... a display name!
+
+The default Kontour configuration uses Laravel's `web` Guard from
+`config/auth.php` which in turn uses the Eloquent user provider with model
+`App\User::class`.
+If you're happy to let **all** your users into the admin area
+(i.e. you have no front end users) you can modify that user class to implement
+the interface, by having it extend `Kontenta\Kontour\Auth\AdminUser`.
+
+This requirement is deliberate to avoid any situation where someone accidentally
+gives front end users access to their admin routes.
+You need to make an active choice about which user model to let into the admin
+area.
+
+### Creating a separate user provider for admins
+
+The most common situation is that you want a separate table and model for
+admin users, and a separate Laravel User Provider and Guard to go with that.
+
+1. Create an Eloquent model and table.
+  The simplest way is to make copies of Laravel's `app/User.php` model and
+  create users table migration in `database\migrations` and modify them
+  to your needs.
+2. Make sure the model implements `Kontenta\Kontour\Contracts\AdminUser`,
+  perhaps by extending `Kontenta\Kontour\Auth\AdminUser`.
+3. Edit `config/auth.php` to add a Guard, User Provider and perhaps a password
+  reset configuration:
+
+    ```php
+    'guards' => [
+      //...
+      'admin' => [
+        'driver' => 'session',
+        'provider' => 'admins',
+      ],
+    ],
+
+    'providers' => [
+      //...
+      'admins' => [
+        'driver' => 'eloquent',
+        'model' => App\AdminUser::class, // Your admin user model
+      ],
+    ],
+
+    'passwords' => [
+      //...
+      'admins' => [
+        'provider' => 'admins',
+        'table' => 'password_resets', //using same table as the main user model
+        'expire' => 60,
+      ],
+    ],
+    ```
+
+4. Edit `config/kontour.php` and tell it to use the name of your admin guard,
+  and the passwords configuration:
+
+    ```php
+    'guard' => 'admin',
+    'passwords' => 'admins',
+    ```
+
 ## Checking the route list
 
 Kontour, and packages using it, will register routes automatically in your
