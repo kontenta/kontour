@@ -2,24 +2,45 @@
 
 [![Build Status](https://travis-ci.org/kontenta/kontour.svg?branch=master)](https://travis-ci.org/kontenta/kontour)
 
-Kontour is an admin page manager for Laravel.
-It provides a shared "frame" for the admin routes you create in your Laravel apps, or in packages you write.
+Kontour is a package of admin page utilities for Laravel.
+It provides a shared "frame" for the admin routes you create
+in your Laravel apps, or in packages you write.
+
+The idea is that your admin tools can pull in and use functionality from Kontour
+to provide a consistent experience for the whole admin area of a website.
+Your admin tools are built using standard Laravel routes, controllers,
+authentication, authorization, validation, views, etc.
+Kontour is there to provide enhancements and reusable elements for your admin
+area.
 
 You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
 
-## What makes Kontour different from other admin panels
+## Features
 
-- Installed as a dependency, not a boilerplate.
-- Tools/controllers can be written to work without Kontour, but if Kontour is available they are enhanced.
-- Uses core Laravel functionality wherever possible.
-- Classes are built on contracts resolved from the Laravel service container so you may override with your own implementations.
+- Admin login and password reset routes with configurable Guard
+  to separate admin users from frontend users.
+- Extendable Blade Layouts with named sections for admin tool views
+  and configurable stylesheet and javascript dependencies.
+- Widgets that are placeable in named Blade sections:
+  - Global widgets for menu, logout, and recently used tools.
+  - Tool widgets for feedback messages, crumbtrail, and item history.
+- Admin route groups with configurable url-prefix and domain.
+- Reusable form input Blade includes/components.
+- Authorization for `AdminLink`s ensures current user has privileges before
+  printing links.
+
+## Architecture
+
+- Kontour is installed as a dependency, not a boilerplate.
+- Kontour uses core Laravel functionality wherever possible,
+  for example authentication and authorization.
 
 ## Benefits in service providers
 
 ### Register admin routes
 
-In a service provider you can register your admin routes using convenient methods from the trait
-`Kontenta\Kontour\Concerns\RegistersAdminRoutes`.
+In a service provider you can register your admin routes using convenient
+methods from the trait `Kontenta\Kontour\Concerns\RegistersAdminRoutes`.
 
 ### Running code only before admin routes are accessed
 
@@ -33,14 +54,15 @@ This avoids running admin-related code on every page load on the public site.
 
 ### Extending Kontour's Blade layouts
 
-In the Blade views you create for your admin pages you can inject a "view manager" instance:
+In the Blade views you create for your admin pages you can inject
+a "view manager" instance:
 
 ```php
 @inject('view_manager', 'Kontenta\Kontour\Contracts\AdminViewManager')
 ```
 
-...that can be used to pull out the common Blade layout to extend for any admin pages
-that wants to be part of the family:
+...that can be used to pull out the common Blade layout to extend for any
+admin pages that wants to be part of the family:
 
 ```php
 @extends($view_manager->layout())
@@ -48,7 +70,9 @@ that wants to be part of the family:
 
 ## Fallback implementations
 
-This package contains implementations of the Kontour contracts that are used as a fallback whenever no other
-implementation has been registered in the Laravel service container.
+This package contains implementations of the Kontour contracts that are used as
+a fallback whenever no other implementation has been registered in the Laravel
+service container.
 
-Overriding implementations may be registered by service providers of other packages or your main application.
+Overriding implementations may be registered by service providers of other
+packages or your main application.
