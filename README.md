@@ -47,6 +47,35 @@ Installing Kontour explicitly in your Laravel project:
 composer require kontenta/kontour
 ```
 
+## Checking the route list
+
+Kontour, and packages using it, will register routes automatically in your
+Laravel app. To keep track of what's happening you may print all the routes
+using artisan:
+
+```bash
+php artisan route:list
+```
+
+The list will display information about every URI, route name, and middleware
+in your app.
+Among others you'll find the `kontour.login`, `kontour.logout`,
+and `kontour.index` routes.
+If these routes are not to your liking there are configuration values you can
+set to change the url prefix or domain.
+
+## Configure Kontour in your Laravel project
+
+Publish the configuration with artisan:
+
+```bash
+php artisan vendor:publish --tag="kontour-config"
+```
+
+Then you can edit `config/kontour.php` and uncomment any of the
+[example settings](https://github.com/kontenta/kontour/blob/master/config/kontour.php)
+you want to tweak.
+
 ## Logging in
 
 By default the Kontour dashboard route `kontour.index` is reached by going to
@@ -117,35 +146,6 @@ admin users, and a separate Laravel User Provider and Guard to go with that.
     'guard' => 'admin',
     'passwords' => 'admins',
     ```
-
-## Checking the route list
-
-Kontour, and packages using it, will register routes automatically in your
-Laravel app. To keep track of what's happening you may print all the routes
-using artisan:
-
-```bash
-php artisan route:list
-```
-
-The list will display information about every URI, route name, and middleware
-in your app.
-Among others you'll find the `kontour.login`, `kontour.logout`,
-and `kontour.index` routes.
-If these routes are not to your liking there are configuration values you can
-set to change the url prefix or domain.
-
-## Configure Kontour in your Laravel project
-
-Publish the configuration with artisan:
-
-```bash
-php artisan vendor:publish --tag="kontour-config"
-```
-
-Then you can edit `config/kontour.php` and uncomment any of the
-[example settings](https://github.com/kontenta/kontour/blob/master/config/kontour.php)
-you want to tweak.
 
 ## Publish the default CSS in your Laravel project
 
