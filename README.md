@@ -85,6 +85,24 @@ The `toolLayout` has sections `kontourToolHeader`, `kontourToolMain`,
 It's a good idea to include `@parent` in your sections for other content,
 for example registered widgets.
 
+## Authorizing controller actions
+The
+[`AuthorizesAdminRequests` trait](https://github.com/kontenta/kontour/blob/master/src/Concerns/AuthorizesAdminRequests.php)
+has convenince methods for controllers that both authorizes the current user
+against an ability, and dispatches an event that records the visit for the
+recent visits widgets.
+
+With the trait used on your controller you can call
+`$this->authorizeShowAdminVisit()` for view-only routes or
+`$this->authorizeEditAdminVisit()` for routes that present a form.
+
+Both methods take 4 parameters:
+
+- The name of the ability to authorize against
+- The name of the link to present in recent visits widgets
+- The description string for link `title` attribute (optional)
+- Arguments for the ability (optional)
+
 ## Registering widgets
 
 All widgets implement the
