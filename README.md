@@ -88,6 +88,15 @@ The `toolLayout` has sections `kontourToolHeader`, `kontourToolMain`,
 It's a good idea to include `@parent` in your sections for other content,
 for example registered widgets.
 
+## Registering widgets
+
+All widgets implement the
+[`AdminWidget` interface](https://github.com/kontenta/kontour/blob/master/src/Contracts/AdminWidget.php)
+and can be registered into a section from a service provider
+or controller using methods from the
+[`RegistersAdminWidgets`](`https://github.com/kontenta/kontour/blob/master/src/Concerns/RegistersAdminWidgets.php`)
+trait.
+
 ## Fallback implementations
 
 This package contains implementations of the Kontour contracts that are used as
