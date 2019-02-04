@@ -7,7 +7,7 @@
   <div>
     {{ $beforeControl ?? '' }}
     <select multiple
-      @include('kontour::forms.partials.inputAttributes', ['name' => $name . '[]', 'errorsKeys' => $errorsKeys = $name, 'errorsId' => $errorsId = $controlId . ($errorsSuffix ?? 'Errors')])
+      @include('kontour::forms.partials.inputAttributes', ['name' => $name . '[]', 'errorsKeys' => $errorsKeys = $errorsKeys ?? [$name, $name . '.*'], 'errorsId' => $errorsId = $controlId . ($errorsSuffix ?? 'Errors')])
     >
       @include('kontour::forms.partials.options')
     </select>
