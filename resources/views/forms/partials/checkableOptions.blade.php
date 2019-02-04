@@ -7,10 +7,9 @@
       'optionIndex' => $optionIndex = isset($optionIndex) ? $optionIndex + 1 : 0,
       'optionErrorKey' => $optionErrorKey = $name . '.' . $optionIndex,
       'controlId' => $controlId = $groupId . '[' . $option_value . ']',
-      'errorsId' => $errors->has($optionErrorKey) ? $errorsId . $optionIndex : $errorsId,
+      'errorsId' => $errors->has($optionErrorKey) ? $errorsId . '[' . $optionIndex . ']' : $errorsId,
       'errorsKeys' => $errors->has($optionErrorKey) ? $optionErrorKey : ($errorsKeys ?? $name),
     ])
-    {{ $optionErrorKey }}
   @endforeach
   @if($legend)
   </fieldset>
