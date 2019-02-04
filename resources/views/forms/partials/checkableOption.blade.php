@@ -5,7 +5,7 @@
       @if(is_array($selected) ? in_array(strval($option_value), $selected) : $selected == strval($option_value))
         checked
       @endif
-      @include('kontour::forms.partials.inputAttributes', ['name' => is_array($selected) ? $name . '[]' : $name])
+      @include('kontour::forms.partials.inputAttributes', ['name' => is_array($selected) ? $name . '[]' : $name, 'errorsKeys' => $name])
     >
   @endslot
 @endcomponent
