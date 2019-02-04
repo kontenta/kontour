@@ -3,11 +3,17 @@
   @include('kontour::forms.partials.groupAttributes')
 >
   <input type="hidden" name="{{ $name }}" value="">
-  @include('kontour::forms.label', ['controlId' => $controlId = $controlId ?? (($idPrefix ?? '') . $name)])
+  @include('kontour::forms.label', [
+    'controlId' => $controlId = $controlId ?? (($idPrefix ?? '') . $name),
+  ])
   <div>
     {{ $beforeControl ?? '' }}
     <select multiple
-      @include('kontour::forms.partials.inputAttributes', ['name' => $name . '[]', 'errorsKeys' => $errorsKeys = $errorsKeys ?? [$name, $name . '.*'], 'errorsId' => $errorsId = $controlId . ($errorsSuffix ?? 'Errors')])
+      @include('kontour::forms.partials.inputAttributes', [
+        'name' => $name . '[]',
+        'errorsKeys' => $errorsKeys = $errorsKeys ?? [$name, $name . '.*'],
+        'errorsId' => $errorsId = $controlId . ($errorsSuffix ?? 'Errors'),
+      ])
     >
       @include('kontour::forms.partials.options')
     </select>
