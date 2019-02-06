@@ -3,7 +3,8 @@ document.body.addEventListener("submit", function(event) {
     let message = "Delete item";
     let button = event.target.querySelector('[type="submit"]');
     if (button) {
-      message = button.getAttribute("aria-label") || button.innerText || message;
+      message =
+        button.getAttribute("aria-label") || button.innerText || message;
     }
 
     if (!confirm(message)) {
