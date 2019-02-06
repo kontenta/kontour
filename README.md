@@ -147,7 +147,7 @@ admin users, and a separate Laravel User Provider and Guard to go with that.
    'passwords' => 'admins',
    ```
 
-## Publish the default CSS in your Laravel project
+## Publish the default CSS and js in your Laravel project
 
 You probably want to add some style to your admin area,
 perhaps pure HTML is too brutalist for your taste...
@@ -161,6 +161,19 @@ php artisan vendor:publish --tag="kontour-styling"
 
 Then edit `config/kontour.php` and uncomment `'css/kontour.css'` in the
 `stylesheets` array to make every admin page pull in the stylesheet.
+
+### Javascript
+
+The included javascript includes a feature to confirm any delete-action before submitting those forms.
+
+The procedure to publish javascript using artisan:
+
+```bash
+php artisan vendor:publish --tag="kontour-js"
+```
+
+Then edit `config/kontour.php` and uncomment `'js/kontour.js'` in the
+`javascripts` array to make every admin page pull in the javascript.
 
 ## Registering admin routes
 
