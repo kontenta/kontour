@@ -1,4 +1,5 @@
-let mix = require('laravel-mix');
+let mix = require("laravel-mix");
 
-mix.sass('resources/sass/kontour.scss', 'resources/css/kontour.css')
-  .setPublicPath('resources/css');
+mix
+  .sass("resources/sass/kontour.scss", "resources/css/kontour.css")
+  .babel(["resources/js/confirm-delete.js"], "resources/js/kontour.js");
