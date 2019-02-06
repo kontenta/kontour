@@ -74,7 +74,7 @@ class MessageWidget implements MessageWidgetContract
         $level = 'error',
         $bag = 'default'
     ): MessageWidgetContract {
-        return $this->addMessage($this->getSessionErrorsBag($bag)->isEmpty() ? null : $message, $level);
+        return $this->addGeneralMessage($this->getSessionErrorsBag($bag)->isEmpty() ? null : $message, $level);
     }
 
     public function isAuthorized(Authorizable $user = null): bool
