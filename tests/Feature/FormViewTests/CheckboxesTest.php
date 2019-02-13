@@ -154,6 +154,24 @@ class CheckboxesTest extends IntegrationTest
         $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
+    public function test_error_option_referencing_error_element_with_errors()
+    {
+        $output = View::make('kontour::forms.checkboxes', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag([
+                'test.1' => ['Error for option'],
+                'test' => ['A message'],
+            ]),
+        ])->render();
+
+        $this->assertRegExp('/<input[\S\s]*aria-describedby="testErrors\[1]"[\S\s]*>/', $output);
+        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors\[1]"[\S\s]*>[\S\s]*Error for option[\S\s]*<\/\1>/', $output);
+
+        $this->assertRegExp('/<input[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
+        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+    }
+
     public function test_custom_errors_id_suffix()
     {
         $output = View::make('kontour::forms.checkboxes', [
