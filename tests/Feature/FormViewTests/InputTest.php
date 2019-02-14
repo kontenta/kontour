@@ -137,6 +137,17 @@ class InputTest extends IntegrationTest
         $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
+    public function test_dot_notation_error_input_referencing_error_element_with_errors()
+    {
+        $output = View::make('kontour::forms.input', [
+            'name' => 'test.dot.notation',
+            'errors' => new MessageBag(['test.dot.notation' => ['A message']]),
+        ])->render();
+
+        $this->assertRegExp('/<input[\S\s]*aria-describedby="test.dot.notationErrors"[\S\s]*>/', $output);
+        $this->assertRegExp('/<(\S*)[\S\s]*id="test.dot.notationErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+    }
+
     public function test_custom_errors_id_suffix()
     {
         $output = View::make('kontour::forms.input', [

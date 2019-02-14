@@ -32,9 +32,9 @@ class LabelTest extends IntegrationTest
 
     public function test_generated_label_is_humanized()
     {
-        $output = View::make('kontour::forms.label', ['name' => 'test_input'])->render();
+        $output = View::make('kontour::forms.label', ['name' => 'test_input.with.dot.notation[]'])->render();
 
-        $this->assertRegExp('/<label[\S\s]*>Test input<\/label>/', $output);
+        $this->assertRegExp('/<label[\S\s]*>Test input with dot notation<\/label>/', $output);
     }
 
     public function test_validation_attribute_is_used_for_label()
