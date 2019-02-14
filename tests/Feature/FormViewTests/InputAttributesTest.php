@@ -19,6 +19,17 @@ class InputAttributesTest extends IntegrationTest
         $this->assertRegExp('/name="testName"/', $output);
     }
 
+    public function test_name_in_dot_notation()
+    {
+        $output = View::make('kontour::forms.partials.inputAttributes', [
+            'name' => 'test.name.in.dot.notation',
+            'controlId' => 'testId',
+            'errors' => new MessageBag,
+        ])->render();
+
+        $this->assertRegExp('/name="test\[name]\[in]\[dot]\[notation]"/', $output);
+    }
+
     public function test_has_control_id()
     {
         $output = View::make('kontour::forms.partials.inputAttributes', [

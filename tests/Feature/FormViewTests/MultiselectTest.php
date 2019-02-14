@@ -181,4 +181,16 @@ class MultiselectTest extends IntegrationTest
         $this->assertRegExp('/<select[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
         $this->assertRegExp('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
+
+    public function test_error_on_option_referencing_error_element_with_errors()
+    {
+        $output = View::make('kontour::forms.multiselect', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag(['test.1' => 'A message']),
+        ])->render();
+
+        $this->assertRegExp('/<select[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
+        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+    }
 }
