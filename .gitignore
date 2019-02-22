@@ -9,7 +9,7 @@ tags
 .idea
 .DS_Store
 /build
-/resources/css/mix-manifest.json
+mix-manifest.json
 phpunit.xml
 phpcs.xml
 /tests/Browser/console/
