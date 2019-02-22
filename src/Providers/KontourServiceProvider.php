@@ -212,6 +212,10 @@ class KontourServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../resources/css/kontour.css' => public_path('css/kontour.css'),
         ], 'kontour-styling');
+
+        $this->publishes([
+            __DIR__ . '/../../resources/js/kontour.js' => public_path('js/kontour.js'),
+        ], 'kontour-js');
     }
 
     protected function registerAssets()
