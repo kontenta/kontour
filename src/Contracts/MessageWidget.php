@@ -13,4 +13,6 @@ interface MessageWidget extends AdminWidget
     public function addFromSession($key = 'status', $level = 'info'): MessageWidget;
 
     public function addErrorsFromSession($level = 'error', $bag = 'default'): MessageWidget;
+
+    public function addMessageIfSessionHasErrors(string $message, $level = 'error', $bag = 'default'): MessageWidget;
 }

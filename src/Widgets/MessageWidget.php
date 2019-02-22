@@ -4,6 +4,7 @@ namespace Kontenta\Kontour\Widgets;
 
 use Illuminate\Contracts\Auth\Access\Authorizable;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\Support\MessageBag;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\HtmlString;
@@ -65,15 +66,29 @@ class MessageWidget implements MessageWidgetContract
 
     public function addErrorsFromSession($level = 'error', $bag = 'default'): MessageWidgetContract
     {
-        $errors = session('errors');
-        if (!$errors instanceof ViewErrorBag) {
-            $errors = new ViewErrorBag();
-        }
-        return $this->addGeneralMessage($errors->getBag($bag)->all(), $level);
+        return $this->addGeneralMessage($this->getSessionErrorsBag($bag)->all(), $level);
+    }
+
+    public function addMessageIfSessionHasErrors(
+        string $message,
+        $level = 'error',
+        $bag = 'default'
+    ): MessageWidgetContract {
+        return $this->addGeneralMessage($this->getSessionErrorsBag($bag)->isEmpty() ? null : $message, $level);
     }
 
     public function isAuthorized(Authorizable $user = null): bool
     {
         return true;
+    }
+
+    protected function getSessionErrorsBag($bag = 'default'): MessageBag
+    {
+        $errors = session('errors');
+        if (!$errors instanceof ViewErrorBag) {
+            $errors = new ViewErrorBag();
+        }
+
+        return $errors->getBag($bag);
     }
 }
