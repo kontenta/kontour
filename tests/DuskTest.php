@@ -37,5 +37,8 @@ abstract class DuskTest extends TestCase
 
         copy(__DIR__ . '/../resources/css/kontour.css', public_path('kontour.css'));
         $app['config']->set('kontour.stylesheets', ['kontour.css']);
+
+        copy(__DIR__ . '/../resources/js/kontour.js', public_path('kontour.js'));
+        $app['config']->set('kontour.javascripts', ['kontour.js']);
     }
 }

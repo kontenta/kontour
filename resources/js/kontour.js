@@ -1,0 +1,1 @@
+document.body.addEventListener("submit",function(e){if(e.target.querySelector('input[name="_method"][value="delete"]')){var t="Delete item",r=e.target.querySelector('[type="submit"]');r&&(t=r.getAttribute("aria-label")||r.innerText||t),confirm(t)||e.preventDefault()}});
