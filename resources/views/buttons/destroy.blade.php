@@ -2,5 +2,5 @@
   @if(isset($description))
     aria-label="{{ $description }}"
   @endif
-  data-kontour-action="delete"
+  data-kontour-action="destroy"
 >{{ $slot ?? 'Delete' }}</button>
