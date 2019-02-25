@@ -2,6 +2,4 @@
   @if(isset($description))
     aria-label="{{ $description }}"
   @endif
->
-  {{ $slot ?? 'Delete' }}
-</button>
+>{{ $slot ?? 'Delete' }}</button>
