@@ -1,6 +1,4 @@
 <button type="{{ $type ?? 'submit' }}"
-  @if(isset($description))
-    aria-label="{{ $description }}"
-  @endif
   data-kontour-action="destroy"
+  @include('kontour::buttons.partials.buttonAttributes')
 >{{ $slot ?? 'Delete' }}</button>
