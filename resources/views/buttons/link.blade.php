@@ -4,4 +4,4 @@
   @endif
   data-kontour-action="link"
   @include('kontour::buttons.partials.buttonAttributes')
->{{ $slot ?? $description }}</button>
+>{{ $slot ?? $description }}</a>
