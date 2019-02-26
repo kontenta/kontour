@@ -74,6 +74,7 @@ body > footer {
 }
 
 @import "layout";
+@import "utilities";
 @import "forms";
 @import "buttons";
 @import "widgets/crumbtrail";
@@ -81,5 +82,4 @@ body > footer {
 @import "widgets/userAccount";
 @import "widgets/message";
 @import "widgets/recentVisits";
-@import "utilities";
 @import "screenreaders";
