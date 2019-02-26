@@ -1,0 +1,120 @@
+.button {
+  color: $kontour-button-color;
+  background: transparent;
+
+  display: inline-block;
+
+  border: $kontour-border;
+  border-color: currentColor;
+  border-radius: $kontour-border-radius;
+
+  text-decoration: none;
+
+  padding: $kontour-button-padding;
+
+  &:focus {
+    outline: $kontour-button-focus-outline;
+    box-shadow: $kontour-button-focus-box-shadow;
+  }
+
+  &:active {
+    color: $kontour-button-color; //Avoid clicked button "disappearing" when browser inverts text color on a transparent background
+    box-shadow: $kontour-button-active-box-shadow;
+  }
+
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & {
+    pointer-events: none;
+
+    background-color: gray;
+    border-color: transparent;
+
+    box-shadow: none;
+  }
+}
+
+.button-primary {
+  @extend .button;
+
+  $button-text-color: if(lightness($kontour-button-color) > 50%, black, white);
+  color: $button-text-color;
+  background-color: $kontour-button-color;
+  border-color: $kontour-button-color;
+
+  &:active {
+    color: $button-text-color;
+  }
+}
+
+.button-destructive {
+  @extend .button;
+  color: $kontour-destructive-color;
+  border-color: $kontour-destructive-color;
+
+  &:focus {
+    box-shadow: set_nth(
+      $kontour-button-focus-box-shadow,
+      -1,
+      change_color($kontour-destructive-color, $lightness: 80%)
+    );
+  }
+
+  &:active {
+    color: $kontour-destructive-color;
+    box-shadow: $kontour-button-active-box-shadow;
+  }
+
+  &.button-primary {
+    $button-text-color: if(
+      lightness($kontour-destructive-color) > 50%,
+      black,
+      white
+    );
+    background-color: $kontour-destructive-color;
+    border-color: $kontour-destructive-color;
+    color: $button-text-color;
+
+    &:active {
+      color: $button-text-color;
+    }
+  }
+}
+
+.button-link {
+  @extend .button;
+
+  border-color: transparent;
+  background-color: transparent;
+  text-decoration: underline;
+
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:active {
+    box-shadow: none;
+    text-decoration: none;
+  }
+
+  &:disabled {
+    text-decoration: none;
+  }
+}
+
+[data-kontour-action] {
+  @extend .button;
+}
+
+[data-kontour-action="create"],
+[data-kontour-action="update"] {
+  @extend .button-primary;
+}
+
+[data-kontour-action="destroy"] {
+  @extend .button-destructive;
+}
+
+[data-kontour-action="link"] {
+  @extend .button-link;
+}
