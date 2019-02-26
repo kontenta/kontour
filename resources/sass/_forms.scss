@@ -24,6 +24,7 @@ input,
 select,
 textarea {
   border-width: 1px;
+  padding: $kontour-input-padding;
 
   &[aria-invalid="true"] {
     border-color: $kontour-error-color;

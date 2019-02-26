@@ -10,7 +10,8 @@
 
   text-decoration: none;
 
-  padding: $kontour-button-padding;
+  padding-top: $kontour-input-padding;
+  padding-bottom: $kontour-input-padding;
 
   &:focus {
     outline: $kontour-button-focus-outline;
