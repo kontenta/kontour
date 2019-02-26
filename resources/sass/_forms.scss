@@ -23,7 +23,7 @@ fieldset {
 input,
 select,
 textarea {
-  border-width: 1px;
+  border-width: nth($kontour-border, 1);
   padding: $kontour-input-padding;
 
   &[aria-invalid="true"] {
