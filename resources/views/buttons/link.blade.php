@@ -2,6 +2,6 @@
   @if(isset($description))
     title="{{ $description }}"
   @endif
-  data-kontour-action="link"
+  data-kontour-button="link"
   @include('kontour::buttons.partials.buttonAttributes')
 >{{ $slot ?? $description }}</a>

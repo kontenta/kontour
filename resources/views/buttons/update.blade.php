@@ -1,4 +1,4 @@
 <button type="{{ $type ?? 'submit' }}"
   @include('kontour::buttons.partials.buttonAttributes')
-  data-kontour-action="update"
+  data-kontour-button="update"
 >{{ $slot ?? 'Save' }}</button>

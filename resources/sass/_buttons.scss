@@ -102,19 +102,19 @@
   }
 }
 
-[data-kontour-action] {
+[data-kontour-button] {
   @extend .button;
 }
 
-[data-kontour-action="create"],
-[data-kontour-action="update"] {
+[data-kontour-button="create"],
+[data-kontour-button="update"] {
   @extend .button-primary;
 }
 
-[data-kontour-action="destroy"] {
+[data-kontour-button="destroy"] {
   @extend .button-destructive;
 }
 
-[data-kontour-action="link"] {
+[data-kontour-button="link"] {
   @extend .button-link;
 }
