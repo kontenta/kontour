@@ -1,6 +1,5 @@
 * text=auto
 
-/composer.lock -merge
 /resources/js/kontour.js -merge
 /resources/css/kontour.css -merge
 
