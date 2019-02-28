@@ -8,7 +8,7 @@ document.body.addEventListener("change", function(event) {
 document.body.addEventListener("submit", function(event) {
   event.target
     .querySelectorAll('[data-kontour-dirty="true"]')
-    .forEach(element => {
+    .forEach(function(element) {
       element.setAttribute("data-kontour-dirty", "saving");
     });
 });
