@@ -4,3 +4,7 @@ window.addEventListener("beforeunload", function(event) {
     event.returnValue = "You have unsaved changes.";
   }
 });
+
+document.body.addEventListener("change", function(event) {
+  event.target.setAttribute("data-kontour-dirty", "true");
+});
