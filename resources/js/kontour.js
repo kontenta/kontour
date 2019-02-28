@@ -1,1 +1,1 @@
-document.body.addEventListener("submit",function(e){if(e.target.querySelector('input[name="_method"][value="delete"]')){var t="Delete item",r=e.target.querySelector('[type="submit"]');r&&(t=r.getAttribute("aria-label")||r.innerText||t),confirm(t)||e.preventDefault()}});
+document.body.addEventListener("submit",function(e){if(e.target.querySelector('input[name="_method"][value="delete"], input[name="_method"][value="DELETE"]')){var t="Delete item",n=e.target.querySelector('[type="submit"]');n&&(t=n.getAttribute("aria-label")||n.innerText||t),confirm(t)||e.preventDefault()}});
