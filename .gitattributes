@@ -1,6 +1,8 @@
 * text=auto
 
 /composer.lock -merge
+/resources/js/kontour.js -merge
+/resources/css/kontour.css -merge
 
 /tests export-ignore
 /package.json export-ignore
