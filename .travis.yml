@@ -10,6 +10,8 @@ matrix:
       env: LARAVEL='5.7.*'
     - php: 7.2
       env: LARAVEL='5.7.*'
+    - php: 7.2
+      env: LARAVEL='5.8.*'
   fast_finish: true
 
 before_install:
