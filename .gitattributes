@@ -1,7 +1,7 @@
 * text=auto
 
-/resources/js/kontour.js -merge
-/resources/css/kontour.css -merge
+/resources/js/kontour.js -merge linguist-vendored
+/resources/css/kontour.css -merge linguist-vendored
 
 /tests export-ignore
 /package.json export-ignore
