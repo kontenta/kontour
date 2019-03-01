@@ -66,7 +66,7 @@ class UserlandController extends BaseController
         $messageWidget = $this->findOrRegisterAdminWidget(MessageWidget::class, 'kontourToolHeader');
         $messageWidget->addMessage('Hello World!');
 
-        return view('userland::index');
+        return view('userland::edit');
     }
 
     public function update($id)
