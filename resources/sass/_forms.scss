@@ -29,6 +29,11 @@ textarea {
     border-color: $kontour-error-color;
     border-style: solid;
   }
+
+  [data-kontour-unload-prevented="true"] &[data-kontour-dirty="true"] {
+    border-color: $kontour-warning-color;
+    border-style: solid;
+  }
 }
 
 .error,
