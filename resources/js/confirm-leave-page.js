@@ -1,6 +1,10 @@
 // Mark inputs as dirty when they change
-document.body.addEventListener("change", function(event) {
-  event.target.setAttribute("data-kontour-dirty", "true");
+["change", "keyup"].forEach(function(eventname) {
+  document.body.addEventListener(eventname, function(event) {
+    if (event.target.tagName.match(/^input|select|textarea$/i)) {
+      event.target.setAttribute("data-kontour-dirty", "true");
+    }
+  });
 });
 
 // Mark dirty inputs as saving when their form is submitted
