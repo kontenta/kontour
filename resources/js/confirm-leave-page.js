@@ -1,7 +1,7 @@
 // Mark inputs as dirty when they change
 ["change", "keyup"].forEach(function(eventname) {
   document.body.addEventListener(eventname, function(event) {
-    if (event.target.tagName.match(/^input|select|textarea$/i)) {
+    if (event.target.matches('input, select, textarea')) {
       event.target.setAttribute("data-kontour-dirty", "true");
     }
   });
