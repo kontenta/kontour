@@ -13,7 +13,15 @@
 
 ## Testing
 
-`composer test` from the project directory will run the default test suite.
+`composer test` from the project directory will run the default test suite containing all tests.
+
+`composer test -- --testsuite=Feature` will run the Feature tests only.
+
+`composer test -- --testsuite=Dusk` will run the Dusk tests only.
+
+`composer test -- --filter=...` will pass through options to phpunit.
+
+`composer report` will run the tests and generate coverage reports.
 
 If you want your own local configuration for phpunit,
 copy the file `phpunit.xml.dist` to `phpunit.xml` and modify the latter to your needs.
