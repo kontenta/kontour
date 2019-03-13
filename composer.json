@@ -3,7 +3,6 @@
   "description": "Admin area tool utilities for Laravel",
   "license": "MIT",
   "require": {
-    "php": ">=7.1.0",
     "laravel/framework": "5.7.*|5.8.*"
   },
   "require-dev": {
