@@ -29,7 +29,7 @@ copy the file `phpunit.xml.dist` to `phpunit.xml` and modify the latter to your 
 ### Testing with different versions
 
 [Travis CI](https://travis-ci.org/kontenta/kontour) is set up to run tests
-against PHP 7.1 and 7.2 in combination with Laravel 5.7.
+against PHP `7.1`, `7.2` & `7.3` in combination with Laravel `5.7` & `5.8`.
 See `.travis.yml` for details.
 
 - `composer update --prefer-lowest` can be used before running tests for testing backwards compatibility.
