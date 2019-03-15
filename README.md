@@ -164,7 +164,8 @@ Then edit `config/kontour.php` and uncomment `'css/kontour.css'` in the
 
 ### Javascript
 
-The included javascript includes a feature to confirm any delete-action before submitting those forms.
+The included javascript includes a feature to confirm any delete-action before submitting those forms,
+and a confirmation before leaving a page with "dirty" form inputs.
 
 The procedure to publish javascript using artisan:
 
