@@ -1,5 +1,5 @@
 document.body.addEventListener("submit", function(event) {
-  if (event.target.querySelector('input[name="_method"][value="delete"]')) {
+  if (event.target.querySelector('input[name="_method"][value="delete"], input[name="_method"][value="DELETE"]')) {
     let message = "Delete item";
     let button = event.target.querySelector('[type="submit"]');
     if (button) {

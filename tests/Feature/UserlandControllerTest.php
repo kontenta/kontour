@@ -18,7 +18,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
      */
     private $user;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->prepareDatabase();
