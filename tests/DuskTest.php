@@ -16,7 +16,7 @@ abstract class DuskTest extends TestCase
      */
     protected $user;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->prepareDatabase();
@@ -32,6 +32,8 @@ abstract class DuskTest extends TestCase
     protected function getEnvironmentSetUp($app)
     {
         $this->traitGetEnvironmentSetup($app);
+        $app['config']->set('app.key', 'AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
+
         $app['config']->set('database.default', 'sqlite');
         $app['config']->set('session.driver', 'file');
 
