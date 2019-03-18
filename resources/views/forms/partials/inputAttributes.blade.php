@@ -6,6 +6,9 @@ id="{{ $controlId }}"
 @elseif(isset($ariaDescribedById))
   aria-describedby="{{ $ariaDescribedById }}"
 @endif
+@if(!empty($autofocusInputName) and $autofocusInputName == $name)
+  autofocus
+@endif
 @if(isset($controlAttributes) and is_iterable($controlAttributes))
   @foreach($controlAttributes as $attributeName => $attributeValue)
     @include('kontour::partials.attribute')

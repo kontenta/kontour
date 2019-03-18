@@ -132,4 +132,28 @@ class InputAttributesTest extends IntegrationTest
         $this->assertRegExp('/a="b"\s*boolean\s*true\s*b="false"\s*c="0"/', $output);
         $this->assertNotRegExp('/\sfalse\s/', $output);
     }
+
+    public function test_can_have_autofocus()
+    {
+        $output = View::make('kontour::forms.partials.inputAttributes', [
+            'name' => 'testName',
+            'controlId' => 'testId',
+            'errors' => new MessageBag,
+            'autofocusInputName' => 'testName',
+        ])->render();
+
+        $this->assertRegExp('/autofocus/', $output);
+    }
+
+    public function test_other_element_can_have_autofocus()
+    {
+        $output = View::make('kontour::forms.partials.inputAttributes', [
+            'name' => 'testName',
+            'controlId' => 'testId',
+            'errors' => new MessageBag,
+            'autofocusInputName' => 'otherName',
+        ])->render();
+
+        $this->assertNotRegExp('/autofocus/', $output);
+    }
 }
