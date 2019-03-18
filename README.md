@@ -243,6 +243,23 @@ generate form inputs along with labels and validation feedback.
 </form>
 ```
 
+The form views will prefill inputs with data from a `$model` variable if it is set in the blade view,
+so you may just pass an Eloquent model to the view.
+
+[Laravel's `$errors` bag](https://laravel.com/docs/5.8/validation#quick-displaying-the-validation-errors)
+is used to display errors for inputs.
+If you have [named error bags](https://laravel.com/docs/5.8/validation#named-error-bags) in your view,
+you can put one of those bags into the `$errors` variable by including a partial view.
+This is actually a good pattern for scoping variables to one of the forms on your page, if you have more than one.
+
+```php
+@include('my_form_partial', ['errors' => $errors->my_form_bag, 'model' => $user])
+```
+
+The variable `$autofocusControlId` can be set to the id of the input you want to `autofocus`,
+usually the first field with errors.
+If no `$idPrefix` is set, this conveniently corresponds to the keys in Laravel's `$errors` bag.
+
 ### Button templates
 
 [The button views](https://github.com/kontenta/kontour/tree/master/resources/views/buttons)
