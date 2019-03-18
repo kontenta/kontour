@@ -164,7 +164,8 @@ Then edit `config/kontour.php` and uncomment `'css/kontour.css'` in the
 
 ### Javascript
 
-The included javascript includes a feature to confirm any delete-action before submitting those forms.
+The included javascript includes a feature to confirm any delete-action before submitting those forms,
+and a confirmation before leaving a page with "dirty" form inputs.
 
 The procedure to publish javascript using artisan:
 
@@ -225,18 +226,36 @@ The `toolLayout` has sections `kontourToolHeader`, `kontourToolMain`,
 It's a good idea to include `@parent` in your sections for other content,
 for example registered widgets.
 
-## Form templates
+## Templates
 
 Kontour provides
-[some Blade views](https://github.com/kontenta/kontour/tree/master/resources/views/forms)
-that can be used with `@include` or `@component` to generate form inputs along
-with labels and validation feedback.
+[some Blade views](https://github.com/kontenta/kontour/tree/master/resources/views)
+that can be used with `@include` or `@component` to display common elements in your admin views.
+
+### Form templates
+
+[The form views](https://github.com/kontenta/kontour/tree/master/resources/views/forms)
+generate form inputs along with labels and validation feedback.
 
 ```php
 <form ...>
 @include('kontour::forms.input', ['name' => 'username', 'type' => 'email'])
 </form>
 ```
+
+### Button templates
+
+[The button views](https://github.com/kontenta/kontour/tree/master/resources/views/buttons)
+generate buttom elements for common actions like "create", "update", and "destroy",
+as well as a "generic" button, and a "link"-like button.
+
+```php
+@component('kontour::buttons.generic', ['type' => 'reset'])
+  Oh, the old <code>reset</code> button!
+@endcomponent
+```
+
+There's also a logout button and hamburger menu button.
 
 ## Adding menu items
 
