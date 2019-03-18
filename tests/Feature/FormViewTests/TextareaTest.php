@@ -114,4 +114,15 @@ class TextareaTest extends IntegrationTest
         $this->assertRegExp('/<textarea[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
         $this->assertRegExp('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
+
+    public function test_autofocus()
+    {
+        $output = View::make('kontour::forms.textarea', [
+            'name' => 'test',
+            'errors' => new MessageBag,
+            'autofocusInputName' => 'test',
+        ])->render();
+
+        $this->assertRegExp('/<textarea[\S\s]*autofocus[\S\s]*>/', $output);
+    }
 }
