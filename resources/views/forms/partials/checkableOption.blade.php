@@ -11,6 +11,7 @@
       @endif
       @include('kontour::forms.partials.inputAttributes', [
         'name' => is_array($selected) ? $name . '[]' : $name,
+        'autofocusControlId' => empty($autofocusControlId) ? null : ($autofocusControlId == $groupId ? $autofocusControlId . '.0' : $autofocusControlId),
       ])
     >
   @endslot
