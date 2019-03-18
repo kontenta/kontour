@@ -1,6 +1,6 @@
 @component('kontour::forms.elements.label', [
     'label' => $option_display,
-    'controlId' => $controlId = $groupId . '[' . $option_value . ']',
+    'controlId' => $controlId = $groupId . '.' . $optionIndex,
     'labelAttributes' => $labelAttributes ?? [],
   ])
   @slot('labelStart')

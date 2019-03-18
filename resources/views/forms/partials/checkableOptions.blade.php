@@ -6,7 +6,7 @@
     @include('kontour::forms.partials.checkableOption', [
       'optionIndex' => $optionIndex = isset($optionIndex) ? $optionIndex + 1 : 0,
       'optionErrorKey' => $optionErrorKey = $name . '.' . $optionIndex,
-      'errorsId' => $errors->has($optionErrorKey) ? $errorsId . '[' . $optionIndex . ']' : $errorsId,
+      'errorsId' => $errors->has($optionErrorKey) ? $errorsId . '.' . $optionIndex : $errorsId,
       'errorsKeys' => $errors->has($optionErrorKey) ? $optionErrorKey : ($errorsKeys ?? $name),
     ])
   @endforeach

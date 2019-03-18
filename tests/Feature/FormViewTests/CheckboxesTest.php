@@ -165,8 +165,8 @@ class CheckboxesTest extends IntegrationTest
             ]),
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*aria-describedby="testErrors\[1]"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors\[1]"[\S\s]*>[\S\s]*Error for option[\S\s]*<\/\1>/', $output);
+        $this->assertRegExp('/<input[\S\s]*aria-describedby="testErrors\.1"[\S\s]*>/', $output);
+        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors\.1"[\S\s]*>[\S\s]*Error for option[\S\s]*<\/\1>/', $output);
 
         $this->assertRegExp('/<input[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
         $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
