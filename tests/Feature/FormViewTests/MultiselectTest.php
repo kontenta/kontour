@@ -200,7 +200,7 @@ class MultiselectTest extends IntegrationTest
             'name' => 'test',
             'options' => ['a' => 'A', 'b' => 'B'],
             'errors' => new MessageBag,
-            'autofocusInputName' => 'test',
+            'autofocusControlId' => 'test',
         ])->render();
 
         $this->assertRegExp('/<select[\S\s]*autofocus[\S\s]*>/', $output);

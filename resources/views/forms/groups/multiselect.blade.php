@@ -13,7 +13,6 @@
         'name' => $name . '[]',
         'errorsKeys' => $errorsKeys = $errorsKeys ?? [$name, $name . '.*'],
         'errorsId' => $errorsId = $controlId . ($errorsSuffix ?? 'Errors'),
-        'autofocusInputName' => !empty($autofocusInputName) and $autofocusInputName == $name ? $name . '[]' : null,
       ])
     >
       @include('kontour::forms.partials.options')

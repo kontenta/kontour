@@ -139,7 +139,7 @@ class InputAttributesTest extends IntegrationTest
             'name' => 'testName',
             'controlId' => 'testId',
             'errors' => new MessageBag,
-            'autofocusInputName' => 'testName',
+            'autofocusControlId' => 'testId',
         ])->render();
 
         $this->assertRegExp('/autofocus/', $output);
@@ -151,7 +151,7 @@ class InputAttributesTest extends IntegrationTest
             'name' => 'testName',
             'controlId' => 'testId',
             'errors' => new MessageBag,
-            'autofocusInputName' => 'otherName',
+            'autofocusControlId' => 'otherId',
         ])->render();
 
         $this->assertNotRegExp('/autofocus/', $output);

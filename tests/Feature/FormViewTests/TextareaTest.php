@@ -120,7 +120,7 @@ class TextareaTest extends IntegrationTest
         $output = View::make('kontour::forms.textarea', [
             'name' => 'test',
             'errors' => new MessageBag,
-            'autofocusInputName' => 'test',
+            'autofocusControlId' => 'test',
         ])->render();
 
         $this->assertRegExp('/<textarea[\S\s]*autofocus[\S\s]*>/', $output);

@@ -6,7 +6,7 @@ id="{{ $controlId }}"
 @elseif(isset($ariaDescribedById))
   aria-describedby="{{ $ariaDescribedById }}"
 @endif
-@if(!empty($autofocusInputName) and $autofocusInputName == $name)
+@if(!empty($autofocusControlId) and $autofocusControlId == $controlId)
   autofocus
 @endif
 @if(isset($controlAttributes) and is_iterable($controlAttributes))

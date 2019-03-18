@@ -165,7 +165,7 @@ class InputTest extends IntegrationTest
         $output = View::make('kontour::forms.input', [
             'name' => 'test',
             'errors' => new MessageBag,
-            'autofocusInputName' => 'test',
+            'autofocusControlId' => 'test',
         ])->render();
 
         $this->assertRegExp('/<input[\S\s]*autofocus[\S\s]*>/', $output);
