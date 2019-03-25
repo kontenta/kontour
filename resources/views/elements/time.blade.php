@@ -1,0 +1,1 @@
+<time datetime="{{ $carbon->toAtomString() }}">{{ $slot ?? !empty($format) ? $carbon->format($format) : $carbon->diffForHumans() }}</time>
