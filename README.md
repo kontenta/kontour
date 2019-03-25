@@ -257,6 +257,24 @@ as well as a "generic" button, and a "link"-like button.
 
 There's also a logout button and hamburger menu button.
 
+### Time templates
+
+There's a [view](https://github.com/kontenta/kontour/tree/master/resources/views/elements/time.blade.php)
+for rendering [`<time>` tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)
+to which you supply a [`Carbon`](https://carbon.nesbot.com)
+`$carbon` variable and it prints a proper `datetime` atom string attribute
+and by default a human readable time difference.
+
+```php
+@include('kontour::elements.time', ['carbon' => \Carbon\Carbon::now()])
+```
+
+You may also pass a `$format` string to display the tag contents in a specific format
+instad of the default relative time.
+If you pass `['format' => true]` the default format from Kontour's
+[config file](https://github.com/kontenta/kontour/blob/master/config/kontour.php)
+will be used.
+
 ## Adding menu items
 
 Usually adding menu items is done in a service provider's boot method:
