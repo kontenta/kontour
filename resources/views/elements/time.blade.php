@@ -1,1 +1,1 @@
-<time datetime="{{ $carbon->toAtomString() }}">{{ $slot ?? !empty($format) ? $carbon->format($format) : $carbon->diffForHumans() }}</time>
+<time datetime="{{ $carbon->toAtomString() }}">{{ $slot ?? !empty($format) ? $carbon->format($format === true ? config('kontour.time_format') : $format) : $carbon->diffForHumans() }}</time>

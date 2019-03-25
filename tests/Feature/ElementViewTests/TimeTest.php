@@ -26,4 +26,14 @@ class TimeTest extends IntegrationTest
         $this->assertContains('datetime="' . $carbon->toAtomString() . '"', $output);
         $this->assertContains('>' . $carbon->format($format) . '</time>', $output);
     }
+
+    public function test_can_use_default_format_from_config()
+    {
+        $carbon = Carbon::now();
+        $format = true;
+        $output = View::make('kontour::elements.time', compact('carbon', 'format'))->render();
+
+        $this->assertContains('datetime="' . $carbon->toAtomString() . '"', $output);
+        $this->assertContains('>' . $carbon->format(config('kontour.time_format')) . '</time>', $output);
+    }
 }

@@ -150,4 +150,17 @@ return [
     'menu_hidden_items' => [
         //'Roles'
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Time format
+    |--------------------------------------------------------------------------
+    |
+    | The default time format is used for displaying non-relative times.
+    | Examlpe:
+    | D, M j, Y H:i T
+    | Mon, Mar 25, 2019 10:51 UTC
+    |
+     */
+    'time_format' => 'D, M j, Y H:i T',
 ];
