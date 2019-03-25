@@ -3,6 +3,7 @@
 namespace Kontenta\Kontour\Tests\Feature\FormViewTests;
 
 use Carbon\Carbon;
+use Carbon\CarbonInterval;
 use Illuminate\Support\Facades\View;
 use Kontenta\Kontour\Tests\IntegrationTest;
 
@@ -35,5 +36,14 @@ class TimeTest extends IntegrationTest
 
         $this->assertContains('datetime="' . $carbon->toAtomString() . '"', $output);
         $this->assertContains('>' . $carbon->format(config('kontour.time_format')) . '</time>', $output);
+    }
+
+    public function test_can_display_time_interval()
+    {
+        $carbon = CarbonInterval::year();
+        $output = View::make('kontour::elements.time', compact('carbon'))->render();
+
+        $this->assertContains('datetime="' . $carbon->spec() . '"', $output);
+        $this->assertContains('>' . $carbon->forHumans() . '</time>', $output);
     }
 }
