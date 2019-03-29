@@ -256,9 +256,19 @@ This is actually a good pattern for scoping variables to one of the forms on you
 @include('my_form_partial', ['errors' => $errors->my_form_bag, 'model' => $user])
 ```
 
+The `id` attribute is set automatically on created elements that need it,
+and it's usually derieved from the `$name` variable.
+If you get an id conflict on a page where two inputs may have the same name,
+e.g. in different forms, different `$idPrefix` can be passed along to the templates
+to make the ids unique.
+
+#### Input autofocus
+
 The variable `$autofocusControlId` can be set to the id of the input you want to `autofocus`,
 usually the first field with errors.
 If no `$idPrefix` is set, this conveniently corresponds to the keys in Laravel's `$errors` bag.
+It's best to set it as high up as possible in the view, before any forms are included.
+You could even set in the controller and pass it along to the view.
 
 ### Button templates
 
