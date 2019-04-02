@@ -145,4 +145,16 @@ class SelectTest extends IntegrationTest
         $this->assertRegExp('/<select[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
         $this->assertRegExp('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
+
+    public function test_autofocus()
+    {
+        $output = View::make('kontour::forms.select', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+            'autofocusControlId' => 'test',
+        ])->render();
+
+        $this->assertRegExp('/<select[\S\s]*autofocus[\S\s]*>/', $output);
+    }
 }
