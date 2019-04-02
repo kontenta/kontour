@@ -10,9 +10,9 @@
     @include('kontour::forms.input', ['name' => 'email', 'type' => 'email', 'controlAttributes' => ['required']])
     @include('kontour::forms.input', ['name' => 'password', 'type' => 'password', 'controlAttributes' => ['required']])
     @include('kontour::forms.checkbox', ['name' => 'remember', 'label' => __('Remember Me')])
-    <button type="submit">
+    @component('kontour::buttons.generic')
       {{ __('Login') }}
-    </button>
+    @endcomponent
     @if($route_manager->passwordResetUrl())
       <a href="{{ $route_manager->passwordResetUrl() }}">
         {{ __('Forgot Your Password?') }}
