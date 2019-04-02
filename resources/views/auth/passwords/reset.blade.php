@@ -10,8 +10,8 @@
     @include('kontour::forms.input', ['name' => 'email', 'type' => 'email', 'controlAttributes' => ['required']])
     @include('kontour::forms.input', ['name' => 'password', 'type' => 'password', 'controlAttributes' => ['required']])
     @include('kontour::forms.input', ['name' => 'password_confirmation', 'type' => 'password', 'controlAttributes' => ['required']])
-    <button type="submit">
+    @component('kontour::buttons.generic')
       {{ __('Reset Password') }}
-    </button>
+    @endcomponent
   </form>
 @endsection

@@ -7,6 +7,8 @@
 
   <title>@yield('title', config('kontour.title'))</title>
 
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   @stack('meta')
 
   @stack('styles')

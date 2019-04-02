@@ -161,4 +161,15 @@ class CheckboxTest extends IntegrationTest
         $this->assertRegExp('/<input[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
         $this->assertRegExp('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
+
+    public function test_autofocus()
+    {
+        $output = View::make('kontour::forms.checkbox', [
+            'name' => 'test',
+            'errors' => new MessageBag,
+            'autofocusControlId' => 'test',
+        ])->render();
+
+        $this->assertRegExp('/<input[\S\s]*autofocus[\S\s]*>/', $output);
+    }
 }

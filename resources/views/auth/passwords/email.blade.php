@@ -5,18 +5,13 @@
 @section('kontourMain')
   <header>{{ __('Reset Password') }}</header>
 
-  {{-- TODO: Use the MessageWidget instead of hard coded alert from session --}}
-  @if (session('status'))
-    <div class="alert alert-success" role="alert">
-      {{ session('status') }}
-    </div>
-  @endif
+  {{ $messageWidget }}
 
   <form method="POST" action="{{ route('kontour.password.email') }}">
     @csrf
     @include('kontour::forms.input', ['name' => 'email', 'type' => 'email', 'controlAttributes' => ['required']])
-    <button type="submit" class="btn btn-primary">
+    @component('kontour::buttons.generic')
       {{ __('Send Password Reset Link') }}
-    </button>
+    @endcomponent
   </form>
 @endsection

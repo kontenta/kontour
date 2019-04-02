@@ -51,6 +51,10 @@ class PasswordResetTest extends IntegrationTest
             }
         );
 
+        $response = $this->get(route('kontour.password.request'));
+
+        $response->assertSeeText(trans(\Illuminate\Support\Facades\Password::RESET_LINK_SENT));
+
         $response = $this->get(route('kontour.password.reset', $token));
 
         $response->assertSuccessful();
