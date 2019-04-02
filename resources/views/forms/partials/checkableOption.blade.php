@@ -1,6 +1,6 @@
 @component('kontour::forms.elements.label', [
     'label' => $option_display,
-    'controlId' => $controlId = $groupId . '[' . $option_value . ']',
+    'controlId' => $controlId = $groupId . '.' . $optionIndex,
     'labelAttributes' => $labelAttributes ?? [],
   ])
   @slot('labelStart')
@@ -11,6 +11,7 @@
       @endif
       @include('kontour::forms.partials.inputAttributes', [
         'name' => is_array($selected) ? $name . '[]' : $name,
+        'autofocusControlId' => empty($autofocusControlId) ? null : ($autofocusControlId == $groupId ? $autofocusControlId . '.0' : $autofocusControlId),
       ])
     >
   @endslot
