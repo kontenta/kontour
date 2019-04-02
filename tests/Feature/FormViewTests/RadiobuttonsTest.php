@@ -131,4 +131,30 @@ class RadiobuttonsTest extends IntegrationTest
         $this->assertRegExp('/<input[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
         $this->assertRegExp('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
+
+    public function test_autofocus_on_first_option()
+    {
+        $output = View::make('kontour::forms.radiobuttons', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+            'autofocusControlId' => 'test',
+        ])->render();
+
+        $this->assertRegExp('/<input[\S\s]*id="test\.0"[\S\s]*autofocus[\S\s]*>/', $output);
+        $this->assertNotRegExp('/<input[\S\s]*id="test\.1"[\S\s]*autofocus[\S\s]*>/', $output);
+    }
+
+    public function test_autofocus_on_specific_option()
+    {
+        $output = View::make('kontour::forms.radiobuttons', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+            'autofocusControlId' => 'test.1',
+        ])->render();
+
+        $this->assertNotRegExp('/<input[\S\s]*id="test\.0"[\S\s]*autofocus[\S\s]*>[\S\s]*<input/', $output);
+        $this->assertRegExp('/<input[\S\s]*id="test\.1"[\S\s]*autofocus[\S\s]*>/', $output);
+    }
 }

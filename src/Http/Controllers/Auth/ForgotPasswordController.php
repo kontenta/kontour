@@ -2,11 +2,12 @@
 
 namespace Kontenta\Kontour\Http\Controllers\Auth;
 
-use Kontenta\Kontour\Contracts\AdminGuestMiddleware;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Password;
+use Kontenta\Kontour\Contracts\AdminGuestMiddleware;
+use Kontenta\Kontour\Contracts\MessageWidget;
 
 class ForgotPasswordController extends Controller
 {
@@ -28,9 +29,10 @@ class ForgotPasswordController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showLinkRequestForm()
+    public function showLinkRequestForm(MessageWidget $messageWidget)
     {
-        return view('kontour::auth.passwords.email');
+        $messageWidget->addFromSession();
+        return view('kontour::auth.passwords.email', compact('messageWidget'));
     }
 
     /**
