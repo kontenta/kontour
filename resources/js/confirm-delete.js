@@ -2,7 +2,7 @@ document.body.addEventListener("submit", function(event) {
   let method = event.target.method.toUpperCase();
   let button;
   [...event.target.elements].forEach(function(input) {
-    if(input.name == '_method' && input.type.toLowerCase() != 'submit') {
+    if(input.name == '_method' && !['submit', 'button', 'reset'].includes(input.type.toLowerCase())) {
       method = input.value.toUpperCase();
     }
     if(input.type == 'submit') {
