@@ -1,9 +1,7 @@
 document.body.addEventListener("submit", function(event) {
-  let method = event.target.method.toUpperCase();
-  let button;
-
   let formData = new FormData(event.target);
-  method = (formData.getAll('_method').pop() || method).toUpperCase();
+  let method = (formData.getAll('_method').pop() || event.target.method).toUpperCase();
+  let button;
 
   [...event.target.elements].forEach(function(input) {
     if(input.type == 'submit') {
