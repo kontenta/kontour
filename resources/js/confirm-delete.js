@@ -14,7 +14,7 @@ document.body.addEventListener("submit", function(event) {
     let message = "Delete item";
     if (button) {
       message =
-        button.getAttribute("aria-label") || button.innerText || message;
+        button.getAttribute("aria-label") || button.title || button.innerText || message;
     }
 
     if (!confirm(message)) {
