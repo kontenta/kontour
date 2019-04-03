@@ -1,7 +1,17 @@
 document.body.addEventListener("submit", function(event) {
-  if (event.target.querySelector('input[name="_method"][value="delete"], input[name="_method"][value="DELETE"]')) {
+  let method = event.target.method.toUpperCase();
+  let button;
+  [...event.target.elements].forEach(function(input) {
+    if(input.name == '_method') {
+      method = input.value.toUpperCase();
+    }
+    if(input.type == 'submit') {
+      button = input;
+    }
+  });
+
+  if (method == 'DELETE') {
     let message = "Delete item";
-    let button = event.target.querySelector('[type="submit"]');
     if (button) {
       message =
         button.getAttribute("aria-label") || button.innerText || message;
