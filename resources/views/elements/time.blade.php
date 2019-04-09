@@ -1,0 +1,1 @@
+<time datetime="{{ $carbon instanceof \Carbon\CarbonInterval ? $carbon->spec() : $carbon->toAtomString() }}">{{ $slot ?? !empty($format) ? $carbon->format($format === true ? config('kontour.time_format') : $format) : ($carbon instanceof \Carbon\CarbonInterval ? $carbon->forHumans() : $carbon->diffForHumans()) }}</time>

@@ -26,6 +26,11 @@
 If you want your own local configuration for phpunit,
 copy the file `phpunit.xml.dist` to `phpunit.xml` and modify the latter to your needs.
 
+### Test logs
+
+Any Laravel log messages generated during testing can be found in the
+`vendor/orchestra/testbench-dusk/laravel/storage/logs` directory.
+
 ### Testing with different versions
 
 [Travis CI](https://travis-ci.org/kontenta/kontour) is set up to run tests
