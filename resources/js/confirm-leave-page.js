@@ -1,3 +1,7 @@
+/*
+ * If you submit via ajax, you will want to removeAttribute("data-kontour-dirty") if the request succeedes.
+ */
+
 // Mark inputs as dirty when they change
 ["input", "change"].forEach(function(eventname) {
   document.body.addEventListener(eventname, function(event) {
@@ -6,7 +10,6 @@
 });
 
 // Mark dirty inputs as saving when their form is submitted
-// If you submit via ajax, you will want to removeAttribute("data-kontour-dirty") if the request succeedes.
 document.body.addEventListener("submit", function(event) {
   [...event.target.elements].forEach(function(input) {
     if (input.getAttribute("data-kontour-dirty") == "true") {
