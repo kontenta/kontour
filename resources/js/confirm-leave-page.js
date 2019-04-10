@@ -14,9 +14,7 @@
 // Mark dirty inputs as saving when their form is submitted
 document.body.addEventListener("submit", function(event) {
   [...event.target.elements].forEach(function(input) {
-    if (input.getAttribute("data-kontour-dirty") == "true") {
-      input.setAttribute("data-kontour-dirty", "saving");
-    }
+    input.setAttribute("data-kontour-dirty", "saving");
   });
 });
 
