@@ -5,7 +5,7 @@
 // Mark inputs as dirty when they change
 ["input", "change"].forEach(function(eventname) {
   document.body.addEventListener(eventname, function(event) {
-    if(event.target.form) {
+    if (event.target.form && event.target.type != "search") {
       event.target.setAttribute("data-kontour-dirty", "true");
     }
   });
