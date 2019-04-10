@@ -1,5 +1,5 @@
-/*
- * If you submit via ajax, you will want to removeAttribute("data-kontour-dirty") if the request succeedes.
+/*! @preserve
+ * If you submit via ajax, you should removeAttribute("data-kontour-dirty") if the request succeedes.
  */
 
 // Mark inputs as dirty when they change
