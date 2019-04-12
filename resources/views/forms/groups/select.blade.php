@@ -12,7 +12,11 @@
         'errorsId' => $errorsId = $controlId . ($errorsSuffix ?? 'Errors'),
       ])
     >
-      @include('kontour::forms.partials.options')
+      @include('kontour::forms.partials.options', [
+        'options' => (empty($placeholder) or collect($options)->flatten()->has('')) ?
+        $options :
+        array_merge(['' => $placeholder], $options)
+      ])
     </select>
     {{ $afterControl ?? '' }}
     @include('kontour::forms.partials.errors')

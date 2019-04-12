@@ -157,4 +157,28 @@ class SelectTest extends IntegrationTest
 
         $this->assertRegExp('/<select[\S\s]*autofocus[\S\s]*>/', $output);
     }
+
+    public function test_placeholder_becomes_first_option()
+    {
+        $output = View::make('kontour::forms.select', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+            'placeholder' => 'Select one',
+        ])->render();
+
+        $this->assertRegExp('/<select[\S\s]*>\s*<option[\S\s]*value=""[\S\s]*>Select one<\/option>/', $output);
+    }
+
+    public function test_placeholder_does_not_replace_existing_blank_option()
+    {
+        $output = View::make('kontour::forms.select', [
+            'name' => 'test',
+            'options' => ['' => 'Existing placeholder', 'a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+            'placeholder' => 'Select one',
+        ])->render();
+
+        $this->assertNotRegExp('/<option[\S\s]*value=""[\S\s]*>Select one<\/option>/', $output);
+    }
 }
