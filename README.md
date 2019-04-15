@@ -262,12 +262,6 @@ If you get an id conflict on a page where two inputs may have the same name,
 e.g. in different forms, different `$idPrefix` can be passed along to the templates
 to make the ids unique.
 
-The form views take a `$controlAttributes` array that can be used to set any additional html attributes
-on a form control element.
-This can be useful to set `required`, `disabled`, `readonly`, `autocomplete`, and other attributes specific to the
-[different input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_<input>_types).
-The corresponding parameter to put extra attributes on the label tag is `$labelAttributes`.
-
 #### Input autofocus
 
 The variable `$autofocusControlId` can be set to the id of the input you want to `autofocus`,
@@ -276,12 +270,31 @@ If no `$idPrefix` is set, this conveniently corresponds to the keys in Laravel's
 It's best to set it as high up as possible in the view, before any forms are included.
 You could even set in the controller and pass it along to the view.
 
+### Common parameters
+
+All inputs need at least the `$name` parameter
+and optional `$placeholder` and `$ariaDescribedById` parameters.
+
+All form views take a `$controlAttributes` `array` that can be used to set any additional html attributes
+on the form control element.
+This can be useful for setting `required`, `disabled`, `readonly`, `autocomplete`, and other attributes specific to the
+[different input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_<input>_types).
+
+```php
+<form ...>
+@include('kontour::forms.input', [
+  'name' => 'country_code',
+  'controlAttributes' => ['required', 'autocomplete' => 'country', 'size' => '2']
+]])
+</form>
+```
+
+The corresponding parameter to put extra attributes on the label tag is `$labelAttributes`.
+
 ### Available input templates
 
-All inputs take at least the `$name` parameter.
-
-- `input` - Just pass `$type` to set the input type (defaults to `text`).
-- `textarea`
+- `textarea` - Pass `$value` to set input contents.
+- `input` - Same API as `textarea`, but you can pass `$type` to set the input type (defaults to `text`).
 - `select` - Pass `$options` as an `array` of key-values and an optional `$selected` `string` and `$disabledOptions` `array`.
 - `radiobuttons` - Same API as `select` for printing radiobuttons instead.
 - `multiselect` - Same API as `select` but optional `$selected` `array` instead of `string`.
