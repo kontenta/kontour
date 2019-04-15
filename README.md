@@ -287,7 +287,7 @@ All inputs take at least the `$name` parameter.
 - `multiselect` - Same API as `select` but optional `$selected` `array` instead of `string`.
 - `checkboxes` - Same API as `multiselect` for printing checkboxes instead.
 - `checkbox` - Pass optional `$checked` as `boolean` and `$value` for a `value` attribute other than
-  default `1` (or `$checkbox_default_value`).
+  default `1` (or `$checkboxDefaultValue`).
 
 ### Button templates
 
