@@ -262,6 +262,12 @@ If you get an id conflict on a page where two inputs may have the same name,
 e.g. in different forms, different `$idPrefix` can be passed along to the templates
 to make the ids unique.
 
+The form views take a `$controlAttributes` array that can be used to set any additional html attributes
+on a form control element.
+This can be useful to set `required`, `disabled`, `readonly`, `autocomplete`, and other attributes specific to the
+[different input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_<input>_types).
+The corresponding parameter to put extra attributes on the label tag is `$labelAttributes`.
+
 #### Input autofocus
 
 The variable `$autofocusControlId` can be set to the id of the input you want to `autofocus`,
@@ -275,6 +281,7 @@ You could even set in the controller and pass it along to the view.
 [The button views](https://github.com/kontenta/kontour/tree/master/resources/views/buttons)
 generate buttom elements for common actions like "create", "update", and "destroy",
 as well as a "generic" button, and a "link"-like button.
+The button views take a `$buttonAttributes` array of html attributes to set on the button element.
 
 ```php
 @component('kontour::buttons.generic', ['type' => 'reset'])
