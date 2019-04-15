@@ -181,4 +181,17 @@ class SelectTest extends IntegrationTest
 
         $this->assertNotRegExp('/<option[\S\s]*value=""[\S\s]*>Select one<\/option>/', $output);
     }
+
+    public function test_options_can_be_disabled()
+    {
+        $output = View::make('kontour::forms.select', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+            'disabled' => ['b'],
+        ])->render();
+
+        $this->assertNotRegExp('/<option[^>]*value="a"[^>]*disabled[^>]*>/', $output);
+        $this->assertRegExp('/<option[^>]*value="b"[^>]*disabled[^>]*>/', $output);
+    }
 }

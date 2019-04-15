@@ -8,6 +8,9 @@
     @if(is_array($selected) ? in_array(strval($option_value), $selected) : $selected == strval($option_value))
       selected
     @endif
+    @if(!empty($disabled) and is_array($disabled) and in_array(strval($option_value), $disabled))
+      disabled
+    @endif
   >{{ $option_display }}</option>
   @endforeach
   @if($optgroup)
