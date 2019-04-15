@@ -8,7 +8,7 @@
     @if(is_array($selected) ? in_array(strval($option_value), $selected) : $selected == strval($option_value))
       selected
     @endif
-    @if(!empty($disabled) and is_array($disabled) and in_array(strval($option_value), $disabled))
+    @if(!empty($disabledOptions) and is_array($disabledOptions) and in_array(strval($option_value), $disabledOptions))
       disabled
     @endif
   >{{ $option_display }}</option>

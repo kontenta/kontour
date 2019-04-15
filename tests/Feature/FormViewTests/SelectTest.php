@@ -188,7 +188,7 @@ class SelectTest extends IntegrationTest
             'name' => 'test',
             'options' => ['a' => 'A', 'b' => 'B'],
             'errors' => new MessageBag,
-            'disabled' => ['b'],
+            'disabledOptions' => ['b'],
         ])->render();
 
         $this->assertNotRegExp('/<option[^>]*value="a"[^>]*disabled[^>]*>/', $output);
