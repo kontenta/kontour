@@ -157,4 +157,17 @@ class RadiobuttonsTest extends IntegrationTest
         $this->assertNotRegExp('/<input[\S\s]*id="test\.0"[\S\s]*autofocus[\S\s]*>[\S\s]*<input/', $output);
         $this->assertRegExp('/<input[\S\s]*id="test\.1"[\S\s]*autofocus[\S\s]*>/', $output);
     }
+
+    public function test_radiobuttons_can_be_disabled()
+    {
+        $output = View::make('kontour::forms.radiobuttons', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+            'disabled' => ['b'],
+        ])->render();
+
+        $this->assertNotRegExp('/<input[^>]*value="a"[^>]*disabled[^>]*>/', $output);
+        $this->assertRegExp('/<input[^>]*value="b"[^>]*disabled[^>]*>/', $output);
+    }
 }
