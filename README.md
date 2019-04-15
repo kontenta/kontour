@@ -276,6 +276,19 @@ If no `$idPrefix` is set, this conveniently corresponds to the keys in Laravel's
 It's best to set it as high up as possible in the view, before any forms are included.
 You could even set in the controller and pass it along to the view.
 
+### Available input templates
+
+All inputs take at least the `$name` parameter.
+
+- `input` - Just pass `$type` to set the input type (defaults to `text`).
+- `textarea`
+- `select` - Pass `$options` as an `array` of key-values and an optional `$selected` `string` and `$disabledOptions` `array`.
+- `radiobuttons` - Same API as `select` for printing radiobuttons instead.
+- `multiselect` - Same API as `select` but optional `$selected` `array` instead of `string`.
+- `checkboxes` - Same API as `multiselect` for printing checkboxes instead.
+- `checkbox` - Pass optional `$checked` as `boolean` and `$value` for a `value` attribute other than
+  default `1` (or `$checkbox_default_value`).
+
 ### Button templates
 
 [The button views](https://github.com/kontenta/kontour/tree/master/resources/views/buttons)
