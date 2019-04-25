@@ -270,11 +270,44 @@ If no `$idPrefix` is set, this conveniently corresponds to the keys in Laravel's
 It's best to set it as high up as possible in the view, before any forms are included.
 You could even set in the controller and pass it along to the view.
 
+### Common parameters
+
+All inputs need at least the `$name` parameter
+and optional `$placeholder` and `$ariaDescribedById` parameters.
+
+All form views take a `$controlAttributes` `array` that can be used to set any additional html attributes
+on the form control element.
+This can be useful for setting `required`, `disabled`, `readonly`, `autocomplete`, and other attributes specific to the
+[different input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_<input>_types).
+
+```php
+<form ...>
+@include('kontour::forms.input', [
+  'name' => 'country_code',
+  'controlAttributes' => ['required', 'autocomplete' => 'country', 'size' => '2']
+]])
+</form>
+```
+
+The corresponding parameter to put extra attributes on the label tag is `$labelAttributes`.
+
+### Available input templates
+
+- `textarea` - Pass `$value` to set input contents.
+- `input` - Same API as `textarea`, but you can pass `$type` to set the input type (defaults to `text`).
+- `select` - Pass `$options` as an `array` of key-values and an optional `$selected` `string` and `$disabledOptions` `array`.
+- `radiobuttons` - Same API as `select` for printing radiobuttons instead.
+- `multiselect` - Same API as `select` but optional `$selected` `array` instead of `string`.
+- `checkboxes` - Same API as `multiselect` for printing checkboxes instead.
+- `checkbox` - Pass optional `$checked` as `boolean` and `$value` for a `value` attribute other than
+  default `1` (or `$checkboxDefaultValue`).
+
 ### Button templates
 
 [The button views](https://github.com/kontenta/kontour/tree/master/resources/views/buttons)
 generate buttom elements for common actions like "create", "update", and "destroy",
 as well as a "generic" button, and a "link"-like button.
+The button views take a `$buttonAttributes` array of html attributes to set on the button element.
 
 ```php
 @component('kontour::buttons.generic', ['type' => 'reset'])

@@ -205,4 +205,17 @@ class MultiselectTest extends IntegrationTest
 
         $this->assertRegExp('/<select[\S\s]*autofocus[\S\s]*>/', $output);
     }
+
+    public function test_options_can_be_disabled()
+    {
+        $output = View::make('kontour::forms.multiselect', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+            'disabledOptions' => ['b'],
+        ])->render();
+
+        $this->assertNotRegExp('/<option[^>]*value="a"[^>]*disabled[^>]*>/', $output);
+        $this->assertRegExp('/<option[^>]*value="b"[^>]*disabled[^>]*>/', $output);
+    }
 }

@@ -156,4 +156,16 @@ class InputAttributesTest extends IntegrationTest
 
         $this->assertNotRegExp('/autofocus/', $output);
     }
+
+    public function test_can_have_placeholder()
+    {
+        $output = View::make('kontour::forms.partials.inputAttributes', [
+            'name' => 'testName',
+            'controlId' => 'testId',
+            'errors' => new MessageBag,
+            'placeholder' => 'Placeholder text',
+        ])->render();
+
+        $this->assertRegExp('/placeholder="Placeholder text"/', $output);
+    }
 }

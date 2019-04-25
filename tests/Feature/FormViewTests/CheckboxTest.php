@@ -79,7 +79,7 @@ class CheckboxTest extends IntegrationTest
         $output = View::make('kontour::forms.checkbox', [
             'name' => 'test',
             'errors' => new MessageBag,
-            'checkbox_default_value' => 2,
+            'checkboxDefaultValue' => 2,
         ])->render();
 
         $this->assertRegExp('/<input[\S\s]*value="2"[\S\s]*>/', $output);

@@ -210,4 +210,17 @@ class CheckboxesTest extends IntegrationTest
         $this->assertNotRegExp('/<input[\S\s]*id="test\.0"[\S\s]*autofocus[\S\s]*>[\S\s]*<input/', $output);
         $this->assertRegExp('/<input[\S\s]*id="test\.1"[\S\s]*autofocus[\S\s]*>/', $output);
     }
+
+    public function test_checkboxes_can_be_disabled()
+    {
+        $output = View::make('kontour::forms.checkboxes', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+            'disabledOptions' => ['b'],
+        ])->render();
+
+        $this->assertNotRegExp('/<input[^>]*value="a"[^>]*disabled[^>]*>/', $output);
+        $this->assertRegExp('/<input[^>]*value="b"[^>]*disabled[^>]*>/', $output);
+    }
 }

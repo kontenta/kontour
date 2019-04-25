@@ -9,6 +9,9 @@
       @if(is_array($selected) ? in_array(strval($option_value), $selected) : $selected == strval($option_value))
         checked
       @endif
+      @if(!empty($disabledOptions) and is_array($disabledOptions) and in_array(strval($option_value), $disabledOptions))
+        disabled
+      @endif
       @include('kontour::forms.partials.inputAttributes', [
         'name' => is_array($selected) ? $name . '[]' : $name,
         'autofocusControlId' => empty($autofocusControlId) ? null : ($autofocusControlId == $groupId ? $autofocusControlId . '.0' : $autofocusControlId),
