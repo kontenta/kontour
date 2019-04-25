@@ -1,18 +1,21 @@
+/*! @preserve
+ * If you submit via ajax, you should removeAttribute("data-kontour-dirty") if the request succeedes.
+ */
+
 // Mark inputs as dirty when they change
 ["input", "change"].forEach(function(eventname) {
   document.body.addEventListener(eventname, function(event) {
-    event.target.setAttribute("data-kontour-dirty", "true");
+    if (event.target.form && event.target.type != "search") {
+      event.target.setAttribute("data-kontour-dirty", "true");
+    }
   });
 });
 
 // Mark dirty inputs as saving when their form is submitted
-// If you submit via ajax, you may want to set them back to dirty again if the request fails
 document.body.addEventListener("submit", function(event) {
-  event.target
-    .querySelectorAll('[data-kontour-dirty="true"]')
-    .forEach(function(element) {
-      element.setAttribute("data-kontour-dirty", "saving");
-    });
+  [...event.target.elements].forEach(function(input) {
+    input.setAttribute("data-kontour-dirty", "saving");
+  });
 });
 
 // Alert user if any inputs on the page are dirty before leaving
