@@ -256,6 +256,10 @@ This is actually a good pattern for scoping variables to one of the forms on you
 @include('my_form_partial', ['errors' => $errors->my_form_bag, 'model' => $user])
 ```
 
+If the `$errors` bag contains any errors,
+[old input data from the previous request](https://laravel.com/docs/5.8/helpers#method-old)
+will be used to repopulate the form.
+
 The `id` attribute is set automatically on created elements that need it,
 and it's usually derieved from the `$name` variable.
 If you get an id conflict on a page where two inputs may have the same name,
