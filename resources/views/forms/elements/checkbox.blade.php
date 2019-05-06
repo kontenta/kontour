@@ -1,5 +1,5 @@
 <input type="checkbox"
-  @if(old($name, $checked ?? $model[$name] ?? false))
+  @if(($errors->any() ? old($name) : null) ?? $checked ?? $model[$name] ?? false))
     checked
   @endif
   value="{{ $value ?? $checkboxDefaultValue ?? '1' }}"

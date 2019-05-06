@@ -96,13 +96,25 @@ class CheckboxTest extends IntegrationTest
         $this->assertRegExp('/<input[\S\s]*value="3"[\S\s]*>/', $output);
     }
 
-    public function test_old_value_is_used_if_in_session()
+    public function test_old_value_is_not_used_if_no_errors()
     {
         $this->withSession(['_old_input' => ['test' => true]]);
         request()->setLaravelSession(session());
         $output = View::make('kontour::forms.checkbox', [
             'name' => 'test',
             'errors' => new MessageBag,
+        ])->render();
+
+        $this->assertNotRegExp('/<input[\S\s]*checked[\S\s]*>/', $output);
+    }
+
+    public function test_old_value_is_used_if_in_session_with_errors()
+    {
+        $this->withSession(['_old_input' => ['test' => true]]);
+        request()->setLaravelSession(session());
+        $output = View::make('kontour::forms.checkbox', [
+            'name' => 'test',
+            'errors' => new MessageBag(['another_field' => ['An error']]),
         ])->render();
 
         $this->assertRegExp('/<input[\S\s]*checked[\S\s]*>/', $output);
@@ -131,7 +143,7 @@ class CheckboxTest extends IntegrationTest
                 $value = $value['test'];
             }
             $regexp = '/<input[\S\s]*checked[\S\s]*>/';
-            if($value) {
+            if ($value) {
                 $this->assertRegExp($regexp, $output);
             } else {
                 $this->assertNotRegExp($regexp, $output);
