@@ -117,7 +117,7 @@ class MultiselectTest extends IntegrationTest
         $this->assertRegExp('/<select[\S\s]*>\s*<option\s*value="a"\s*>A<\/option>\s*<option\s*value="b"\s*selected\s*>B<\/option>\s*<optgroup\s*label="A Group">\s*<option\s*value="c"\s*selected\s*>C<\/option>\s*<option\s*value="d"\s*>D<\/option>\s*<\/optgroup>\s*<\/select>/', $output);
     }
 
-    public function test_old_value_is_used_if_in_session()
+    public function test_old_value_is_not_used_if_no_errors()
     {
         $this->withSession(['_old_input' => ['test' => 'a']]);
         request()->setLaravelSession(session());
@@ -125,6 +125,19 @@ class MultiselectTest extends IntegrationTest
             'name' => 'test',
             'options' => ['a' => 'A', 'b' => 'B'],
             'errors' => new MessageBag,
+        ])->render();
+
+        $this->assertNotRegExp('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
+    }
+
+    public function test_old_value_is_used_if_in_session_with_errors()
+    {
+        $this->withSession(['_old_input' => ['test' => 'a']]);
+        request()->setLaravelSession(session());
+        $output = View::make('kontour::forms.multiselect', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag(['another_field' => ['An error']]),
         ])->render();
 
         $this->assertRegExp('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);

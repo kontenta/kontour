@@ -1,5 +1,5 @@
 <{{ $groupTag = $groupTag ?? 'div' }}
-  data-selected-options="{{ implode(' ', $selected = collect(old($name, $selected ?? $model[$name] ?? []))->map(function($item) { return strval($item instanceof Illuminate\Database\Eloquent\Model ? $item->getKey() : $item); })->all()) }}"
+  data-selected-options="{{ implode(' ', $selected = collect(($errors->any() ? old($name) : null) ?? $selected ?? $model[$name] ?? [])->map(function($item) { return strval($item instanceof Illuminate\Database\Eloquent\Model ? $item->getKey() : $item); })->all()) }}"
   @include('kontour::forms.partials.groupAttributes')
 >
   <input type="hidden" name="{{ $name }}" value="">
