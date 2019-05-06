@@ -1,5 +1,5 @@
 <fieldset id="{{ $groupId = $controlId ?? (($idPrefix ?? '') . $name) }}"
-  data-checked-radio="{{ $selected = strval(old($name, $selected ?? $model[$name] ?? '')) }}"
+  data-checked-radio="{{ $selected = strval(($errors->any() ? old($name) : null) ?? $selected ?? $model[$name] ?? '') }}"
   @include('kontour::forms.partials.groupAttributes')
 >
   @include('kontour::forms.elements.label', [
