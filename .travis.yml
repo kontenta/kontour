@@ -29,6 +29,7 @@ install:
 before_script:
   - if [[ $COVERAGE == "" ]]; then phpenv config-rm xdebug.ini; fi
   - composer config discard-changes true
+  - ./vendor/bin/dusk-updater update
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
