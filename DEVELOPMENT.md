@@ -41,6 +41,13 @@ See `.travis.yml` for details.
 - `composer show -D -o` can be used to check how far behind latest version the currently installed dependencies are.
 - `composer update` will install the latest versions of dependencies.
 
+### Troubleshooting tests
+
+#### Chrome versions
+
+If tests report wrong Chrome versions, run `./vendor/bin/dusk-updater update`
+to set it right before running tests again.
+
 ## Following PSR2
 
 This project can be checked against configured coding standards using `composer phpcs` from the project directory.
