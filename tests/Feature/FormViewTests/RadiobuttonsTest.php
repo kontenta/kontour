@@ -67,7 +67,7 @@ class RadiobuttonsTest extends IntegrationTest
         $this->assertRegExp('/<fieldset[^>]*>[\S\s]*<input[^>]*value="a"[^>]*>A[\S\s]*<input[^>]*value="b"[^>]*>B[\S\s]*<fieldset[^>]*>\s*<legend>A Group<\/legend>[\S\s]*<input[^>]*value="c"\s*checked[^>]*>C[\S\s]*<input[^>]*value="d"[^>]*>D[\S\s]*<\/fieldset>[\S\s]*<\/fieldset>/', $output);
     }
 
-    public function test_old_value_is_used_if_in_session()
+    public function test_old_value_is_not_used_if_no_errors()
     {
         $this->withSession(['_old_input' => ['test' => 'a']]);
         request()->setLaravelSession(session());
@@ -75,6 +75,19 @@ class RadiobuttonsTest extends IntegrationTest
             'name' => 'test',
             'options' => ['a' => 'A', 'b' => 'B'],
             'errors' => new MessageBag,
+        ])->render();
+
+        $this->assertNotRegExp('/<input[\S\s]*value="a"[\S\s]*checked[\S\s]*>/', $output);
+    }
+
+    public function test_old_value_is_used_if_in_session_with_errors()
+    {
+        $this->withSession(['_old_input' => ['test' => 'a']]);
+        request()->setLaravelSession(session());
+        $output = View::make('kontour::forms.radiobuttons', [
+            'name' => 'test',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag(['another_field' => ['An error']]),
         ])->render();
 
         $this->assertRegExp('/<input[\S\s]*value="a"[\S\s]*checked[\S\s]*>/', $output);

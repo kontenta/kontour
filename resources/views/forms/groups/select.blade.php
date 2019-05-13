@@ -1,5 +1,5 @@
 <{{ $groupTag = $groupTag ?? 'div' }}
-  data-selected-option="{{ $selected = strval(old($name, $selected ?? $model[$name] ?? '')) }}"
+  data-selected-option="{{ $selected = strval(($errors->any() ? old($name) : null) ?? $selected ?? $model[$name] ?? '') }}"
   @include('kontour::forms.partials.groupAttributes')
 >
   @include('kontour::forms.label', [

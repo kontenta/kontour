@@ -10,7 +10,7 @@
       @include('kontour::forms.partials.inputAttributes', [
         'errorsId' => $errorsId = $controlId . ($errorsSuffix ?? 'Errors'),
       ])
-    >{{ old($name, $value ?? $slot ?? $model[$name] ?? '') }}</textarea>
+    >{{ ($errors->any() ? old($name) : null) ?? $value ?? $slot ?? $model[$name] ?? '' }}</textarea>
     {{ $afterControl ?? '' }}
     @include('kontour::forms.partials.errors')
   </div>

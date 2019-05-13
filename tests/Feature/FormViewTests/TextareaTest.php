@@ -53,13 +53,25 @@ class TextareaTest extends IntegrationTest
         $this->assertRegExp('/<textarea[\S\s]*><\/textarea>/', $output);
     }
 
-    public function test_old_value_is_used_if_in_session()
+    public function test_old_value_is_not_used_if_no_errors()
     {
         $this->withSession(['_old_input' => ['test' => 'old']]);
         request()->setLaravelSession(session());
         $output = View::make('kontour::forms.textarea', [
             'name' => 'test',
             'errors' => new MessageBag,
+        ])->render();
+
+        $this->assertNotRegExp('/<textarea[\S\s]*>old<\/textarea>/', $output);
+    }
+
+    public function test_old_value_is_used_if_in_session_with_errors()
+    {
+        $this->withSession(['_old_input' => ['test' => 'old']]);
+        request()->setLaravelSession(session());
+        $output = View::make('kontour::forms.textarea', [
+            'name' => 'test',
+            'errors' => new MessageBag(['another_field' => ['An error']]),
         ])->render();
 
         $this->assertRegExp('/<textarea[\S\s]*>old<\/textarea>/', $output);

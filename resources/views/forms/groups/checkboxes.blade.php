@@ -1,5 +1,5 @@
 <fieldset id="{{ $groupId = $controlId ?? (($idPrefix ?? '') . $name) }}"
-  data-checked-checkboxes="{{ implode(' ', $selected = collect(old($name, $selected ?? $model[$name] ?? []))->map(function($item) { return strval($item instanceof Illuminate\Database\Eloquent\Model ? $item->getKey() : $item); })->all()) }}"
+  data-checked-checkboxes="{{ implode(' ', $selected = collect(($errors->any() ? old($name) : null) ?? $selected ?? $model[$name] ?? [])->map(function($item) { return strval($item instanceof Illuminate\Database\Eloquent\Model ? $item->getKey() : $item); })->all()) }}"
   @include('kontour::forms.partials.groupAttributes')
 >
   @include('kontour::forms.elements.label', [
