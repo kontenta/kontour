@@ -1,4 +1,4 @@
-name="{{ preg_replace('/\.([^\.]+)/', '[$1]', $name) }}"
+name="{{ preg_replace('/\.([^.]+)/', '[$1]', $name) }}"
 id="{{ $controlId }}"
 @if($errors->hasAny($errorsKeys ?? $name))
   aria-invalid="true"
