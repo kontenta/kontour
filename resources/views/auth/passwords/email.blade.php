@@ -2,6 +2,10 @@
 
 @extends($view_manager->layout())
 
+<?php
+  $autofocusControlId = 'email';
+?>
+
 @section('kontourMain')
   <header>{{ __('Reset Password') }}</header>
 

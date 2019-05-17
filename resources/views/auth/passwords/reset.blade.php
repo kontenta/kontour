@@ -2,6 +2,10 @@
 
 @extends($view_manager->layout())
 
+<?php
+  $autofocusControlId = array_merge(array_intersect(['email', 'password'], $errors->keys()), ['email'])[0];
+?>
+
 @section('kontourMain')
   <header>{{ __('Reset Password') }}</header>
   <form method="POST" action="{{ route('kontour.password.request') }}">

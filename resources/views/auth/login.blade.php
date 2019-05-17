@@ -3,6 +3,10 @@
 
 @extends($view_manager->layout())
 
+<?php
+  $autofocusControlId = 'email';
+?>
+
 @section('kontourMain')
   <header>{{ __('Login') }}</header>
   <form method="POST" action="{{ route('kontour.login') }}">
