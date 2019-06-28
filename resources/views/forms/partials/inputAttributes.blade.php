@@ -1,4 +1,4 @@
-name="{{ preg_replace('/\.([^\.]*)/', '[$1]', $name) }}"
+@include('kontour::forms.partials.nameAttribute')
 id="{{ $controlId }}"
 @if($errors->hasAny($errorsKeys ?? $name))
   aria-invalid="true"

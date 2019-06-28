@@ -19,6 +19,17 @@ class CheckboxesTest extends IntegrationTest
         $this->assertRegExp('/<input[\S\s]*name="test\[]"[\S\s]*>/', $output);
     }
 
+    public function test_checkboxes_has_array_name_from_dot_notation()
+    {
+        $output = View::make('kontour::forms.checkboxes', [
+            'name' => 'test.name.in.dot.notation',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+        ])->render();
+
+        $this->assertRegExp('/<input[\S\s]*name="test\[name]\[in]\[dot]\[notation]\[]"[\S\s]*>/', $output);
+    }
+
     public function test_checkboxes_has_hidden_presence_input()
     {
         $output = View::make('kontour::forms.checkboxes', [
@@ -28,6 +39,17 @@ class CheckboxesTest extends IntegrationTest
         ])->render();
 
         $this->assertRegExp('/<input type="hidden" name="test" value="">[\S\s]*<input[\S\s]*type="checkbox"[\S\s]*>/', $output);
+    }
+
+    public function test_checkboxes_has_hidden_presence_input_from_dot_notation()
+    {
+        $output = View::make('kontour::forms.checkboxes', [
+            'name' => 'test.name.in.dot.notation',
+            'options' => ['a' => 'A', 'b' => 'B'],
+            'errors' => new MessageBag,
+        ])->render();
+
+        $this->assertRegExp('/<input type="hidden" name="test\[name]\[in]\[dot]\[notation]" value="">[\S\s]*<input[\S\s]*type="checkbox"[\S\s]*>/', $output);
     }
 
     public function test_fieldset_can_have_custom_control_id()
