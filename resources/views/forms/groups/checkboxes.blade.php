@@ -7,7 +7,7 @@
     'errorsId' => $errorsId = $groupId . ($errorsSuffix ?? 'Errors'),
     'labelAttributes' => $legendAttributes ?? [],
   ])
-  <input type="hidden" name="{{ $name }}" value="">
+  <input type="hidden" @include('kontour::forms.partials.nameAttribute') value="">
   @include('kontour::forms.partials.checkableOptions')
   @include('kontour::forms.partials.errors')
 </fieldset>
