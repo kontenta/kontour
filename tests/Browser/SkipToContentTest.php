@@ -20,7 +20,7 @@ class SkipToContentTest extends DuskTest
              * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
              */
             $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
-            $browser->visit($routeManager->loginUrl());
+            $browser->loginAs($this->user, 'admin')->visit($routeManager->indexUrl());
 
             $this->assertEquals('absolute', $browser->element($this->element)->getCSSValue('position'));
 
