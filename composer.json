@@ -3,7 +3,7 @@
   "description": "Admin area tool utilities for Laravel",
   "license": "MIT",
   "require": {
-    "kontenta/kontour-forms": "^0.1.0",
+    "kontenta/kontour-forms": "^1.0",
     "laravel/framework": "5.7.*|5.8.*"
   },
   "require-dev": {
