@@ -1,1 +1,0 @@
-@include('kontour::forms.elements.label')
