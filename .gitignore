@@ -11,6 +11,7 @@ tags
 /build
 mix-manifest.json
 phpunit.xml
+.phpunit.result.cache
 phpcs.xml
 /tests/Browser/console/
 /tests/Browser/screenshots/
