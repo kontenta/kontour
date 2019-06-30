@@ -18,6 +18,7 @@ trait IntegrationTestSetupTrait
     {
         return [
             \Kontenta\Kontour\Providers\KontourServiceProvider::class,
+            \Kontenta\KontourForms\KontourFormsServiceProvider::class,
         ];
     }
 
