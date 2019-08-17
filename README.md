@@ -54,7 +54,7 @@ Laravel app. To keep track of what's happening you may print all the routes
 using artisan:
 
 ```bash
-php artisan route:list
+php artisan route:list -c
 ```
 
 The list will display information about every URI, route name, and middleware
