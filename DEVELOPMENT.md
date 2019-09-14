@@ -45,7 +45,8 @@ See `.travis.yml` for details.
 
 #### Chrome versions
 
-If tests report wrong Chrome versions, run `./vendor/bin/dusk-updater update`
+If tests report wrong Chrome versions, run
+`./vendor/bin/dusk-updater detect --auto-update`
 to set it right before running tests again.
 
 ## Following PSR2
