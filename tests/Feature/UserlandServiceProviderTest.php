@@ -15,12 +15,12 @@ class UserlandServiceProviderTest extends UserlandAdminToolTest
 
     public function test_routes_contain_userland_prefix()
     {
-        $this->assertContains('/userland-tool', route('userland.index'));
+        $this->assertStringContainsString('/userland-tool', route('userland.index'));
     }
 
     public function test_routes_contain_admin_prefix()
     {
-        $this->assertContains('/' . config('kontour.url_prefix'), route('userland.index'));
+        $this->assertStringContainsString('/' . config('kontour.url_prefix'), route('userland.index'));
     }
 
     public function test_widget_manager_contains_widget()
