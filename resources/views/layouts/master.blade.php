@@ -53,7 +53,7 @@
 
 @push('styles')
   @foreach($view_manager->getStylesheetUrls() as $stylesheet)
-    <link href="{{ url($stylesheet) }}" rel="stylesheet" type="text/css">
+    <link href="{{ url($stylesheet) }}" rel="stylesheet">
   @endforeach
 @endpush
 
