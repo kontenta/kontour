@@ -14,3 +14,4 @@ phpunit.xml
 phpcs.xml
 /tests/Browser/console/
 /tests/Browser/screenshots/
+.phpunit.result.cache
