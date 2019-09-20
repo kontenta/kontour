@@ -134,9 +134,9 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response = $this->actingAs($this->user, 'admin')->get(route('userland.index'));
 
         $response->assertSuccessful();
-        $response->assertSee('<link href="' . url('admin.css') . '" rel="stylesheet" type="text/css">');
-        $response->assertSee('<link href="' . url('userland.css') . '" rel="stylesheet" type="text/css">');
-        $response->assertSee('<link href="' . url('userland-index.css') . '" rel="stylesheet" type="text/css">');
+        $response->assertSee('<link href="' . url('admin.css') . '" rel="stylesheet">');
+        $response->assertSee('<link href="' . url('userland.css') . '" rel="stylesheet">');
+        $response->assertSee('<link href="' . url('userland-index.css') . '" rel="stylesheet">');
 
         $response->assertSee('<script src="https://cdn.example.com/framework.js"></script>');
         $response->assertSee('<script src="' . url('admin.js') . '"></script>');
