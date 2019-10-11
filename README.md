@@ -228,12 +228,6 @@ The `toolLayout` has sections `kontourToolHeader`, `kontourToolMain`,
 It's a good idea to include `@parent` in your sections for other content,
 for example registered widgets.
 
-## Templates
-
-Kontour provides
-[some Blade views](https://github.com/kontenta/kontour/tree/master/resources/views)
-that can be used with `@include` or `@component` to display common elements in your admin views.
-
 ## Adding menu items
 
 Usually adding menu items is done in a service provider's boot method:
