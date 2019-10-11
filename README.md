@@ -25,9 +25,10 @@ You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
   - Global widgets for menu, logout, and recently used tools.
   - Tool widgets for feedback messages, crumbtrail, and item history.
 - Admin route groups with configurable url-prefix and domain.
-- Reusable form input Blade includes/components - [docs](docs/form-templates.md).
-- Reusable button Blade includes/components - [docs](docs/button-templates.md).
-- Reusable time Blade includes/components - [docs](docs/time-templates.md).
+- Reusable Blade includes/components:
+  - [Form tempates](docs/form-templates.md).
+  - [Button templates](docs/button-templates.md).
+  - [Time templates](docs/time-templates.md).
 - Authorization for `AdminLink`s ensures that the current user has privileges
   before echoing links.
 
