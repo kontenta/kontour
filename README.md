@@ -26,6 +26,7 @@ You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
   - Tool widgets for feedback messages, crumbtrail, and item history.
 - Admin route groups with configurable url-prefix and domain.
 - Reusable form input Blade includes/components - [docs](docs/form-templates.md).
+- Reusable button input Blade includes/components - [docs](docs/button-templates.md).
 - Authorization for `AdminLink`s ensures that the current user has privileges
   before echoing links.
 
@@ -231,21 +232,6 @@ for example registered widgets.
 Kontour provides
 [some Blade views](https://github.com/kontenta/kontour/tree/master/resources/views)
 that can be used with `@include` or `@component` to display common elements in your admin views.
-
-### Button templates
-
-[The button views](https://github.com/kontenta/kontour/tree/master/resources/views/buttons)
-generate buttom elements for common actions like "create", "update", and "destroy",
-as well as a "generic" button, and a "link"-like button.
-The button views take a `$buttonAttributes` array of html attributes to set on the button element.
-
-```php
-@component('kontour::buttons.generic', ['type' => 'reset'])
-  Oh, the old <code>reset</code> button!
-@endcomponent
-```
-
-There's also a logout button and hamburger menu button.
 
 ### Time templates
 
