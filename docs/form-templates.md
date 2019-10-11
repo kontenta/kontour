@@ -14,9 +14,9 @@ Pull them into your Blade views using `@include` or `@component`, like this:
 The form views will prefill inputs with data from a `$model` variable if it is set in the Blade view,
 so you may just pass an Eloquent model to the view.
 
-[Laravel's `$errors` bag](https://laravel.com/docs/5.8/validation#quick-displaying-the-validation-errors)
+[Laravel's `$errors` bag](https://laravel.com/docs/validation#quick-displaying-the-validation-errors)
 is used to display errors for inputs.
-If you have [named error bags](https://laravel.com/docs/5.8/validation#named-error-bags) in your view,
+If you have [named error bags](https://laravel.com/docs/validation#named-error-bags) in your view,
 you can put one of those bags into the `$errors` variable by including a partial view.
 This is actually a good pattern for scoping variables to one of the forms on your page, if you have more than one.
 
@@ -25,7 +25,7 @@ This is actually a good pattern for scoping variables to one of the forms on you
 ```
 
 If the `$errors` bag contains any errors,
-[old input data from the previous request](https://laravel.com/docs/5.8/helpers#method-old)
+[old input data from the previous request](https://laravel.com/docs/helpers#method-old)
 will be used to repopulate the form.
 
 The `id` attribute is set automatically on created elements that need it,
