@@ -1,6 +1,6 @@
 # Form templates
 
-[The form views](https://github.com/kontenta/kontour/tree/master/resources/views/forms)
+[The form views](../resources/views/forms/)
 generate form inputs along with labels and validation feedback.
 
 Pull them into your Blade views using `@include` or `@component`, like this:

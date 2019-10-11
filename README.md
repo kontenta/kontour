@@ -75,7 +75,7 @@ php artisan vendor:publish --tag="kontour-config"
 ```
 
 Then you can edit `config/kontour.php` and uncomment any of the
-[example settings](https://github.com/kontenta/kontour/blob/master/config/kontour.php)
+[example settings](config/kontour.php)
 you want to tweak.
 
 ## Logging in
@@ -85,7 +85,7 @@ By default the Kontour dashboard route `kontour.index` is reached by going to
 
 To enable login you need to make sure the user model you want to give access to
 the admin area implements the
-[`Kontenta\Kontour\Contracts\AdminUser` contract](https://github.com/kontenta/kontour/blob/master/src/Contracts/AdminUser.php)
+[`Kontenta\Kontour\Contracts\AdminUser` contract](src/Contracts/AdminUser.php)
 which has method `getDisplayName()` that should return... a display name!
 
 The default Kontour configuration uses Laravel's `web` Guard from
@@ -182,7 +182,7 @@ Then edit `config/kontour.php` and uncomment `'js/kontour.js'` in the
 
 In a service provider you can register your admin routes
 using methods from the
-[`RegistersAdminRoutes` trait](https://github.com/kontenta/kontour/blob/master/src/Concerns/RegistersAdminWidgets.php).
+[`RegistersAdminRoutes` trait](src/Concerns/RegistersAdminWidgets.php).
 
 ## Running code only before admin routes are accessed
 
@@ -249,7 +249,7 @@ $this->app->make(AdminBootManager::class)->beforeRoute(function (MenuWidget $men
 ## Authorizing controller actions
 
 The
-[`AuthorizesAdminRequests` trait](https://github.com/kontenta/kontour/blob/master/src/Concerns/AuthorizesAdminRequests.php)
+[`AuthorizesAdminRequests` trait](src/Concerns/AuthorizesAdminRequests.php)
 has convenince methods for controllers that both authorizes the current user
 against an ability, and dispatches an event that records the visit for the
 recent visits widgets.
@@ -268,10 +268,10 @@ Both methods take 4 parameters:
 ## Registering widgets
 
 All widgets implement the
-[`AdminWidget` interface](https://github.com/kontenta/kontour/blob/master/src/Contracts/AdminWidget.php)
+[`AdminWidget` interface](src/Contracts/AdminWidget.php)
 and can be registered into a section from a service provider
 or controller using methods from the
-[`RegistersAdminWidgets`](`https://github.com/kontenta/kontour/blob/master/src/Concerns/RegistersAdminWidgets.php`)
+[`RegistersAdminWidgets`](src/Concerns/RegistersAdminWidgets.php)
 trait.
 
 In the `kontour.php` config file you may specify the widgets for all
