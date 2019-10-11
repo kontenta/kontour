@@ -26,7 +26,7 @@ You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
   - Tool widgets for feedback messages, crumbtrail, and item history.
 - Admin route groups with configurable url-prefix and domain.
 - Reusable form input Blade includes/components - [docs](docs/form-templates.md).
-- Reusable button input Blade includes/components - [docs](docs/button-templates.md).
+- Reusable time Blade includes/components - [docs](docs/time-templates.md).
 - Authorization for `AdminLink`s ensures that the current user has privileges
   before echoing links.
 
@@ -232,24 +232,6 @@ for example registered widgets.
 Kontour provides
 [some Blade views](https://github.com/kontenta/kontour/tree/master/resources/views)
 that can be used with `@include` or `@component` to display common elements in your admin views.
-
-### Time templates
-
-There's a [view](https://github.com/kontenta/kontour/tree/master/resources/views/elements/time.blade.php)
-for rendering [`<time>` tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)
-to which you supply a [`Carbon`](https://carbon.nesbot.com)
-`$carbon` variable and it prints a proper `datetime` atom string attribute
-and by default a human readable time difference.
-
-```php
-@include('kontour::elements.time', ['carbon' => \Carbon\Carbon::now()])
-```
-
-You may also pass a `$format` string to display the tag contents in a specific format
-instad of the default relative time.
-If you pass `['format' => true]` the default format from Kontour's
-[config file](https://github.com/kontenta/kontour/blob/master/config/kontour.php)
-will be used.
 
 ## Adding menu items
 
