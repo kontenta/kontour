@@ -75,3 +75,7 @@ php artisan vendor:publish --tag="kontour-styling" --force
 ```
 
 Or you can softlink the generated css file of this package from your public css directory.
+
+## Release new version
+
+Releases are handled through [the GitHub releases interface](https://github.com/kontenta/kontour/releases).
