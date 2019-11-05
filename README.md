@@ -150,6 +150,36 @@ admin users, and a separate Laravel User Provider and Guard to go with that.
    'passwords' => 'admins',
    ```
 
+### Creating admin users
+
+It doesn't make sense to have a public registration for admin users so
+the easiest way to create admin users for development and production is through `php artisan tinker`:
+
+```php
+/* Use the name of your admin model, this examples uses the default App\User */
+
+// List all users
+App\User::all();
+
+// Start building a new user object
+$user = new App\User();
+
+// Set fields
+$user->name = 'Admin';
+$user->email = 'admin@yourdomain.net';
+
+// Set a password (remember to send it to the user):
+$user->password = bcrypt(...);
+// ...or have the user reset password before logging in (if you've added a password reset configuration):
+$user->password = '';
+
+// Then save the user!
+$user->save();
+```
+
+If you're feeling adventuorus, you can then create an admin tool within Kontour
+to let a logged in admin create and invite new admin users!
+
 ## Publish the default CSS and js in your Laravel project
 
 You probably want to add some style to your admin area,
