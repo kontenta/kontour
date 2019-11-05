@@ -34,7 +34,7 @@ Any Laravel log messages generated during testing can be found in the
 ### Testing with different versions
 
 [Travis CI](https://travis-ci.org/kontenta/kontour) is set up to run tests
-against PHP `7.1`, `7.2` & `7.3` in combination with Laravel `5.7` & `5.8`.
+against PHP `7.2` & `7.3` in combination with Laravel `5.8` & `6.*`.
 See `.travis.yml` for details.
 
 - `composer update --prefer-lowest` can be used before running tests for testing backwards compatibility.

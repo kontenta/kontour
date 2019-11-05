@@ -13,7 +13,7 @@ authentication, authorization, validation, views, etc.
 Kontour is there to provide enhancements and reusable elements for your admin
 area.
 
-You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
+You need at least **Laravel 5.8** and **PHP 7.2** to use this package.
 
 ## Features
 
@@ -25,7 +25,10 @@ You need at least **Laravel 5.7** and **PHP 7.1** to use this package.
   - Global widgets for menu, logout, and recently used tools.
   - Tool widgets for feedback messages, crumbtrail, and item history.
 - Admin route groups with configurable url-prefix and domain.
-- Reusable form input Blade includes/components.
+- Reusable Blade includes/components:
+  - [Form tempates](docs/form-templates.md).
+  - [Button templates](docs/button-templates.md).
+  - [Time templates](docs/time-templates.md).
 - Authorization for `AdminLink`s ensures that the current user has privileges
   before echoing links.
 
@@ -73,7 +76,7 @@ php artisan vendor:publish --tag="kontour-config"
 ```
 
 Then you can edit `config/kontour.php` and uncomment any of the
-[example settings](https://github.com/kontenta/kontour/blob/master/config/kontour.php)
+[example settings](config/kontour.php)
 you want to tweak.
 
 ## Logging in
@@ -83,7 +86,7 @@ By default the Kontour dashboard route `kontour.index` is reached by going to
 
 To enable login you need to make sure the user model you want to give access to
 the admin area implements the
-[`Kontenta\Kontour\Contracts\AdminUser` contract](https://github.com/kontenta/kontour/blob/master/src/Contracts/AdminUser.php)
+[`Kontenta\Kontour\Contracts\AdminUser` contract](src/Contracts/AdminUser.php)
 which has method `getDisplayName()` that should return... a display name!
 
 The default Kontour configuration uses Laravel's `web` Guard from
@@ -210,7 +213,7 @@ Then edit `config/kontour.php` and uncomment `'js/kontour.js'` in the
 
 In a service provider you can register your admin routes
 using methods from the
-[`RegistersAdminRoutes` trait](https://github.com/kontenta/kontour/blob/master/src/Concerns/RegistersAdminWidgets.php).
+[`RegistersAdminRoutes` trait](src/Concerns/RegistersAdminWidgets.php).
 
 ## Running code only before admin routes are accessed
 
@@ -256,119 +259,6 @@ The `toolLayout` has sections `kontourToolHeader`, `kontourToolMain`,
 It's a good idea to include `@parent` in your sections for other content,
 for example registered widgets.
 
-## Templates
-
-Kontour provides
-[some Blade views](https://github.com/kontenta/kontour/tree/master/resources/views)
-that can be used with `@include` or `@component` to display common elements in your admin views.
-
-### Form templates
-
-[The form views](https://github.com/kontenta/kontour/tree/master/resources/views/forms)
-generate form inputs along with labels and validation feedback.
-
-```php
-<form ...>
-@include('kontour::forms.input', ['name' => 'username', 'type' => 'email'])
-</form>
-```
-
-The form views will prefill inputs with data from a `$model` variable if it is set in the blade view,
-so you may just pass an Eloquent model to the view.
-
-[Laravel's `$errors` bag](https://laravel.com/docs/5.8/validation#quick-displaying-the-validation-errors)
-is used to display errors for inputs.
-If you have [named error bags](https://laravel.com/docs/5.8/validation#named-error-bags) in your view,
-you can put one of those bags into the `$errors` variable by including a partial view.
-This is actually a good pattern for scoping variables to one of the forms on your page, if you have more than one.
-
-```php
-@include('my_form_partial', ['errors' => $errors->my_form_bag, 'model' => $user])
-```
-
-If the `$errors` bag contains any errors,
-[old input data from the previous request](https://laravel.com/docs/5.8/helpers#method-old)
-will be used to repopulate the form.
-
-The `id` attribute is set automatically on created elements that need it,
-and it's usually derieved from the `$name` variable.
-If you get an id conflict on a page where two inputs may have the same name,
-e.g. in different forms, different `$idPrefix` can be passed along to the templates
-to make the ids unique.
-
-#### Input autofocus
-
-The variable `$autofocusControlId` can be set to the id of the input you want to `autofocus`,
-usually the first field with errors.
-If no `$idPrefix` is set, this conveniently corresponds to the keys in Laravel's `$errors` bag.
-It's best to set it as high up as possible in the view, before any forms are included.
-You could even set in the controller and pass it along to the view.
-
-### Common parameters
-
-All inputs need at least the `$name` parameter
-and optional `$placeholder` and `$ariaDescribedById` parameters.
-
-All form views take a `$controlAttributes` `array` that can be used to set any additional html attributes
-on the form control element.
-This can be useful for setting `required`, `disabled`, `readonly`, `autocomplete`, and other attributes specific to the
-[different input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_<input>_types).
-
-```php
-<form ...>
-@include('kontour::forms.input', [
-  'name' => 'country_code',
-  'controlAttributes' => ['required', 'autocomplete' => 'country', 'size' => '2']
-]])
-</form>
-```
-
-The corresponding parameter to put extra attributes on the label tag is `$labelAttributes`.
-
-### Available input templates
-
-- `textarea` - Pass `$value` to set input contents.
-- `input` - Same API as `textarea`, but you can pass `$type` to set the input type (defaults to `text`).
-- `select` - Pass `$options` as an `array` of key-values and an optional `$selected` `string` and `$disabledOptions` `array`.
-- `radiobuttons` - Same API as `select` for printing radiobuttons instead.
-- `multiselect` - Same API as `select` but optional `$selected` `array` instead of `string`.
-- `checkboxes` - Same API as `multiselect` for printing checkboxes instead.
-- `checkbox` - Pass optional `$checked` as `boolean` and `$value` for a `value` attribute other than
-  default `1` (or `$checkboxDefaultValue`).
-
-### Button templates
-
-[The button views](https://github.com/kontenta/kontour/tree/master/resources/views/buttons)
-generate buttom elements for common actions like "create", "update", and "destroy",
-as well as a "generic" button, and a "link"-like button.
-The button views take a `$buttonAttributes` array of html attributes to set on the button element.
-
-```php
-@component('kontour::buttons.generic', ['type' => 'reset'])
-  Oh, the old <code>reset</code> button!
-@endcomponent
-```
-
-There's also a logout button and hamburger menu button.
-
-### Time templates
-
-There's a [view](https://github.com/kontenta/kontour/tree/master/resources/views/elements/time.blade.php)
-for rendering [`<time>` tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time)
-to which you supply a [`Carbon`](https://carbon.nesbot.com)
-`$carbon` variable and it prints a proper `datetime` atom string attribute
-and by default a human readable time difference.
-
-```php
-@include('kontour::elements.time', ['carbon' => \Carbon\Carbon::now()])
-```
-
-You may also pass a `$format` string to display the tag contents in a specific format
-instad of the default relative time.
-If you pass `['format' => true]` the default format from Kontour's
-[config file](https://github.com/kontenta/kontour/blob/master/config/kontour.php)
-will be used.
-
 ## Adding menu items
 
 Usually adding menu items is done in a service provider's boot method:
@@ -390,7 +280,7 @@ $this->app->make(AdminBootManager::class)->beforeRoute(function (MenuWidget $men
 ## Authorizing controller actions
 
 The
-[`AuthorizesAdminRequests` trait](https://github.com/kontenta/kontour/blob/master/src/Concerns/AuthorizesAdminRequests.php)
+[`AuthorizesAdminRequests` trait](src/Concerns/AuthorizesAdminRequests.php)
 has convenince methods for controllers that both authorizes the current user
 against an ability, and dispatches an event that records the visit for the
 recent visits widgets.
@@ -409,10 +299,10 @@ Both methods take 4 parameters:
 ## Registering widgets
 
 All widgets implement the
-[`AdminWidget` interface](https://github.com/kontenta/kontour/blob/master/src/Contracts/AdminWidget.php)
+[`AdminWidget` interface](src/Contracts/AdminWidget.php)
 and can be registered into a section from a service provider
 or controller using methods from the
-[`RegistersAdminWidgets`](`https://github.com/kontenta/kontour/blob/master/src/Concerns/RegistersAdminWidgets.php`)
+[`RegistersAdminWidgets`](src/Concerns/RegistersAdminWidgets.php)
 trait.
 
 In the `kontour.php` config file you may specify the widgets for all
