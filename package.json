@@ -1,9 +1,9 @@
 {
   "devDependencies": {
-    "laravel-mix": "^4.0.14",
+    "laravel-mix": "^4.1.4",
     "resolve-url-loader": "2.3.1",
-    "sass": "^1.16.1",
-    "sass-loader": "7.*"
+    "sass": "^1.23.3",
+    "sass-loader": "^7.3.1"
   },
   "scripts": {
     "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
