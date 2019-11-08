@@ -1,6 +1,8 @@
 /*! @preserve
- * If you submit via some other mechanism than page reloading (e.g. ajax),
- * call removeAttribute("data-kontour-dirty") on all saved inputs.
+ * If you submit a form by some other mechanism than default page navigation
+ * (e.g. ajax), call
+ * removeAttribute("data-kontour-dirty")
+ * on every input in the form.
  */
 
 // Mark inputs as dirty when they change
