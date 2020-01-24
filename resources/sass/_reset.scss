@@ -21,7 +21,7 @@ body {
 
 * + * {
   // Add default space between all adjacent elements
-  margin-top: 1rem;
+  margin-top: $kontour-spacing-base;
 }
 
 dt,
@@ -102,7 +102,7 @@ dl > * {
 
 dl > div {
   margin-top: 0;
-  padding-bottom: 1rem;
+  padding-bottom: $kontour-spacing-base;
 }
 
 dt {

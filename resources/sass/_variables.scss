@@ -1,3 +1,5 @@
+$kontour-spacing-base: 1rem !default;
+
 $kontour-text-color: black !default;
 $kontour-background-color: white !default;
 $kontour-tinted-background-color: mix($kontour-text-color, $kontour-background-color, 5%) !default;
