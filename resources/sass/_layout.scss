@@ -131,3 +131,12 @@ body {
 header[data-kontour-section="kontourToolHeader"] + * {
   margin-top: 1rem;
 }
+
+[data-kontour-section="kontourStickyActions"] {
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  background-color: $kontour-background-color;
+  color: $kontour-text-color;
+  padding: 1rem 0;
+}
