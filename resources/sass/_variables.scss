@@ -1,6 +1,6 @@
 $kontour-text-color: black !default;
 $kontour-background-color: white !default;
-$kontour-tinted-background-color: transparentize($kontour-text-color, 0.95) !default;
+$kontour-tinted-background-color: mix($kontour-text-color, $kontour-background-color, 5%) !default;
 
 $kontour-unimposing-color: gray !default;
 $kontour-destructive-color: red !default;
@@ -8,7 +8,7 @@ $kontour-success-color: green !default;
 $kontour-warning-color: orange !default;
 $kontour-error-color: $kontour-destructive-color !default;
 
-$kontour-border-color: $kontour-tinted-background-color !default;
+$kontour-border-color: mix($kontour-text-color, $kontour-background-color, 10%) !default;
 $kontour-border: 1px solid $kontour-border-color !default;
 $kontour-border-radius: .1em;
 
