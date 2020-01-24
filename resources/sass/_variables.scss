@@ -1,16 +1,20 @@
-$kontour-success-color: green !default;
-$kontour-warning-color: orange !default;
-$kontour-error-color: red !default;
+$kontour-text-color: black !default;
+$kontour-background-color: white !default;
+$kontour-tinted-background-color: transparentize($kontour-text-color, 0.95) !default;
+
 $kontour-unimposing-color: gray !default;
 $kontour-destructive-color: red !default;
-$kontour-border-color: transparentize(black, 0.95) !default;
-$kontour-tinted-background-color: $kontour-border-color !default;
+$kontour-success-color: green !default;
+$kontour-warning-color: orange !default;
+$kontour-error-color: $kontour-destructive-color !default;
+
+$kontour-border-color: $kontour-tinted-background-color !default;
 $kontour-border: 1px solid $kontour-border-color !default;
 $kontour-border-radius: .1em;
-$kontour-input-padding: .1em;
 
 $kontour-button-color: blue !default;
 $kontour-button-active-box-shadow: inset 0 2px 4px transparentize(black, 0.95) !default;
 $kontour-button-focus-box-shadow: 0 0 0 .2rem change_color($kontour-button-color, $lightness: 80%) !default;
 $kontour-button-focus-outline: none !default;
 
+$kontour-input-padding: .1em;

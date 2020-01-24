@@ -14,6 +14,9 @@ html {
 body {
   // Reset all margins
   margin: 0;
+
+  background-color: $kontour-background-color;
+  color: $kontour-text-color;
 }
 
 * + * {
