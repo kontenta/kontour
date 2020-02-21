@@ -74,7 +74,6 @@ return [
     |
     | Stylesheets & javascripts to load on all admin pages.
     | Can be full or relative urls.
-    | You may even use the asset() helper.
     |
      */
 
