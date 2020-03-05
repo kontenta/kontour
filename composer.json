@@ -7,7 +7,7 @@
   },
   "require-dev": {
     "mockery/mockery": "^1.2",
-    "orchestra/testbench-dusk": "~3.8.2 || ^4.0.1",
+    "orchestra/testbench-dusk": "3.8.2 || ^4.0.1",
     "squizlabs/php_codesniffer": "^3.3",
     "timacdonald/log-fake": "^1.0"
   },

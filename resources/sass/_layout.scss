@@ -1,4 +1,4 @@
-$kontour-hamburger-width: 4rem !default;
+$kontour-hamburger-width: 4*$kontour-spacing-base !default;
 
 // Main layout with all major blocks as direct children of the body
 body {
@@ -9,7 +9,7 @@ body {
   > * {
     flex-grow: 1;
     margin-top: 0;
-    padding: 1rem;
+    padding: $kontour-spacing-base;
   }
 
   > header {
@@ -21,7 +21,7 @@ body {
   > main {
     flex-grow: 1000;
     flex-basis: 45ch;
-    min-height: calc(100vh - 10rem);
+    min-height: calc(100vh - #{10*$kontour-spacing-base});
   }
 
   > footer {
@@ -60,7 +60,7 @@ body {
   }
 
   > * {
-    padding: 0.5rem;
+    padding: $kontour-spacing-base/2;
   }
 
   > :first-child {
@@ -107,7 +107,7 @@ body {
   > * {
     flex-grow: 1;
     margin-top: 0;
-    padding: 1rem;
+    padding: $kontour-spacing-base;
   }
 }
 
@@ -118,16 +118,22 @@ body {
   align-items: baseline;
   align-content: center;
 
-  padding: 0.5rem;
+  padding: $kontour-spacing-base/2;
 
   > * {
-    margin: 0.25rem;
-    padding: 0.25rem;
+    margin: $kontour-spacing-base/4;
+    padding: $kontour-spacing-base/4;
 
     text-align: center;
   }
 }
 
 header[data-kontour-section="kontourToolHeader"] + * {
-  margin-top: 1rem;
+  margin-top: $kontour-spacing-base;
+}
+
+[data-kontour-section="kontourStickyActions"] {
+  position: sticky;
+  top: 0;
+  bottom: 0;
 }

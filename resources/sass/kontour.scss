@@ -73,6 +73,12 @@ body > footer {
   }
 }
 
+[data-kontour-section="kontourStickyActions"] {
+  background-color: $kontour-tinted-background-color;
+  color: $kontour-text-color;
+  padding: $kontour-spacing-base;
+}
+
 @import "layout";
 @import "utilities";
 @import "forms";
