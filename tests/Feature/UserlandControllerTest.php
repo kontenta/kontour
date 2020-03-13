@@ -36,15 +36,15 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response = $this->actingAs($this->user, 'admin')->get(route('userland.index'));
 
         $response->assertSuccessful();
-        $response->assertSee('<main');
+        $response->assertSee('<main', false);
         $response->assertSee('UserlandAdminWidget');
         $response->assertDontSee('UnauthorizedWidget');
 
         Event::assertDispatched(AdminToolVisited::class, function ($e) {
             $now = new \DateTimeImmutable();
             return $e->visit->getLink()->getUrl() == route('userland.index') and
-            $this->user->is($e->visit->getUser()) and
-            $now->getTimestamp() - $e->visit->getDateTime()->getTimestamp() >= 0;
+                $this->user->is($e->visit->getUser()) and
+                $now->getTimestamp() - $e->visit->getDateTime()->getTimestamp() >= 0;
         });
     }
 
@@ -53,11 +53,11 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response = $this->actingAs($this->user, 'admin')->get(route('userland.index'));
 
         $response->assertSuccessful();
-        $response->assertSee('<ul data-kontour-widget="menu">');
-        $response->assertSee('>main<');
-        $response->assertSee('<a href="' . route('userland.index') . '" aria-current="page">Userland Tool</a>');
-        $response->assertSee('>External<');
-        $response->assertSee('<a href="http://external.com">External Link</a>');
+        $response->assertSee('<ul data-kontour-widget="menu">', false);
+        $response->assertSee('>main<', false);
+        $response->assertSee('<a href="' . route('userland.index') . '" aria-current="page">Userland Tool</a>', false);
+        $response->assertSee('>External<', false);
+        $response->assertSee('<a href="http://external.com">External Link</a>', false);
     }
 
     public function test_recent_visits_widgets()
@@ -80,8 +80,8 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSuccessful();
 
         // Check personal links
-        $response->assertSee('<aside data-kontour-widget="personalRecentVisits">');
-        $response->assertSee('<header>Recent</header>');
+        $response->assertSee('<aside data-kontour-widget="personalRecentVisits">', false);
+        $response->assertSee('<header>Recent</header>', false);
 
         $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="show" title="Recent Userland Tool"><a href="' . route('userland.index') . '" aria-current="page">Recent Userland Tool</a>');
         $this->assertEquals(0, $numberOfMatches);
@@ -90,13 +90,13 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $this->assertEquals(1, $numberOfMatches);
 
         // Check team links
-        $response->assertSee('<aside data-kontour-widget="teamRecentVisits">');
-        $response->assertSee('<header>Team Recent</header>');
+        $response->assertSee('<aside data-kontour-widget="teamRecentVisits">', false);
+        $response->assertSee('<header>Team Recent</header>', false);
 
         $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" data-kontour-username="' . $otherUser->getDisplayName() . '" title="Other Recent Userland Tool"><a href="' . route('userland.edit', 1) . '">Other Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);
 
-        $response->assertDontSee('<a href="' . route('userland.index') . '">Other Recent Userland Tool</a>');
+        $response->assertDontSee('<a href="' . route('userland.index') . '">Other Recent Userland Tool</a>', false);
     }
 
     public function test_item_history_widget()
@@ -104,10 +104,10 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response = $this->actingAs($this->user, 'admin')->get(route('userland.edit', 1));
 
         $response->assertSuccessful();
-        $response->assertSee('<section data-kontour-widget="itemHistory">');
-        $response->assertSee('<header>Item History</header>');
-        $response->assertSee('<li lang="en" data-kontour-entry-action="created" data-kontour-username="' . $this->user->getDisplayName() . '">');
-        $response->assertSee('<li lang="en" data-kontour-entry-action="updated" data-kontour-username="' . $this->user->getDisplayName() . '">');
+        $response->assertSee('<section data-kontour-widget="itemHistory">', false);
+        $response->assertSee('<header>Item History</header>', false);
+        $response->assertSee('<li lang="en" data-kontour-entry-action="created" data-kontour-username="' . $this->user->getDisplayName() . '">', false);
+        $response->assertSee('<li lang="en" data-kontour-entry-action="updated" data-kontour-username="' . $this->user->getDisplayName() . '">', false);
     }
 
     public function test_crumbtrail_widget()
@@ -115,9 +115,9 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response = $this->actingAs($this->user, 'admin')->get(route('userland.edit', 1));
 
         $response->assertSuccessful();
-        $response->assertSee('<nav aria-label="Crumb trail" data-kontour-widget="crumbtrail">');
-        $response->assertSee('<a href="' . route('userland.index') . '">1</a>');
-        $response->assertSee('<li aria-current="true"><a href="' . route('userland.edit', 1) . '" aria-current="page">2</a>');
+        $response->assertSee('<nav aria-label="Crumb trail" data-kontour-widget="crumbtrail">', false);
+        $response->assertSee('<a href="' . route('userland.index') . '">1</a>', false);
+        $response->assertSee('<li aria-current="true"><a href="' . route('userland.edit', 1) . '" aria-current="page">2</a>', false);
     }
 
     public function test_message_widget()
@@ -125,8 +125,8 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response = $this->actingAs($this->user, 'admin')->get(route('userland.edit', 1));
 
         $response->assertSuccessful();
-        $response->assertSee('<section data-kontour-widget="message">');
-        $response->assertSeeInOrder(['<li', 'data-kontour-message-level="info"', 'role="status"', '>Hello World!</li>']);
+        $response->assertSee('<section data-kontour-widget="message">', false);
+        $response->assertSeeInOrder(['<li', 'data-kontour-message-level="info"', 'role="status"', '>Hello World!</li>'], false);
     }
 
     public function test_css_and_js_additions()
@@ -134,13 +134,13 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response = $this->actingAs($this->user, 'admin')->get(route('userland.index'));
 
         $response->assertSuccessful();
-        $response->assertSee('<link href="' . url('admin.css') . '" rel="stylesheet">');
-        $response->assertSee('<link href="' . url('userland.css') . '" rel="stylesheet">');
-        $response->assertSee('<link href="' . url('userland-index.css') . '" rel="stylesheet">');
+        $response->assertSee('<link href="' . url('admin.css') . '" rel="stylesheet">', false);
+        $response->assertSee('<link href="' . url('userland.css') . '" rel="stylesheet">', false);
+        $response->assertSee('<link href="' . url('userland-index.css') . '" rel="stylesheet">', false);
 
-        $response->assertSee('<script src="https://cdn.example.com/framework.js"></script>');
-        $response->assertSee('<script src="' . url('admin.js') . '"></script>');
-        $response->assertSee('<script src="' . url('userland.js') . '"></script>');
-        $response->assertSee('<script src="' . url('userland-index.js') . '"></script>');
+        $response->assertSee('<script src="https://cdn.example.com/framework.js"></script>', false);
+        $response->assertSee('<script src="' . url('admin.js') . '"></script>', false);
+        $response->assertSee('<script src="' . url('userland.js') . '"></script>', false);
+        $response->assertSee('<script src="' . url('userland-index.js') . '"></script>', false);
     }
 }
