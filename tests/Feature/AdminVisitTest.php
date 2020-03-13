@@ -30,6 +30,6 @@ class AdminVisitTest extends UserlandAdminToolTest
         $visit->__wakeup(); // Restore any serialized models on the original object
         $unserializedVisit = unserialize($serializedVisit);
 
-        $this->assertEquals($visit, $unserializedVisit, "Unserialization did not produce the orginal object structure");
+        $this->assertEquals($visit, $unserializedVisit, "Unserialization did not produce the original object structure");
     }
 }

@@ -67,6 +67,6 @@ class AuthorizesWithAbilityTest extends IntegrationTest
         $unserializedLink = unserialize($serializedLink);
 
         $this->assertTrue($unserializedLink->isAuthorized($this->user));
-        $this->assertEquals($link, $unserializedLink, "Unserialization did not produce the orginal object structure");
+        $this->assertEquals($link, $unserializedLink, "Unserialization did not produce the original object structure");
     }
 }
