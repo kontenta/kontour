@@ -18,7 +18,7 @@ class AuthorizesWithAbilityTest extends IntegrationTest
     {
         parent::setUp();
         $this->prepareDatabase();
-        $this->user = factory(User::class)->create();
+        $this->user = factory(User::class)->create()->fresh();
 
         Gate::define('testGate', function ($user, $argument) {
             return $user->id == $argument->id;

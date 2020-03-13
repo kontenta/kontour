@@ -18,7 +18,7 @@ class AdminVisitTest extends UserlandAdminToolTest
     {
         parent::setUp();
         $this->prepareDatabase();
-        $this->user = factory(User::class)->create();
+        $this->user = factory(User::class)->create()->fresh();
     }
 
     public function test_can_be_serialized_and_deserialized()
