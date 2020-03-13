@@ -153,7 +153,8 @@ admin users, and a separate Laravel User Provider and Guard to go with that.
 ### Creating admin users
 
 It doesn't make sense to have a public registration for admin users so
-the easiest way to create admin users for development and production is through `php artisan tinker`:
+the easiest way to create admin users for development and production is through
+`php artisan tinker`:
 
 ```php
 /* Use the name of your admin model, this examples uses the default App\User */
