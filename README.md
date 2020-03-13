@@ -54,7 +54,7 @@ composer require kontenta/kontour
 
 Kontour, and packages using it, will register routes automatically in your
 Laravel app. To keep track of what's happening you may print all the routes
-using artisan:
+using `artisan`:
 
 ```bash
 php artisan route:list -c
@@ -69,7 +69,7 @@ set to change the url prefix or domain.
 
 ## Configure Kontour in your Laravel project
 
-Publish the configuration with artisan:
+Publish the configuration with `artisan`:
 
 ```bash
 php artisan vendor:publish --tag="kontour-config"
