@@ -54,7 +54,7 @@ composer require kontenta/kontour
 
 Kontour, and packages using it, will register routes automatically in your
 Laravel app. To keep track of what's happening you may print all the routes
-using artisan:
+using `artisan`:
 
 ```bash
 php artisan route:list -c
@@ -69,7 +69,7 @@ set to change the url prefix or domain.
 
 ## Configure Kontour in your Laravel project
 
-Publish the configuration with artisan:
+Publish the configuration with `artisan`:
 
 ```bash
 php artisan vendor:publish --tag="kontour-config"
@@ -153,7 +153,8 @@ admin users, and a separate Laravel User Provider and Guard to go with that.
 ### Creating admin users
 
 It doesn't make sense to have a public registration for admin users so
-the easiest way to create admin users for development and production is through `php artisan tinker`:
+the easiest way to create admin users for development and production is through
+`php artisan tinker`:
 
 ```php
 /* Use the name of your admin model, this examples uses the default App\User */
@@ -186,7 +187,15 @@ You probably want to add some style to your admin area,
 perhaps pure HTML is too brutalist for your taste...
 A good place to start is the default Kontour stylesheet.
 
-Publish the CSS file using artisan:
+The included javascript includes a feature to confirm any delete-action before
+submitting those forms, and a confirmation before leaving a page with "dirty"
+form inputs.
+
+### Method A: `artisan`
+
+Traditionally, publishing assets is done using `artisan`.
+
+#### Publish CSS with `artisan`
 
 ```bash
 php artisan vendor:publish --tag="kontour-styling"
@@ -195,12 +204,7 @@ php artisan vendor:publish --tag="kontour-styling"
 Then edit `config/kontour.php` and uncomment `'css/kontour.css'` in the
 `stylesheets` array to make every admin page pull in the stylesheet.
 
-### Javascript
-
-The included javascript includes a feature to confirm any delete-action before submitting those forms,
-and a confirmation before leaving a page with "dirty" form inputs.
-
-The procedure to publish javascript using artisan:
+#### Publish js with `artisan`
 
 ```bash
 php artisan vendor:publish --tag="kontour-js"
@@ -208,6 +212,37 @@ php artisan vendor:publish --tag="kontour-js"
 
 Then edit `config/kontour.php` and uncomment `'js/kontour.js'` in the
 `javascripts` array to make every admin page pull in the javascript.
+
+### Method B: Mix
+
+It's also possible to use [Laravel Mix](https://laravel.com/docs/mix)
+to copy and *version* public assets.
+
+In `webpack.mix.js`:
+
+```js
+mix
+  .copy("vendor/kontenta/kontour/resources/css/kontour.css", "public/css")
+  .copy("vendor/kontenta/kontour/resources/js/kontour.js", "public/js");
+
+if (mix.inProduction()) {
+  mix.version();
+}
+```
+
+In `config/kontour.php`
+
+```php
+'stylesheets' => [
+        (string) mix('css/kontour.css'),
+    ],
+    'javascripts' => [
+        (string) mix('js/kontour.js'),
+    ],
+```
+
+Casting Mix's output to a string in the config file makes it possible to cache
+the config in a production environment.
 
 ## Registering admin routes
 
