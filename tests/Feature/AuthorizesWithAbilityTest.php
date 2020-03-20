@@ -18,7 +18,7 @@ class AuthorizesWithAbilityTest extends IntegrationTest
     {
         parent::setUp();
         $this->prepareDatabase();
-        $this->user = factory(User::class)->create();
+        $this->user = factory(User::class)->create()->fresh();
 
         Gate::define('testGate', function ($user, $argument) {
             return $user->id == $argument->id;
@@ -67,6 +67,6 @@ class AuthorizesWithAbilityTest extends IntegrationTest
         $unserializedLink = unserialize($serializedLink);
 
         $this->assertTrue($unserializedLink->isAuthorized($this->user));
-        $this->assertEquals($link, $unserializedLink, "Unserialization did not produce the orginal object structure");
+        $this->assertEquals($link, $unserializedLink, "Unserialization did not produce the original object structure");
     }
 }

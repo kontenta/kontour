@@ -18,7 +18,7 @@ class AdminVisitTest extends UserlandAdminToolTest
     {
         parent::setUp();
         $this->prepareDatabase();
-        $this->user = factory(User::class)->create();
+        $this->user = factory(User::class)->create()->fresh();
     }
 
     public function test_can_be_serialized_and_deserialized()
@@ -30,6 +30,6 @@ class AdminVisitTest extends UserlandAdminToolTest
         $visit->__wakeup(); // Restore any serialized models on the original object
         $unserializedVisit = unserialize($serializedVisit);
 
-        $this->assertEquals($visit, $unserializedVisit, "Unserialization did not produce the orginal object structure");
+        $this->assertEquals($visit, $unserializedVisit, "Unserialization did not produce the original object structure");
     }
 }

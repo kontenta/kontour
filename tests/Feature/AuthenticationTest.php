@@ -99,9 +99,9 @@ class AuthenticationTest extends IntegrationTest
     {
         $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
         $response = $this->actingAs($this->user, 'admin')->get($routeManager->indexUrl());
-        $response->assertSee('<section data-kontour-widget="userAccount">');
+        $response->assertSee('<section data-kontour-widget="userAccount">', false);
         $response->assertSee($this->user->getDisplayName());
-        $response->assertSee(">Logout</span>\n</button>");
+        $response->assertSee(">Logout</span>\n</button>", false);
     }
 
     public function test_logout()
