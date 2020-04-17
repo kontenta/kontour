@@ -40,7 +40,7 @@ The variable `$autofocusControlId` can be set to the id of the input you want to
 usually the first field with errors.
 If no `$idPrefix` is set, this conveniently corresponds to the keys in Laravel's `$errors` bag.
 It's best to set it as high up as possible in the view, before any forms are included.
-You could even set in the controller and pass it along to the view.
+You could even set it in the controller and pass it along to the view.
 
 ## Common parameters
 
