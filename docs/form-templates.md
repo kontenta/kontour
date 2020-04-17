@@ -13,17 +13,20 @@ like this:
 </form>
 ```
 
-To pass some data as HTML within a `@slot`,
+To easily pass some data as HTML within a `@slot`, the
 [`@component`](https://laravel.com/docs/6.x/blade#components-and-slots)
-can also be used.
+syntax can also be used.
 But keep in mind that any data the component needs must be explicitly passed,
 no data is inherited.
 If you don't need slots, it's usually easier to go with `@include`.
 
-## Prefilled input values
+## Prefilled input values from model
 
 The form views will prefill inputs with data from a `$model` variable if it is set in the Blade view,
 so you may just pass an Eloquent model to the view.
+
+The `model` should be explicitly passed to each input when using
+`@component` syntax.
 
 ## Error messages
 
@@ -41,21 +44,32 @@ If the `$errors` bag contains any errors,
 [old input data from the previous request](https://laravel.com/docs/helpers#method-old)
 will be used to repopulate the form.
 
+The `errors` bag should be explicitly passed to each input when using
+`@component` syntax.
+
 ## HTML ids
 
 The `id` attribute is set automatically on created elements that need it,
 and it's usually derived from the `$name` variable.
 If you get an id conflict on a page where two inputs may have the same name,
-e.g. in different forms, an `$idPrefix` can be passed along to each template
+e.g. in different forms, an `$idPrefix` can be passed to each form template
 to make the ids unique.
+
+The `idPrefix` should be explicitly passed to each input when using
+`@component` syntax.
 
 ## Input autofocus
 
-The variable `$autofocusControlId` can be set to the id of the input you want to `autofocus`,
-usually the first field with errors.
-If no `$idPrefix` is set, this conveniently corresponds to the keys in Laravel's `$errors` bag.
-It's best to set it as high up as possible in the view, before any forms are included.
+The variable `$autofocusControlId` can be set to the id of the input you want to
+ `autofocus`, usually the first field with errors.
+If no `$idPrefix` is set, the field ids conveniently correspond to the keys in
+Laravel's `$errors` bag.
+It's best to set it as high up as possible in the view, before any forms are
+included.
 You could even set it in the controller and pass it along to the view.
+
+The `autofocusControlId` should be explicitly passed to each input when using
+`@component` syntax.
 
 ## Common parameters
 
