@@ -3,7 +3,9 @@
 [The form views](../resources/views/forms/)
 generate form inputs along with labels and validation feedback.
 
-Pull them into your Blade views using `@include` or `@component`, like this:
+Pull them into your Blade views using
+[`@include`](https://laravel.com/docs/blade#including-subviews)
+like this:
 
 ```php
 <form ...>
@@ -11,12 +13,11 @@ Pull them into your Blade views using `@include` or `@component`, like this:
 </form>
 ```
 
-When using [`@include`](https://laravel.com/docs/blade#including-subviews)
-all data from the parent view will be available, but keep in mind when using
+To pass some data as html within a `@slot`,
 [`@component`](https://laravel.com/docs/6.x/blade#components-and-slots)
-that any data the component needs must be explicitly passed.
-The benefit of using `@component` syntax is when you want to pass some content
-as html within a `@slot`.
+can also be used.
+But keep in mind that any data the component needs must be explicitly passed,
+no data is inherited.
 If you don't need slots, it's usually easier to go with `@include`.
 
 The form views will prefill inputs with data from a `$model` variable if it is set in the Blade view,
