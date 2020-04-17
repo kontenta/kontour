@@ -31,7 +31,7 @@ will be used to repopulate the form.
 The `id` attribute is set automatically on created elements that need it,
 and it's usually derived from the `$name` variable.
 If you get an id conflict on a page where two inputs may have the same name,
-e.g. in different forms, different `$idPrefix` can be passed along to the templates
+e.g. in different forms, an `$idPrefix` can be passed along to each template
 to make the ids unique.
 
 ## Input autofocus
