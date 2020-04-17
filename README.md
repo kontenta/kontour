@@ -107,8 +107,8 @@ The most common situation is that you want a separate table and model for
 admin users, and a separate Laravel User Provider and Guard to go with that.
 
 1. Create an Eloquent model and table.
-   The simplest way is to make copies of Laravel's `app/User.php` model and
-   create users table migration in `database\migrations` and modify them
+   The simplest way is to make copies of Laravel's `app/User.php` model and the
+   `create_users_table` migration in `database\migrations` and modify them
    to your needs.
 2. Make sure the model implements `Kontenta\Kontour\Contracts\AdminUser`,
    perhaps by extending `Kontenta\Kontour\Auth\AdminUser`.
