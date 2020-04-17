@@ -1,9 +1,10 @@
 # Button templates
 
 [The button views](../resources/views/buttons/)
-generate buttom elements for common actions like "create", "update", and "destroy",
-as well as a "generic" button, and a "link"-like button.
-The button views take a `$buttonAttributes` array of HTML attributes to set on the button element.
+generate button elements for common actions like "create", "update", and
+"destroy", as well as a "generic" button, and a "link"-like button.
+The button views take a `$buttonAttributes` array of HTML attributes to set on
+the button element.
 
 ```php
 @component('kontour::buttons.generic', ['type' => 'reset'])
