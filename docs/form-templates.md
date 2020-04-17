@@ -13,7 +13,7 @@ like this:
 </form>
 ```
 
-To pass some data as html within a `@slot`,
+To pass some data as HTML within a `@slot`,
 [`@component`](https://laravel.com/docs/6.x/blade#components-and-slots)
 can also be used.
 But keep in mind that any data the component needs must be explicitly passed,
@@ -41,7 +41,7 @@ If the `$errors` bag contains any errors,
 [old input data from the previous request](https://laravel.com/docs/helpers#method-old)
 will be used to repopulate the form.
 
-## Html ids
+## HTML ids
 
 The `id` attribute is set automatically on created elements that need it,
 and it's usually derived from the `$name` variable.
@@ -62,7 +62,7 @@ You could even set it in the controller and pass it along to the view.
 All inputs need at least the `$name` parameter
 and optional `$placeholder` and `$ariaDescribedById` parameters.
 
-All form views take a `$controlAttributes` `array` that can be used to set any additional html attributes
+All form views take a `$controlAttributes` `array` that can be used to set any additional HTML attributes
 on the form control element.
 This can be useful for setting `required`, `disabled`, `readonly`, `autocomplete`, and other attributes specific to the
 [different input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_<input>_types).
