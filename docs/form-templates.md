@@ -20,8 +20,12 @@ But keep in mind that any data the component needs must be explicitly passed,
 no data is inherited.
 If you don't need slots, it's usually easier to go with `@include`.
 
+## Prefilled input values
+
 The form views will prefill inputs with data from a `$model` variable if it is set in the Blade view,
 so you may just pass an Eloquent model to the view.
+
+## Error messages
 
 [Laravel's `$errors` bag](https://laravel.com/docs/validation#quick-displaying-the-validation-errors)
 is used to display error messages for inputs.
@@ -36,6 +40,8 @@ This is actually a good pattern for scoping variables to one of the forms on you
 If the `$errors` bag contains any errors,
 [old input data from the previous request](https://laravel.com/docs/helpers#method-old)
 will be used to repopulate the form.
+
+## Html ids
 
 The `id` attribute is set automatically on created elements that need it,
 and it's usually derived from the `$name` variable.
