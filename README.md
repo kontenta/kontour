@@ -50,6 +50,9 @@ Installing Kontour explicitly in your Laravel project:
 composer require kontenta/kontour
 ```
 
+If you don't want the Kontour service provider to run in your project you may
+[opt out of package discovery](https://laravel.com/docs/packages#package-discovery).
+
 ## Checking the route list
 
 Kontour, and packages using it, will register routes automatically in your
