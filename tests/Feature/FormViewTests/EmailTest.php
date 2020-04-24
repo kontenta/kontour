@@ -8,6 +8,12 @@ use Kontenta\Kontour\Tests\IntegrationTest;
 
 class EmailTest extends IntegrationTest
 {
+    public static $defaultEmailAttributes = [
+        'autocomplete' => 'email',
+        'autocapitalize' => "none",
+        'autocorrect' => "off",
+    ];
+
     public function test_input_type_defaults_to_email()
     {
         $output = View::make('kontour::forms.email', [
@@ -44,5 +50,16 @@ class EmailTest extends IntegrationTest
         ])->render();
 
         $this->assertRegExp('/<input[\S\s]*name="test"[\S\s]*>/', $output);
+    }
+
+    public function test_email_input_has_default_attributes()
+    {
+        $output = View::make('kontour::forms.email', [
+            'errors' => new MessageBag,
+        ])->render();
+
+        foreach (self::$defaultEmailAttributes as $attribute => $default) {
+            $this->assertStringContainsString("$attribute=\"$default\"", $output);
+        }
     }
 }
