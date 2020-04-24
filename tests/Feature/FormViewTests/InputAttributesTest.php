@@ -16,7 +16,7 @@ class InputAttributesTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/name="testName"/', $output);
+        $this->assertRegExp('/name="testName"\W/', $output);
     }
 
     public function test_name_in_dot_notation()
@@ -27,7 +27,7 @@ class InputAttributesTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/name="test\[name]\[in]\[dot]\[notation]"/', $output);
+        $this->assertRegExp('/name="test\[name]\[in]\[dot]\[notation]"\W/', $output);
     }
 
     public function test_has_control_id()
@@ -38,7 +38,7 @@ class InputAttributesTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/id="testId"/', $output);
+        $this->assertRegExp('/\s+id="testId"\W/', $output);
     }
 
     public function test_aria_invalid_not_present_on_error_free_input()
@@ -72,7 +72,7 @@ class InputAttributesTest extends IntegrationTest
             'errorsId' => 'errorsId',
         ])->render();
 
-        $this->assertRegExp('/aria-invalid="true"/', $output);
+        $this->assertRegExp('/\s+aria-invalid="true"\W/', $output);
     }
 
     public function test_error_input_referencing_error_element()
@@ -84,7 +84,7 @@ class InputAttributesTest extends IntegrationTest
             'errorsId' => 'errorsId',
         ])->render();
 
-        $this->assertRegExp('/aria-describedby="errorsId"/', $output);
+        $this->assertRegExp('/\s+aria-describedby="errorsId"\W/', $output);
     }
 
     public function test_aria_describedby_can_be_set()
@@ -96,7 +96,7 @@ class InputAttributesTest extends IntegrationTest
             'ariaDescribedById' => 'descriptionId',
         ])->render();
 
-        $this->assertRegExp('/aria-describedby="descriptionId"/', $output);
+        $this->assertRegExp('/\s+aria-describedby="descriptionId"\W/', $output);
     }
 
     public function test_error_input_overwriting_aria_describedby()
@@ -109,7 +109,7 @@ class InputAttributesTest extends IntegrationTest
             'ariaDescribedById' => 'descriptionId',
         ])->render();
 
-        $this->assertRegExp('/aria-describedby="errorsId"/', $output);
+        $this->assertRegExp('/\s+aria-describedby="errorsId"\W/', $output);
         $this->assertNotRegExp('/aria-describedby="descriptionId"/', $output);
     }
 
@@ -129,8 +129,8 @@ class InputAttributesTest extends IntegrationTest
             ],
         ])->render();
 
-        $this->assertRegExp('/a="b"\s*boolean\s*true\s*b="false"\s*c="0"/', $output);
-        $this->assertNotRegExp('/\sfalse\s/', $output);
+        $this->assertRegExp('/\s+a="b"\s+boolean\s+true\s+b="false"\s+c="0"\W/', $output);
+        $this->assertNotRegExp('/\sfalse\W/', $output);
     }
 
     public function test_can_have_autofocus()
@@ -142,7 +142,7 @@ class InputAttributesTest extends IntegrationTest
             'autofocusControlId' => 'testId',
         ])->render();
 
-        $this->assertRegExp('/autofocus/', $output);
+        $this->assertRegExp('/\s+autofocus\W/', $output);
     }
 
     public function test_other_element_can_have_autofocus()
@@ -166,6 +166,6 @@ class InputAttributesTest extends IntegrationTest
             'placeholder' => 'Placeholder text',
         ])->render();
 
-        $this->assertRegExp('/placeholder="Placeholder text"/', $output);
+        $this->assertRegExp('/\s+placeholder="Placeholder text"\W/', $output);
     }
 }
