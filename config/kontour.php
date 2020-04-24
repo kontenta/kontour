@@ -156,7 +156,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | The default time format is used for displaying non-relative times.
-    | Examlpe:
+    | Example:
     | D, M j, Y H:i T
     | Mon, Mar 25, 2019 10:51 UTC
     |
