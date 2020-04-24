@@ -10,7 +10,7 @@ return [
     | The Kontour service provider registers admin auth and dashboard routes
     | unless turned off here.
     |
-     */
+    */
 
     'register_routes' => true,
 
@@ -21,7 +21,7 @@ return [
     |
     | Display name for header and page title of admin pages
     |
-     */
+    */
 
     'title' => 'Kontour ' . env('APP_NAME') . ' ' . env('APP_ENV'),
 
@@ -35,7 +35,7 @@ return [
     | If you've added a configuration for a separate Guard for admin pages in
     | your app's config/auth.php you should set that guard's name here.
     |
-     */
+    */
 
     'guard' => 'web',
 
@@ -50,7 +50,7 @@ return [
     | the configuration to 'passwords' in your app's config/auth.php and set
     | the configuration name here.
     |
-     */
+    */
 
     //'passwords' => 'users',
 
@@ -61,7 +61,7 @@ return [
     |
     | Common prefix for the admin urls.
     |
-     */
+    */
 
     'url_prefix' => 'admin',
 
@@ -75,7 +75,7 @@ return [
     | Set a domain name here if your admin pages should reside on another
     | domain or sub-domain than the rest of your app.
     |
-     */
+    */
 
     'domain' => null,
 
@@ -87,7 +87,7 @@ return [
     | Stylesheets & javascripts that load on all admin pages.
     | Can be full or relative urls.
     |
-     */
+    */
 
     'stylesheets' => [
         //'css/kontour.css',
@@ -103,7 +103,7 @@ return [
     |
     | Configure the widgets to load on all admin-pages.
     |
-     */
+    */
 
     'global_widgets' => [
         \Kontenta\Kontour\Contracts\MenuWidget::class => 'kontourNav',
@@ -119,7 +119,7 @@ return [
     |
     | Number of links to show in recent visits widgets.
     |
-     */
+    */
 
     'max_recent_visits' => [
         'personal' => 7,
@@ -133,7 +133,7 @@ return [
     |
     | Restructure the menu, overriding menu item positions.
     |
-     */
+    */
 
     // Move all links from one heading to another
     'menu_heading_names' => [
@@ -172,6 +172,6 @@ return [
     | D, M j, Y H:i T
     | Mon, Mar 25, 2019 10:51 UTC
     |
-     */
+    */
     'time_format' => 'D, M j, Y H:i T',
 ];
