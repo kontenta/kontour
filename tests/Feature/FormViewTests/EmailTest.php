@@ -10,8 +10,8 @@ class EmailTest extends IntegrationTest
 {
     public static $defaultEmailAttributes = [
         'autocomplete' => 'email',
-        'autocapitalize' => "none",
-        'autocorrect' => "off",
+        'autocapitalize' => 'none',
+        'autocorrect' => 'off',
     ];
 
     public function test_input_type_defaults_to_email()
@@ -60,6 +60,30 @@ class EmailTest extends IntegrationTest
 
         foreach (self::$defaultEmailAttributes as $attribute => $default) {
             $this->assertStringContainsString("$attribute=\"$default\"", $output);
+        }
+    }
+
+    public function test_control_attributes_can_be_set()
+    {
+        $output = View::make('kontour::forms.email', [
+            'errors' => new MessageBag,
+            'controlAttributes' => [
+                'autocomplete' => 'off',
+                'autocapitalize' => 'on',
+                'autocorrect' => 'on',
+                'required',
+                'a' => 'b',
+            ]
+        ])->render();
+
+        $this->assertRegExp('/\s+autocomplete="off"\W/', $output);
+        $this->assertRegExp('/\s+autocapitalize="on"\W/', $output);
+        $this->assertRegExp('/\s+autocorrect="on"\W/', $output);
+        $this->assertRegExp('/\s+required\W/', $output);
+        $this->assertRegExp('/\s+a="b"\W/', $output);
+
+        foreach (self::$defaultEmailAttributes as $attribute => $default) {
+            $this->assertStringNotContainsString("$attribute=\"$default\"", $output);
         }
     }
 }
