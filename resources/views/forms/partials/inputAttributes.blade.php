@@ -3,9 +3,9 @@
 id="{{ $controlId }}"
 @if($errors->hasAny($errorsKeys ?? $name))
 aria-invalid="true"
-aria-describedby="{{ $errorsId }}"
-@elseif(isset($ariaDescribedById))
-aria-describedby="{{ $ariaDescribedById }}"
+<?php
+  $controlAttributes['aria-describedby'] = array_merge([$errorsId], [$controlAttributes['aria-describedby'] ?? []])
+?>
 @endif
 @if(!empty($autofocusControlId) and $autofocusControlId == $controlId)
 autofocus
