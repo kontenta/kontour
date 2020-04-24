@@ -50,6 +50,9 @@ Installing Kontour explicitly in your Laravel project:
 composer require kontenta/kontour
 ```
 
+If you don't want the Kontour service provider to run in your project you may
+[opt out of package discovery](https://laravel.com/docs/packages#package-discovery).
+
 ## Checking the route list
 
 Kontour, and packages using it, will register routes automatically in your
@@ -65,7 +68,7 @@ in your app.
 Among others you'll find the `kontour.login`, `kontour.logout`,
 and `kontour.index` routes.
 If these routes are not to your liking there are configuration values you can
-set to change the url prefix or domain.
+set to change the url prefix or domain, or even turn them off completely.
 
 ## Configure Kontour in your Laravel project
 
@@ -107,9 +110,10 @@ The most common situation is that you want a separate table and model for
 admin users, and a separate Laravel User Provider and Guard to go with that.
 
 1. Create an Eloquent model and table.
-   The simplest way is to make copies of Laravel's `app/User.php` model and
-   create users table migration in `database\migrations` and modify them
-   to your needs.
+   The simplest way is to make copies of Laravel's original `app/User.php` model
+   and
+   `database/migrations/2014_10_12_000000_create_users_table.php` migration
+   and modify them to your needs.
 2. Make sure the model implements `Kontenta\Kontour\Contracts\AdminUser`,
    perhaps by extending `Kontenta\Kontour\Auth\AdminUser`.
 3. Edit `config/auth.php` to add a Guard, User Provider and perhaps a password
