@@ -72,7 +72,7 @@ return [
     | Stylesheets & javascripts
     |--------------------------------------------------------------------------
     |
-    | Stylesheets & javascripts to load on all admin pages.
+    | Stylesheets & javascripts that load on all admin pages.
     | Can be full or relative urls.
     |
      */
