@@ -7,7 +7,7 @@
     $controlAttributes['aria-invalid'] = "true";
     $controlAttributes['aria-describedby'] = array_merge([$errorsId], [$controlAttributes['aria-describedby'] ?? []]);
   }
-  if(!empty($autofocusControlId) and $autofocusControlId == $controlId) {
+  if(!empty($autofocusControlId) and $autofocusControlId == $controlId and !in_array('autofocus', $controlAttributes)) {
     $controlAttributes[] = 'autofocus';
   }
   if(!empty($placeholder)) {
