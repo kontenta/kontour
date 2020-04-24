@@ -144,10 +144,15 @@ class KontourServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerResources();
-        $this->registerRoutes();
+
+        if (config('kontour.register_routes')) {
+            $this->registerRoutes();
+        }
+
         $this->registerEventListeners();
 
         $this->registerWidgets();
+
         $this->registerAssets();
 
         if ($this->app->runningInConsole()) {

@@ -68,7 +68,7 @@ in your app.
 Among others you'll find the `kontour.login`, `kontour.logout`,
 and `kontour.index` routes.
 If these routes are not to your liking there are configuration values you can
-set to change the url prefix or domain.
+set to change the url prefix or domain, or even turn them off completely.
 
 ## Configure Kontour in your Laravel project
 

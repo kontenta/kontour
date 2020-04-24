@@ -4,6 +4,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Route registration
+    |--------------------------------------------------------------------------
+    |
+    | The Kontour service provider registers admin auth and dashboard routes
+    | unless turned off here.
+    |
+     */
+
+    'register_routes' => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | Admin Title
     |--------------------------------------------------------------------------
     |
@@ -123,7 +135,7 @@ return [
     |
      */
 
-     // Move all links from one heading to another
+    // Move all links from one heading to another
     'menu_heading_names' => [
         //'Design' => 'Style', //Any links put in heading 'Design' will end up under heading 'Style'
     ],
