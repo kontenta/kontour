@@ -1,6 +1,18 @@
 // Utilities for screenreaders
 
-/* Supports IE9+ */
+/*
+ * Visually hide element until it or anything inside receives focus.
+ * Warning: Has no effect in IE or pre-chromium Edge!
+ */
+.sr-only-focusable:not(:focus-within):not(:active) {
+  position: absolute;
+  clip-path: inset(50%);
+}
+
+/*
+ * Visually hide element until it receives focus.
+ * Supports IE9+
+ */
 .sr-only:not(:focus):not(:active) {
   position: absolute;
   clip: rect(0 0 0 0);
@@ -12,10 +24,4 @@
   border: 0;
   overflow: hidden;
   white-space: nowrap;
-}
-
-/* Warning: Has no effect in IE or pre-chromium Edge */
-.sr-only-focusable:not(:focus-within):not(:active) {
-  position: absolute;
-  clip-path: inset(50%);
 }
