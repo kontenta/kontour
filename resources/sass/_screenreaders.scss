@@ -11,15 +11,8 @@
   border: 0;
 }
 
-.sr-only-focusable {
-  @extend .sr-only;
-
-  &:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
+/* Warning: Has no effect in IE or pre-chromium Edge */
+.sr-only-focusable:not(:focus-within):not(:active) {
+  position: absolute;
+  clip-path: inset(50%);
 }
