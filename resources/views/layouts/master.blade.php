@@ -4,7 +4,7 @@
 @extends('kontour::layouts.html')
 
 @section('body')
-  <a id="skip-to-content" href="#kontourMain" class="sr-only-focusable">{{ __('Skip to content') }}</a>
+  <a id="skip-to-content" href="#kontourMain" class="sr-only">{{ __('Skip to content') }}</a>
 
   <header data-kontour-section="kontourHeader">
     @section('kontourHeader')
