@@ -1,6 +1,7 @@
 // Utilities for screenreaders
 
-.sr-only {
+/* Supports IE9+ */
+.sr-only:not(:focus):not(:active) {
   position: absolute;
   width: 1px;
   height: 1px;
