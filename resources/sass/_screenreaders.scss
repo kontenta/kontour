@@ -1,7 +1,11 @@
 // Utilities for screenreaders
 
 /*
- * Visually hide element until it or anything inside receives focus.
+ * Visually hide any element until it, or anything inside, receives focus.
+ *
+ * This can be useful to hide a non-interactive element grouping
+ * some interactive elements, revealing them all together.
+ *
  * Warning: Has no effect in IE or pre-chromium Edge!
  */
 .sr-only-focusable:not(:focus-within):not(:active) {
@@ -10,7 +14,11 @@
 }
 
 /*
- * Visually hide element until it receives focus.
+ * Visually hide an element, until it receives focus.
+ *
+ * This has good browser compatibility but doesn't work when
+ * the element has any focusable descendants.
+ *
  * Supports IE9+
  */
 .sr-only:not(:focus):not(:active) {
