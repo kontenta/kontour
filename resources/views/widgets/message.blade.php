@@ -1,5 +1,5 @@
 <section data-kontour-widget="message">
-  <ol>
+  <ol role="list">
     @foreach($messages as $message)
       <li
         data-kontour-message-level="{{ $message['level'] }}"

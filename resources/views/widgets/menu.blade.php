@@ -1,10 +1,10 @@
 @include('kontour::buttons.hamburger')
-<ul data-kontour-widget="menu">
+<ul data-kontour-widget="menu" role="list">
 @foreach($links as $heading => $headingLinks)
   @if(count($headingLinks))
     <li>
       <small>{{ $heading }}</small>
-      <ul>
+      <ul role="list">
       @foreach($headingLinks as $link)
         <li{!! preg_match('#'.$link->getUrl().'#', url()->full()) ? ' aria-current="true"' : '' !!}>{{ $link }}</li>
       @endforeach

@@ -53,7 +53,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response = $this->actingAs($this->user, 'admin')->get(route('userland.index'));
 
         $response->assertSuccessful();
-        $response->assertSee('<ul data-kontour-widget="menu">', false);
+        $response->assertSee('<ul data-kontour-widget="menu" role="list">', false);
         $response->assertSee('>main<', false);
         $response->assertSee('<a href="' . route('userland.index') . '" aria-current="page">Userland Tool</a>', false);
         $response->assertSee('>External<', false);
