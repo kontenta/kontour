@@ -22,12 +22,12 @@ class SkipToContentTest extends DuskTest
             $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
             $browser->loginAs($this->user, 'admin')->visit($routeManager->indexUrl());
 
-            $this->assertEquals('absolute', $browser->element($this->element)->getCSSValue('position'));
+            $this->assertEquals('inset(50%)', $browser->element($this->element)->getCSSValue('clip-path'));
 
             $browser->keys('', '{tab}')
                 ->assertFocused($this->element);
 
-            $this->assertEquals('absolute', $browser->element($this->element)->getCSSValue('position'));
+            $this->assertEquals('none', $browser->element($this->element)->getCSSValue('clip-path'));
 
             $browser->keys($this->element, '{enter}')
                 ->assertNotFocused($this->element)

@@ -30,8 +30,9 @@ body {
 }
 
 #skip-to-content {
-  position: absolute;
+  position: fixed;
   max-width: 33%;
+  top: $kontour-spacing-base/2;
   left: 0;
   right: 0;
   margin-left: auto;
