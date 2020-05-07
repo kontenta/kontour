@@ -77,12 +77,12 @@ The `autofocusControlId` should be explicitly passed to each input when using
 ## Common parameters
 
 All inputs need at least the `$name` parameter
-and optional `$placeholder` and `$ariaDescribedById` parameters.
+and optional `$placeholder` parameters.
 
 All form views take a `$controlAttributes` `array` that can be used to set any
 additional HTML attributes on the form control element.
 This can be useful for setting
-`required`, `disabled`, `readonly`, `autocomplete`,
+`required`, `disabled`, `readonly`, `autocomplete`, `aria-describedby`,
 and other attributes specific to the
 [different input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_<input>_types).
 
