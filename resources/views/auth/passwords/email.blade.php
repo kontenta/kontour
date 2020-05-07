@@ -13,7 +13,7 @@
 
   <form method="POST" action="{{ route('kontour.password.email') }}">
     @csrf
-    @include('kontour::forms.input', ['name' => 'email', 'type' => 'email', 'controlAttributes' => ['required', 'autocomplete' => 'email']])
+    @include('kontour::forms.email', ['controlAttributes' => ['required']])
     @component('kontour::buttons.generic')
       {{ __('Send Password Reset Link') }}
     @endcomponent
