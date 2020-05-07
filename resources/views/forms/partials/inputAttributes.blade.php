@@ -1,20 +1,19 @@
 @include('kontour::forms.partials.nameAttribute')
 
-id="{{ $controlId }}"
-@if($errors->hasAny($errorsKeys ?? $name))
-aria-invalid="true"
-aria-describedby="{{ $errorsId }}"
-@elseif(isset($ariaDescribedById))
-aria-describedby="{{ $ariaDescribedById }}"
-@endif
-@if(!empty($autofocusControlId) and $autofocusControlId == $controlId)
-autofocus
-@endif
-@if(!empty($placeholder))
-placeholder="{{ $placeholder }}"
-@endif
-@if(isset($controlAttributes) and is_iterable($controlAttributes))
+<?php
+  $controlAttributes['id'] = $controlId;
+  unset($controlAttributes['name']);
+  if($errors->hasAny($errorsKeys ?? $name)) {
+    $controlAttributes['aria-invalid'] = "true";
+    $controlAttributes['aria-describedby'] = array_merge([$errorsId], [$controlAttributes['aria-describedby'] ?? []]);
+  }
+  if(!empty($autofocusControlId) and $autofocusControlId == $controlId and !in_array('autofocus', $controlAttributes)) {
+    $controlAttributes[] = 'autofocus';
+  }
+  if(!empty($placeholder)) {
+    $controlAttributes['placeholder'] = $placeholder;
+  }
+?>
 @foreach($controlAttributes as $attributeName => $attributeValue)
 @include('kontour::partials.attribute')
 @endforeach
-@endif

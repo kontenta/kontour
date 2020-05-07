@@ -1,6 +1,6 @@
 <section data-kontour-widget="itemHistory">
   <header>{{ trans('kontour::widgets.itemHistory.title') }}</header>
-  <ul>
+  <ul role="list">
   @foreach($entries as $entry)
     <li lang="en" data-kontour-entry-action="{{ $entry['action'] }}"@if($entry['user']) data-kontour-username="{{ $entry['user']->getDisplayName() }}"@endif>
         <span>{{ ucfirst($entry['action']) }}</span>
