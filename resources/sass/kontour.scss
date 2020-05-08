@@ -26,6 +26,29 @@ body > footer {
   }
 }
 
+a[aria-label] {
+  &:hover,
+  &:focus,
+  &:active {
+    position: relative;
+    z-index: 1000;
+
+    &::after {
+      content: attr(aria-label);
+      padding: inherit;
+      background-color: $kontour-tinted-background-color;
+      color: $kontour-text-color;
+      font-size: 1rem;
+      white-space: normal;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: inline-block;
+      z-index: 1010;
+    }
+  }
+}
+
 [data-kontour-section="kontourHeader"] {
   > :first-child {
     font-size: 1.5em;
