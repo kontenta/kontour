@@ -39,6 +39,9 @@ using `beforeRoute()`.
 Those callables will be called (with any dependencies injected) by a middleware.
 This avoids running admin-related code on every page load on the public site.
 
+A good use case when [adding menu items](#adding-menu-items)
+is documented below.
+
 ## Extending Kontour Blade layouts
 
 In the Blade views you create for your admin pages you can inject
