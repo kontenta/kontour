@@ -1,5 +1,47 @@
 # Using Kontour to build admin tools
 
+You can create a set of admin tools specific to your Laravel app within the app
+itself after [installing Kontour with composer](../README.md#install).
+
+## Using Kontour in packages
+
+If you author a composer package that would benefit from some Laravel admin
+tools, a good strategy is to release a separate package for the admin tools
+related to the main package.
+This way consumers of your main package can actively choose to install the
+Kontour admin tools if they want to.
+
+You may even release alternative admin packages for other admin systems like
+[Laravel Nova](https://nova.laravel.com), and let the consumer pick the best
+match for their Laravel app.
+If you create a companion Kontour admin package of your own, consider suffixing
+the name like `-kontour-admin`, so you may release `-nova-admin` and possibly
+others too!
+
+### Example packages using Kontour
+
+The Laravel package
+[`bjuppa/laravel-blog`](https://github.com/bjuppa/laravel-blog),
+created by on of the main contributors to Kontour, provides add-on blog
+functionality for any Laravel app.
+Public routes, controllers, views, styling, and models & migrations
+are all included there – but it doesn't provide any admin tools for editors to
+manage the blog posts.
+
+Consumers of the package are free to create their own admin area, but there
+is also the option to install the companion package
+[`bjuppa/laravel-blog-admin`](https://github.com/bjuppa/laravel-blog-admin),
+that in turn depends on Kontour.
+
+If you're a source diver you'll find many examples of Kontour usage there.
+A good place to start is in the
+[`BlogAdminServiceProvider`](https://github.com/bjuppa/laravel-blog-admin/blob/master/src)
+and then look at the
+[controllers](https://github.com/bjuppa/laravel-blog-admin/tree/master/src/Http/Controllers)
+and [routes](https://github.com/bjuppa/laravel-blog-admin/tree/master/routes).
+
+## Kontour tools are just Laravel controllers
+
 Admin tools that leverage Kontour are built as any other Laravel controller with
 corresponding routes. Usually a
 [resource controller](https://laravel.com/docs/controllers#resource-controllers)
