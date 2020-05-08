@@ -22,7 +22,7 @@ others too!
 
 The Laravel package
 [`bjuppa/laravel-blog`](https://github.com/bjuppa/laravel-blog),
-created by on of the main contributors to Kontour, provides add-on blog
+created by one of the main contributors to Kontour, provides add-on blog
 functionality for any Laravel app.
 Public routes, controllers, views, styling, and models & migrations
 are all included there – but it doesn't provide any admin tools for editors to
