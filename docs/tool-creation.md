@@ -1,8 +1,7 @@
 # Using Kontour to build admin tools
 
-Admin tools that leverage Kontour are built as any other Laravel
-controller with routes.
-Usually a
+Admin tools that leverage Kontour are built as any other Laravel controller with
+corresponding routes. Usually a
 [resource controller](https://laravel.com/docs/controllers#resource-controllers)
 is suitable to create admin tools that edit instances of a specific model.
 
@@ -20,7 +19,7 @@ using `beforeRoute()`.
 Those callables will be called (with any dependencies injected) by a middleware.
 This avoids running admin-related code on every page load on the public site.
 
-## Extending Kontour's Blade layouts
+## Extending Kontour Blade layouts
 
 In the Blade views you create for your admin pages you can inject
 a "view manager" instance:
