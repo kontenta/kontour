@@ -10,7 +10,7 @@ is suitable to create admin tools that edit instances of a specific model.
 
 In a service provider you can register your admin routes
 using methods from the
-[`RegistersAdminRoutes` trait](../src/Concerns/RegistersAdminWidgets.php).
+[`RegistersAdminRoutes` trait](../src/Concerns/RegistersAdminRoutes.php).
 
 ## Running code only before admin routes are accessed
 
