@@ -18,9 +18,9 @@ You need at least **Laravel 5.8** and **PHP 7.2** to use this package.
 
 ## Using Kontour in a Laravel app
 
-This document aims to provide instructions how to configure Kontour in a Laravel
-app. Once configured you can log in to the Kontour admin area and use any admin
-tools from installed packages.
+This document aims to provide instructions on how to configure Kontour in a
+Laravel app. Once configured you can log in to the Kontour admin area and use
+any admin tools from installed packages.
 
 ## Creating admin tools using Kontour
 
