@@ -10,7 +10,7 @@ is suitable to create admin tools that edit instances of a specific model.
 
 In a service provider you can register your admin routes
 using methods from the
-[`RegistersAdminRoutes` trait](src/Concerns/RegistersAdminWidgets.php).
+[`RegistersAdminRoutes` trait](../src/Concerns/RegistersAdminWidgets.php).
 
 ## Running code only before admin routes are accessed
 
@@ -77,7 +77,7 @@ $this->app->make(AdminBootManager::class)->beforeRoute(function (MenuWidget $men
 ## Authorizing controller actions
 
 The
-[`AuthorizesAdminRequests` trait](src/Concerns/AuthorizesAdminRequests.php)
+[`AuthorizesAdminRequests` trait](../src/Concerns/AuthorizesAdminRequests.php)
 has convenince methods for controllers that both authorizes the current user
 against an ability, and dispatches an event that records the visit for the
 recent visits widgets.
@@ -96,10 +96,10 @@ Both methods take 4 parameters:
 ## Registering widgets
 
 All widgets implement the
-[`AdminWidget` interface](src/Contracts/AdminWidget.php)
+[`AdminWidget` interface](../src/Contracts/AdminWidget.php)
 and can be registered into a section from a service provider
 or controller using methods from the
-[`RegistersAdminWidgets`](src/Concerns/RegistersAdminWidgets.php)
+[`RegistersAdminWidgets`](../src/Concerns/RegistersAdminWidgets.php)
 trait.
 
 In the `kontour.php` config file you may specify the widgets for all
