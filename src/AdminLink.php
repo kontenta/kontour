@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\View;
 use Kontenta\Kontour\Concerns\AuthorizesWithAbility as AuthorizesWithAbilityTrait;
 use Kontenta\Kontour\Contracts\AdminLink as AdminLinkContract;
 use Kontenta\Kontour\Contracts\AuthorizesWithAbility as AuthorizesWithAbilityContract;
+use Illuminate\Support\Str;
 
 class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
 {
@@ -40,7 +41,19 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
 
     public function getDescription(): ?string
     {
-        return $this->description;
+        return trim(strip_tags($this->description));
+    }
+
+    public function getLabel(): string
+    {
+        $name = trim(strip_tags($this->name));
+        $description = trim(strip_tags($this->description));
+
+        if (Str::contains($description, $name)) {
+            return $description;
+        }
+
+        return implode(' | ', array_filter([$name, $description]));
     }
 
     /**
