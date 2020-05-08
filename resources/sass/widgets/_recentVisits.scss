@@ -1,10 +1,12 @@
 [data-kontour-widget$="RecentVisits"] {
+  a {
+    display: inline-block;
+    max-width: 30ch;
+  }
+
   a:not(:hover):not(:focus):not(:active) {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: fade;
-
-    display: inline-block;
-    max-width: 30ch;
   }
 }
