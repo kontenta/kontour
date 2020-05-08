@@ -2,9 +2,10 @@
 
 [![Build Status](https://travis-ci.org/kontenta/kontour.svg?branch=master)](https://travis-ci.org/kontenta/kontour)
 
-Kontour is a package of admin page utilities for Laravel.
-It provides a shared "frame" for the admin routes you create
-in your Laravel apps, or in packages you write.
+Kontour is a package of admin page utilities for
+[Laravel](https://laravel.com/docs).
+It provides a shared "frame" for the admin tool routes you create
+in your Laravel apps, or in packages you install or create.
 
 The idea is that your admin tools can pull in and use functionality from Kontour
 to provide a consistent experience for the whole admin area of a website.
@@ -15,10 +16,22 @@ area.
 
 You need at least **Laravel 5.8** and **PHP 7.2** to use this package.
 
+## Using Kontour in a Laravel app
+
+This document aims to provide instructions on how to configure Kontour in a
+Laravel app. Once configured you can log in to the Kontour admin area and use
+any admin tools from installed packages.
+
+## Creating admin tools using Kontour
+
+For documentation how to create and register your own tools leveraging the
+features Kontour provides, you'll find the documentation and helpful guides in
+[Using Kontour to build admin tools](docs/tool-creation.md).
+
 ## Features
 
 - Admin login and password reset routes with configurable Guard
-  to separate admin users from frontend users.
+  to separate admin users from frontend users. Bring your own `AdminUser` model!
 - Extendable Blade Layouts with named sections for admin tool views
   and configurable stylesheet and javascript dependencies.
 - Widgets that are placeable in named Blade sections:
@@ -34,15 +47,22 @@ You need at least **Laravel 5.8** and **PHP 7.2** to use this package.
 
 ## Architecture
 
-- Kontour is installed as a dependency, not a boilerplate.
+- Kontour is installed as a dependency in a Laravel project, not a boilerplate.
 - Kontour uses core Laravel functionality wherever possible,
-  for example authentication and authorization.
+  like authentication and authorization, and has no dependencies outside of the
+  Laravel ecosystem.
+- Everything Kontour provides is optional and can be configured to leave a
+  minimal footprint in the Laravel app in which it has been installed.
 
 ## Install
 
 Maybe you're here because some package you installed requires Kontour for its
-admin pages? In that case it's already installed by composer, but you may still
-want to read further below about how to configure Kontour to your liking.
+admin pages? In that case Kontour is already installed by composer, but you will
+still want to read further below about how to configure Kontour to your liking.
+
+You are the owner of your Laravel app, even if Kontour was required by some
+other package, and you'll at least need to setup the admin user model before
+you can log in to the Kontour admin area.
 
 Installing Kontour explicitly in your Laravel project:
 
@@ -90,7 +110,7 @@ By default the Kontour dashboard route `kontour.index` is reached by going to
 To enable login you need to make sure the user model you want to give access to
 the admin area implements the
 [`Kontenta\Kontour\Contracts\AdminUser` contract](src/Contracts/AdminUser.php)
-which has method `getDisplayName()` that should return... a display name!
+which has a method `getDisplayName()` that should return... a display name!
 
 The default Kontour configuration uses Laravel's `web` Guard from
 `config/auth.php` which in turn uses the Eloquent user provider with model
@@ -101,8 +121,8 @@ the interface, by having it extend `Kontenta\Kontour\Auth\AdminUser`.
 
 This requirement is deliberate to avoid any situation where someone accidentally
 gives front end users access to their admin routes.
-You need to make an active choice about which user model to let into the admin
-area.
+**You need to make an active choice about which user model to let into the admin
+area.**
 
 ### Creating a separate user provider for admins
 
@@ -182,13 +202,13 @@ $user->password = '';
 $user->save();
 ```
 
-If you're feeling adventuorus, you can then create an admin tool within Kontour
+If you're feeling adventurous, you can then create an admin tool within Kontour
 to let a logged in admin create and invite new admin users!
 
 ## Publish the default CSS and js in your Laravel project
 
 You probably want to add some style to your admin area,
-perhaps pure HTML is too brutalist for your taste...
+pure HTML with default browser styles is too brutalist for most people...
 A good place to start is the default Kontour stylesheet.
 
 The included javascript includes a feature to confirm any delete-action before
@@ -247,106 +267,6 @@ In `config/kontour.php`
 
 Casting Mix's output to a string in the config file makes it possible to cache
 the config in a production environment.
-
-## Registering admin routes
-
-In a service provider you can register your admin routes
-using methods from the
-[`RegistersAdminRoutes` trait](src/Concerns/RegistersAdminWidgets.php).
-
-## Running code only before admin routes are accessed
-
-For anything that needs to be "booted" before an admin page/route is loaded,
-inject `Kontenta\Kontour\Contracts\AdminBootManager` and add callables to it
-using `beforeRoute()`.
-Those callables will be called (with any dependencies injected) by a middleware.
-This avoids running admin-related code on every page load on the public site.
-
-## Extending Kontour's Blade layouts
-
-In the Blade views you create for your admin pages you can inject
-a "view manager" instance:
-
-```php
-@inject('view_manager', 'Kontenta\Kontour\Contracts\AdminViewManager')
-```
-
-...that can be used to pull out one of the common Blade layouts to extend for
-any admin pages that wants to be part of the family:
-
-```php
-@extends($view_manager->toolLayout())
-```
-
-The `toolLayout` has sections `kontourToolHeader`, `kontourToolMain`,
-`kontourToolWidgets`, and `kontourToolFooter` for you to populate.
-
-```php
-@section('kontourToolHeader')
-  <h1>A splendid tool</h1>
-  @parent
-@endsection
-
-@section('kontourToolMain')
-  <form ...>
-    <input ...>
-    <button type="submit">Save</button>
-  </form>
-@endsection
-```
-
-It's a good idea to include `@parent` in your sections for other content,
-for example registered widgets.
-
-## Adding menu items
-
-Usually adding menu items is done in a service provider's boot method:
-
-```php
-use Kontenta\Kontour\Contracts\AdminBootManager;
-use Kontenta\Kontour\Contracts\MenuWidget;
-use Kontenta\Kontour\AdminLink;
-
-$this->app->make(AdminBootManager::class)->beforeRoute(function (MenuWidget $menuWidget) {
-  $menuWidget->addLink(
-    AdminLink::create('A menu item', route('named.route'))
-      ->registerAbilityForAuthorization('gate or other ability'),
-    'A menu heading'
-  );
-});
-```
-
-## Authorizing controller actions
-
-The
-[`AuthorizesAdminRequests` trait](src/Concerns/AuthorizesAdminRequests.php)
-has convenince methods for controllers that both authorizes the current user
-against an ability, and dispatches an event that records the visit for the
-recent visits widgets.
-
-With the trait used on your controller you can call
-`$this->authorizeShowAdminVisit()` for view-only routes or
-`$this->authorizeEditAdminVisit()` for routes that present a form.
-
-Both methods take 4 parameters:
-
-- The name of the ability to authorize against
-- The name of the link to present in recent visits widgets
-- The description string for link `title` attribute (optional)
-- Arguments for the ability (optional)
-
-## Registering widgets
-
-All widgets implement the
-[`AdminWidget` interface](src/Contracts/AdminWidget.php)
-and can be registered into a section from a service provider
-or controller using methods from the
-[`RegistersAdminWidgets`](src/Concerns/RegistersAdminWidgets.php)
-trait.
-
-In the `kontour.php` config file you may specify the widgets for all
-admin pages using the `global_widgets` array, mapping classname/contract to the
-desired section name.
 
 ## Fallback implementations
 
