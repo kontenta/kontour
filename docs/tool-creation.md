@@ -9,7 +9,27 @@ is suitable to create admin tools that edit instances of a specific model.
 
 In a service provider you can register your admin routes
 using methods from the
-[`RegistersAdminRoutes` trait](../src/Concerns/RegistersAdminRoutes.php).
+[`RegistersAdminRoutes` trait](../src/Concerns/RegistersAdminRoutes.php)
+that will group the routes with all route attributes configured with Kontour,
+like middleware etc.
+
+In a Laravel app you can for example create a routes file `routes/kontour.php`
+to keep routes for all Kontour tools you create. A service provider using the
+trait may then register them in the boot method.
+
+```php
+use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
+
+public function boot()
+{
+  $this->registerAdminRoutes(base_path('routes/kontour.php'));
+}
+```
+
+If you're writing a package, the routes file would probably be named something
+more package specific, and the service provider would need to use a relative
+path, like
+`__DIR__ . '/../routes/kontour.php'` to register the routes.
 
 ## Running code only before admin routes are accessed
 
