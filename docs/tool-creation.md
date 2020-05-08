@@ -97,7 +97,7 @@ $this->app->make(AdminBootManager::class)->beforeRoute(function (MenuWidget $men
 
 The
 [`AuthorizesAdminRequests` trait](../src/Concerns/AuthorizesAdminRequests.php)
-has convenince methods for controllers that both authorizes the current user
+has convenience methods for controllers that both authorizes the current user
 against an ability, and dispatches an event that records the visit for the
 recent visits widgets.
 
