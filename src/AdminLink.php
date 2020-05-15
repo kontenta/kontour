@@ -75,6 +75,30 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
     }
 
     /**
+     * Get a new instance with prefixed name
+     * @param string $prefix
+     * @return AdminLink
+     */
+    public function startName(string $prefix): AdminLinkContract
+    {
+        $copy = clone $this;
+        $copy->name = Str::start($copy->name, $prefix);
+        return $copy;
+    }
+
+    /**
+     * Get a new instance with prefixed description
+     * @param string $prefix
+     * @return AdminLink
+     */
+    public function startDescription(string $prefix): AdminLinkContract
+    {
+        $copy = clone $this;
+        $copy->description = Str::start($copy->description, $prefix);
+        return $copy;
+    }
+
+    /**
      * Set the view to use with the toHtml-function fluently
      * @param string $view
      * @return $this
