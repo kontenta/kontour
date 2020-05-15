@@ -49,7 +49,13 @@ class AdminLink implements AdminLinkContract, AuthorizesWithAbilityContract
         $name = trim(strip_tags($this->name));
         $description = trim(strip_tags($this->description));
 
-        if (Str::contains($description, $name)) {
+        preg_match_all('/\w++/u', $name, $matches);
+        $words_in_name = collect(array_map('mb_strtolower', $matches[0]))->unique();
+        $lowercase_description = mb_strtolower($description);
+
+        if ($words_in_name->every(function ($word) use ($lowercase_description) {
+            return strpos($lowercase_description, $word) !== false;
+        })) {
             return $description;
         }
 

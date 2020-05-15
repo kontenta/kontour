@@ -67,6 +67,13 @@ class AdminLinkTest extends UserlandAdminToolTest
         $this->assertStringContainsString('aria-label="Hejdå"', $link->toHtml());
     }
 
+    public function test_name_words_are_not_repeated_in_label()
+    {
+        $link = AdminLink::create('Hej hej', 'http://hej.com', 'Hejdå');
+
+        $this->assertStringContainsString('aria-label="Hejdå"', $link->toHtml());
+    }
+
     public function test_with_different_view()
     {
         $link = new AdminLink('Hej', 'http://hej.com');
