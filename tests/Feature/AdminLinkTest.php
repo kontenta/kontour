@@ -17,8 +17,9 @@ class AdminLinkTest extends UserlandAdminToolTest
     public function test_description_can_be_added_fluently()
     {
         $link = new AdminLink('Hej', 'http://hej.com');
-        $link = $link->withDescription('Hejsanhejsan');
+        $modified_link = $link->withDescription('Hejsanhejsan');
 
+        $this->assertSame($link, $modified_link);
         $this->assertEquals('<a href="http://hej.com" aria-label="Hejsanhejsan">Hej</a>', $link->toHtml());
     }
 
@@ -78,8 +79,9 @@ class AdminLinkTest extends UserlandAdminToolTest
     {
         $link = new AdminLink('Hej', 'http://hej.com');
         $link = $link->withDescription('Hejsanhejsan');
-        $link = $link->withView('userland::adminlink');
+        $modified_link = $link->withView('userland::adminlink');
 
+        $this->assertSame($link, $modified_link);
         $this->assertEquals('<a href="http://hej.com" title="Hejsanhejsan" class="link">Hej</a>', $link->toHtml());
     }
 }
