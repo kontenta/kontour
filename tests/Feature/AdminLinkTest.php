@@ -84,22 +84,4 @@ class AdminLinkTest extends UserlandAdminToolTest
         $this->assertSame($link, $modified_link);
         $this->assertEquals('<a href="http://hej.com" title="Hejsanhejsan" class="link">Hej</a>', $link->toHtml());
     }
-
-    public function test_start_name()
-    {
-        $link = new AdminLink('Hej', 'http://hej.com');
-        $copy = $link->startName('1: ');
-
-        $this->assertNotSame($link, $copy);
-        $this->assertEquals('1: Hej', $copy->getName());
-    }
-
-    public function test_start_description()
-    {
-        $link = new AdminLink('Hej', 'http://hej.com', 'More info');
-        $copy = $link->startDescription('1: ');
-
-        $this->assertNotSame($link, $copy);
-        $this->assertEquals('1: More info', $copy->getDescription());
-    }
 }
