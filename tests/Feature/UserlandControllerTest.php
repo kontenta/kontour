@@ -83,17 +83,17 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSee('<aside data-kontour-widget="personalRecentVisits">', false);
         $response->assertSee('<header>Recent</header>', false);
 
-        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="show" title="Recent Userland Tool"><a href="' . route('userland.index') . '" aria-current="page">Recent Userland Tool</a>');
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="show"><a href="' . route('userland.index') . '" aria-current="page">Recent Userland Tool</a>');
         $this->assertEquals(0, $numberOfMatches);
 
-        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" title="Recent Userland Tool"><a href="' . route('userland.edit', 1) . '">Recent Userland Tool</a>');
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit"><a href="' . route('userland.edit', 1) . '">Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);
 
         // Check team links
         $response->assertSee('<aside data-kontour-widget="teamRecentVisits">', false);
         $response->assertSee('<header>Team Recent</header>', false);
 
-        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" data-kontour-username="' . $otherUser->getDisplayName() . '" title="Other Recent Userland Tool"><a href="' . route('userland.edit', 1) . '">Other Recent Userland Tool</a>');
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" data-kontour-username="' . $otherUser->getDisplayName() . '"><a href="' . route('userland.edit', 1) . '">Other Recent Userland Tool</a>');
         $this->assertEquals(1, $numberOfMatches);
 
         $response->assertDontSee('<a href="' . route('userland.index') . '">Other Recent Userland Tool</a>', false);
