@@ -1,4 +1,4 @@
-$kontour-tooltip-padding: .5ch !default;
+$kontour-tooltip-padding: 0.5ch !default;
 
 %tooltip-anchor {
   position: relative;
@@ -14,7 +14,8 @@ $kontour-tooltip-padding: .5ch !default;
   color: inherit;
   border: $kontour-border;
   border-radius: $kontour-tooltip-padding;
-  padding: $kontour-tooltip-padding;
+  padding-left: $kontour-tooltip-padding;
+  padding-right: $kontour-tooltip-padding;
   font-size: smaller;
   font-style: italic;
   white-space: normal;
