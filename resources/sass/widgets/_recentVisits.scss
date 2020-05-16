@@ -3,10 +3,10 @@
     display: inline-block;
     max-width: 30ch;
     width: 100%;
+    white-space: nowrap;
   }
 
   a:not(:hover):not(:focus):not(:active) {
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: fade;
   }
