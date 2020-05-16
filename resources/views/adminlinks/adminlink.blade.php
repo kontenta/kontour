@@ -1,1 +1,1 @@
-<a{!! $link->getUrl() ? ' href="'.e($link->getUrl()).'"' : '' !!}{!! $link->getDescription() ? ' aria-label="'.e($link->getLabel()).'"' : '' !!}{!! url()->full() == $link->getUrl() ? ' aria-current="page"' : '' !!}>{{ $link->getName() }}</a>
+<a{!! $link->getUrl() ? ' href="'.e($link->getUrl()).'"' : '' !!}{!! $link->getDescription() ? ' data-kontour-description="'.e($link->getDescription()).'" aria-label="'.e($link->getLabel()).'"' : '' !!}{!! url()->full() == $link->getUrl() ? ' aria-current="page"' : '' !!}>{{ $link->getName() }}</a>

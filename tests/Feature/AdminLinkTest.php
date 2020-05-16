@@ -11,7 +11,7 @@ class AdminLinkTest extends UserlandAdminToolTest
     {
         $link = new AdminLink('Hej', 'http://hej.com', '"Hejsanhejsan"');
 
-        $this->assertEquals('<a href="http://hej.com" aria-label="&quot;Hejsanhejsan&quot;">Hej</a>', $link->toHtml());
+        $this->assertEquals('<a href="http://hej.com" data-kontour-description="&quot;Hejsanhejsan&quot;" aria-label="&quot;Hejsanhejsan&quot;">Hej</a>', $link->toHtml());
     }
 
     public function test_description_can_be_added_fluently()
@@ -20,7 +20,7 @@ class AdminLinkTest extends UserlandAdminToolTest
         $modified_link = $link->withDescription('Hejsanhejsan');
 
         $this->assertSame($link, $modified_link);
-        $this->assertEquals('<a href="http://hej.com" aria-label="Hejsanhejsan">Hej</a>', $link->toHtml());
+        $this->assertEquals('<a href="http://hej.com" data-kontour-description="Hejsanhejsan" aria-label="Hejsanhejsan">Hej</a>', $link->toHtml());
     }
 
     public function test_can_be_created_statically()
@@ -40,11 +40,12 @@ class AdminLinkTest extends UserlandAdminToolTest
         $this->assertStringNotContainsString('title=', $link->toHtml());
     }
 
-    public function test_has_label_with_description()
+    public function test_has_label_and_description()
     {
         $link = AdminLink::create('Hej', 'http://hej.com', 'Hejsanhejsan');
 
         $this->assertStringContainsString('aria-label="Hejsanhejsan"', $link->toHtml());
+        $this->assertStringContainsString('data-kontour-description="Hejsanhejsan"', $link->toHtml());
     }
 
     public function test_has_no_label_without_description()
@@ -52,6 +53,7 @@ class AdminLinkTest extends UserlandAdminToolTest
         $link = AdminLink::create('Hej', 'http://hej.com');
 
         $this->assertStringNotContainsString('aria-label=', $link->toHtml());
+        $this->assertStringNotContainsString('data-kontour-description=', $link->toHtml());
     }
 
     public function test_name_and_description_are_combined_in_label()
