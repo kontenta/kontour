@@ -6,17 +6,18 @@ $kontour-tooltip-padding: .5ch !default;
 }
 
 %tooltip {
+  position: absolute;
+  display: inline-block;
+  z-index: 1010;
+  left: 0;
   background-color: inherit;
   color: inherit;
   border: $kontour-border;
   border-radius: $kontour-tooltip-padding;
   padding: $kontour-tooltip-padding;
   font-size: smaller;
+  font-style: italic;
   white-space: normal;
-  position: absolute;
-  display: inline-block;
-  z-index: 1010;
-  left: 0;
 }
 
 %tooltip-top {
