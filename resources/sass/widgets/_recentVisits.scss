@@ -10,4 +10,17 @@
     overflow: hidden;
     text-overflow: fade;
   }
+
+  [data-kontour-username] {
+    &:hover,
+    &:focus-within,
+    &:active {
+      @extend %tooltip-anchor;
+
+      &::before {
+        content: attr(data-kontour-username);
+        @extend %tooltip-top;
+      }
+    }
+  }
 }
