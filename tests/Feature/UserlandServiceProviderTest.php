@@ -4,10 +4,13 @@ namespace Kontenta\Kontour\Tests\Feature;
 
 use Illuminate\Support\Facades\Route;
 use Kontenta\Kontour\Contracts\AdminWidgetManager;
-use Kontenta\Kontour\Tests\UserlandAdminToolTest;
+use Kontenta\Kontour\Tests\IntegrationTest;
+use Kontenta\Kontour\Tests\UserlandTestSetupTrait;
 
-class UserlandServiceProviderTest extends UserlandAdminToolTest
+class UserlandServiceProviderTest extends IntegrationTest
 {
+    use UserlandTestSetupTrait;
+
     public function test_routes_are_registered()
     {
         $this->assertTrue(Route::has('userland.index'), 'Expected route does not exist');

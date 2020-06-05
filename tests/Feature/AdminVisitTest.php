@@ -5,10 +5,13 @@ namespace Kontenta\Kontour\Tests\Feature;
 use Kontenta\Kontour\AdminLink;
 use Kontenta\Kontour\ShowAdminVisit;
 use Kontenta\Kontour\Tests\Feature\Fakes\User;
-use Kontenta\Kontour\Tests\UserlandAdminToolTest;
+use Kontenta\Kontour\Tests\IntegrationTest;
+use Kontenta\Kontour\Tests\UserlandTestSetupTrait;
 
-class AdminVisitTest extends UserlandAdminToolTest
+class AdminVisitTest extends IntegrationTest
 {
+    use UserlandTestSetupTrait;
+
     /**
      * @var User
      */

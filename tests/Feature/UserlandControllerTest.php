@@ -9,10 +9,13 @@ use Kontenta\Kontour\EditAdminVisit;
 use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\Kontour\ShowAdminVisit;
 use Kontenta\Kontour\Tests\Feature\Fakes\User;
-use Kontenta\Kontour\Tests\UserlandAdminToolTest;
+use Kontenta\Kontour\Tests\IntegrationTest;
+use Kontenta\Kontour\Tests\UserlandTestSetupTrait;
 
-class UserlandControllerTest extends UserlandAdminToolTest
+class UserlandControllerTest extends IntegrationTest
 {
+    use UserlandTestSetupTrait;
+
     /**
      * @var User
      */
