@@ -40,7 +40,7 @@ class UserlandControllerTest extends IntegrationTest
 
         $response->assertSuccessful();
         $response->assertSee('<main', false);
-        $response->assertSee('UserlandAdminWidget');
+        $response->assertSee('Userland Widget');
         $response->assertDontSee('UnauthorizedWidget');
 
         Event::assertDispatched(AdminToolVisited::class, function ($e) {
