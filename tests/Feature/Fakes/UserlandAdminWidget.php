@@ -9,7 +9,12 @@ class UserlandAdminWidget implements AdminWidget
 {
     public function toHtml()
     {
-        return "<section><header>Userland Widget</header><em>I can be anything!</em></section>";
+        return <<<EOT
+            <section>
+                <header>Userland Widget</header>
+                <button class="button-destructive">Danger Zone</button>
+            </section>
+EOT;
     }
 
     public function isAuthorized(Authorizable $user = null): bool
