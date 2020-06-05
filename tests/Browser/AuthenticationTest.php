@@ -21,6 +21,7 @@ class AuthenticationTest extends DuskTest
             $browser->visit($routeManager->loginUrl())
                 ->type('email', $this->user->email)
                 ->type('password', 'secret')
+                ->resize(500, 500)
                 ->screenshot('docs/login')
                 ->press('Login')
                 ->assertUrlIs($routeManager->indexUrl());

@@ -33,7 +33,10 @@ class SkipToContentTest extends DuskTest
                 ->assertNotFocused($this->element)
                 ->assertFragmentIs('kontourMain');
 
-            $browser->screenshot('docs/dashboard');
+
+            $browser
+                ->resize(1024, 768)
+                ->screenshot('docs/dashboard');
         });
     }
 }
