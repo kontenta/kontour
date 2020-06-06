@@ -3,7 +3,6 @@
 namespace Kontenta\Kontour\Tests\Feature;
 
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Gate;
 use Kontenta\Kontour\AdminLink;
 use Kontenta\Kontour\EditAdminVisit;
 use Kontenta\Kontour\Events\AdminToolVisited;
@@ -26,10 +25,6 @@ class UserlandControllerTest extends IntegrationTest
         parent::setUp();
         $this->prepareDatabase();
         $this->user = factory(User::class)->create();
-
-        Gate::define('access userland tool', function ($user) {
-            return true;
-        });
     }
 
     public function test_index_route()
