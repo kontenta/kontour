@@ -10,8 +10,9 @@ class UserlandAdminWidget implements AdminWidget
     public function toHtml()
     {
         return <<<EOT
-            <section>
+            <section data-kontour-widget="userlandWidget">
                 <header>Userland Widget</header>
+                <em>Highway to the&hellip;</em>
                 <button class="button-destructive">Danger Zone</button>
             </section>
 EOT;
