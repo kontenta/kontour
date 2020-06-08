@@ -18,11 +18,15 @@ class UserlandToolTest extends DuskTest
     public function test_userland_tool()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs($this->user, 'admin')->visit(route('userland.index'));
+            $browser->loginAs($this->user, 'admin');
 
-            $browser
+            $browser->visit(route('userland.index'))
                 ->resize(1024, 768)
-                ->screenshot('docs/userlandtool');
+                ->screenshot('docs/userlandindex');
+
+            $browser->visit(route('userland.edit', 1))
+                ->resize(1024, 768)
+                ->screenshot('docs/userlandedit');
         });
     }
 }
