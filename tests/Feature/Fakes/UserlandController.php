@@ -30,7 +30,7 @@ class UserlandController extends BaseController
 
     public function index()
     {
-        $this->authorizeShowAdminVisit('access userland tool', 'Recent Userland Tool');
+        $this->authorizeShowAdminVisit('access userland tool', 'Userland Index');
         $this->viewManager->addStylesheetUrl('userland-index.css');
         $this->viewManager->addJavascriptUrl('userland-index.js');
         return view('userland::index', ['crumbtrail' => $this->crumbtrail]);
@@ -53,7 +53,7 @@ class UserlandController extends BaseController
 
     public function edit($id)
     {
-        $this->authorizeEditAdminVisit('access userland tool', 'Recent Userland Edit');
+        $this->authorizeEditAdminVisit('access userland tool', 'Userland Edit');
 
         $widget = $this->findOrRegisterAdminWidget(ItemHistoryWidget::class);
         $widget->addCreatedEntry(new \DateTime(), $this->adminUser());
@@ -78,5 +78,4 @@ class UserlandController extends BaseController
     {
         //
     }
-
 }
