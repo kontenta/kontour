@@ -114,8 +114,8 @@ class UserlandControllerTest extends IntegrationTest
 
         $response->assertSuccessful();
         $response->assertSee('<nav aria-label="Crumb trail" data-kontour-widget="crumbtrail">', false);
-        $response->assertSee('<a href="' . route('userland.index') . '">1</a>', false);
-        $response->assertSee('<li aria-current="true"><a href="' . route('userland.edit', 1) . '" aria-current="page">2</a>', false);
+        $response->assertSee('<a href="' . route('userland.index') . '">Userland Index</a>', false);
+        $response->assertSee('<li aria-current="true"><a href="' . route('userland.edit', 1) . '" aria-current="page">Edit item 1</a>', false);
     }
 
     public function test_message_widget()

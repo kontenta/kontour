@@ -22,7 +22,7 @@ class UserlandController extends BaseController
     {
         $this->crumbtrail = $crumbtrail;
         $this->viewManager = $viewManager;
-        $link1 = new AdminLink('1', route('userland.index'));
+        $link1 = new AdminLink('Userland Index', route('userland.index'));
         $this->crumbtrail->addLink($link1);
         $this->viewManager->addStylesheetUrl(url('userland.css'));
         $this->viewManager->addJavascriptUrl('userland.js');
@@ -59,7 +59,7 @@ class UserlandController extends BaseController
         $widget->addCreatedEntry(new \DateTime(), $this->adminUser());
         $widget->addUpdatedEntry(new \DateTime(), $this->adminUser());
 
-        $link2 = AdminLink::create('2', url()->full());
+        $link2 = AdminLink::create('Edit item ' . $id, url()->full());
         $this->crumbtrail->addLink($link2);
         $this->registerAdminWidget($this->crumbtrail, 'kontourToolHeader');
 
