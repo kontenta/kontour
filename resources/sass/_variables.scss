@@ -23,6 +23,7 @@ $kontour-border: 1px solid $kontour-border-color !default;
 $kontour-border-radius: 0.1em;
 
 $kontour-button-color: blue !default;
+$kontour-button-background-color: white !default;
 $kontour-button-active-box-shadow: inset 0 2px 4px transparentize(black, 0.95) !default;
 $kontour-button-focus-box-shadow: 0 0 0 0.2rem
   change_color($kontour-button-color, $lightness: 80%) !default;
