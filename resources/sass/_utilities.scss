@@ -31,14 +31,16 @@
 
 .cluster {
   --space: #{$kontour-spacing-base};
+  --justify-content: flex-start;
+  --align-items: flex-start;
   overflow: hidden;
 }
 
 .cluster > * {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: var(--justify-content);
+  align-items: var(--align-items);
   margin: calc(var(--space) / 2 * -1);
 }
 
