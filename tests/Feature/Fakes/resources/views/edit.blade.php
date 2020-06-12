@@ -6,7 +6,12 @@
 <form>
   @include('kontour::forms.input', ['name' => 'test', 'value' => 'An example'])
   <div data-kontour-section="kontourStickyActions">
-    @include('kontour::buttons.update')
+    <div class="cluster">
+      <div>
+        @include('kontour::buttons.update')
+        @include('kontour::buttons.destroy')
+      </div>
+    </div>
   </div>
 </form>
 @endsection
