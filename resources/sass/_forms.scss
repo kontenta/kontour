@@ -1,9 +1,11 @@
 input,
 select,
 textarea,
-button {
+button,
+optgroup {
   font-size: inherit;
   line-height: inherit;
+  font-family: inherit;
 }
 
 [type="text"],
