@@ -124,7 +124,7 @@ class UserlandControllerTest extends IntegrationTest
 
         $response->assertSuccessful();
         $response->assertSee('<section data-kontour-widget="message">', false);
-        $response->assertSeeInOrder(['<li', 'data-kontour-message-level="info"', 'role="status"', '>Hello World!</li>'], false);
+        $response->assertSeeInOrder(['<li', 'data-kontour-message-level="info"', 'role="status"', '>Example success message</li>'], false);
     }
 
     public function test_css_and_js_additions()

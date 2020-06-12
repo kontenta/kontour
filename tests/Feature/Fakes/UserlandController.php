@@ -64,7 +64,7 @@ class UserlandController extends BaseController
         $this->registerAdminWidget($this->crumbtrail, 'kontourToolHeader');
 
         $messageWidget = $this->findOrRegisterAdminWidget(MessageWidget::class, 'kontourToolHeader');
-        $messageWidget->addMessage('Hello World!');
+        $messageWidget->addMessage("Example success message");
 
         return view('userland::edit');
     }
