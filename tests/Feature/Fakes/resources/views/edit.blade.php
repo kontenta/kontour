@@ -3,8 +3,10 @@
 @extends($view_manager->toolLayout())
 
 @section('kontourToolMain')
-  <form>
-    @include('kontour::forms.input', ['name' => 'test', 'value' => 'An example'])
+<form>
+  @include('kontour::forms.input', ['name' => 'test', 'value' => 'An example'])
+  <div data-kontour-section="kontourStickyActions">
     @include('kontour::buttons.update')
-  </form>
+  </div>
+</form>
 @endsection
