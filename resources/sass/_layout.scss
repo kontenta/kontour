@@ -138,4 +138,6 @@ header[data-kontour-section="kontourToolHeader"] + * {
   top: 0;
   bottom: 0;
   width: max-content;
+  max-width: 100%;
+  min-width: 60%;
 }
