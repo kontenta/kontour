@@ -5,8 +5,10 @@
 @section('kontourToolMain')
 <form>
   @include('kontour::forms.input', ['name' => 'test', 'value' => 'An example'])
-  @include('kontour::forms.radiobuttons', ['name' => 'options', 'label' => 'Some options',
-  'options' => ['This is a choice you can make', 'This is another', 'Last chance here...']])
+  @include('kontour::forms.radiobuttons', ['name' => 'radios', 'label' => 'Some options',
+  'options' => ['This is a choice you can make', 'The second one is also a possibility', 'Last option']])
+  @include('kontour::forms.checkboxes', ['name' => 'checkboxes', 'label' => 'Select multiple things',
+  'options' => ['Item A', 'Item B', 'Item C']])
   <div data-kontour-section="kontourStickyActions">
     <div class="cluster">
       <div>
