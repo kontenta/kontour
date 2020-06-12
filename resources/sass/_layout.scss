@@ -1,4 +1,4 @@
-$kontour-hamburger-width: 4*$kontour-spacing-base !default;
+$kontour-hamburger-width: 4 * $kontour-spacing-base !default;
 
 // Main layout with all major blocks as direct children of the body
 body {
@@ -21,7 +21,7 @@ body {
   > main {
     flex-grow: 1000;
     flex-basis: 45ch;
-    min-height: calc(100vh - #{10*$kontour-spacing-base});
+    min-height: calc(100vh - #{10 * $kontour-spacing-base});
   }
 
   > footer {
