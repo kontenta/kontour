@@ -9,6 +9,7 @@
   'options' => ['This is a choice you can make', 'The second one is also a possibility', 'Last option']])
   @include('kontour::forms.checkboxes', ['name' => 'checkboxes', 'label' => 'Select multiple things',
   'options' => ['Item A', 'Item B', 'Item C']])
+  @include('kontour::forms.textarea', ['name' => 'text', 'controlAttributes' => ['rows' => 8]])
   <div data-kontour-section="kontourStickyActions">
     <div class="cluster">
       <div>
