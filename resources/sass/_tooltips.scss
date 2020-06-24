@@ -1,0 +1,38 @@
+$kontour-tooltip-padding: 0.5ch !default;
+
+%tooltip-anchor {
+  position: relative;
+  z-index: 1000;
+}
+
+%tooltip {
+  position: absolute;
+  display: inline-block;
+  z-index: 1010;
+  left: 0;
+  background-color: inherit;
+  color: inherit;
+  border: $kontour-border;
+  border-radius: $kontour-tooltip-padding;
+  padding-left: $kontour-tooltip-padding;
+  padding-right: $kontour-tooltip-padding;
+  font-size: smaller;
+  font-style: italic;
+  white-space: normal;
+}
+
+%tooltip-top {
+  @extend %tooltip;
+  bottom: 100%;
+  border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+%tooltip-bottom {
+  @extend %tooltip;
+  top: 100%;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

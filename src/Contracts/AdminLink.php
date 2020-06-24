@@ -12,6 +12,8 @@ interface AdminLink extends Authorizes, Htmlable
 
     public function getDescription(): ?string;
 
+    public function getLabel(): string;
+
     /**
      * Set description fluently
      * @param string $description
