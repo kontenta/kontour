@@ -60,7 +60,7 @@ to keep routes for all Kontour tools you create. A service provider using the
 trait may then register them in the boot method.
 
 ```php
-use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
+use \Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 
 public function boot()
 {
