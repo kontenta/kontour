@@ -4,7 +4,7 @@
     <ul role="list">
     @foreach($visits as $visit)
       @if(url()->full() != $visit->getLink()->getUrl())
-        <li data-kontour-visit-type="{{ $visit->getType() }}"{!! empty($visit->getLink()->getDescription()) ? ' title="' . e($visit->getLink()->getName()) . '"' : '' !!}>{{ $visit->getLink() }}</li>
+        <li data-kontour-visit-type="{{ $visit->getType() }}">{{ $visit->getLink() }}</li>
       @endif
     @endforeach
     </ul>
