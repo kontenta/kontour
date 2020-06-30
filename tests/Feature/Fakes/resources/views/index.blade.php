@@ -9,8 +9,8 @@
 
 @section('kontourToolMain')
 <ul>
-  <li>Item 1</li>
-  <li>Item 2</li>
+  <li><a href="">Edit item 1</a></li>
+  <li><a href="">Edit item 2</a></li>
 </ul>
 @endsection
 
