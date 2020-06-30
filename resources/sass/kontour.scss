@@ -27,6 +27,19 @@ body > footer {
   }
 }
 
+[data-kontour-description] {
+  &:hover,
+  &:focus-within,
+  &:active {
+    @extend %tooltip-anchor;
+
+    &::after {
+      content: attr(data-kontour-description);
+      @extend %tooltip-bottom;
+    }
+  }
+}
+
 [data-kontour-section="kontourHeader"] {
   > :first-child {
     font-size: 1.5em;
@@ -89,4 +102,5 @@ body > footer {
 @import "widgets/userAccount";
 @import "widgets/message";
 @import "widgets/recentVisits";
+@import "tooltips";
 @import "screenreaders";

@@ -62,6 +62,10 @@ trait may then register them in the boot method.
 ```php
 use Kontenta\Kontour\Concerns\RegistersAdminRoutes;
 
+...
+
+use RegistersAdminRoutes;
+
 public function boot()
 {
   $this->registerAdminRoutes(base_path('routes/kontour.php'));

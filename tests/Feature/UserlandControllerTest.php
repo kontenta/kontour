@@ -81,17 +81,17 @@ class UserlandControllerTest extends IntegrationTest
         $response->assertSee('<aside data-kontour-widget="personalRecentVisits">', false);
         $response->assertSee('<header>Recent</header>', false);
 
-        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="show" title="Recent Userland Tool"><small><a href="' . route('userland.index') . '" aria-current="page">Recent Userland Tool</a></small>');
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="show"><small><a href="' . route('userland.index') . '" aria-current="page">Recent Userland Tool</a></small>');
         $this->assertEquals(0, $numberOfMatches);
 
-        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" title="Recent Userland Tool"><small><a href="' . route('userland.edit', 1) . '">Recent Userland Tool</a></small>');
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit"><small><a href="' . route('userland.edit', 1) . '">Recent Userland Tool</a></small>');
         $this->assertEquals(1, $numberOfMatches);
 
         // Check team links
         $response->assertSee('<aside data-kontour-widget="teamRecentVisits">', false);
         $response->assertSee('<header>Team Recent</header>', false);
 
-        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" data-kontour-username="' . $otherUser->getDisplayName() . '" title="Other Recent Userland Tool"><small><a href="' . route('userland.edit', 1) . '">Other Recent Userland Tool</a></small>');
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" data-kontour-username="' . $otherUser->getDisplayName() . '"><small><a href="' . route('userland.edit', 1) . '">Other Recent Userland Tool</a></small>');
         $this->assertEquals(1, $numberOfMatches);
 
         $response->assertDontSee('<a href="' . route('userland.index') . '">Other Recent Userland Tool</a>', false);
