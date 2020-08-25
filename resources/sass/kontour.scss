@@ -16,7 +16,8 @@ body > main {
 }
 
 body > footer {
-  background: $kontour-tinted-background-color;
+  background-color: $kontour-tinted-background-color;
+  color: $kontour-text-color;
 }
 
 [aria-current="page"] {

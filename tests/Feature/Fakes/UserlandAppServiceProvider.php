@@ -7,6 +7,7 @@ use Kontenta\Kontour\Contracts\AdminViewManager;
 use Kontenta\Kontour\Concerns\RegistersAdminWidgets;
 use Kontenta\Kontour\Contracts\PersonalRecentVisitsWidget;
 use Kontenta\Kontour\Contracts\TeamRecentVisitsWidget;
+use Illuminate\Support\Facades\Gate;
 
 class UserlandAppServiceProvider extends ServiceProvider
 {
@@ -25,9 +26,17 @@ class UserlandAppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->registerGates();
         $this->registerWidgets();
         $this->registerCss();
         $this->registerJs();
+    }
+
+    protected function registerGates()
+    {
+        Gate::define('access userland tool', function ($user) {
+            return true;
+        });
     }
 
     protected function registerWidgets()

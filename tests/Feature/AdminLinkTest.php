@@ -2,11 +2,14 @@
 
 namespace Kontenta\Kontour\Tests\Feature;
 
-use Kontenta\Kontour\Tests\UserlandAdminToolTest;
 use Kontenta\Kontour\AdminLink;
+use Kontenta\Kontour\Tests\IntegrationTest;
+use Kontenta\Kontour\Tests\UserlandTestSetupTrait;
 
-class AdminLinkTest extends UserlandAdminToolTest
+class AdminLinkTest extends IntegrationTest
 {
+    use UserlandTestSetupTrait;
+
     public function test_can_be_converted_to_html()
     {
         $link = new AdminLink('Hej', 'http://hej.com', '"Hejsanhejsan"');

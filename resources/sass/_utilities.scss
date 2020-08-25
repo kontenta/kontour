@@ -16,3 +16,34 @@
 .columns-readable {
   column-width: 45ch;
 }
+
+/** Cluster layout from https://absolutely.every-layout.dev/layouts/cluster/
+
+<div class="cluster">
+  <div> <!-- intermediary wrapper -->
+    <div><!-- child --></div>
+    <div><!-- child --></div>
+    <div><!-- etc --></div>
+  </div>
+</div>
+
+**/
+
+.cluster {
+  --space: #{$kontour-spacing-base};
+  --justify-content: flex-start;
+  --align-items: flex-start;
+  overflow: hidden;
+}
+
+.cluster > * {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: var(--justify-content);
+  align-items: var(--align-items);
+  margin: calc(var(--space) / 2 * -1);
+}
+
+.cluster > * > * {
+  margin: calc(var(--space) / 2);
+}

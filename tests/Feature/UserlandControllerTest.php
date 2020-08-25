@@ -3,16 +3,18 @@
 namespace Kontenta\Kontour\Tests\Feature;
 
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Gate;
 use Kontenta\Kontour\AdminLink;
 use Kontenta\Kontour\EditAdminVisit;
 use Kontenta\Kontour\Events\AdminToolVisited;
 use Kontenta\Kontour\ShowAdminVisit;
 use Kontenta\Kontour\Tests\Feature\Fakes\User;
-use Kontenta\Kontour\Tests\UserlandAdminToolTest;
+use Kontenta\Kontour\Tests\IntegrationTest;
+use Kontenta\Kontour\Tests\UserlandTestSetupTrait;
 
-class UserlandControllerTest extends UserlandAdminToolTest
+class UserlandControllerTest extends IntegrationTest
 {
+    use UserlandTestSetupTrait;
+
     /**
      * @var User
      */
@@ -23,10 +25,6 @@ class UserlandControllerTest extends UserlandAdminToolTest
         parent::setUp();
         $this->prepareDatabase();
         $this->user = factory(User::class)->create();
-
-        Gate::define('access userland tool', function ($user) {
-            return true;
-        });
     }
 
     public function test_index_route()
@@ -37,7 +35,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
         $response->assertSuccessful();
         $response->assertSee('<main', false);
-        $response->assertSee('UserlandAdminWidget');
+        $response->assertSee('Userland Widget');
         $response->assertDontSee('UnauthorizedWidget');
 
         Event::assertDispatched(AdminToolVisited::class, function ($e) {
@@ -83,17 +81,17 @@ class UserlandControllerTest extends UserlandAdminToolTest
         $response->assertSee('<aside data-kontour-widget="personalRecentVisits">', false);
         $response->assertSee('<header>Recent</header>', false);
 
-        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="show"><a href="' . route('userland.index') . '" aria-current="page">Recent Userland Tool</a>');
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="show"><small><a href="' . route('userland.index') . '" aria-current="page">Recent Userland Tool</a></small>');
         $this->assertEquals(0, $numberOfMatches);
 
-        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit"><a href="' . route('userland.edit', 1) . '">Recent Userland Tool</a>');
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit"><small><a href="' . route('userland.edit', 1) . '">Recent Userland Tool</a></small>');
         $this->assertEquals(1, $numberOfMatches);
 
         // Check team links
         $response->assertSee('<aside data-kontour-widget="teamRecentVisits">', false);
         $response->assertSee('<header>Team Recent</header>', false);
 
-        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" data-kontour-username="' . $otherUser->getDisplayName() . '"><a href="' . route('userland.edit', 1) . '">Other Recent Userland Tool</a>');
+        $numberOfMatches = substr_count($response->content(), '<li data-kontour-visit-type="edit" data-kontour-username="' . $otherUser->getDisplayName() . '"><small><a href="' . route('userland.edit', 1) . '">Other Recent Userland Tool</a></small>');
         $this->assertEquals(1, $numberOfMatches);
 
         $response->assertDontSee('<a href="' . route('userland.index') . '">Other Recent Userland Tool</a>', false);
@@ -116,8 +114,8 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
         $response->assertSuccessful();
         $response->assertSee('<nav aria-label="Crumb trail" data-kontour-widget="crumbtrail">', false);
-        $response->assertSee('<a href="' . route('userland.index') . '">1</a>', false);
-        $response->assertSee('<li aria-current="true"><a href="' . route('userland.edit', 1) . '" aria-current="page">2</a>', false);
+        $response->assertSee('<a href="' . route('userland.index') . '">Userland Index</a>', false);
+        $response->assertSee('<li aria-current="true"><a href="' . route('userland.edit', 1) . '" aria-current="page">Edit item 1</a>', false);
     }
 
     public function test_message_widget()
@@ -126,7 +124,7 @@ class UserlandControllerTest extends UserlandAdminToolTest
 
         $response->assertSuccessful();
         $response->assertSee('<section data-kontour-widget="message">', false);
-        $response->assertSeeInOrder(['<li', 'data-kontour-message-level="info"', 'role="status"', '>Hello World!</li>'], false);
+        $response->assertSeeInOrder(['<li', 'data-kontour-message-level="info"', 'role="status"', '>Example success message</li>'], false);
     }
 
     public function test_css_and_js_additions()

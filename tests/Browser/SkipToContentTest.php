@@ -3,10 +3,13 @@
 namespace Kontenta\Kontour\Tests\Browser;
 
 use Kontenta\Kontour\Tests\DuskTest;
+use Kontenta\Kontour\Tests\UserlandTestSetupTrait;
 use Laravel\Dusk\Browser;
 
 class SkipToContentTest extends DuskTest
 {
+    use UserlandTestSetupTrait;
+
     protected $element = '#skip-to-content';
 
     /**
@@ -32,6 +35,11 @@ class SkipToContentTest extends DuskTest
             $browser->keys($this->element, '{enter}')
                 ->assertNotFocused($this->element)
                 ->assertFragmentIs('kontourMain');
+
+
+            $browser
+                ->resize(1024, 768)
+                ->screenshot('docs/dashboard');
         });
     }
 }

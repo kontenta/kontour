@@ -4,6 +4,7 @@ namespace Kontenta\Kontour\Tests;
 
 use Kontenta\Kontour\Tests\Feature\Fakes\User;
 use Orchestra\Testbench\Dusk\TestCase;
+use Illuminate\Support\Facades\Cache;
 
 abstract class DuskTest extends TestCase
 {
@@ -21,6 +22,7 @@ abstract class DuskTest extends TestCase
         parent::setUp();
         $this->prepareDatabase();
         $this->user = factory(User::class)->create();
+        Cache::flush();
     }
 
     /**
