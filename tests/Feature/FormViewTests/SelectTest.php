@@ -115,7 +115,8 @@ class SelectTest extends IntegrationTest
         ];
 
         while (count($fallbacks)) {
-            $output = View::make('kontour::forms.select',
+            $output = View::make(
+                'kontour::forms.select',
                 array_merge(
                     [
                         'name' => 'test',
@@ -180,7 +181,12 @@ class SelectTest extends IntegrationTest
             'placeholder' => 'Select one',
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*>\s*<option[\S\s]*value=""[\S\s]*>Select one<\/option>/', $output);
+        $tags = preg_split('/(?<=>)\s*(?=<)/', $output);
+        $this->assertStringContainsString('<select', $tags[3], 'Select tag is not in expected order');
+
+        $firstOption = $tags[4];
+        $this->assertStringContainsString('Select one', $firstOption, "Placeholder is not first option in select");
+        $this->assertStringContainsString('value=""', $firstOption, "Placeholder value is not empty");
     }
 
     public function test_placeholder_does_not_replace_existing_blank_option()
