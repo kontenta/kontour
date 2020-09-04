@@ -181,7 +181,7 @@ class SelectTest extends IntegrationTest
             'placeholder' => 'Select one',
         ])->render();
 
-        $tags = preg_split('/(?<=>)\s*(?=<)/', $output);
+        $tags = $this->splitHtmlTags($output);
         $this->assertStringContainsString('<select', $tags[3], 'Select tag is not in expected order');
 
         $firstOption = $tags[4];
