@@ -78,7 +78,7 @@ class SelectTest extends IntegrationTest
             'selected' => 'c',
         ])->render();
 
-        $this->assertEquals(1, preg_match_all('/\sselected\s/', $output,), 'Not exactly one selected option');
+        $this->assertEquals(1, preg_match_all('/\sselected\s/', $output), 'Not exactly one selected option');
 
         $tags = $this->splitHtmlTags($output);
         $this->assertStringContainsString('<select', $tags[3], 'Select tag is not in expected order');
