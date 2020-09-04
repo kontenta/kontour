@@ -137,7 +137,26 @@ class MultiselectTest extends IntegrationTest
             'selected' => ['c', 'b'],
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*>\s*<option\s*value="a"\s*>A<\/option>\s*<option\s*value="b"\s*selected\s*>B<\/option>\s*<optgroup\s*label="A Group">\s*<option\s*value="c"\s*selected\s*>C<\/option>\s*<option\s*value="d"\s*>D<\/option>\s*<\/optgroup>\s*<\/select>/', $output);
+        $this->assertEquals(2, preg_match_all('/\sselected\s/', $output,), 'Not exactly two selected options');
+
+        $tags = $this->splitHtmlTags($output);
+        $this->assertStringContainsString('<select', $tags[4], 'Select tag is not in expected order');
+
+        $optionB = $tags[6];
+        $this->assertStringContainsString('value="b"', $optionB);
+        $this->assertStringContainsString('selected', $optionB);
+
+        $optgroup = $tags[7];
+        $this->assertStringContainsString('<optgroup', $optgroup, 'Optgroup tag is not in expected order');
+        $this->assertStringContainsString('label="A Group"', $optgroup);
+
+        $optionC = $tags[8];
+        $this->assertStringContainsString('value="c"', $optionC);
+        $this->assertStringContainsString('selected', $optionC);
+        $this->assertStringContainsString('>C<', $optionC);
+
+        $optionD = $tags[9];
+        $this->assertStringContainsString('value="d"', $optionD);
     }
 
     public function test_old_value_is_not_used_if_no_errors()
@@ -174,7 +193,8 @@ class MultiselectTest extends IntegrationTest
         ];
 
         while (count($fallbacks)) {
-            $output = View::make('kontour::forms.multiselect',
+            $output = View::make(
+                'kontour::forms.multiselect',
                 array_merge(
                     [
                         'name' => 'test',
