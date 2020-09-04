@@ -137,7 +137,7 @@ class MultiselectTest extends IntegrationTest
             'selected' => ['c', 'b'],
         ])->render();
 
-        $this->assertEquals(2, preg_match_all('/\sselected\s/', $output,), 'Not exactly two selected options');
+        $this->assertEquals(2, preg_match_all('/\sselected\s/', $output), 'Not exactly two selected options');
 
         $tags = $this->splitHtmlTags($output);
         $this->assertStringContainsString('<select', $tags[4], 'Select tag is not in expected order');
