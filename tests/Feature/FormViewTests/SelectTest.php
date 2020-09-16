@@ -78,7 +78,22 @@ class SelectTest extends IntegrationTest
             'selected' => 'c',
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*>\s*<option\s*value="a"\s*>A<\/option>\s*<option\s*value="b"\s*>B<\/option>\s*<optgroup\s*label="A Group">\s*<option\s*value="c"\s*selected\s*>C<\/option>\s*<option\s*value="d"\s*>D<\/option>\s*<\/optgroup>\s*<\/select>/', $output);
+        $this->assertEquals(1, preg_match_all('/\sselected\s/', $output), 'Not exactly one selected option');
+
+        $tags = $this->splitHtmlTags($output);
+        $this->assertStringContainsString('<select', $tags[3], 'Select tag is not in expected order');
+
+        $optgroup = $tags[6];
+        $this->assertStringContainsString('<optgroup', $optgroup, 'Optgroup tag is not in expected order');
+        $this->assertStringContainsString('label="A Group"', $optgroup);
+
+        $optionC = $tags[7];
+        $this->assertStringContainsString('value="c"', $optionC);
+        $this->assertStringContainsString('selected', $optionC);
+        $this->assertStringContainsString('>C<', $optionC);
+
+        $optionD = $tags[8];
+        $this->assertStringContainsString('value="d"', $optionD);
     }
 
     public function test_old_value_is_not_used_if_no_errors()
@@ -115,7 +130,8 @@ class SelectTest extends IntegrationTest
         ];
 
         while (count($fallbacks)) {
-            $output = View::make('kontour::forms.select',
+            $output = View::make(
+                'kontour::forms.select',
                 array_merge(
                     [
                         'name' => 'test',
@@ -180,7 +196,12 @@ class SelectTest extends IntegrationTest
             'placeholder' => 'Select one',
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*>\s*<option[\S\s]*value=""[\S\s]*>Select one<\/option>/', $output);
+        $tags = $this->splitHtmlTags($output);
+        $this->assertStringContainsString('<select', $tags[3], 'Select tag is not in expected order');
+
+        $firstOption = $tags[4];
+        $this->assertStringContainsString('Select one', $firstOption, "Placeholder is not first option in select");
+        $this->assertStringContainsString('value=""', $firstOption, "Placeholder value is not empty");
     }
 
     public function test_placeholder_does_not_replace_existing_blank_option()
