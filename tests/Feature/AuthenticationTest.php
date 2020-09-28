@@ -101,7 +101,7 @@ class AuthenticationTest extends IntegrationTest
         $response = $this->actingAs($this->user, 'admin')->get($routeManager->indexUrl());
         $response->assertSee('<section data-kontour-widget="userAccount">', false);
         $response->assertSee($this->user->getDisplayName());
-        $response->assertSee(">Logout</span>\n</button>", false);
+        $response->assertSee(">Log out</span>\n</button>", false);
     }
 
     public function test_logout()

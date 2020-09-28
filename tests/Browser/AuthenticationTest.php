@@ -23,7 +23,7 @@ class AuthenticationTest extends DuskTest
                 ->type('password', 'secret')
                 ->resize(500, 500)
                 ->screenshot('docs/login')
-                ->press('Login')
+                ->press('Log in')
                 ->assertUrlIs($routeManager->indexUrl());
         });
     }
@@ -40,7 +40,7 @@ class AuthenticationTest extends DuskTest
              */
             $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
             $browser->loginAs($this->user, 'admin')->visit($routeManager->indexUrl())
-                ->press('Logout')
+                ->press('Log out')
                 ->assertUrlIs($routeManager->loginUrl());
         });
     }

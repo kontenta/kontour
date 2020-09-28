@@ -8,14 +8,14 @@
 ?>
 
 @section('kontourMain')
-  <header>{{ __('Login') }}</header>
+  <header>{{ __('Log in') }}</header>
   <form method="POST" action="{{ route('kontour.login') }}">
     @csrf
     @include('kontour::forms.email', ['controlAttributes' => ['required']])
     @include('kontour::forms.input', ['name' => 'password', 'type' => 'password', 'controlAttributes' => ['required', 'autocomplete' => 'current-password']])
     @include('kontour::forms.checkbox', ['name' => 'remember', 'label' => __('Remember Me')])
     @component('kontour::buttons.generic')
-      {{ __('Login') }}
+      {{ __('Log in') }}
     @endcomponent
     @if($route_manager->passwordResetUrl())
       <a href="{{ $route_manager->passwordResetUrl() }}">
