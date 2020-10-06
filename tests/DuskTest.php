@@ -12,6 +12,8 @@ abstract class DuskTest extends TestCase
         getEnvironmentSetUp as traitGetEnvironmentSetup;
     }
 
+    protected static $baseServePort = 8001;
+
     /**
      * @var User
      */
