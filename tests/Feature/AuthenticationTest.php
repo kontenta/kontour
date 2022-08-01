@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 use Kontenta\Kontour\Tests\Feature\Fakes\User;
 use Kontenta\Kontour\Tests\IntegrationTest;
 use TiMacDonald\Log\LogFake;
+use TiMacDonald\Log\LogEntry;
 use Illuminate\Support\Str;
 
 class AuthenticationTest extends IntegrationTest
@@ -75,11 +76,11 @@ class AuthenticationTest extends IntegrationTest
         $response = $this->actingAs($user, 'admin')->get($routeManager->indexUrl());
 
         $response->assertStatus(500);
-        Log::assertLogged('error', function ($message, $context) {
-            return (
-                Str::contains($message, 'Kontenta\Kontour\Contracts\AdminUser') and
-                Str::contains($message, 'Illuminate\Foundation\Auth\User') and
-                Str::contains($message, "'admin'")
+        Log::assertLogged(function (LogEntry $log) {
+            return ($log->level === 'error' and
+                Str::contains($log->message, 'Kontenta\Kontour\Contracts\AdminUser') and
+                Str::contains($log->message, 'Illuminate\Foundation\Auth\User') and
+                Str::contains($log->message, "'admin'")
             );
         });
     }
