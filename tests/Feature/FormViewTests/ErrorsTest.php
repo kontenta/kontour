@@ -26,6 +26,6 @@ class ErrorsTest extends IntegrationTest
             'errorsId' => 'errors',
         ])->render();
 
-        $this->assertRegExp('/<(\S*)[\S\s]*id="errors"[\S\s]*>[\S\s]*Error 1[\S\s]*Error 2[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="errors"[\S\s]*>[\S\s]*Error 1[\S\s]*Error 2[\S\s]*<\/\1>/', $output);
     }
 }

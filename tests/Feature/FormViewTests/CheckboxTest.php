@@ -15,8 +15,8 @@ class CheckboxTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="test"\s*>/', $output);
-        $this->assertRegExp('/<input[\S\s]*id="test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*id="test"\s*>/', $output);
     }
 
     public function test_input_can_have_custom_control_id()
@@ -27,8 +27,8 @@ class CheckboxTest extends IntegrationTest
             'controlId' => 'a',
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="a"\s*>/', $output);
-        $this->assertRegExp('/<input[\S\s]*id="a"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="a"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*id="a"\s*>/', $output);
     }
 
     public function test_input_can_have_id_prefix()
@@ -39,8 +39,8 @@ class CheckboxTest extends IntegrationTest
             'idPrefix' => 'pre-',
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="pre-test"\s*>/', $output);
-        $this->assertRegExp('/<input[\S\s]*id="pre-test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="pre-test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*id="pre-test"\s*>/', $output);
     }
 
     public function test_default_is_not_checked()
@@ -50,7 +50,7 @@ class CheckboxTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertNotRegExp('/<input[\S\s]*checked[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<input[\S\s]*checked[\S\s]*>/', $output);
     }
 
     public function test_can_be_checked()
@@ -61,7 +61,7 @@ class CheckboxTest extends IntegrationTest
             'checked' => true,
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*checked[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*checked[\S\s]*>/', $output);
     }
 
     public function test_default_value_is_1()
@@ -71,7 +71,7 @@ class CheckboxTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*value="1"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*value="1"[\S\s]*>/', $output);
     }
 
     public function test_default_value_can_be_set()
@@ -82,7 +82,7 @@ class CheckboxTest extends IntegrationTest
             'checkboxDefaultValue' => 2,
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*value="2"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*value="2"[\S\s]*>/', $output);
     }
 
     public function test_value_can_be_set()
@@ -93,7 +93,7 @@ class CheckboxTest extends IntegrationTest
             'value' => 3,
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*value="3"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*value="3"[\S\s]*>/', $output);
     }
 
     public function test_old_value_is_not_used_if_no_errors()
@@ -105,7 +105,7 @@ class CheckboxTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertNotRegExp('/<input[\S\s]*checked[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<input[\S\s]*checked[\S\s]*>/', $output);
     }
 
     public function test_old_value_is_used_if_in_session_with_errors()
@@ -117,7 +117,7 @@ class CheckboxTest extends IntegrationTest
             'errors' => new MessageBag(['another_field' => ['An error']]),
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*checked[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*checked[\S\s]*>/', $output);
     }
 
     public function test_fallback_values_are_used_in_order()
@@ -144,9 +144,9 @@ class CheckboxTest extends IntegrationTest
             }
             $regexp = '/<input[\S\s]*checked[\S\s]*>/';
             if ($value) {
-                $this->assertRegExp($regexp, $output);
+                $this->assertMatchesRegularExpression($regexp, $output);
             } else {
-                $this->assertNotRegExp($regexp, $output);
+                $this->assertDoesNotMatchRegularExpression($regexp, $output);
             }
         }
     }
@@ -158,8 +158,8 @@ class CheckboxTest extends IntegrationTest
             'errors' => new MessageBag(['test' => ['A message']]),
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_custom_errors_id_suffix()
@@ -170,8 +170,8 @@ class CheckboxTest extends IntegrationTest
             'errorsSuffix' => '-errors',
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_autofocus()
@@ -182,6 +182,6 @@ class CheckboxTest extends IntegrationTest
             'autofocusControlId' => 'test',
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*autofocus[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*autofocus[\S\s]*>/', $output);
     }
 }

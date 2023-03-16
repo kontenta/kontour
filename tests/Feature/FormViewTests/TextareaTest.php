@@ -15,8 +15,8 @@ class TextareaTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="test"\s*>/', $output);
-        $this->assertRegExp('/<textarea[\S\s]*id="test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<textarea[\S\s]*id="test"\s*>/', $output);
     }
 
     public function test_textarea_can_have_custom_control_id()
@@ -27,8 +27,8 @@ class TextareaTest extends IntegrationTest
             'controlId' => 'a',
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="a"\s*>/', $output);
-        $this->assertRegExp('/<textarea[\S\s]*id="a"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="a"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<textarea[\S\s]*id="a"\s*>/', $output);
     }
 
     public function test_textarea_can_have_id_prefix()
@@ -39,8 +39,8 @@ class TextareaTest extends IntegrationTest
             'idPrefix' => 'pre-',
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="pre-test"\s*>/', $output);
-        $this->assertRegExp('/<textarea[\S\s]*id="pre-test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="pre-test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<textarea[\S\s]*id="pre-test"\s*>/', $output);
     }
 
     public function test_default_value_is_empty_string()
@@ -50,7 +50,7 @@ class TextareaTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<textarea[\S\s]*><\/textarea>/', $output);
+        $this->assertMatchesRegularExpression('/<textarea[\S\s]*><\/textarea>/', $output);
     }
 
     public function test_old_value_is_not_used_if_no_errors()
@@ -62,7 +62,7 @@ class TextareaTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertNotRegExp('/<textarea[\S\s]*>old<\/textarea>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<textarea[\S\s]*>old<\/textarea>/', $output);
     }
 
     public function test_old_value_is_used_if_in_session_with_errors()
@@ -74,7 +74,7 @@ class TextareaTest extends IntegrationTest
             'errors' => new MessageBag(['another_field' => ['An error']]),
         ])->render();
 
-        $this->assertRegExp('/<textarea[\S\s]*>old<\/textarea>/', $output);
+        $this->assertMatchesRegularExpression('/<textarea[\S\s]*>old<\/textarea>/', $output);
     }
 
     public function test_fallback_values_are_used_in_order()
@@ -100,7 +100,7 @@ class TextareaTest extends IntegrationTest
             if (is_array($value)) {
                 $value = $value['test'];
             }
-            $this->assertRegExp('/<textarea[\S\s]*>' . $value . '<\/textarea>/', $output);
+            $this->assertMatchesRegularExpression('/<textarea[\S\s]*>' . $value . '<\/textarea>/', $output);
         }
     }
 
@@ -111,8 +111,8 @@ class TextareaTest extends IntegrationTest
             'errors' => new MessageBag(['test' => ['A message']]),
         ])->render();
 
-        $this->assertRegExp('/<textarea[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<textarea[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_custom_errors_id_suffix()
@@ -123,8 +123,8 @@ class TextareaTest extends IntegrationTest
             'errorsSuffix' => '-errors',
         ])->render();
 
-        $this->assertRegExp('/<textarea[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<textarea[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_autofocus()
@@ -135,6 +135,6 @@ class TextareaTest extends IntegrationTest
             'autofocusControlId' => 'test',
         ])->render();
 
-        $this->assertRegExp('/<textarea[\S\s]*autofocus[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<textarea[\S\s]*autofocus[\S\s]*>/', $output);
     }
 }
