@@ -63,7 +63,6 @@ class AuthorizesWithAbilityTest extends IntegrationTest
         $link->registerAbilityForAuthorization('testGate', $this->user);
 
         $serializedLink = serialize($link);
-        $link->__wakeup(); // Restore any serialized models on the original object
         $unserializedLink = unserialize($serializedLink);
 
         $this->assertTrue($unserializedLink->isAuthorized($this->user));

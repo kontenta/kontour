@@ -30,7 +30,6 @@ class AdminVisitTest extends IntegrationTest
         $visit = new ShowAdminVisit($link, $this->user);
 
         $serializedVisit = serialize($visit);
-        $visit->__wakeup(); // Restore any serialized models on the original object
         $unserializedVisit = unserialize($serializedVisit);
 
         $this->assertEquals($visit, $unserializedVisit, "Unserialization did not produce the original object structure");
