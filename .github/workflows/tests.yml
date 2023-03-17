@@ -18,3 +18,6 @@ jobs:
 
       - name: Run feature tests
         run: composer test -- --testsuite=Feature
+
+      - name: Run Dusk tests
+        run: composer test -- --testsuite=Dusk
