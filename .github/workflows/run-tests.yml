@@ -8,10 +8,11 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: true
       matrix:
+        os: [ubuntu-latest]
         php: [8.2, 8.1]
         laravel: [9.*]
         stability: [prefer-lowest, prefer-stable]
