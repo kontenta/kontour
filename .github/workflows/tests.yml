@@ -20,4 +20,6 @@ jobs:
         run: composer test -- --testsuite=Feature
 
       - name: Run Dusk tests
-        run: composer test -- --testsuite=Dusk
+        run: |
+          ./vendor/bin/dusk-updater detect --auto-update
+          composer test -- --testsuite=Dusk
