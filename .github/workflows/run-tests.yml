@@ -9,17 +9,37 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [8.2, 8.1]
+        laravel: [9.*]
+        stability: [prefer-lowest, prefer-stable]
+        include:
+          - laravel: 10.*
+            testbench: 8.*
+          - laravel: 9.*
+            testbench: 7.*
+
+    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }}
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.2"
+          php-version: ${{ matrix.php }}
           coverage: none
 
       - name: Install Composer dependencies
-        run: composer install -n --prefer-dist
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction
+
+      - name: List installed Composer dependencies
+        run: composer show -D
 
       - name: Run feature tests
         run: composer test -- --testsuite=Feature
