@@ -20,7 +20,7 @@ class EmailTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*type="email"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*type="email"[\S\s]*>/', $output);
     }
 
     public function test_input_type_can_be_specified()
@@ -30,7 +30,7 @@ class EmailTest extends IntegrationTest
             'type' => 'text',
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*type="text"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*type="text"[\S\s]*>/', $output);
     }
 
     public function test_input_name_defaults_to_email()
@@ -39,7 +39,7 @@ class EmailTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*name="email"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*name="email"[\S\s]*>/', $output);
     }
 
     public function test_input_name_can_be_specified()
@@ -49,7 +49,7 @@ class EmailTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*name="test"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*name="test"[\S\s]*>/', $output);
     }
 
     public function test_email_input_has_default_attributes()
@@ -76,11 +76,11 @@ class EmailTest extends IntegrationTest
             ]
         ])->render();
 
-        $this->assertRegExp('/\s+autocomplete="off"\W/', $output);
-        $this->assertRegExp('/\s+autocapitalize="on"\W/', $output);
-        $this->assertRegExp('/\s+autocorrect="on"\W/', $output);
-        $this->assertRegExp('/\s+required\W/', $output);
-        $this->assertRegExp('/\s+a="b"\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+autocomplete="off"\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+autocapitalize="on"\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+autocorrect="on"\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+required\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+a="b"\W/', $output);
 
         foreach (self::$defaultEmailAttributes as $attribute => $default) {
             $this->assertStringNotContainsString("$attribute=\"$default\"", $output);

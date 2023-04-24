@@ -63,7 +63,7 @@ class AdminLinkTest extends IntegrationTest
     {
         $link = AdminLink::create('Ciao', 'http://hej.com', 'Hejdå');
 
-        $this->assertRegExp('/aria-label="Ciao.*Hejdå"/', $link->toHtml());
+        $this->assertMatchesRegularExpression('/aria-label="Ciao.*Hejdå"/', $link->toHtml());
     }
 
     public function test_name_is_not_repeated_in_label()

@@ -15,7 +15,7 @@ class TimeTest extends IntegrationTest
         $output = View::make('kontour::elements.time', compact('carbon'))->render();
 
         $this->assertStringContainsString('datetime="' . $carbon->toAtomString() . '"', $output);
-        $this->assertRegExp('/>\d seconds? ago<\/time>$/', $output);
+        $this->assertMatchesRegularExpression('/>\d seconds? ago<\/time>$/', $output);
     }
 
     public function test_can_format_time()

@@ -1,0 +1,49 @@
+name: Run tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest]
+        php: [8.2, 8.1, 8.0]
+        laravel: [9.*]
+        stability: [prefer-lowest, prefer-stable]
+        include:
+          - laravel: 9.*
+            testbench: 7.*
+
+    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Install Composer dependencies
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:>=2.62.1" --no-interaction --no-update
+          composer update --${{ matrix.stability }} --prefer-dist --no-interaction
+
+      - name: List installed Composer dependencies
+        run: composer show -D
+
+      - name: Run feature tests
+        run: composer test -- --testsuite=Feature
+
+      - name: Run Dusk tests
+        run: |
+          ./vendor/bin/dusk-updater detect --auto-update
+          composer test -- --testsuite=Dusk

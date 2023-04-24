@@ -16,8 +16,8 @@ class SelectTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="test"\s*>/', $output);
-        $this->assertRegExp('/<select[\S\s]*id="test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*id="test"\s*>/', $output);
     }
 
     public function test_select_can_have_custom_control_id()
@@ -29,8 +29,8 @@ class SelectTest extends IntegrationTest
             'controlId' => 'a',
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="a"\s*>/', $output);
-        $this->assertRegExp('/<select[\S\s]*id="a"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="a"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*id="a"\s*>/', $output);
     }
 
     public function test_select_can_have_id_prefix()
@@ -42,8 +42,8 @@ class SelectTest extends IntegrationTest
             'idPrefix' => 'pre-',
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="pre-test"\s*>/', $output);
-        $this->assertRegExp('/<select[\S\s]*id="pre-test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="pre-test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*id="pre-test"\s*>/', $output);
     }
 
     public function test_default_is_no_option_selected()
@@ -54,7 +54,7 @@ class SelectTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertNotRegExp('/<option[\S\s]*selected[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<option[\S\s]*selected[\S\s]*>/', $output);
     }
 
     public function test_option_can_be_selected()
@@ -66,7 +66,7 @@ class SelectTest extends IntegrationTest
             'selected' => 'a',
         ])->render();
 
-        $this->assertRegExp('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
     }
 
     public function test_optgroups()
@@ -106,7 +106,7 @@ class SelectTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertNotRegExp('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
     }
 
     public function test_old_value_is_used_if_in_session_with_errors()
@@ -119,7 +119,7 @@ class SelectTest extends IntegrationTest
             'errors' => new MessageBag(['another_field' => ['An error']]),
         ])->render();
 
-        $this->assertRegExp('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
     }
 
     public function test_fallback_values_are_used_in_order()
@@ -146,7 +146,7 @@ class SelectTest extends IntegrationTest
             if (is_array($value)) {
                 $value = $value['test'];
             }
-            $this->assertRegExp('/<option[\S\s]*value="' . $value . '"[\S\s]*selected[\S\s]*>/', $output);
+            $this->assertMatchesRegularExpression('/<option[\S\s]*value="' . $value . '"[\S\s]*selected[\S\s]*>/', $output);
         }
     }
 
@@ -158,8 +158,8 @@ class SelectTest extends IntegrationTest
             'errors' => new MessageBag(['test' => ['A message']]),
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_custom_errors_id_suffix()
@@ -171,8 +171,8 @@ class SelectTest extends IntegrationTest
             'errorsSuffix' => '-errors',
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_autofocus()
@@ -184,7 +184,7 @@ class SelectTest extends IntegrationTest
             'autofocusControlId' => 'test',
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*autofocus[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*autofocus[\S\s]*>/', $output);
     }
 
     public function test_placeholder_becomes_first_option()
@@ -213,7 +213,7 @@ class SelectTest extends IntegrationTest
             'placeholder' => 'Select one',
         ])->render();
 
-        $this->assertNotRegExp('/<option[\S\s]*value=""[\S\s]*>Select one<\/option>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<option[\S\s]*value=""[\S\s]*>Select one<\/option>/', $output);
     }
 
     public function test_options_can_be_disabled()
@@ -225,7 +225,7 @@ class SelectTest extends IntegrationTest
             'disabledOptions' => ['b'],
         ])->render();
 
-        $this->assertNotRegExp('/<option[^>]*value="a"[^>]*disabled[^>]*>/', $output);
-        $this->assertRegExp('/<option[^>]*value="b"[^>]*disabled[^>]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<option[^>]*value="a"[^>]*disabled[^>]*>/', $output);
+        $this->assertMatchesRegularExpression('/<option[^>]*value="b"[^>]*disabled[^>]*>/', $output);
     }
 }

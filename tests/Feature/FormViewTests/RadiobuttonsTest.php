@@ -17,7 +17,7 @@ class RadiobuttonsTest extends IntegrationTest
             'controlId' => 'a',
         ])->render();
 
-        $this->assertRegExp('/<fieldset[\S\s]*id="a"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<fieldset[\S\s]*id="a"[\S\s]*>/', $output);
     }
 
     public function test_fieldset_can_have_id_prefix()
@@ -29,7 +29,7 @@ class RadiobuttonsTest extends IntegrationTest
             'idPrefix' => 'pre-',
         ])->render();
 
-        $this->assertRegExp('/<fieldset[\S\s]*id="pre-test"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<fieldset[\S\s]*id="pre-test"[\S\s]*>/', $output);
     }
 
     public function test_default_is_no_radio_selected()
@@ -40,7 +40,7 @@ class RadiobuttonsTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertNotRegExp('/<input[\S\s]*checked[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<input[\S\s]*checked[\S\s]*>/', $output);
     }
 
     public function test_radio_can_be_selected()
@@ -52,7 +52,7 @@ class RadiobuttonsTest extends IntegrationTest
             'selected' => 'a',
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*value="a"[\S\s]*checked[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*value="a"[\S\s]*checked[\S\s]*>/', $output);
     }
 
     public function test_groups()
@@ -64,7 +64,7 @@ class RadiobuttonsTest extends IntegrationTest
             'selected' => 'c',
         ])->render();
 
-        $this->assertRegExp('/<fieldset[^>]*>[\S\s]*<input[^>]*value="a"[^>]*>A[\S\s]*<input[^>]*value="b"[^>]*>B[\S\s]*<fieldset[^>]*>\s*<legend>A Group<\/legend>[\S\s]*<input[^>]*value="c"\s*checked[^>]*>C[\S\s]*<input[^>]*value="d"[^>]*>D[\S\s]*<\/fieldset>[\S\s]*<\/fieldset>/', $output);
+        $this->assertMatchesRegularExpression('/<fieldset[^>]*>[\S\s]*<input[^>]*value="a"[^>]*>A[\S\s]*<input[^>]*value="b"[^>]*>B[\S\s]*<fieldset[^>]*>\s*<legend>A Group<\/legend>[\S\s]*<input[^>]*value="c"\s*checked[^>]*>C[\S\s]*<input[^>]*value="d"[^>]*>D[\S\s]*<\/fieldset>[\S\s]*<\/fieldset>/', $output);
     }
 
     public function test_old_value_is_not_used_if_no_errors()
@@ -77,7 +77,7 @@ class RadiobuttonsTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertNotRegExp('/<input[\S\s]*value="a"[\S\s]*checked[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<input[\S\s]*value="a"[\S\s]*checked[\S\s]*>/', $output);
     }
 
     public function test_old_value_is_used_if_in_session_with_errors()
@@ -90,7 +90,7 @@ class RadiobuttonsTest extends IntegrationTest
             'errors' => new MessageBag(['another_field' => ['An error']]),
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*value="a"[\S\s]*checked[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*value="a"[\S\s]*checked[\S\s]*>/', $output);
     }
 
     public function test_fallback_values_are_used_in_order()
@@ -116,7 +116,7 @@ class RadiobuttonsTest extends IntegrationTest
             if (is_array($value)) {
                 $value = $value['test'];
             }
-            $this->assertRegExp('/<input[\S\s]*value="' . $value . '"[\S\s]*checked[\S\s]*>/', $output);
+            $this->assertMatchesRegularExpression('/<input[\S\s]*value="' . $value . '"[\S\s]*checked[\S\s]*>/', $output);
         }
     }
 
@@ -128,8 +128,8 @@ class RadiobuttonsTest extends IntegrationTest
             'errors' => new MessageBag(['test' => ['A message']]),
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_custom_errors_id_suffix()
@@ -141,8 +141,8 @@ class RadiobuttonsTest extends IntegrationTest
             'errorsSuffix' => '-errors',
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_autofocus_on_first_option()
@@ -154,8 +154,8 @@ class RadiobuttonsTest extends IntegrationTest
             'autofocusControlId' => 'test',
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*id="test\.0"[\S\s]*autofocus[\S\s]*>/', $output);
-        $this->assertNotRegExp('/<input[\S\s]*id="test\.1"[\S\s]*autofocus[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*id="test\.0"[\S\s]*autofocus[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<input[\S\s]*id="test\.1"[\S\s]*autofocus[\S\s]*>/', $output);
     }
 
     public function test_autofocus_on_specific_option()
@@ -167,8 +167,8 @@ class RadiobuttonsTest extends IntegrationTest
             'autofocusControlId' => 'test.1',
         ])->render();
 
-        $this->assertNotRegExp('/<input[\S\s]*id="test\.0"[\S\s]*autofocus[\S\s]*>[\S\s]*<input/', $output);
-        $this->assertRegExp('/<input[\S\s]*id="test\.1"[\S\s]*autofocus[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<input[\S\s]*id="test\.0"[\S\s]*autofocus[\S\s]*>[\S\s]*<input/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*id="test\.1"[\S\s]*autofocus[\S\s]*>/', $output);
     }
 
     public function test_radiobuttons_can_be_disabled()
@@ -180,7 +180,7 @@ class RadiobuttonsTest extends IntegrationTest
             'disabledOptions' => ['b'],
         ])->render();
 
-        $this->assertNotRegExp('/<input[^>]*value="a"[^>]*disabled[^>]*>/', $output);
-        $this->assertRegExp('/<input[^>]*value="b"[^>]*disabled[^>]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<input[^>]*value="a"[^>]*disabled[^>]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[^>]*value="b"[^>]*disabled[^>]*>/', $output);
     }
 }

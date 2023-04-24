@@ -15,7 +15,7 @@ class InputTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*type="text"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*type="text"[\S\s]*>/', $output);
     }
 
     public function test_input_type_can_be_specified()
@@ -26,7 +26,7 @@ class InputTest extends IntegrationTest
             'type' => 'email',
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*type="email"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*type="email"[\S\s]*>/', $output);
     }
 
     public function test_input_is_referenced_by_label()
@@ -36,8 +36,8 @@ class InputTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="test"\s*>/', $output);
-        $this->assertRegExp('/<input[\S\s]*id="test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*id="test"\s*>/', $output);
     }
 
     public function test_input_can_have_custom_control_id()
@@ -48,8 +48,8 @@ class InputTest extends IntegrationTest
             'controlId' => 'a',
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="a"\s*>/', $output);
-        $this->assertRegExp('/<input[\S\s]*id="a"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="a"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*id="a"\s*>/', $output);
     }
 
     public function test_input_can_have_id_prefix()
@@ -60,8 +60,8 @@ class InputTest extends IntegrationTest
             'idPrefix' => 'pre-',
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="pre-test"\s*>/', $output);
-        $this->assertRegExp('/<input[\S\s]*id="pre-test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="pre-test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*id="pre-test"\s*>/', $output);
     }
 
     public function test_value_attribute_is_not_present_on_password_inputs()
@@ -73,8 +73,8 @@ class InputTest extends IntegrationTest
             'value' => 'secret',
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*type="password"[\S\s]*>/', $output);
-        $this->assertNotRegExp('/<input[\S\s]*value="[^"]*"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*type="password"[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<input[\S\s]*value="[^"]*"[\S\s]*>/', $output);
     }
 
     public function test_default_value_is_empty_string()
@@ -84,7 +84,7 @@ class InputTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*value=""[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*value=""[\S\s]*>/', $output);
     }
 
     public function test_old_value_is_not_used_if_no_errors()
@@ -96,7 +96,7 @@ class InputTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertNotRegExp('/<input[\S\s]*value="old"[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<input[\S\s]*value="old"[\S\s]*>/', $output);
     }
 
     public function test_old_value_is_used_if_in_session_with_errors()
@@ -108,7 +108,7 @@ class InputTest extends IntegrationTest
             'errors' => new MessageBag(['another_field' => ['An error']]),
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*value="old"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*value="old"[\S\s]*>/', $output);
     }
 
     public function test_fallback_values_are_used_in_order()
@@ -134,7 +134,7 @@ class InputTest extends IntegrationTest
             if (is_array($value)) {
                 $value = $value['test'];
             }
-            $this->assertRegExp('/<input[\S\s]*value="' . $value . '"[\S\s]*>/', $output);
+            $this->assertMatchesRegularExpression('/<input[\S\s]*value="' . $value . '"[\S\s]*>/', $output);
         }
     }
 
@@ -145,8 +145,8 @@ class InputTest extends IntegrationTest
             'errors' => new MessageBag(['test' => ['A message']]),
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_dot_notation_error_input_referencing_error_element_with_errors()
@@ -156,8 +156,8 @@ class InputTest extends IntegrationTest
             'errors' => new MessageBag(['test.dot.notation' => ['A message']]),
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*aria-describedby="test.dot.notationErrors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="test.dot.notationErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*aria-describedby="test.dot.notationErrors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="test.dot.notationErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_custom_errors_id_suffix()
@@ -168,8 +168,8 @@ class InputTest extends IntegrationTest
             'errorsSuffix' => '-errors',
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_autofocus()
@@ -180,6 +180,6 @@ class InputTest extends IntegrationTest
             'autofocusControlId' => 'test',
         ])->render();
 
-        $this->assertRegExp('/<input[\S\s]*autofocus[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input[\S\s]*autofocus[\S\s]*>/', $output);
     }
 }

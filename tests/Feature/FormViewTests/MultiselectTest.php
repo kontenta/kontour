@@ -16,7 +16,7 @@ class MultiselectTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*name="test\[]"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*name="test\[]"[\S\s]*>/', $output);
     }
 
     public function test_multiselect_has_array_name_from_dot_notation()
@@ -27,7 +27,7 @@ class MultiselectTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*name="test\[name]\[in]\[dot]\[notation]\[]"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*name="test\[name]\[in]\[dot]\[notation]\[]"[\S\s]*>/', $output);
     }
 
 
@@ -39,7 +39,7 @@ class MultiselectTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<input type="hidden" name="test" value="">[\S\s]*<select[\S\s]*multiple[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input type="hidden" name="test" value="">[\S\s]*<select[\S\s]*multiple[\S\s]*>/', $output);
     }
 
     public function test_multiselect_has_hidden_presence_input_from_dot_notation()
@@ -50,7 +50,7 @@ class MultiselectTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<input type="hidden" name="test\[name]\[in]\[dot]\[notation]" value="">[\S\s]*<select[\S\s]*multiple[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<input type="hidden" name="test\[name]\[in]\[dot]\[notation]" value="">[\S\s]*<select[\S\s]*multiple[\S\s]*>/', $output);
     }
 
     public function test_select_is_referenced_by_label()
@@ -61,8 +61,8 @@ class MultiselectTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="test"\s*>/', $output);
-        $this->assertRegExp('/<select[\S\s]*id="test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*id="test"\s*>/', $output);
     }
 
     public function test_select_can_have_custom_control_id()
@@ -74,8 +74,8 @@ class MultiselectTest extends IntegrationTest
             'controlId' => 'a',
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="a"\s*>/', $output);
-        $this->assertRegExp('/<select[\S\s]*id="a"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="a"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*id="a"\s*>/', $output);
     }
 
     public function test_select_can_have_id_prefix()
@@ -87,8 +87,8 @@ class MultiselectTest extends IntegrationTest
             'idPrefix' => 'pre-',
         ])->render();
 
-        $this->assertRegExp('/<label\s*for="pre-test"\s*>/', $output);
-        $this->assertRegExp('/<select[\S\s]*id="pre-test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<label\s*for="pre-test"\s*>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*id="pre-test"\s*>/', $output);
     }
 
     public function test_default_is_no_option_selected()
@@ -99,7 +99,7 @@ class MultiselectTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertNotRegExp('/<option[\S\s]*selected[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<option[\S\s]*selected[\S\s]*>/', $output);
     }
 
     public function test_option_can_be_selected()
@@ -111,8 +111,8 @@ class MultiselectTest extends IntegrationTest
             'selected' => 'a',
         ])->render();
 
-        $this->assertRegExp('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
-        $this->assertNotRegExp('/<option[\S\s]*value="b"[\S\s]*selected[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<option[\S\s]*value="b"[\S\s]*selected[\S\s]*>/', $output);
     }
 
     public function test_multiple_options_can_be_selected()
@@ -124,8 +124,8 @@ class MultiselectTest extends IntegrationTest
             'selected' => ['a', 'b'],
         ])->render();
 
-        $this->assertRegExp('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
-        $this->assertRegExp('/<option[\S\s]*value="b"[\S\s]*selected[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<option[\S\s]*value="b"[\S\s]*selected[\S\s]*>/', $output);
     }
 
     public function test_optgroups()
@@ -169,7 +169,7 @@ class MultiselectTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertNotRegExp('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
     }
 
     public function test_old_value_is_used_if_in_session_with_errors()
@@ -182,7 +182,7 @@ class MultiselectTest extends IntegrationTest
             'errors' => new MessageBag(['another_field' => ['An error']]),
         ])->render();
 
-        $this->assertRegExp('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<option[\S\s]*value="a"[\S\s]*selected[\S\s]*>/', $output);
     }
 
     public function test_fallback_values_are_used_in_order()
@@ -209,7 +209,7 @@ class MultiselectTest extends IntegrationTest
             if (is_array($value)) {
                 $value = $value['test'];
             }
-            $this->assertRegExp('/<option[\S\s]*value="' . $value . '"[\S\s]*selected[\S\s]*>/', $output);
+            $this->assertMatchesRegularExpression('/<option[\S\s]*value="' . $value . '"[\S\s]*selected[\S\s]*>/', $output);
         }
     }
 
@@ -221,8 +221,8 @@ class MultiselectTest extends IntegrationTest
             'errors' => new MessageBag(['test' => ['A message']]),
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_custom_errors_id_suffix()
@@ -234,8 +234,8 @@ class MultiselectTest extends IntegrationTest
             'errorsSuffix' => '-errors',
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*aria-describedby="test-errors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="test-errors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_error_on_option_referencing_error_element_with_errors()
@@ -246,8 +246,8 @@ class MultiselectTest extends IntegrationTest
             'errors' => new MessageBag(['test.1' => 'A message']),
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
-        $this->assertRegExp('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*aria-describedby="testErrors"[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<(\S*)[\S\s]*id="testErrors"[\S\s]*>[\S\s]*A message[\S\s]*<\/\1>/', $output);
     }
 
     public function test_autofocus()
@@ -259,7 +259,7 @@ class MultiselectTest extends IntegrationTest
             'autofocusControlId' => 'test',
         ])->render();
 
-        $this->assertRegExp('/<select[\S\s]*autofocus[\S\s]*>/', $output);
+        $this->assertMatchesRegularExpression('/<select[\S\s]*autofocus[\S\s]*>/', $output);
     }
 
     public function test_options_can_be_disabled()
@@ -271,7 +271,7 @@ class MultiselectTest extends IntegrationTest
             'disabledOptions' => ['b'],
         ])->render();
 
-        $this->assertNotRegExp('/<option[^>]*value="a"[^>]*disabled[^>]*>/', $output);
-        $this->assertRegExp('/<option[^>]*value="b"[^>]*disabled[^>]*>/', $output);
+        $this->assertDoesNotMatchRegularExpression('/<option[^>]*value="a"[^>]*disabled[^>]*>/', $output);
+        $this->assertMatchesRegularExpression('/<option[^>]*value="b"[^>]*disabled[^>]*>/', $output);
     }
 }

@@ -16,7 +16,7 @@ class InputAttributesTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/name="testName"\W/', $output);
+        $this->assertMatchesRegularExpression('/name="testName"\W/', $output);
     }
 
     public function test_name_in_dot_notation()
@@ -27,7 +27,7 @@ class InputAttributesTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/name="test\[name]\[in]\[dot]\[notation]"\W/', $output);
+        $this->assertMatchesRegularExpression('/name="test\[name]\[in]\[dot]\[notation]"\W/', $output);
     }
 
     public function test_has_control_id()
@@ -38,7 +38,7 @@ class InputAttributesTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertRegExp('/\s+id="testId"\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+id="testId"\W/', $output);
     }
 
     public function test_aria_invalid_not_present_on_error_free_input()
@@ -49,7 +49,7 @@ class InputAttributesTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertNotRegExp('/aria-invalid/', $output);
+        $this->assertDoesNotMatchRegularExpression('/aria-invalid/', $output);
     }
 
     public function test_error_free_input_not_referencing_error_element()
@@ -60,7 +60,7 @@ class InputAttributesTest extends IntegrationTest
             'errors' => new MessageBag,
         ])->render();
 
-        $this->assertNotRegExp('/aria-describedby/', $output);
+        $this->assertDoesNotMatchRegularExpression('/aria-describedby/', $output);
     }
 
     public function test_error_input_has_aria_invalid()
@@ -72,7 +72,7 @@ class InputAttributesTest extends IntegrationTest
             'errorsId' => 'errorsId',
         ])->render();
 
-        $this->assertRegExp('/\s+aria-invalid="true"\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+aria-invalid="true"\W/', $output);
     }
 
     public function test_error_input_referencing_error_element()
@@ -84,7 +84,7 @@ class InputAttributesTest extends IntegrationTest
             'errorsId' => 'errorsId',
         ])->render();
 
-        $this->assertRegExp('/\s+aria-describedby="errorsId"\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+aria-describedby="errorsId"\W/', $output);
     }
 
     public function test_aria_describedby_can_be_set()
@@ -96,7 +96,7 @@ class InputAttributesTest extends IntegrationTest
             'controlAttributes' => ['aria-describedby' => 'descriptionId'],
         ])->render();
 
-        $this->assertRegExp('/\s+aria-describedby="descriptionId"\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+aria-describedby="descriptionId"\W/', $output);
     }
 
     public function test_error_input_prepending_aria_describedby()
@@ -109,7 +109,7 @@ class InputAttributesTest extends IntegrationTest
             'controlAttributes' => ['aria-describedby' => 'descriptionId'],
         ])->render();
 
-        $this->assertRegExp('/\s+aria-describedby="errorsId\sdescriptionId"\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+aria-describedby="errorsId\sdescriptionId"\W/', $output);
     }
 
     public function test_control_attributes()
@@ -128,8 +128,8 @@ class InputAttributesTest extends IntegrationTest
             ],
         ])->render();
 
-        $this->assertRegExp('/\s+a="b"\s+boolean\s+true\s+b="false"\s+c="0"\W/', $output);
-        $this->assertNotRegExp('/\sfalse\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+a="b"\s+boolean\s+true\s+b="false"\s+c="0"\W/', $output);
+        $this->assertDoesNotMatchRegularExpression('/\sfalse\W/', $output);
     }
 
     public function test_can_have_autofocus()
@@ -141,7 +141,7 @@ class InputAttributesTest extends IntegrationTest
             'autofocusControlId' => 'testId',
         ])->render();
 
-        $this->assertRegExp('/\s+autofocus\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+autofocus\W/', $output);
     }
 
     public function test_other_element_can_have_autofocus()
@@ -153,7 +153,7 @@ class InputAttributesTest extends IntegrationTest
             'autofocusControlId' => 'otherId',
         ])->render();
 
-        $this->assertNotRegExp('/autofocus/', $output);
+        $this->assertDoesNotMatchRegularExpression('/autofocus/', $output);
     }
 
     public function test_can_have_placeholder()
@@ -165,6 +165,6 @@ class InputAttributesTest extends IntegrationTest
             'placeholder' => 'Placeholder text',
         ])->render();
 
-        $this->assertRegExp('/\s+placeholder="Placeholder text"\W/', $output);
+        $this->assertMatchesRegularExpression('/\s+placeholder="Placeholder text"\W/', $output);
     }
 }
