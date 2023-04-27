@@ -22,6 +22,7 @@
 `composer test -- --filter=...` will pass through options to phpunit.
 
 `composer report` will run the tests and generate coverage reports.
+_Note_: You need to have [Xdebug](https://xdebug.org/docs/install) installed to test coverage.
 
 If you want your own local configuration for phpunit,
 copy the file `phpunit.xml.dist` to `phpunit.xml` and modify the latter to your needs.
