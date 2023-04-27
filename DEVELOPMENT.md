@@ -33,10 +33,9 @@ Any Laravel log messages generated during testing can be found in the
 
 ### Testing with different versions
 
-[Travis CI](https://travis-ci.org/kontenta/kontour) is set up to run tests against
-PHP `7.3` & `7.4` in combination with
-Laravel `5.8`, `6`, `7` & `8`.
-See `.travis.yml` for details.
+[GitHub Actions](https://github.com/kontenta/kontour/actions) is set up to run
+tests against relevant PHP and Laravel versions.
+See [`run-tests.yml`](.github/workflows/run-tests.yml) for details.
 
 - `composer update --prefer-lowest` can be used before running tests for testing backwards compatibility.
 - `composer show -D -o` can be used to check how far behind latest version the currently installed dependencies are.
