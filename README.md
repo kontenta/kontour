@@ -1,6 +1,6 @@
 # Kontour
 
-[![Build Status](https://travis-ci.org/kontenta/kontour.svg?branch=master)](https://travis-ci.org/kontenta/kontour)
+[![Run tests](https://github.com/kontenta/kontour/actions/workflows/run-tests.yml/badge.svg)](https://github.com/kontenta/kontour/actions/workflows/run-tests.yml)
 
 Kontour is a package of admin page utilities for
 [Laravel](https://laravel.com/docs).

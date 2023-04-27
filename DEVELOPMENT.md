@@ -22,6 +22,7 @@
 `composer test -- --filter=...` will pass through options to phpunit.
 
 `composer report` will run the tests and generate coverage reports.
+_Note_: You need to have [Xdebug](https://xdebug.org/docs/install) installed to test coverage.
 
 If you want your own local configuration for phpunit,
 copy the file `phpunit.xml.dist` to `phpunit.xml` and modify the latter to your needs.
@@ -33,10 +34,9 @@ Any Laravel log messages generated during testing can be found in the
 
 ### Testing with different versions
 
-[Travis CI](https://travis-ci.org/kontenta/kontour) is set up to run tests against
-PHP `7.3` & `7.4` in combination with
-Laravel `5.8`, `6`, `7` & `8`.
-See `.travis.yml` for details.
+[GitHub Actions](https://github.com/kontenta/kontour/actions) is set up to run
+tests against relevant PHP and Laravel versions.
+See [`run-tests.yml`](.github/workflows/run-tests.yml) for details.
 
 - `composer update --prefer-lowest` can be used before running tests for testing backwards compatibility.
 - `composer show -D -o` can be used to check how far behind latest version the currently installed dependencies are.

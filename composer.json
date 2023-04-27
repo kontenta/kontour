@@ -36,7 +36,7 @@
   },
   "scripts": {
     "test": "vendor/bin/phpunit",
-    "report": "@test --coverage-html build/coverage --coverage-text=build/coverage.txt",
+    "report": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html build/coverage --coverage-text=build/coverage.txt",
     "phpcs": "vendor/bin/phpcs",
     "clearCompiledViews": "rm -f vendor/orchestra/testbench-dusk/laravel/storage/framework/views/*",
     "post-update-cmd": [
