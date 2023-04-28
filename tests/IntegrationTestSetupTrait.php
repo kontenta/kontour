@@ -48,7 +48,7 @@ trait IntegrationTestSetupTrait
         ]);
         $app['config']->set('auth.passwords.admins', [
             'provider' => 'admins',
-            'table' => 'password_resets',
+            'table' => 'password_reset_tokens',
             'expire' => 60,
         ]);
         $app['config']->set('kontour.guard', 'admin');
