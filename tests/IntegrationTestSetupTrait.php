@@ -46,9 +46,11 @@ trait IntegrationTestSetupTrait
             'driver' => 'eloquent',
             'model' => User::class,
         ]);
+
+        // Use the same password reset table as for the users
         $app['config']->set('auth.passwords.admins', [
             'provider' => 'admins',
-            'table' => 'password_reset_tokens',
+            'table' => $app['config']['auth']['passwords']['users']['table'],
             'expire' => 60,
         ]);
         $app['config']->set('kontour.guard', 'admin');
