@@ -14,7 +14,7 @@ authentication, authorization, validation, views, etc.
 Kontour is there to provide enhancements and reusable elements for your admin
 area.
 
-You need **Laravel 9** to use the latest version of this package.
+You need at least **Laravel 9** to use the latest version of this package.
 
 ## Using Kontour in a Laravel app
 
