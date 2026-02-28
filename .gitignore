@@ -16,3 +16,4 @@ phpcs.xml
 /tests/Browser/screenshots/
 .phpunit.result.cache
 .phpunit.cache/test-results
+.vscode
