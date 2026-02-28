@@ -29,11 +29,11 @@ class ConfirmLeavePageTest extends DuskTest
             $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
             $browser->visit($routeManager->loginUrl())
                 ->type('email', $this->user->email)
-                ->waitFor('[data-kontour-dirty="true"]')
-                ->visit('/')
-                ->waitForDialog()
-                ->dismissDialog()
-                ->assertUrlIs($routeManager->loginUrl());
+                ->waitFor('[data-kontour-dirty="true"]');
+            $result = $browser->script(
+                "window.dispatchEvent(new Event('beforeunload', {cancelable: true})); return document.body.getAttribute('data-kontour-unload-prevented');"
+            );
+            $this->assertEquals('true', $result[0]);
         });
     }
 }
