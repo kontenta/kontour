@@ -32,7 +32,10 @@
     }
   },
   "config": {
-    "sort-packages": true
+    "sort-packages": true,
+    "audit": {
+      "block-insecure": false
+    }
   },
   "scripts": {
     "test": "vendor/bin/phpunit",
