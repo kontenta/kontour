@@ -70,7 +70,7 @@ class RadiobuttonsTest extends IntegrationTest
     public function test_old_value_is_not_used_if_no_errors()
     {
         $this->withSession(['_old_input' => ['test' => 'a']]);
-        request()->setLaravelSession(session());
+        request()->setLaravelSession(session()->driver());
         $output = View::make('kontour::forms.radiobuttons', [
             'name' => 'test',
             'options' => ['a' => 'A', 'b' => 'B'],
@@ -83,7 +83,7 @@ class RadiobuttonsTest extends IntegrationTest
     public function test_old_value_is_used_if_in_session_with_errors()
     {
         $this->withSession(['_old_input' => ['test' => 'a']]);
-        request()->setLaravelSession(session());
+        request()->setLaravelSession(session()->driver());
         $output = View::make('kontour::forms.radiobuttons', [
             'name' => 'test',
             'options' => ['a' => 'A', 'b' => 'B'],
