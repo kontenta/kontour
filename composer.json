@@ -3,14 +3,15 @@
   "description": "Admin area tool utilities for Laravel",
   "license": "MIT",
   "require": {
-    "laravel/framework": "^9.0 || ^10.0",
+    "laravel/framework": "^10.0 || ^11.0 || ^12.0",
     "laravel/ui": "^4.0"
   },
   "require-dev": {
-    "laravel/legacy-factories": "^1.0.4",
-    "mockery/mockery": "^1.2",
-    "orchestra/testbench-dusk": "^7.0 || ^8.0",
-    "squizlabs/php_codesniffer": "^3.3",
+    "laravel/legacy-factories": "^1.4.2",
+    "mockery/mockery": "^1.6.12",
+    "orchestra/testbench-dusk": "^8.39 || ^9.19 || ^10.9",
+    "phpunit/phpunit": ">=10.5.63",
+    "squizlabs/php_codesniffer": "^4.0.1",
     "timacdonald/log-fake": "^2.0"
   },
   "autoload": {
@@ -32,7 +33,10 @@
     }
   },
   "config": {
-    "sort-packages": true
+    "sort-packages": true,
+    "audit": {
+      "block-insecure": false
+    }
   },
   "scripts": {
     "test": "vendor/bin/phpunit",
