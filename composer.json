@@ -9,7 +9,7 @@
   "require-dev": {
     "laravel/legacy-factories": "^1.0.4",
     "mockery/mockery": "^1.2",
-    "orchestra/testbench-dusk": ">=8.39",
+    "orchestra/testbench-dusk": "^8.39 || ^9.19 || ^10.9",
     "squizlabs/php_codesniffer": "^4.0",
     "timacdonald/log-fake": "^2.0"
   },
