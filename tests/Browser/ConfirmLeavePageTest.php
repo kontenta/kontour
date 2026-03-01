@@ -41,9 +41,6 @@ class ConfirmLeavePageTest extends DuskTest
     public function test_no_confirm_leave()
     {
         $this->browse(function (Browser $browser) {
-            /**
-             * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-             */
             $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
             $browser->visit($routeManager->loginUrl())
                 ->visit('/')
@@ -54,9 +51,6 @@ class ConfirmLeavePageTest extends DuskTest
     public function test_no_beforeunload_prevention_without_changes()
     {
         $this->browse(function (Browser $browser) {
-            /**
-             * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-             */
             $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
             $browser->visit($routeManager->loginUrl());
 
