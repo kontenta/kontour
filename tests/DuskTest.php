@@ -3,6 +3,7 @@
 namespace Kontenta\Kontour\Tests;
 
 use Kontenta\Kontour\Tests\Feature\Fakes\User;
+use Orchestra\Testbench\Dusk\Options;
 use Orchestra\Testbench\Dusk\TestCase;
 use Illuminate\Support\Facades\Cache;
 
@@ -18,6 +19,11 @@ abstract class DuskTest extends TestCase
      * @var User
      */
     protected $user;
+
+    public static function defineWebDriverOptions()
+    {
+        Options::withoutUI();
+    }
 
     public function setUp(): void
     {
