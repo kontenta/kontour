@@ -3,13 +3,13 @@
   "description": "Admin area tool utilities for Laravel",
   "license": "MIT",
   "require": {
-    "laravel/framework": "^10.0 || ^11.0 || ^12.0 || ^13.0",
+    "laravel/framework": "^11.0 || ^12.0 || ^13.0",
     "laravel/ui": "^4.0"
   },
   "require-dev": {
     "laravel/legacy-factories": "^1.4.2",
     "mockery/mockery": "^1.6.12",
-    "orchestra/testbench-dusk": "^8.39 || ^9.19 || ^10.9 || ^11.0",
+    "orchestra/testbench-dusk": "^9.19 || ^10.9 || ^11.0",
     "phpunit/phpunit": ">=10.5.63",
     "squizlabs/php_codesniffer": "^4.0.1",
     "timacdonald/log-fake": "^2.0"
