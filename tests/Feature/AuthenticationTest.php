@@ -25,9 +25,6 @@ class AuthenticationTest extends IntegrationTest
 
     public function test_guest_is_redirected_to_login()
     {
-        /**
-         * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-         */
         $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
         $response = $this->get($routeManager->indexUrl());
 
@@ -36,9 +33,6 @@ class AuthenticationTest extends IntegrationTest
 
     public function test_json_guest_is_not_redirected()
     {
-        /**
-         * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-         */
         $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
         $response = $this->json('GET', $routeManager->indexUrl());
 
@@ -48,9 +42,6 @@ class AuthenticationTest extends IntegrationTest
 
     public function test_login_url()
     {
-        /**
-         * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-         */
         $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
         $response = $this->get($routeManager->loginUrl());
 
@@ -59,9 +50,6 @@ class AuthenticationTest extends IntegrationTest
 
     public function test_login()
     {
-        /**
-         * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-         */
         $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
         $response = $this->post($routeManager->loginUrl(), ['email' => $this->user->email, 'password' => 'secret']);
 
@@ -87,9 +75,6 @@ class AuthenticationTest extends IntegrationTest
 
     public function test_index_route()
     {
-        /**
-         * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-         */
         $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
         $response = $this->actingAs($this->user, 'admin')->get($routeManager->indexUrl());
 
@@ -107,9 +92,6 @@ class AuthenticationTest extends IntegrationTest
 
     public function test_logout()
     {
-        /**
-         * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-         */
         $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
         $response = $this->actingAs($this->user, 'admin')->post($routeManager->logoutUrl());
 
@@ -119,9 +101,6 @@ class AuthenticationTest extends IntegrationTest
 
     public function test_already_logged_in_user_is_redirected_from_login_url()
     {
-        /**
-         * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-         */
         $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
         $response = $this->actingAs($this->user, 'admin')->get($routeManager->loginUrl());
 

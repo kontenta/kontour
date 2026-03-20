@@ -30,9 +30,6 @@ class PasswordResetTest extends IntegrationTest
 
     public function test_password_reset()
     {
-        /**
-         * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-         */
         $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
 
         Notification::fake();

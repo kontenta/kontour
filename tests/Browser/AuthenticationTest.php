@@ -14,9 +14,6 @@ class AuthenticationTest extends DuskTest
     public function test_login()
     {
         $this->browse(function (Browser $browser) {
-            /**
-             * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-             */
             $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
             $browser->visit($routeManager->loginUrl())
                 ->type('email', $this->user->email)
@@ -24,7 +21,7 @@ class AuthenticationTest extends DuskTest
                 ->resize(500, 500)
                 ->screenshot('docs/login')
                 ->press('Log in')
-                ->assertUrlIs($routeManager->indexUrl());
+                ->waitForLocation($routeManager->indexUrl());
         });
     }
 
@@ -35,13 +32,10 @@ class AuthenticationTest extends DuskTest
     public function test_logout()
     {
         $this->browse(function (Browser $browser) {
-            /**
-             * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-             */
             $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
             $browser->loginAs($this->user, 'admin')->visit($routeManager->indexUrl())
                 ->press('Log out')
-                ->assertUrlIs($routeManager->loginUrl());
+                ->waitForLocation($routeManager->loginUrl());
         });
     }
 }

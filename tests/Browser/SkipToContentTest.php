@@ -19,9 +19,6 @@ class SkipToContentTest extends DuskTest
     public function test_skip_to_content()
     {
         $this->browse(function (Browser $browser) {
-            /**
-             * @var $routeManager \Kontenta\Kontour\Contracts\AdminRouteManager
-             */
             $routeManager = $this->app->make(\Kontenta\Kontour\Contracts\AdminRouteManager::class);
             $browser->loginAs($this->user, 'admin')->visit($routeManager->indexUrl());
 
